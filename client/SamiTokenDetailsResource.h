@@ -42,13 +42,16 @@ public:
 
     SamiTokenDetailsResource* fromJson(String* obj);
 
+    String* getPClientId();
+    void setPClientId(String* pClient_id);
     IList* getPRoles();
     void setPRoles(IList* pRoles);
     Integer* getPUserId();
     void setPUserId(Integer* pUser_id);
 
 private:
-    IList* pRoles;
+    String* pClient_id;
+IList* pRoles;
 Integer* pUser_id;
 };
 

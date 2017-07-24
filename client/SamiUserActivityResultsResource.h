@@ -17,9 +17,6 @@
 using namespace Tizen::Web::Json;
 
 
-#include "SamiRewardCurrencyResource.h"
-#include "SamiRewardItemResource.h"
-#include "SamiSimpleUserResource.h"
 using Tizen::Base::Collection::IList;
 using Tizen::Base::Integer;
 using Tizen::Base::Long;
@@ -46,29 +43,17 @@ public:
 
     SamiUserActivityResultsResource* fromJson(String* obj);
 
-    IList* getPCurrencyRewards();
-    void setPCurrencyRewards(IList* pCurrency_rewards);
-    IList* getPItemRewards();
-    void setPItemRewards(IList* pItem_rewards);
-    Long* getPRank();
-    void setPRank(Long* pRank);
     Long* getPScore();
     void setPScore(Long* pScore);
     IList* getPTags();
     void setPTags(IList* pTags);
-    Integer* getPTies();
-    void setPTies(Integer* pTies);
-    SamiSimpleUserResource* getPUser();
-    void setPUser(SamiSimpleUserResource* pUser);
+    Integer* getPUserId();
+    void setPUserId(Integer* pUser_id);
 
 private:
-    IList* pCurrency_rewards;
-IList* pItem_rewards;
-Long* pRank;
-Long* pScore;
+    Long* pScore;
 IList* pTags;
-Integer* pTies;
-SamiSimpleUserResource* pUser;
+Integer* pUser_id;
 };
 
 } /* namespace Swagger */

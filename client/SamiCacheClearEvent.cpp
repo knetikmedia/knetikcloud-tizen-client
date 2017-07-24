@@ -31,6 +31,8 @@ pSpecifics = null;
 pSynchronous = null;
 pTimestamp = null;
 pType = null;
+pCustomer_setup = null;
+pCustomer_teardown = null;
 }
 
 void
@@ -79,6 +81,16 @@ if(pType != null) {
         
         delete pType;
         pType = null;
+    }
+if(pCustomer_setup != null) {
+        
+        delete pCustomer_setup;
+        pCustomer_setup = null;
+    }
+if(pCustomer_teardown != null) {
+        
+        delete pCustomer_teardown;
+        pCustomer_teardown = null;
     }
 }
 
@@ -198,6 +210,24 @@ JsonString* pTypeKey = new JsonString(L"type");
             jsonToValue(pType, pTypeVal, L"String", L"String");
         }
         delete pTypeKey;
+JsonString* pCustomer_setupKey = new JsonString(L"customer_setup");
+        IJsonValue* pCustomer_setupVal = null;
+        pJsonObject->GetValue(pCustomer_setupKey, pCustomer_setupVal);
+        if(pCustomer_setupVal != null) {
+            
+            pCustomer_setup = new Boolean(false);
+            jsonToValue(pCustomer_setup, pCustomer_setupVal, L"Boolean", L"Boolean");
+        }
+        delete pCustomer_setupKey;
+JsonString* pCustomer_teardownKey = new JsonString(L"customer_teardown");
+        IJsonValue* pCustomer_teardownVal = null;
+        pJsonObject->GetValue(pCustomer_teardownKey, pCustomer_teardownVal);
+        if(pCustomer_teardownVal != null) {
+            
+            pCustomer_teardown = new Boolean(false);
+            jsonToValue(pCustomer_teardown, pCustomer_teardownVal, L"Boolean", L"Boolean");
+        }
+        delete pCustomer_teardownKey;
     }
 }
 
@@ -274,6 +304,12 @@ SamiCacheClearEvent::asJsonObject() {
 
     JsonString *pTypeKey = new JsonString(L"type");
     pJsonObject->Add(pTypeKey, toJson(getPType(), "String", ""));
+
+    JsonString *pCustomer_setupKey = new JsonString(L"customer_setup");
+    pJsonObject->Add(pCustomer_setupKey, toJson(getPCustomerSetup(), "Boolean", ""));
+
+    JsonString *pCustomer_teardownKey = new JsonString(L"customer_teardown");
+    pJsonObject->Add(pCustomer_teardownKey, toJson(getPCustomerTeardown(), "Boolean", ""));
 
     return pJsonObject;
 }
@@ -357,6 +393,24 @@ SamiCacheClearEvent::getPType() {
 void
 SamiCacheClearEvent::setPType(String* pType) {
     this->pType = pType;
+}
+
+Boolean*
+SamiCacheClearEvent::getPCustomerSetup() {
+    return pCustomer_setup;
+}
+void
+SamiCacheClearEvent::setPCustomerSetup(Boolean* pCustomer_setup) {
+    this->pCustomer_setup = pCustomer_setup;
+}
+
+Boolean*
+SamiCacheClearEvent::getPCustomerTeardown() {
+    return pCustomer_teardown;
+}
+void
+SamiCacheClearEvent::setPCustomerTeardown(Boolean* pCustomer_teardown) {
+    this->pCustomer_teardown = pCustomer_teardown;
 }
 
 

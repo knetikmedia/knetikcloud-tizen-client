@@ -17,7 +17,7 @@
 using namespace Tizen::Web::Json;
 
 
-#include "SamiUserActivityResultsResource.h"
+#include "SamiUserActivityResults.h"
 using Tizen::Base::Collection::IList;
 
 

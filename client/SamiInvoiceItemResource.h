@@ -42,8 +42,6 @@ public:
 
     SamiInvoiceItemResource* fromJson(String* obj);
 
-    Integer* getPAffiliateId();
-    void setPAffiliateId(Integer* pAffiliate_id);
     String* getPBundleSku();
     void setPBundleSku(String* pBundle_sku);
     String* getPCurrentFulfillmentStatus();
@@ -78,8 +76,7 @@ public:
     void setPUnitPrice(Double* pUnit_price);
 
 private:
-    Integer* pAffiliate_id;
-String* pBundle_sku;
+    String* pBundle_sku;
 String* pCurrent_fulfillment_status;
 Integer* pId;
 Integer* pInvoice_id;

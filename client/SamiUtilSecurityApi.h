@@ -1,0 +1,38 @@
+#ifndef SamiUtilSecurityApi_H_
+#define SamiUtilSecurityApi_H_
+
+#include <FNet.h>
+#include "SamiApiClient.h"
+#include "SamiError.h"
+
+using Tizen::Base::Integer;
+#include "SamiPageResource«LocationLogResource».h"
+#include "SamiResult.h"
+#include "SamiTokenDetailsResource.h"
+using Tizen::Base::String;
+
+using namespace Tizen::Net::Http;
+
+namespace Swagger {
+
+class SamiUtilSecurityApi {
+public:
+  SamiUtilSecurityApi();
+  virtual ~SamiUtilSecurityApi();
+
+  SamiPageResource«LocationLogResource»* 
+  getUserLocationLogWithCompletion(Integer* userId, Integer* size, Integer* page, String* order, void (* handler)(SamiPageResource«LocationLogResource»*, SamiError*));
+  SamiTokenDetailsResource* 
+  getUserTokenDetailsWithCompletion( void (* handler)(SamiTokenDetailsResource*, SamiError*));
+  static String getBasePath() {
+    return L"https://sandbox.knetikcloud.com";
+  }
+
+private:
+  SamiApiClient* client;
+};
+
+
+} /* namespace Swagger */
+
+#endif /* SamiUtilSecurityApi_H_ */

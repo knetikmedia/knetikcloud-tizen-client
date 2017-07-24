@@ -62,6 +62,10 @@ public:
     void setPTimestamp(Long* pTimestamp);
     String* getPType();
     void setPType(String* pType);
+    Boolean* getPCustomerSetup();
+    void setPCustomerSetup(Boolean* pCustomer_setup);
+    Boolean* getPCustomerTeardown();
+    void setPCustomerTeardown(Boolean* pCustomer_teardown);
 
 private:
     String* pClient;
@@ -73,6 +77,8 @@ String* pSpecifics;
 Boolean* pSynchronous;
 Long* pTimestamp;
 String* pType;
+Boolean* pCustomer_setup;
+Boolean* pCustomer_teardown;
 };
 
 } /* namespace Swagger */

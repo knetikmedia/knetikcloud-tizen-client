@@ -30,6 +30,8 @@ pInventory_id = null;
 pInventory_status = null;
 pItem_id = null;
 pPayment_method = null;
+pPrice_override = null;
+pPrice_override_reason = null;
 pRecurring_price = null;
 pSku = null;
 pStart_date = null;
@@ -78,6 +80,16 @@ if(pPayment_method != null) {
         
         delete pPayment_method;
         pPayment_method = null;
+    }
+if(pPrice_override != null) {
+        
+        delete pPrice_override;
+        pPrice_override = null;
+    }
+if(pPrice_override_reason != null) {
+        
+        delete pPrice_override_reason;
+        pPrice_override_reason = null;
     }
 if(pRecurring_price != null) {
         
@@ -213,6 +225,24 @@ JsonString* pPayment_methodKey = new JsonString(L"payment_method");
             jsonToValue(pPayment_method, pPayment_methodVal, L"SamiPaymentMethodResource", L"SamiPaymentMethodResource");
         }
         delete pPayment_methodKey;
+JsonString* pPrice_overrideKey = new JsonString(L"price_override");
+        IJsonValue* pPrice_overrideVal = null;
+        pJsonObject->GetValue(pPrice_overrideKey, pPrice_overrideVal);
+        if(pPrice_overrideVal != null) {
+            
+            pPrice_override = new Double();
+            jsonToValue(pPrice_override, pPrice_overrideVal, L"Double", L"Double");
+        }
+        delete pPrice_overrideKey;
+JsonString* pPrice_override_reasonKey = new JsonString(L"price_override_reason");
+        IJsonValue* pPrice_override_reasonVal = null;
+        pJsonObject->GetValue(pPrice_override_reasonKey, pPrice_override_reasonVal);
+        if(pPrice_override_reasonVal != null) {
+            
+            pPrice_override_reason = new String();
+            jsonToValue(pPrice_override_reason, pPrice_override_reasonVal, L"String", L"String");
+        }
+        delete pPrice_override_reasonKey;
 JsonString* pRecurring_priceKey = new JsonString(L"recurring_price");
         IJsonValue* pRecurring_priceVal = null;
         pJsonObject->GetValue(pRecurring_priceKey, pRecurring_priceVal);
@@ -332,6 +362,12 @@ SamiInventorySubscriptionResource::asJsonObject() {
     JsonString *pPayment_methodKey = new JsonString(L"payment_method");
     pJsonObject->Add(pPayment_methodKey, toJson(getPPaymentMethod(), "SamiPaymentMethodResource", ""));
 
+    JsonString *pPrice_overrideKey = new JsonString(L"price_override");
+    pJsonObject->Add(pPrice_overrideKey, toJson(getPPriceOverride(), "Double", ""));
+
+    JsonString *pPrice_override_reasonKey = new JsonString(L"price_override_reason");
+    pJsonObject->Add(pPrice_override_reasonKey, toJson(getPPriceOverrideReason(), "String", ""));
+
     JsonString *pRecurring_priceKey = new JsonString(L"recurring_price");
     pJsonObject->Add(pRecurring_priceKey, toJson(getPRecurringPrice(), "Double", ""));
 
@@ -420,6 +456,24 @@ SamiInventorySubscriptionResource::getPPaymentMethod() {
 void
 SamiInventorySubscriptionResource::setPPaymentMethod(SamiPaymentMethodResource* pPayment_method) {
     this->pPayment_method = pPayment_method;
+}
+
+Double*
+SamiInventorySubscriptionResource::getPPriceOverride() {
+    return pPrice_override;
+}
+void
+SamiInventorySubscriptionResource::setPPriceOverride(Double* pPrice_override) {
+    this->pPrice_override = pPrice_override;
+}
+
+String*
+SamiInventorySubscriptionResource::getPPriceOverrideReason() {
+    return pPrice_override_reason;
+}
+void
+SamiInventorySubscriptionResource::setPPriceOverrideReason(String* pPrice_override_reason) {
+    this->pPrice_override_reason = pPrice_override_reason;
 }
 
 Double*

@@ -17,6 +17,7 @@
 using namespace Tizen::Web::Json;
 
 
+using Tizen::Base::Boolean;
 using Tizen::Base::String;
 
 
@@ -42,11 +43,14 @@ public:
 
     String* getPName();
     void setPName(String* pName);
+    Boolean* getPOptional();
+    void setPOptional(Boolean* pOptional);
     String* getPType();
     void setPType(String* pType);
 
 private:
     String* pName;
+Boolean* pOptional;
 String* pType;
 };
 

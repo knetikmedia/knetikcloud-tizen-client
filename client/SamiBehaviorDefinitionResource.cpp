@@ -111,7 +111,7 @@ JsonString* pPropertiesKey = new JsonString(L"properties");
         if(pPropertiesVal != null) {
             pProperties = new ArrayList();
             
-            jsonToValue(pProperties, pPropertiesVal, L"IList", L"SamiPropertyDefinitionResource");
+            jsonToValue(pProperties, pPropertiesVal, L"IList", L"SamiPropertyFieldResource");
         }
         delete pPropertiesKey;
 JsonString* pType_hintKey = new JsonString(L"type_hint");
@@ -180,7 +180,7 @@ SamiBehaviorDefinitionResource::asJsonObject() {
     pJsonObject->Add(pPrerequisite_behaviorsKey, toJson(getPPrerequisiteBehaviors(), "SamiBehavior", "array"));
 
     JsonString *pPropertiesKey = new JsonString(L"properties");
-    pJsonObject->Add(pPropertiesKey, toJson(getPProperties(), "SamiPropertyDefinitionResource", "array"));
+    pJsonObject->Add(pPropertiesKey, toJson(getPProperties(), "SamiPropertyFieldResource", "array"));
 
     JsonString *pType_hintKey = new JsonString(L"type_hint");
     pJsonObject->Add(pType_hintKey, toJson(getPTypeHint(), "String", ""));

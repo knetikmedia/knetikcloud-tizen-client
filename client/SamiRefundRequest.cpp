@@ -23,6 +23,7 @@ SamiRefundRequest::~SamiRefundRequest() {
 void
 SamiRefundRequest::init() {
     pAmount = null;
+pBundle_sku = null;
 pNotes = null;
 pSku = null;
 }
@@ -33,6 +34,11 @@ SamiRefundRequest::cleanup() {
         
         delete pAmount;
         pAmount = null;
+    }
+if(pBundle_sku != null) {
+        
+        delete pBundle_sku;
+        pBundle_sku = null;
     }
 if(pNotes != null) {
         
@@ -90,6 +96,15 @@ SamiRefundRequest::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pAmount, pAmountVal, L"Double", L"Double");
         }
         delete pAmountKey;
+JsonString* pBundle_skuKey = new JsonString(L"bundle_sku");
+        IJsonValue* pBundle_skuVal = null;
+        pJsonObject->GetValue(pBundle_skuKey, pBundle_skuVal);
+        if(pBundle_skuVal != null) {
+            
+            pBundle_sku = new String();
+            jsonToValue(pBundle_sku, pBundle_skuVal, L"String", L"String");
+        }
+        delete pBundle_skuKey;
 JsonString* pNotesKey = new JsonString(L"notes");
         IJsonValue* pNotesVal = null;
         pJsonObject->GetValue(pNotesKey, pNotesVal);
@@ -161,6 +176,9 @@ SamiRefundRequest::asJsonObject() {
     JsonString *pAmountKey = new JsonString(L"amount");
     pJsonObject->Add(pAmountKey, toJson(getPAmount(), "Double", ""));
 
+    JsonString *pBundle_skuKey = new JsonString(L"bundle_sku");
+    pJsonObject->Add(pBundle_skuKey, toJson(getPBundleSku(), "String", ""));
+
     JsonString *pNotesKey = new JsonString(L"notes");
     pJsonObject->Add(pNotesKey, toJson(getPNotes(), "String", ""));
 
@@ -177,6 +195,15 @@ SamiRefundRequest::getPAmount() {
 void
 SamiRefundRequest::setPAmount(Double* pAmount) {
     this->pAmount = pAmount;
+}
+
+String*
+SamiRefundRequest::getPBundleSku() {
+    return pBundle_sku;
+}
+void
+SamiRefundRequest::setPBundleSku(String* pBundle_sku) {
+    this->pBundle_sku = pBundle_sku;
 }
 
 String*

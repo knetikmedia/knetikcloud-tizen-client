@@ -30,11 +30,9 @@ pExpiration_month = null;
 pExpiration_year = null;
 pId = null;
 pLast4 = null;
-pLong_description = null;
 pName = null;
 pPayment_method_type = null;
 pPayment_type = null;
-pShort_description = null;
 pSort = null;
 pToken = null;
 pUnique_key = null;
@@ -85,11 +83,6 @@ if(pLast4 != null) {
         delete pLast4;
         pLast4 = null;
     }
-if(pLong_description != null) {
-        
-        delete pLong_description;
-        pLong_description = null;
-    }
 if(pName != null) {
         
         delete pName;
@@ -104,11 +97,6 @@ if(pPayment_type != null) {
         
         delete pPayment_type;
         pPayment_type = null;
-    }
-if(pShort_description != null) {
-        
-        delete pShort_description;
-        pShort_description = null;
     }
 if(pSort != null) {
         
@@ -249,15 +237,6 @@ JsonString* pLast4Key = new JsonString(L"last4");
             jsonToValue(pLast4, pLast4Val, L"String", L"String");
         }
         delete pLast4Key;
-JsonString* pLong_descriptionKey = new JsonString(L"long_description");
-        IJsonValue* pLong_descriptionVal = null;
-        pJsonObject->GetValue(pLong_descriptionKey, pLong_descriptionVal);
-        if(pLong_descriptionVal != null) {
-            
-            pLong_description = new String();
-            jsonToValue(pLong_description, pLong_descriptionVal, L"String", L"String");
-        }
-        delete pLong_descriptionKey;
 JsonString* pNameKey = new JsonString(L"name");
         IJsonValue* pNameVal = null;
         pJsonObject->GetValue(pNameKey, pNameVal);
@@ -285,15 +264,6 @@ JsonString* pPayment_typeKey = new JsonString(L"payment_type");
             jsonToValue(pPayment_type, pPayment_typeVal, L"String", L"String");
         }
         delete pPayment_typeKey;
-JsonString* pShort_descriptionKey = new JsonString(L"short_description");
-        IJsonValue* pShort_descriptionVal = null;
-        pJsonObject->GetValue(pShort_descriptionKey, pShort_descriptionVal);
-        if(pShort_descriptionVal != null) {
-            
-            pShort_description = new String();
-            jsonToValue(pShort_description, pShort_descriptionVal, L"String", L"String");
-        }
-        delete pShort_descriptionKey;
 JsonString* pSortKey = new JsonString(L"sort");
         IJsonValue* pSortVal = null;
         pJsonObject->GetValue(pSortKey, pSortVal);
@@ -422,9 +392,6 @@ SamiPaymentMethodResource::asJsonObject() {
     JsonString *pLast4Key = new JsonString(L"last4");
     pJsonObject->Add(pLast4Key, toJson(getPLast4(), "String", ""));
 
-    JsonString *pLong_descriptionKey = new JsonString(L"long_description");
-    pJsonObject->Add(pLong_descriptionKey, toJson(getPLongDescription(), "String", ""));
-
     JsonString *pNameKey = new JsonString(L"name");
     pJsonObject->Add(pNameKey, toJson(getPName(), "String", ""));
 
@@ -433,9 +400,6 @@ SamiPaymentMethodResource::asJsonObject() {
 
     JsonString *pPayment_typeKey = new JsonString(L"payment_type");
     pJsonObject->Add(pPayment_typeKey, toJson(getPPaymentType(), "String", ""));
-
-    JsonString *pShort_descriptionKey = new JsonString(L"short_description");
-    pJsonObject->Add(pShort_descriptionKey, toJson(getPShortDescription(), "String", ""));
 
     JsonString *pSortKey = new JsonString(L"sort");
     pJsonObject->Add(pSortKey, toJson(getPSort(), "Integer", ""));
@@ -531,15 +495,6 @@ SamiPaymentMethodResource::setPLast4(String* pLast4) {
 }
 
 String*
-SamiPaymentMethodResource::getPLongDescription() {
-    return pLong_description;
-}
-void
-SamiPaymentMethodResource::setPLongDescription(String* pLong_description) {
-    this->pLong_description = pLong_description;
-}
-
-String*
 SamiPaymentMethodResource::getPName() {
     return pName;
 }
@@ -564,15 +519,6 @@ SamiPaymentMethodResource::getPPaymentType() {
 void
 SamiPaymentMethodResource::setPPaymentType(String* pPayment_type) {
     this->pPayment_type = pPayment_type;
-}
-
-String*
-SamiPaymentMethodResource::getPShortDescription() {
-    return pShort_description;
-}
-void
-SamiPaymentMethodResource::setPShortDescription(String* pShort_description) {
-    this->pShort_description = pShort_description;
 }
 
 Integer*

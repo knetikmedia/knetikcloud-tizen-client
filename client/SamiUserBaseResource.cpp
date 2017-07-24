@@ -27,6 +27,7 @@ pDisplay_name = null;
 pEmail = null;
 pFullname = null;
 pId = null;
+pLast_activity = null;
 pLast_updated = null;
 pMember_since = null;
 pUsername = null;
@@ -58,6 +59,11 @@ if(pId != null) {
         
         delete pId;
         pId = null;
+    }
+if(pLast_activity != null) {
+        
+        delete pLast_activity;
+        pLast_activity = null;
     }
 if(pLast_updated != null) {
         
@@ -156,6 +162,15 @@ JsonString* pIdKey = new JsonString(L"id");
             jsonToValue(pId, pIdVal, L"Integer", L"Integer");
         }
         delete pIdKey;
+JsonString* pLast_activityKey = new JsonString(L"last_activity");
+        IJsonValue* pLast_activityVal = null;
+        pJsonObject->GetValue(pLast_activityKey, pLast_activityVal);
+        if(pLast_activityVal != null) {
+            
+            pLast_activity = new Long();
+            jsonToValue(pLast_activity, pLast_activityVal, L"Long", L"Long");
+        }
+        delete pLast_activityKey;
 JsonString* pLast_updatedKey = new JsonString(L"last_updated");
         IJsonValue* pLast_updatedVal = null;
         pJsonObject->GetValue(pLast_updatedKey, pLast_updatedVal);
@@ -248,6 +263,9 @@ SamiUserBaseResource::asJsonObject() {
     JsonString *pIdKey = new JsonString(L"id");
     pJsonObject->Add(pIdKey, toJson(getPId(), "Integer", ""));
 
+    JsonString *pLast_activityKey = new JsonString(L"last_activity");
+    pJsonObject->Add(pLast_activityKey, toJson(getPLastActivity(), "Long", ""));
+
     JsonString *pLast_updatedKey = new JsonString(L"last_updated");
     pJsonObject->Add(pLast_updatedKey, toJson(getPLastUpdated(), "Long", ""));
 
@@ -303,6 +321,15 @@ SamiUserBaseResource::getPId() {
 void
 SamiUserBaseResource::setPId(Integer* pId) {
     this->pId = pId;
+}
+
+Long*
+SamiUserBaseResource::getPLastActivity() {
+    return pLast_activity;
+}
+void
+SamiUserBaseResource::setPLastActivity(Long* pLast_activity) {
+    this->pLast_activity = pLast_activity;
 }
 
 Long*

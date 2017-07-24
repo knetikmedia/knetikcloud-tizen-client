@@ -22,8 +22,7 @@ SamiInvoiceItemResource::~SamiInvoiceItemResource() {
 
 void
 SamiInvoiceItemResource::init() {
-    pAffiliate_id = null;
-pBundle_sku = null;
+    pBundle_sku = null;
 pCurrent_fulfillment_status = null;
 pId = null;
 pInvoice_id = null;
@@ -43,12 +42,7 @@ pUnit_price = null;
 
 void
 SamiInvoiceItemResource::cleanup() {
-    if(pAffiliate_id != null) {
-        
-        delete pAffiliate_id;
-        pAffiliate_id = null;
-    }
-if(pBundle_sku != null) {
+    if(pBundle_sku != null) {
         
         delete pBundle_sku;
         pBundle_sku = null;
@@ -165,16 +159,7 @@ SamiInvoiceItemResource::fromJsonObject(IJsonValue* pJson) {
     JsonObject* pJsonObject = static_cast< JsonObject* >(pJson);
 
     if(pJsonObject != null) {
-        JsonString* pAffiliate_idKey = new JsonString(L"affiliate_id");
-        IJsonValue* pAffiliate_idVal = null;
-        pJsonObject->GetValue(pAffiliate_idKey, pAffiliate_idVal);
-        if(pAffiliate_idVal != null) {
-            
-            pAffiliate_id = new Integer();
-            jsonToValue(pAffiliate_id, pAffiliate_idVal, L"Integer", L"Integer");
-        }
-        delete pAffiliate_idKey;
-JsonString* pBundle_skuKey = new JsonString(L"bundle_sku");
+        JsonString* pBundle_skuKey = new JsonString(L"bundle_sku");
         IJsonValue* pBundle_skuVal = null;
         pJsonObject->GetValue(pBundle_skuKey, pBundle_skuVal);
         if(pBundle_skuVal != null) {
@@ -368,9 +353,6 @@ SamiInvoiceItemResource::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
-    JsonString *pAffiliate_idKey = new JsonString(L"affiliate_id");
-    pJsonObject->Add(pAffiliate_idKey, toJson(getPAffiliateId(), "Integer", ""));
-
     JsonString *pBundle_skuKey = new JsonString(L"bundle_sku");
     pJsonObject->Add(pBundle_skuKey, toJson(getPBundleSku(), "String", ""));
 
@@ -420,15 +402,6 @@ SamiInvoiceItemResource::asJsonObject() {
     pJsonObject->Add(pUnit_priceKey, toJson(getPUnitPrice(), "Double", ""));
 
     return pJsonObject;
-}
-
-Integer*
-SamiInvoiceItemResource::getPAffiliateId() {
-    return pAffiliate_id;
-}
-void
-SamiInvoiceItemResource::setPAffiliateId(Integer* pAffiliate_id) {
-    this->pAffiliate_id = pAffiliate_id;
 }
 
 String*

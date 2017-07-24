@@ -39,6 +39,7 @@ pFullname = null;
 pGender = null;
 pId = null;
 pLanguage_code = null;
+pLast_activity = null;
 pLast_name = null;
 pLast_updated = null;
 pMember_since = null;
@@ -139,6 +140,11 @@ if(pLanguage_code != null) {
         
         delete pLanguage_code;
         pLanguage_code = null;
+    }
+if(pLast_activity != null) {
+        
+        delete pLast_activity;
+        pLast_activity = null;
     }
 if(pLast_name != null) {
         
@@ -390,6 +396,15 @@ JsonString* pLanguage_codeKey = new JsonString(L"language_code");
             jsonToValue(pLanguage_code, pLanguage_codeVal, L"String", L"String");
         }
         delete pLanguage_codeKey;
+JsonString* pLast_activityKey = new JsonString(L"last_activity");
+        IJsonValue* pLast_activityVal = null;
+        pJsonObject->GetValue(pLast_activityKey, pLast_activityVal);
+        if(pLast_activityVal != null) {
+            
+            pLast_activity = new Long();
+            jsonToValue(pLast_activity, pLast_activityVal, L"Long", L"Long");
+        }
+        delete pLast_activityKey;
 JsonString* pLast_nameKey = new JsonString(L"last_name");
         IJsonValue* pLast_nameVal = null;
         pJsonObject->GetValue(pLast_nameKey, pLast_nameVal);
@@ -599,6 +614,9 @@ SamiUserResource::asJsonObject() {
     JsonString *pLanguage_codeKey = new JsonString(L"language_code");
     pJsonObject->Add(pLanguage_codeKey, toJson(getPLanguageCode(), "String", ""));
 
+    JsonString *pLast_activityKey = new JsonString(L"last_activity");
+    pJsonObject->Add(pLast_activityKey, toJson(getPLastActivity(), "Long", ""));
+
     JsonString *pLast_nameKey = new JsonString(L"last_name");
     pJsonObject->Add(pLast_nameKey, toJson(getPLastName(), "String", ""));
 
@@ -789,6 +807,15 @@ SamiUserResource::getPLanguageCode() {
 void
 SamiUserResource::setPLanguageCode(String* pLanguage_code) {
     this->pLanguage_code = pLanguage_code;
+}
+
+Long*
+SamiUserResource::getPLastActivity() {
+    return pLast_activity;
+}
+void
+SamiUserResource::setPLastActivity(Long* pLast_activity) {
+    this->pLast_activity = pLast_activity;
 }
 
 String*

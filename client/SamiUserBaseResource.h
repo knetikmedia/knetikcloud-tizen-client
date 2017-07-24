@@ -52,6 +52,8 @@ public:
     void setPFullname(String* pFullname);
     Integer* getPId();
     void setPId(Integer* pId);
+    Long* getPLastActivity();
+    void setPLastActivity(Long* pLast_activity);
     Long* getPLastUpdated();
     void setPLastUpdated(Long* pLast_updated);
     Long* getPMemberSince();
@@ -65,6 +67,7 @@ String* pDisplay_name;
 String* pEmail;
 String* pFullname;
 Integer* pId;
+Long* pLast_activity;
 Long* pLast_updated;
 Long* pMember_since;
 String* pUsername;

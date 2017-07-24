@@ -80,6 +80,8 @@ public:
     void setPId(Integer* pId);
     String* getPLanguageCode();
     void setPLanguageCode(String* pLanguage_code);
+    Long* getPLastActivity();
+    void setPLastActivity(Long* pLast_activity);
     String* getPLastName();
     void setPLastName(String* pLast_name);
     Long* getPLastUpdated();
@@ -123,6 +125,7 @@ String* pFullname;
 String* pGender;
 Integer* pId;
 String* pLanguage_code;
+Long* pLast_activity;
 String* pLast_name;
 Long* pLast_updated;
 Long* pMember_since;

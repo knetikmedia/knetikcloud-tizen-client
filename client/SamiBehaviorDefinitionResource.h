@@ -18,7 +18,7 @@ using namespace Tizen::Web::Json;
 
 
 #include "SamiBehavior.h"
-#include "SamiPropertyDefinitionResource.h"
+#include "SamiPropertyFieldResource.h"
 using Tizen::Base::Collection::IList;
 using Tizen::Base::String;
 

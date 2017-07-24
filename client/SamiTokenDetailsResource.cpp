@@ -22,13 +22,19 @@ SamiTokenDetailsResource::~SamiTokenDetailsResource() {
 
 void
 SamiTokenDetailsResource::init() {
-    pRoles = null;
+    pClient_id = null;
+pRoles = null;
 pUser_id = null;
 }
 
 void
 SamiTokenDetailsResource::cleanup() {
-    if(pRoles != null) {
+    if(pClient_id != null) {
+        
+        delete pClient_id;
+        pClient_id = null;
+    }
+if(pRoles != null) {
         pRoles->RemoveAll(true);
         delete pRoles;
         pRoles = null;
@@ -75,7 +81,16 @@ SamiTokenDetailsResource::fromJsonObject(IJsonValue* pJson) {
     JsonObject* pJsonObject = static_cast< JsonObject* >(pJson);
 
     if(pJsonObject != null) {
-        JsonString* pRolesKey = new JsonString(L"roles");
+        JsonString* pClient_idKey = new JsonString(L"client_id");
+        IJsonValue* pClient_idVal = null;
+        pJsonObject->GetValue(pClient_idKey, pClient_idVal);
+        if(pClient_idVal != null) {
+            
+            pClient_id = new String();
+            jsonToValue(pClient_id, pClient_idVal, L"String", L"String");
+        }
+        delete pClient_idKey;
+JsonString* pRolesKey = new JsonString(L"roles");
         IJsonValue* pRolesVal = null;
         pJsonObject->GetValue(pRolesKey, pRolesVal);
         if(pRolesVal != null) {
@@ -143,6 +158,9 @@ SamiTokenDetailsResource::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
+    JsonString *pClient_idKey = new JsonString(L"client_id");
+    pJsonObject->Add(pClient_idKey, toJson(getPClientId(), "String", ""));
+
     JsonString *pRolesKey = new JsonString(L"roles");
     pJsonObject->Add(pRolesKey, toJson(getPRoles(), "String", "array"));
 
@@ -150,6 +168,15 @@ SamiTokenDetailsResource::asJsonObject() {
     pJsonObject->Add(pUser_idKey, toJson(getPUserId(), "Integer", ""));
 
     return pJsonObject;
+}
+
+String*
+SamiTokenDetailsResource::getPClientId() {
+    return pClient_id;
+}
+void
+SamiTokenDetailsResource::setPClientId(String* pClient_id) {
+    this->pClient_id = pClient_id;
 }
 
 IList*

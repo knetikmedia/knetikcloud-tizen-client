@@ -75,7 +75,7 @@ SamiActivityOccurrenceResults::fromJsonObject(IJsonValue* pJson) {
         if(pUsersVal != null) {
             pUsers = new ArrayList();
             
-            jsonToValue(pUsers, pUsersVal, L"IList", L"SamiUserActivityResultsResource");
+            jsonToValue(pUsers, pUsersVal, L"IList", L"SamiUserActivityResults");
         }
         delete pUsersKey;
     }
@@ -129,7 +129,7 @@ SamiActivityOccurrenceResults::asJsonObject() {
     pJsonObject->Construct();
 
     JsonString *pUsersKey = new JsonString(L"users");
-    pJsonObject->Add(pUsersKey, toJson(getPUsers(), "SamiUserActivityResultsResource", "array"));
+    pJsonObject->Add(pUsersKey, toJson(getPUsers(), "SamiUserActivityResults", "array"));
 
     return pJsonObject;
 }

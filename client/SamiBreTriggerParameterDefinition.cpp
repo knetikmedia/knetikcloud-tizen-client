@@ -23,6 +23,7 @@ SamiBreTriggerParameterDefinition::~SamiBreTriggerParameterDefinition() {
 void
 SamiBreTriggerParameterDefinition::init() {
     pName = null;
+pOptional = null;
 pType = null;
 }
 
@@ -32,6 +33,11 @@ SamiBreTriggerParameterDefinition::cleanup() {
         
         delete pName;
         pName = null;
+    }
+if(pOptional != null) {
+        
+        delete pOptional;
+        pOptional = null;
     }
 if(pType != null) {
         
@@ -84,6 +90,15 @@ SamiBreTriggerParameterDefinition::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pName, pNameVal, L"String", L"String");
         }
         delete pNameKey;
+JsonString* pOptionalKey = new JsonString(L"optional");
+        IJsonValue* pOptionalVal = null;
+        pJsonObject->GetValue(pOptionalKey, pOptionalVal);
+        if(pOptionalVal != null) {
+            
+            pOptional = new Boolean(false);
+            jsonToValue(pOptional, pOptionalVal, L"Boolean", L"Boolean");
+        }
+        delete pOptionalKey;
 JsonString* pTypeKey = new JsonString(L"type");
         IJsonValue* pTypeVal = null;
         pJsonObject->GetValue(pTypeKey, pTypeVal);
@@ -146,6 +161,9 @@ SamiBreTriggerParameterDefinition::asJsonObject() {
     JsonString *pNameKey = new JsonString(L"name");
     pJsonObject->Add(pNameKey, toJson(getPName(), "String", ""));
 
+    JsonString *pOptionalKey = new JsonString(L"optional");
+    pJsonObject->Add(pOptionalKey, toJson(getPOptional(), "Boolean", ""));
+
     JsonString *pTypeKey = new JsonString(L"type");
     pJsonObject->Add(pTypeKey, toJson(getPType(), "String", ""));
 
@@ -159,6 +177,15 @@ SamiBreTriggerParameterDefinition::getPName() {
 void
 SamiBreTriggerParameterDefinition::setPName(String* pName) {
     this->pName = pName;
+}
+
+Boolean*
+SamiBreTriggerParameterDefinition::getPOptional() {
+    return pOptional;
+}
+void
+SamiBreTriggerParameterDefinition::setPOptional(Boolean* pOptional) {
+    this->pOptional = pOptional;
 }
 
 String*

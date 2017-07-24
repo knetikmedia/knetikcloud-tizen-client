@@ -18,6 +18,7 @@ using namespace Tizen::Web::Json;
 
 
 #include "SamiDatabaseConfig.h"
+#include "SamiIOConfig.h"
 #include "SamiS3Config.h"
 using Tizen::Base::String;
 
@@ -46,6 +47,8 @@ public:
     void setPAliases(String* pAliases);
     SamiDatabaseConfig* getPDatabase();
     void setPDatabase(SamiDatabaseConfig* pDatabase);
+    SamiIOConfig* getPIo();
+    void setPIo(SamiIOConfig* pIo);
     String* getPName();
     void setPName(String* pName);
     SamiS3Config* getPS3Config();
@@ -54,6 +57,7 @@ public:
 private:
     String* pAliases;
 SamiDatabaseConfig* pDatabase;
+SamiIOConfig* pIo;
 String* pName;
 SamiS3Config* pS3_config;
 };

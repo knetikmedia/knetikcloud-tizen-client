@@ -24,6 +24,7 @@ void
 SamiLeaderboardEntryResource::init() {
     pRank = null;
 pScore = null;
+pUpdated_date = null;
 pUser = null;
 }
 
@@ -38,6 +39,11 @@ if(pScore != null) {
         
         delete pScore;
         pScore = null;
+    }
+if(pUpdated_date != null) {
+        
+        delete pUpdated_date;
+        pUpdated_date = null;
     }
 if(pUser != null) {
         
@@ -99,6 +105,15 @@ JsonString* pScoreKey = new JsonString(L"score");
             jsonToValue(pScore, pScoreVal, L"Long", L"Long");
         }
         delete pScoreKey;
+JsonString* pUpdated_dateKey = new JsonString(L"updated_date");
+        IJsonValue* pUpdated_dateVal = null;
+        pJsonObject->GetValue(pUpdated_dateKey, pUpdated_dateVal);
+        if(pUpdated_dateVal != null) {
+            
+            pUpdated_date = new Long();
+            jsonToValue(pUpdated_date, pUpdated_dateVal, L"Long", L"Long");
+        }
+        delete pUpdated_dateKey;
 JsonString* pUserKey = new JsonString(L"user");
         IJsonValue* pUserVal = null;
         pJsonObject->GetValue(pUserKey, pUserVal);
@@ -164,6 +179,9 @@ SamiLeaderboardEntryResource::asJsonObject() {
     JsonString *pScoreKey = new JsonString(L"score");
     pJsonObject->Add(pScoreKey, toJson(getPScore(), "Long", ""));
 
+    JsonString *pUpdated_dateKey = new JsonString(L"updated_date");
+    pJsonObject->Add(pUpdated_dateKey, toJson(getPUpdatedDate(), "Long", ""));
+
     JsonString *pUserKey = new JsonString(L"user");
     pJsonObject->Add(pUserKey, toJson(getPUser(), "SamiSimpleUserResource", ""));
 
@@ -186,6 +204,15 @@ SamiLeaderboardEntryResource::getPScore() {
 void
 SamiLeaderboardEntryResource::setPScore(Long* pScore) {
     this->pScore = pScore;
+}
+
+Long*
+SamiLeaderboardEntryResource::getPUpdatedDate() {
+    return pUpdated_date;
+}
+void
+SamiLeaderboardEntryResource::setPUpdatedDate(Long* pUpdated_date) {
+    this->pUpdated_date = pUpdated_date;
 }
 
 SamiSimpleUserResource*

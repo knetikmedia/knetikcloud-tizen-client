@@ -43,6 +43,8 @@ public:
 
     Double* getPAmount();
     void setPAmount(Double* pAmount);
+    String* getPBundleSku();
+    void setPBundleSku(String* pBundle_sku);
     String* getPNotes();
     void setPNotes(String* pNotes);
     String* getPSku();
@@ -50,6 +52,7 @@ public:
 
 private:
     Double* pAmount;
+String* pBundle_sku;
 String* pNotes;
 String* pSku;
 };

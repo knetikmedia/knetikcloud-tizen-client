@@ -24,6 +24,7 @@ void
 SamiCustomerConfig::init() {
     pAliases = null;
 pDatabase = null;
+pIo = null;
 pName = null;
 pS3_config = null;
 }
@@ -39,6 +40,11 @@ if(pDatabase != null) {
         
         delete pDatabase;
         pDatabase = null;
+    }
+if(pIo != null) {
+        
+        delete pIo;
+        pIo = null;
     }
 if(pName != null) {
         
@@ -105,6 +111,15 @@ JsonString* pDatabaseKey = new JsonString(L"database");
             jsonToValue(pDatabase, pDatabaseVal, L"SamiDatabaseConfig", L"SamiDatabaseConfig");
         }
         delete pDatabaseKey;
+JsonString* pIoKey = new JsonString(L"io");
+        IJsonValue* pIoVal = null;
+        pJsonObject->GetValue(pIoKey, pIoVal);
+        if(pIoVal != null) {
+            
+            pIo = new SamiIOConfig();
+            jsonToValue(pIo, pIoVal, L"SamiIOConfig", L"SamiIOConfig");
+        }
+        delete pIoKey;
 JsonString* pNameKey = new JsonString(L"name");
         IJsonValue* pNameVal = null;
         pJsonObject->GetValue(pNameKey, pNameVal);
@@ -179,6 +194,9 @@ SamiCustomerConfig::asJsonObject() {
     JsonString *pDatabaseKey = new JsonString(L"database");
     pJsonObject->Add(pDatabaseKey, toJson(getPDatabase(), "SamiDatabaseConfig", ""));
 
+    JsonString *pIoKey = new JsonString(L"io");
+    pJsonObject->Add(pIoKey, toJson(getPIo(), "SamiIOConfig", ""));
+
     JsonString *pNameKey = new JsonString(L"name");
     pJsonObject->Add(pNameKey, toJson(getPName(), "String", ""));
 
@@ -204,6 +222,15 @@ SamiCustomerConfig::getPDatabase() {
 void
 SamiCustomerConfig::setPDatabase(SamiDatabaseConfig* pDatabase) {
     this->pDatabase = pDatabase;
+}
+
+SamiIOConfig*
+SamiCustomerConfig::getPIo() {
+    return pIo;
+}
+void
+SamiCustomerConfig::setPIo(SamiIOConfig* pIo) {
+    this->pIo = pIo;
 }
 
 String*

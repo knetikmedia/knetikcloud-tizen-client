@@ -45,12 +45,15 @@ public:
     void setPRank(Long* pRank);
     Long* getPScore();
     void setPScore(Long* pScore);
+    Long* getPUpdatedDate();
+    void setPUpdatedDate(Long* pUpdated_date);
     SamiSimpleUserResource* getPUser();
     void setPUser(SamiSimpleUserResource* pUser);
 
 private:
     Long* pRank;
 Long* pScore;
+Long* pUpdated_date;
 SamiSimpleUserResource* pUser;
 };
 
