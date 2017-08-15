@@ -104,7 +104,7 @@ static bool getOAuthTokenProcessor(MemoryStruct_s p_chunk, long code, char* erro
 }
 
 static bool getOAuthTokenHelper(char * accessToken,
-	std::string grantType, std::string clientId, std::string clientSecret, std::string username, std::string password, 
+	std::string grantType, std::string clientId, std::string clientSecret, std::string username, std::string password, std::string token, std::string refreshToken, 
 	void(* handler)(OAuth2Resource, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -175,22 +175,22 @@ static bool getOAuthTokenHelper(char * accessToken,
 
 
 bool AccessTokenManager::getOAuthTokenAsync(char * accessToken,
-	std::string grantType, std::string clientId, std::string clientSecret, std::string username, std::string password, 
+	std::string grantType, std::string clientId, std::string clientSecret, std::string username, std::string password, std::string token, std::string refreshToken, 
 	void(* handler)(OAuth2Resource, Error, void* )
 	, void* userData)
 {
 	return getOAuthTokenHelper(accessToken,
-	grantType, clientId, clientSecret, username, password, 
+	grantType, clientId, clientSecret, username, password, token, refreshToken, 
 	handler, userData, true);
 }
 
 bool AccessTokenManager::getOAuthTokenSync(char * accessToken,
-	std::string grantType, std::string clientId, std::string clientSecret, std::string username, std::string password, 
+	std::string grantType, std::string clientId, std::string clientSecret, std::string username, std::string password, std::string token, std::string refreshToken, 
 	void(* handler)(OAuth2Resource, Error, void* )
 	, void* userData)
 {
 	return getOAuthTokenHelper(accessToken,
-	grantType, clientId, clientSecret, username, password, 
+	grantType, clientId, clientSecret, username, password, token, refreshToken, 
 	handler, userData, false);
 }
 
