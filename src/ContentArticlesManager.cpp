@@ -1190,7 +1190,7 @@ static bool getArticlesProcessor(MemoryStruct_s p_chunk, long code, char* errorm
 }
 
 static bool getArticlesHelper(char * accessToken,
-	std::string filterCategory, std::string filterTagset, std::string filterTagIntersection, std::string filterTagExclusion, std::string filterTitle, int size, int page, std::string order, 
+	bool filterActiveOnly, std::string filterCategory, std::string filterTagset, std::string filterTagIntersection, std::string filterTagExclusion, std::string filterTitle, int size, int page, std::string order, 
 	void(* handler)(PageResource«ArticleResource», Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -1207,6 +1207,13 @@ static bool getArticlesHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&filterActiveOnly, "bool");
+	queryParams.insert(pair<string, string>("filter_active_only", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("filter_active_only");
+	}
+
 
 	itemAtq = stringify(&filterCategory, "std::string");
 	queryParams.insert(pair<string, string>("filter_category", itemAtq));
@@ -1317,22 +1324,22 @@ static bool getArticlesHelper(char * accessToken,
 
 
 bool ContentArticlesManager::getArticlesAsync(char * accessToken,
-	std::string filterCategory, std::string filterTagset, std::string filterTagIntersection, std::string filterTagExclusion, std::string filterTitle, int size, int page, std::string order, 
+	bool filterActiveOnly, std::string filterCategory, std::string filterTagset, std::string filterTagIntersection, std::string filterTagExclusion, std::string filterTitle, int size, int page, std::string order, 
 	void(* handler)(PageResource«ArticleResource», Error, void* )
 	, void* userData)
 {
 	return getArticlesHelper(accessToken,
-	filterCategory, filterTagset, filterTagIntersection, filterTagExclusion, filterTitle, size, page, order, 
+	filterActiveOnly, filterCategory, filterTagset, filterTagIntersection, filterTagExclusion, filterTitle, size, page, order, 
 	handler, userData, true);
 }
 
 bool ContentArticlesManager::getArticlesSync(char * accessToken,
-	std::string filterCategory, std::string filterTagset, std::string filterTagIntersection, std::string filterTagExclusion, std::string filterTitle, int size, int page, std::string order, 
+	bool filterActiveOnly, std::string filterCategory, std::string filterTagset, std::string filterTagIntersection, std::string filterTagExclusion, std::string filterTitle, int size, int page, std::string order, 
 	void(* handler)(PageResource«ArticleResource», Error, void* )
 	, void* userData)
 {
 	return getArticlesHelper(accessToken,
-	filterCategory, filterTagset, filterTagIntersection, filterTagExclusion, filterTitle, size, page, order, 
+	filterActiveOnly, filterCategory, filterTagset, filterTagIntersection, filterTagExclusion, filterTitle, size, page, order, 
 	handler, userData, false);
 }
 

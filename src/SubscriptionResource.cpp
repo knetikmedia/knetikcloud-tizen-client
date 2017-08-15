@@ -30,6 +30,9 @@ SubscriptionResource::__init()
 	//
 	//availability = std::string();
 	//
+	//new std::list()std::list> behaviors;
+	//
+	//
 	//
 	//category = std::string();
 	//
@@ -98,6 +101,11 @@ SubscriptionResource::__cleanup()
 	//
 	//delete availability;
 	//availability = NULL;
+	//}
+	//if(behaviors != NULL) {
+	//behaviors.RemoveAll(true);
+	//delete behaviors;
+	//behaviors = NULL;
 	//}
 	//if(category != NULL) {
 	//
@@ -219,6 +227,30 @@ SubscriptionResource::fromJson(char* jsonStr)
 		} else {
 			
 		}
+	}
+	const gchar *behaviorsKey = "behaviors";
+	node = json_object_get_member(pJsonObject, behaviorsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<Behavior> new_list;
+			Behavior inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("Behavior")) {
+					jsonToValue(&inst, temp_json, "Behavior", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			behaviors = new_list;
+		}
+		
 	}
 	const gchar *categoryKey = "category";
 	node = json_object_get_member(pJsonObject, categoryKey);
@@ -493,6 +525,31 @@ SubscriptionResource::toJson()
 	}
 	const gchar *availabilityKey = "availability";
 	json_object_set_member(pJsonObject, availabilityKey, node);
+	if (isprimitive("Behavior")) {
+		list<Behavior> new_list = static_cast<list <Behavior> > (getBehaviors());
+		node = converttoJson(&new_list, "Behavior", "array");
+	} else {
+		node = json_node_alloc();
+		list<Behavior> new_list = static_cast<list <Behavior> > (getBehaviors());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+		for (list<Behavior>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			Behavior obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+		
+	}
+
+
+	
+	const gchar *behaviorsKey = "behaviors";
+	json_object_set_member(pJsonObject, behaviorsKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getCategory();
 		node = converttoJson(&obj, "std::string", "");
@@ -713,6 +770,18 @@ void
 SubscriptionResource::setAvailability(std::string  availability)
 {
 	this->availability = availability;
+}
+
+std::list<Behavior>
+SubscriptionResource::getBehaviors()
+{
+	return behaviors;
+}
+
+void
+SubscriptionResource::setBehaviors(std::list <Behavior> behaviors)
+{
+	this->behaviors = behaviors;
 }
 
 std::string

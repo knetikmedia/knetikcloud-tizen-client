@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "Behavior.h"
 #include "Property.h"
 #include "SubscriptionPlanResource.h"
 #include <list>
@@ -63,6 +64,13 @@ public:
 	/*! \brief Set Who can purchase this subscription
 	 */
 	void setAvailability(std::string  availability);
+	/*! \brief Get The behaviors linked to the item, describing various options and interactions. May not be included in item lists
+	 */
+	std::list<Behavior> getBehaviors();
+
+	/*! \brief Set The behaviors linked to the item, describing various options and interactions. May not be included in item lists
+	 */
+	void setBehaviors(std::list <Behavior> behaviors);
 	/*! \brief Get A category for filtering items
 	 */
 	std::string getCategory();
@@ -193,6 +201,7 @@ public:
 private:
 	std::map <std::string, std::string>additional_properties;
 	std::string availability;
+	std::list <Behavior>behaviors;
 	std::string category;
 	int consolidation_day_of_month;
 	long long created_date;

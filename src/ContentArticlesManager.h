@@ -226,6 +226,7 @@ bool getArticleTemplatesAsync(char * accessToken,
 /*! \brief List and search articles. *Synchronous*
  *
  * Get a list of articles with optional filtering. Assets will not be filled in on the resources returned. Use 'Get a single article' to retrieve the full resource with assets for a given item as needed.
+ * \param filterActiveOnly Filter for articles that are active (true) or inactive (false)
  * \param filterCategory Filter for articles from a specific category by id
  * \param filterTagset Filter for articles with at least one of a specified set of tags (separated by comma)
  * \param filterTagIntersection Filter for articles with all of a specified set of tags (separated by comma)
@@ -239,13 +240,14 @@ bool getArticleTemplatesAsync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool getArticlesSync(char * accessToken,
-	std::string filterCategory, std::string filterTagset, std::string filterTagIntersection, std::string filterTagExclusion, std::string filterTitle, int size, int page, std::string order, 
+	bool filterActiveOnly, std::string filterCategory, std::string filterTagset, std::string filterTagIntersection, std::string filterTagExclusion, std::string filterTitle, int size, int page, std::string order, 
 	void(* handler)(PageResource«ArticleResource», Error, void* )
 	, void* userData);
 
 /*! \brief List and search articles. *Asynchronous*
  *
  * Get a list of articles with optional filtering. Assets will not be filled in on the resources returned. Use 'Get a single article' to retrieve the full resource with assets for a given item as needed.
+ * \param filterActiveOnly Filter for articles that are active (true) or inactive (false)
  * \param filterCategory Filter for articles from a specific category by id
  * \param filterTagset Filter for articles with at least one of a specified set of tags (separated by comma)
  * \param filterTagIntersection Filter for articles with all of a specified set of tags (separated by comma)
@@ -259,7 +261,7 @@ bool getArticlesSync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool getArticlesAsync(char * accessToken,
-	std::string filterCategory, std::string filterTagset, std::string filterTagIntersection, std::string filterTagExclusion, std::string filterTitle, int size, int page, std::string order, 
+	bool filterActiveOnly, std::string filterCategory, std::string filterTagset, std::string filterTagIntersection, std::string filterTagExclusion, std::string filterTitle, int size, int page, std::string order, 
 	void(* handler)(PageResource«ArticleResource», Error, void* )
 	, void* userData);
 

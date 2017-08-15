@@ -80,8 +80,10 @@ Method | HTTP request | Description
 ### AmazonWebServicesS3Manager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-*getSignedS3URLSync* | *GET* /amazon/s3/signedposturl | Get a signed S3 URL.
-*getSignedS3URLASync* | *GET* /amazon/s3/signedposturl | Get a signed S3 URL.
+*getDownloadURLSync* | *GET* /amazon/s3/downloadurl | Get a temporary signed S3 URL for download.
+*getDownloadURLASync* | *GET* /amazon/s3/downloadurl | Get a temporary signed S3 URL for download.
+*getSignedS3URLSync* | *GET* /amazon/s3/signedposturl | Get a signed S3 URL for upload.
+*getSignedS3URLASync* | *GET* /amazon/s3/signedposturl | Get a signed S3 URL for upload.
 
 ### AuthClientsManager
 Method | HTTP request | Description
