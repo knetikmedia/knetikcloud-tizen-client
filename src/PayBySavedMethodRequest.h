@@ -52,9 +52,17 @@ public:
 	/*! \brief Set The id of the payment method to use. Must belong to the caller, be public or have PAYMENTS_ADMIN permission
 	 */
 	void setPaymentMethod(int  payment_method);
+	/*! \brief Get The id of a user to bill. Must have PAYMENTS_ADMIN permission
+	 */
+	int getUserId();
+
+	/*! \brief Set The id of a user to bill. Must have PAYMENTS_ADMIN permission
+	 */
+	void setUserId(int  user_id);
 
 private:
 	int payment_method;
+	int user_id;
 	void __init();
 	void __cleanup();
 

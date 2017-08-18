@@ -27,6 +27,9 @@ PayBySavedMethodRequest::__init()
 	//
 	//payment_method = int(0);
 	//
+	//
+	//user_id = int(0);
+	//
 }
 
 void
@@ -36,6 +39,11 @@ PayBySavedMethodRequest::__cleanup()
 	//
 	//delete payment_method;
 	//payment_method = NULL;
+	//}
+	//if(user_id != NULL) {
+	//
+	//delete user_id;
+	//user_id = NULL;
 	//}
 	//
 }
@@ -52,6 +60,17 @@ PayBySavedMethodRequest::fromJson(char* jsonStr)
 
 		if (isprimitive("int")) {
 			jsonToValue(&payment_method, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *user_idKey = "user_id";
+	node = json_object_get_member(pJsonObject, user_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&user_id, node, "int", "");
 		} else {
 			
 		}
@@ -77,6 +96,15 @@ PayBySavedMethodRequest::toJson()
 	}
 	const gchar *payment_methodKey = "payment_method";
 	json_object_set_member(pJsonObject, payment_methodKey, node);
+	if (isprimitive("int")) {
+		int obj = getUserId();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *user_idKey = "user_id";
+	json_object_set_member(pJsonObject, user_idKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -95,6 +123,18 @@ void
 PayBySavedMethodRequest::setPaymentMethod(int  payment_method)
 {
 	this->payment_method = payment_method;
+}
+
+int
+PayBySavedMethodRequest::getUserId()
+{
+	return user_id;
+}
+
+void
+PayBySavedMethodRequest::setUserId(int  user_id)
+{
+	this->user_id = user_id;
 }
 
 
