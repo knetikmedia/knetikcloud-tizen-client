@@ -292,9 +292,9 @@ static bool createChallengeActivityHelper(char * accessToken,
 	
 
 	itemAtq = stringify(&validateSettings, "bool");
-	queryParams.insert(pair<string, string>("validateSettings", itemAtq));
+	queryParams.insert(pair<string, string>("validate_settings", itemAtq));
 	if( itemAtq.empty()==true){
-		queryParams.erase("validateSettings");
+		queryParams.erase("validate_settings");
 	}
 
 	string mBody = "";
@@ -3324,7 +3324,7 @@ static bool updateChallengeActivityProcessor(MemoryStruct_s p_chunk, long code, 
 }
 
 static bool updateChallengeActivityHelper(char * accessToken,
-	long long id, long long challengeId, ChallengeActivityResource challengeActivityResource, 
+	long long id, long long challengeId, ChallengeActivityResource challengeActivityResource, bool validateSettings, 
 	void(* handler)(ChallengeActivityResource, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -3341,6 +3341,13 @@ static bool updateChallengeActivityHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&validateSettings, "bool");
+	queryParams.insert(pair<string, string>("validateSettings", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("validateSettings");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -3420,22 +3427,22 @@ static bool updateChallengeActivityHelper(char * accessToken,
 
 
 bool CampaignsChallengesManager::updateChallengeActivityAsync(char * accessToken,
-	long long id, long long challengeId, ChallengeActivityResource challengeActivityResource, 
+	long long id, long long challengeId, ChallengeActivityResource challengeActivityResource, bool validateSettings, 
 	void(* handler)(ChallengeActivityResource, Error, void* )
 	, void* userData)
 {
 	return updateChallengeActivityHelper(accessToken,
-	id, challengeId, challengeActivityResource, 
+	id, challengeId, challengeActivityResource, validateSettings, 
 	handler, userData, true);
 }
 
 bool CampaignsChallengesManager::updateChallengeActivitySync(char * accessToken,
-	long long id, long long challengeId, ChallengeActivityResource challengeActivityResource, 
+	long long id, long long challengeId, ChallengeActivityResource challengeActivityResource, bool validateSettings, 
 	void(* handler)(ChallengeActivityResource, Error, void* )
 	, void* userData)
 {
 	return updateChallengeActivityHelper(accessToken,
-	id, challengeId, challengeActivityResource, 
+	id, challengeId, challengeActivityResource, validateSettings, 
 	handler, userData, false);
 }
 

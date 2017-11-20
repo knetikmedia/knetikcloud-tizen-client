@@ -628,12 +628,13 @@ bool updateChallengeAsync(char * accessToken,
  * \param id The challenge_activity id *Required*
  * \param challengeId The challenge id *Required*
  * \param challengeActivityResource The challenge activity resource object
+ * \param validateSettings Whether to validate the settings being sent against the available settings on the base activity.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool updateChallengeActivitySync(char * accessToken,
-	long long id, long long challengeId, ChallengeActivityResource challengeActivityResource, 
+	long long id, long long challengeId, ChallengeActivityResource challengeActivityResource, bool validateSettings, 
 	void(* handler)(ChallengeActivityResource, Error, void* )
 	, void* userData);
 
@@ -643,12 +644,13 @@ bool updateChallengeActivitySync(char * accessToken,
  * \param id The challenge_activity id *Required*
  * \param challengeId The challenge id *Required*
  * \param challengeActivityResource The challenge activity resource object
+ * \param validateSettings Whether to validate the settings being sent against the available settings on the base activity.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool updateChallengeActivityAsync(char * accessToken,
-	long long id, long long challengeId, ChallengeActivityResource challengeActivityResource, 
+	long long id, long long challengeId, ChallengeActivityResource challengeActivityResource, bool validateSettings, 
 	void(* handler)(ChallengeActivityResource, Error, void* )
 	, void* userData);
 
