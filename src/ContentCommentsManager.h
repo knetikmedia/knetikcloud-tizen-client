@@ -141,37 +141,6 @@ bool getCommentsAsync(char * accessToken,
 	, void* userData);
 
 
-/*! \brief Search the comment index. *Synchronous*
- *
- * The body is an ElasticSearch query json. Please see their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html'>documentation</a> for details on the format and search options
- * \param query The search query
- * \param size The number of objects returned per page
- * \param page The number of the page returned, starting with 1
- * \param handler The callback function to be invoked on completion. *Required*
- * \param accessToken The Authorization token. *Required*
- * \param userData The user data to be passed to the callback function.
- */
-bool searchCommentsSync(char * accessToken,
-	std::string query, int size, int page, 
-	void(* handler)(PageResource«CommentResource», Error, void* )
-	, void* userData);
-
-/*! \brief Search the comment index. *Asynchronous*
- *
- * The body is an ElasticSearch query json. Please see their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html'>documentation</a> for details on the format and search options
- * \param query The search query
- * \param size The number of objects returned per page
- * \param page The number of the page returned, starting with 1
- * \param handler The callback function to be invoked on completion. *Required*
- * \param accessToken The Authorization token. *Required*
- * \param userData The user data to be passed to the callback function.
- */
-bool searchCommentsAsync(char * accessToken,
-	std::string query, int size, int page, 
-	void(* handler)(PageResource«CommentResource», Error, void* )
-	, void* userData);
-
-
 /*! \brief Update a comment. *Synchronous*
  *
  * 
@@ -204,7 +173,7 @@ bool updateCommentAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://sandbox.knetikcloud.com";
+		return "https://devsandbox.knetikcloud.com";
 	}
 };
 /** @}*/

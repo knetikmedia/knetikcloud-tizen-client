@@ -172,7 +172,7 @@ bool updateConfigAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://sandbox.knetikcloud.com";
+		return "https://devsandbox.knetikcloud.com";
 	}
 };
 /** @}*/

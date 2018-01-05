@@ -1178,6 +1178,170 @@ bool MediaVideosManager::createVideoDispositionSync(char * accessToken,
 	handler, userData, false);
 }
 
+static bool createVideoTemplateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(TemplateResource, Error, void* )
+	= reinterpret_cast<void(*)(TemplateResource, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	TemplateResource out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("TemplateResource")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "TemplateResource", "TemplateResource");
+			json_node_free(pJson);
+
+			if ("TemplateResource" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unkown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool createVideoTemplateHelper(char * accessToken,
+	TemplateResource videoTemplateResource, 
+	void(* handler)(TemplateResource, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	if (isprimitive("TemplateResource")) {
+		node = converttoJson(&videoTemplateResource, "TemplateResource", "");
+	}
+	
+	char *jsonStr =  videoTemplateResource.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	string url("/media/videos/templates");
+	int pos;
+
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("POST");
+
+	if(strcmp("PUT", "POST") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(MediaVideosManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = createVideoTemplateProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (MediaVideosManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), createVideoTemplateProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __MediaVideosManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool MediaVideosManager::createVideoTemplateAsync(char * accessToken,
+	TemplateResource videoTemplateResource, 
+	void(* handler)(TemplateResource, Error, void* )
+	, void* userData)
+{
+	return createVideoTemplateHelper(accessToken,
+	videoTemplateResource, 
+	handler, userData, true);
+}
+
+bool MediaVideosManager::createVideoTemplateSync(char * accessToken,
+	TemplateResource videoTemplateResource, 
+	void(* handler)(TemplateResource, Error, void* )
+	, void* userData)
+{
+	return createVideoTemplateHelper(accessToken,
+	videoTemplateResource, 
+	handler, userData, false);
+}
+
 static bool deleteVideoProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
@@ -1837,6 +2001,143 @@ bool MediaVideosManager::deleteVideoRelationshipSync(char * accessToken,
 {
 	return deleteVideoRelationshipHelper(accessToken,
 	videoId, id, 
+	handler, userData, false);
+}
+
+static bool deleteVideoTemplateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	
+	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+		handler(error, userData);
+		return true;
+
+
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unkown Error"));
+		}
+		handler(error, userData);
+		return false;
+	}
+}
+
+static bool deleteVideoTemplateHelper(char * accessToken,
+	std::string id, std::string cascade, 
+	
+	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+
+	itemAtq = stringify(&cascade, "std::string");
+	queryParams.insert(pair<string, string>("cascade", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("cascade");
+	}
+
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/media/videos/templates/{id}");
+	int pos;
+
+	string s_id("{");
+	s_id.append("id");
+	s_id.append("}");
+	pos = url.find(s_id);
+	url.erase(pos, s_id.length());
+	url.insert(pos, stringify(&id, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("DELETE");
+
+	if(strcmp("PUT", "DELETE") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(MediaVideosManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = deleteVideoTemplateProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (MediaVideosManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), deleteVideoTemplateProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __MediaVideosManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool MediaVideosManager::deleteVideoTemplateAsync(char * accessToken,
+	std::string id, std::string cascade, 
+	
+	void(* handler)(Error, void* ) , void* userData)
+{
+	return deleteVideoTemplateHelper(accessToken,
+	id, cascade, 
+	handler, userData, true);
+}
+
+bool MediaVideosManager::deleteVideoTemplateSync(char * accessToken,
+	std::string id, std::string cascade, 
+	
+	void(* handler)(Error, void* ) , void* userData)
+{
+	return deleteVideoTemplateHelper(accessToken,
+	id, cascade, 
 	handler, userData, false);
 }
 
@@ -2685,6 +2986,335 @@ bool MediaVideosManager::getVideoRelationshipsSync(char * accessToken,
 {
 	return getVideoRelationshipsHelper(accessToken,
 	videoId, size, page, 
+	handler, userData, false);
+}
+
+static bool getVideoTemplateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(TemplateResource, Error, void* )
+	= reinterpret_cast<void(*)(TemplateResource, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	TemplateResource out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("TemplateResource")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "TemplateResource", "TemplateResource");
+			json_node_free(pJson);
+
+			if ("TemplateResource" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unkown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool getVideoTemplateHelper(char * accessToken,
+	std::string id, 
+	void(* handler)(TemplateResource, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/media/videos/templates/{id}");
+	int pos;
+
+	string s_id("{");
+	s_id.append("id");
+	s_id.append("}");
+	pos = url.find(s_id);
+	url.erase(pos, s_id.length());
+	url.insert(pos, stringify(&id, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("GET");
+
+	if(strcmp("PUT", "GET") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(MediaVideosManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = getVideoTemplateProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (MediaVideosManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), getVideoTemplateProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __MediaVideosManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool MediaVideosManager::getVideoTemplateAsync(char * accessToken,
+	std::string id, 
+	void(* handler)(TemplateResource, Error, void* )
+	, void* userData)
+{
+	return getVideoTemplateHelper(accessToken,
+	id, 
+	handler, userData, true);
+}
+
+bool MediaVideosManager::getVideoTemplateSync(char * accessToken,
+	std::string id, 
+	void(* handler)(TemplateResource, Error, void* )
+	, void* userData)
+{
+	return getVideoTemplateHelper(accessToken,
+	id, 
+	handler, userData, false);
+}
+
+static bool getVideoTemplatesProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(PageResource«TemplateResource», Error, void* )
+	= reinterpret_cast<void(*)(PageResource«TemplateResource», Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	PageResource«TemplateResource» out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("PageResource«TemplateResource»")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "PageResource«TemplateResource»", "PageResource«TemplateResource»");
+			json_node_free(pJson);
+
+			if ("PageResource«TemplateResource»" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unkown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool getVideoTemplatesHelper(char * accessToken,
+	int size, int page, std::string order, 
+	void(* handler)(PageResource«TemplateResource», Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+
+	itemAtq = stringify(&size, "int");
+	queryParams.insert(pair<string, string>("size", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("size");
+	}
+
+
+	itemAtq = stringify(&page, "int");
+	queryParams.insert(pair<string, string>("page", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("page");
+	}
+
+
+	itemAtq = stringify(&order, "std::string");
+	queryParams.insert(pair<string, string>("order", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("order");
+	}
+
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/media/videos/templates");
+	int pos;
+
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("GET");
+
+	if(strcmp("PUT", "GET") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(MediaVideosManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = getVideoTemplatesProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (MediaVideosManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), getVideoTemplatesProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __MediaVideosManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool MediaVideosManager::getVideoTemplatesAsync(char * accessToken,
+	int size, int page, std::string order, 
+	void(* handler)(PageResource«TemplateResource», Error, void* )
+	, void* userData)
+{
+	return getVideoTemplatesHelper(accessToken,
+	size, page, order, 
+	handler, userData, true);
+}
+
+bool MediaVideosManager::getVideoTemplatesSync(char * accessToken,
+	int size, int page, std::string order, 
+	void(* handler)(PageResource«TemplateResource», Error, void* )
+	, void* userData)
+{
+	return getVideoTemplatesHelper(accessToken,
+	size, page, order, 
 	handler, userData, false);
 }
 
@@ -3654,6 +4284,176 @@ bool MediaVideosManager::updateVideoRelationshipSync(char * accessToken,
 {
 	return updateVideoRelationshipHelper(accessToken,
 	videoId, relationshipId, details, 
+	handler, userData, false);
+}
+
+static bool updateVideoTemplateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(TemplateResource, Error, void* )
+	= reinterpret_cast<void(*)(TemplateResource, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	TemplateResource out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("TemplateResource")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "TemplateResource", "TemplateResource");
+			json_node_free(pJson);
+
+			if ("TemplateResource" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unkown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool updateVideoTemplateHelper(char * accessToken,
+	std::string id, TemplateResource videoTemplateResource, 
+	void(* handler)(TemplateResource, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	if (isprimitive("TemplateResource")) {
+		node = converttoJson(&videoTemplateResource, "TemplateResource", "");
+	}
+	
+	char *jsonStr =  videoTemplateResource.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	string url("/media/videos/templates/{id}");
+	int pos;
+
+	string s_id("{");
+	s_id.append("id");
+	s_id.append("}");
+	pos = url.find(s_id);
+	url.erase(pos, s_id.length());
+	url.insert(pos, stringify(&id, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("PUT");
+
+	if(strcmp("PUT", "PUT") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(MediaVideosManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = updateVideoTemplateProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (MediaVideosManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), updateVideoTemplateProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __MediaVideosManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool MediaVideosManager::updateVideoTemplateAsync(char * accessToken,
+	std::string id, TemplateResource videoTemplateResource, 
+	void(* handler)(TemplateResource, Error, void* )
+	, void* userData)
+{
+	return updateVideoTemplateHelper(accessToken,
+	id, videoTemplateResource, 
+	handler, userData, true);
+}
+
+bool MediaVideosManager::updateVideoTemplateSync(char * accessToken,
+	std::string id, TemplateResource videoTemplateResource, 
+	void(* handler)(TemplateResource, Error, void* )
+	, void* userData)
+{
+	return updateVideoTemplateHelper(accessToken,
+	id, videoTemplateResource, 
 	handler, userData, false);
 }
 

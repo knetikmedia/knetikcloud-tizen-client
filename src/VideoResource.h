@@ -11,10 +11,12 @@
 #include <string>
 #include "CommentResource.h"
 #include "ContributionResource.h"
+#include "Property.h"
 #include "SimpleReferenceResource«long».h"
 #include "SimpleReferenceResource«string».h"
 #include "SimpleUserResource.h"
 #include <list>
+#include <map>
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -58,6 +60,13 @@ public:
 	/*! \brief Set Whether the video is available, based on various factors
 	 */
 	void setActive(bool  active);
+	/*! \brief Get A map of additional properties, keyed on the property name.  Must match the names and types defined in the template for this item type
+	 */
+	std::map<std::string, std::string> getAdditionalProperties();
+
+	/*! \brief Set A map of additional properties, keyed on the property name.  Must match the names and types defined in the template for this item type
+	 */
+	void setAdditionalProperties(std::map <std::string, std::string> additional_properties);
 	/*! \brief Get The original artist of the media
 	 */
 	SimpleReferenceResource«long» getAuthor();
@@ -212,6 +221,13 @@ public:
 	/*! \brief Set The tags for the video
 	 */
 	void setTags(std::list <std::string> tags);
+	/*! \brief Get A video template this video is validated against (private). May be null and no validation of additional_properties will be done
+	 */
+	std::string getTemplate();
+
+	/*! \brief Set A video template this video is validated against (private). May be null and no validation of additional_properties will be done
+	 */
+	void setTemplate(std::string  _template);
 	/*! \brief Get The country of a thumbnail version. Typically a url
 	 */
 	std::string getThumbnail();
@@ -250,6 +266,7 @@ public:
 
 private:
 	bool active;
+	std::map <std::string, std::string>additional_properties;
 	SimpleReferenceResource«long» author;
 	long long authored;
 	bool banned;
@@ -272,6 +289,7 @@ private:
 	std::string short_description;
 	long long size;
 	std::list <std::string>tags;
+	std::string _template;
 	std::string thumbnail;
 	long long updated_date;
 	SimpleUserResource uploader;

@@ -27,6 +27,9 @@ VideoResource::__init()
 	//
 	//active = bool(false);
 	//
+	//new std::map()std::map> additional_properties;
+	//
+	//
 	//
 	//author = new SimpleReferenceResource«long»();
 	//
@@ -94,6 +97,9 @@ VideoResource::__init()
 	//
 	//
 	//
+	//_template = std::string();
+	//
+	//
 	//thumbnail = std::string();
 	//
 	//
@@ -117,6 +123,11 @@ VideoResource::__cleanup()
 	//
 	//delete active;
 	//active = NULL;
+	//}
+	//if(additional_properties != NULL) {
+	//additional_properties.RemoveAll(true);
+	//delete additional_properties;
+	//additional_properties = NULL;
 	//}
 	//if(author != NULL) {
 	//
@@ -228,6 +239,11 @@ VideoResource::__cleanup()
 	//delete tags;
 	//tags = NULL;
 	//}
+	//if(_template != NULL) {
+	//
+	//delete _template;
+	//_template = NULL;
+	//}
 	//if(thumbnail != NULL) {
 	//
 	//delete thumbnail;
@@ -271,6 +287,18 @@ VideoResource::fromJson(char* jsonStr)
 		} else {
 			
 		}
+	}
+	const gchar *additional_propertiesKey = "additional_properties";
+	node = json_object_get_member(pJsonObject, additional_propertiesKey);
+	if (node !=NULL) {
+	
+		{
+			JsonObject* json_obj = json_node_get_object(node);
+			map<string,string> new_map;
+			json_object_foreach_member(json_obj,helper_func,&new_map);
+			additional_properties = new_map;
+		}
+		
 	}
 	const gchar *authorKey = "author";
 	node = json_object_get_member(pJsonObject, authorKey);
@@ -557,6 +585,17 @@ VideoResource::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *_templateKey = "template";
+	node = json_object_get_member(pJsonObject, _templateKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&_template, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *thumbnailKey = "thumbnail";
 	node = json_object_get_member(pJsonObject, thumbnailKey);
 	if (node !=NULL) {
@@ -636,6 +675,25 @@ VideoResource::toJson()
 	}
 	const gchar *activeKey = "active";
 	json_object_set_member(pJsonObject, activeKey, node);
+
+
+	{
+		JsonObject* json_obj;
+		map<string, string> new_list = static_cast<map <string, string> > (getAdditionalProperties());
+		json_obj = json_object_new();
+		for (map<string, string>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			string obj = (*it).first;
+			string obj2 = (*it).second;
+			JsonNode* tempnode = json_from_string(obj2.c_str(),NULL);
+			json_object_set_member(json_obj, obj.c_str(), tempnode);
+		}
+	node = json_node_alloc();
+	json_node_init_object(node, json_obj);
+	json_object_unref(json_obj);
+	}
+
+	const gchar *additional_propertiesKey = "additional_properties";
+	json_object_set_member(pJsonObject, additional_propertiesKey, node);
 	if (isprimitive("SimpleReferenceResource«long»")) {
 		SimpleReferenceResource«long» obj = getAuthor();
 		node = converttoJson(&obj, "SimpleReferenceResource«long»", "");
@@ -883,6 +941,15 @@ VideoResource::toJson()
 	const gchar *tagsKey = "tags";
 	json_object_set_member(pJsonObject, tagsKey, node);
 	if (isprimitive("std::string")) {
+		std::string obj = getTemplate();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *_templateKey = "template";
+	json_object_set_member(pJsonObject, _templateKey, node);
+	if (isprimitive("std::string")) {
 		std::string obj = getThumbnail();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -950,6 +1017,18 @@ void
 VideoResource::setActive(bool  active)
 {
 	this->active = active;
+}
+
+std::map<string, string>
+VideoResource::getAdditionalProperties()
+{
+	return additional_properties;
+}
+
+void
+VideoResource::setAdditionalProperties(std::map <string, string> additional_properties)
+{
+	this->additional_properties = additional_properties;
 }
 
 SimpleReferenceResource«long»
@@ -1214,6 +1293,18 @@ void
 VideoResource::setTags(std::list <std::string> tags)
 {
 	this->tags = tags;
+}
+
+std::string
+VideoResource::getTemplate()
+{
+	return _template;
+}
+
+void
+VideoResource::setTemplate(std::string  _template)
+{
+	this->_template = _template;
 }
 
 std::string

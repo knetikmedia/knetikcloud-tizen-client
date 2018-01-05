@@ -12,10 +12,12 @@
 #include "IntWrapper.h"
 #include "PageResource«CommentResource».h"
 #include "PageResource«DispositionResource».h"
+#include "PageResource«TemplateResource».h"
 #include "PageResource«VideoRelationshipResource».h"
 #include "PageResource«VideoResource».h"
 #include "Result.h"
 #include "StringWrapper.h"
+#include "TemplateResource.h"
 #include "VideoRelationshipResource.h"
 #include "VideoResource.h"
 #include "Error.h"
@@ -237,6 +239,33 @@ bool createVideoDispositionAsync(char * accessToken,
 	, void* userData);
 
 
+/*! \brief Create a video template. *Synchronous*
+ *
+ * Video Templates define a type of video and the properties they have
+ * \param videoTemplateResource The video template resource object
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool createVideoTemplateSync(char * accessToken,
+	TemplateResource videoTemplateResource, 
+	void(* handler)(TemplateResource, Error, void* )
+	, void* userData);
+
+/*! \brief Create a video template. *Asynchronous*
+ *
+ * Video Templates define a type of video and the properties they have
+ * \param videoTemplateResource The video template resource object
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool createVideoTemplateAsync(char * accessToken,
+	TemplateResource videoTemplateResource, 
+	void(* handler)(TemplateResource, Error, void* )
+	, void* userData);
+
+
 /*! \brief Deletes a video from the system if no resources are attached to it. *Synchronous*
  *
  * 
@@ -372,6 +401,35 @@ bool deleteVideoRelationshipSync(char * accessToken,
  */
 bool deleteVideoRelationshipAsync(char * accessToken,
 	long long videoId, long long id, 
+	
+	void(* handler)(Error, void* ) , void* userData);
+
+
+/*! \brief Delete a video template. *Synchronous*
+ *
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * \param id The id of the template *Required*
+ * \param cascade The value needed to delete used templates
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool deleteVideoTemplateSync(char * accessToken,
+	std::string id, std::string cascade, 
+	
+	void(* handler)(Error, void* ) , void* userData);
+
+/*! \brief Delete a video template. *Asynchronous*
+ *
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * \param id The id of the template *Required*
+ * \param cascade The value needed to delete used templates
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool deleteVideoTemplateAsync(char * accessToken,
+	std::string id, std::string cascade, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 
@@ -526,6 +584,64 @@ bool getVideoRelationshipsSync(char * accessToken,
 bool getVideoRelationshipsAsync(char * accessToken,
 	long long videoId, int size, int page, 
 	void(* handler)(PageResource«VideoRelationshipResource», Error, void* )
+	, void* userData);
+
+
+/*! \brief Get a single video template. *Synchronous*
+ *
+ * 
+ * \param id The id of the template *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool getVideoTemplateSync(char * accessToken,
+	std::string id, 
+	void(* handler)(TemplateResource, Error, void* )
+	, void* userData);
+
+/*! \brief Get a single video template. *Asynchronous*
+ *
+ * 
+ * \param id The id of the template *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool getVideoTemplateAsync(char * accessToken,
+	std::string id, 
+	void(* handler)(TemplateResource, Error, void* )
+	, void* userData);
+
+
+/*! \brief List and search video templates. *Synchronous*
+ *
+ * 
+ * \param size The number of objects returned per page
+ * \param page The number of the page returned, starting with 1
+ * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool getVideoTemplatesSync(char * accessToken,
+	int size, int page, std::string order, 
+	void(* handler)(PageResource«TemplateResource», Error, void* )
+	, void* userData);
+
+/*! \brief List and search video templates. *Asynchronous*
+ *
+ * 
+ * \param size The number of objects returned per page
+ * \param page The number of the page returned, starting with 1
+ * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool getVideoTemplatesAsync(char * accessToken,
+	int size, int page, std::string order, 
+	void(* handler)(PageResource«TemplateResource», Error, void* )
 	, void* userData);
 
 
@@ -733,6 +849,35 @@ bool updateVideoRelationshipAsync(char * accessToken,
 	void(* handler)(Error, void* ) , void* userData);
 
 
+/*! \brief Update a video template. *Synchronous*
+ *
+ * 
+ * \param id The id of the template *Required*
+ * \param videoTemplateResource The video template resource object
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool updateVideoTemplateSync(char * accessToken,
+	std::string id, TemplateResource videoTemplateResource, 
+	void(* handler)(TemplateResource, Error, void* )
+	, void* userData);
+
+/*! \brief Update a video template. *Asynchronous*
+ *
+ * 
+ * \param id The id of the template *Required*
+ * \param videoTemplateResource The video template resource object
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool updateVideoTemplateAsync(char * accessToken,
+	std::string id, TemplateResource videoTemplateResource, 
+	void(* handler)(TemplateResource, Error, void* )
+	, void* userData);
+
+
 /*! \brief Increment a video's view count. *Synchronous*
  *
  * 
@@ -763,7 +908,7 @@ bool viewVideoAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://sandbox.knetikcloud.com";
+		return "https://devsandbox.knetikcloud.com";
 	}
 };
 /** @}*/

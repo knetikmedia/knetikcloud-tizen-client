@@ -39,7 +39,7 @@ Doxygen is the de facto standard tool for generating/extracting documentation fr
 Check out [Doxygen](https://www.doxygen.org/) for additional information about the Doxygen project.
 
 ## I Don't want to run Doxygen. What are the API files for accessing the REST endpoints?
-All URIs are relative to https://sandbox.knetikcloud.comhttps://sandbox.knetikcloud.com
+All URIs are relative to https://devsandbox.knetikcloud.comhttps://devsandbox.knetikcloud.com
 
 ### AccessTokenManager
 Method | HTTP request | Description
@@ -422,8 +422,6 @@ Method | HTTP request | Description
 *getCommentASync* | *GET* /comments/{id} | Return a comment.
 *getCommentsSync* | *GET* /comments | Returns a page of comments.
 *getCommentsASync* | *GET* /comments | Returns a page of comments.
-*searchCommentsSync* | *POST* /comments/search | Search the comment index.
-*searchCommentsASync* | *POST* /comments/search | Search the comment index.
 *updateCommentSync* | *PUT* /comments/{id}/content | Update a comment.
 *updateCommentASync* | *PUT* /comments/{id}/content | Update a comment.
 
@@ -788,6 +786,8 @@ Method | HTTP request | Description
 *addVideoRelationshipsASync* | *POST* /media/videos/{video_id}/related | Adds one or more existing videos as related to this one.
 *createVideoDispositionSync* | *POST* /media/videos/{video_id}/dispositions | Create a video disposition.
 *createVideoDispositionASync* | *POST* /media/videos/{video_id}/dispositions | Create a video disposition.
+*createVideoTemplateSync* | *POST* /media/videos/templates | Create a video template.
+*createVideoTemplateASync* | *POST* /media/videos/templates | Create a video template.
 *deleteVideoSync* | *DELETE* /media/videos/{id} | Deletes a video from the system if no resources are attached to it.
 *deleteVideoASync* | *DELETE* /media/videos/{id} | Deletes a video from the system if no resources are attached to it.
 *deleteVideoCommentSync* | *DELETE* /media/videos/{video_id}/comments/{id} | Delete a video comment.
@@ -798,6 +798,8 @@ Method | HTTP request | Description
 *deleteVideoFlagASync* | *DELETE* /media/videos/{video_id}/moderation | Delete a flag.
 *deleteVideoRelationshipSync* | *DELETE* /media/videos/{video_id}/related/{id} | Delete a video's relationship.
 *deleteVideoRelationshipASync* | *DELETE* /media/videos/{video_id}/related/{id} | Delete a video's relationship.
+*deleteVideoTemplateSync* | *DELETE* /media/videos/templates/{id} | Delete a video template.
+*deleteVideoTemplateASync* | *DELETE* /media/videos/templates/{id} | Delete a video template.
 *getUserVideosSync* | *GET* /users/{user_id}/videos | Get user videos.
 *getUserVideosASync* | *GET* /users/{user_id}/videos | Get user videos.
 *getVideoSync* | *GET* /media/videos/{id} | Loads a specific video details.
@@ -808,6 +810,10 @@ Method | HTTP request | Description
 *getVideoDispositionsASync* | *GET* /media/videos/{video_id}/dispositions | Returns a page of dispositions for a video.
 *getVideoRelationshipsSync* | *GET* /media/videos/{video_id}/related | Returns a page of video relationships.
 *getVideoRelationshipsASync* | *GET* /media/videos/{video_id}/related | Returns a page of video relationships.
+*getVideoTemplateSync* | *GET* /media/videos/templates/{id} | Get a single video template.
+*getVideoTemplateASync* | *GET* /media/videos/templates/{id} | Get a single video template.
+*getVideoTemplatesSync* | *GET* /media/videos/templates | List and search video templates.
+*getVideoTemplatesASync* | *GET* /media/videos/templates | List and search video templates.
 *getVideosSync* | *GET* /media/videos | Search videos using the documented filters.
 *getVideosASync* | *GET* /media/videos | Search videos using the documented filters.
 *removeUserFromVideoWhitelistSync* | *DELETE* /media/videos/{video_id}/whitelist/{id} | Removes a user from a video's whitelist.
@@ -820,6 +826,8 @@ Method | HTTP request | Description
 *updateVideoCommentASync* | *PUT* /media/videos/{video_id}/comments/{id}/content | Update a video comment.
 *updateVideoRelationshipSync* | *PUT* /media/videos/{video_id}/related/{id}/relationship_details | Update a video's relationship details.
 *updateVideoRelationshipASync* | *PUT* /media/videos/{video_id}/related/{id}/relationship_details | Update a video's relationship details.
+*updateVideoTemplateSync* | *PUT* /media/videos/templates/{id} | Update a video template.
+*updateVideoTemplateASync* | *PUT* /media/videos/templates/{id} | Update a video template.
 *viewVideoSync* | *POST* /media/videos/{id}/views | Increment a video's view count.
 *viewVideoASync* | *POST* /media/videos/{id}/views | Increment a video's view count.
 
@@ -1022,10 +1030,48 @@ Method | HTTP request | Description
 ### SearchManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+*searchCountGETSync* | *GET* /search/count/{type} | Count matches with no template.
+*searchCountGETASync* | *GET* /search/count/{type} | Count matches with no template.
+*searchCountPOSTSync* | *POST* /search/count/{type} | Count matches with no template.
+*searchCountPOSTASync* | *POST* /search/count/{type} | Count matches with no template.
+*searchCountWithTemplateGETSync* | *GET* /search/count/{type}/{template} | Count matches with a template.
+*searchCountWithTemplateGETASync* | *GET* /search/count/{type}/{template} | Count matches with a template.
+*searchCountWithTemplatePOSTSync* | *POST* /search/count/{type}/{template} | Count matches with a template.
+*searchCountWithTemplatePOSTASync* | *POST* /search/count/{type}/{template} | Count matches with a template.
+*searchDocumentGETSync* | *GET* /search/documents/{type}/{id} | Get document with no template.
+*searchDocumentGETASync* | *GET* /search/documents/{type}/{id} | Get document with no template.
+*searchDocumentWithTemplateGETSync* | *GET* /search/documents/{type}/{template}/{id} | Get document with a template.
+*searchDocumentWithTemplateGETASync* | *GET* /search/documents/{type}/{template}/{id} | Get document with a template.
+*searchExplainGETSync* | *GET* /search/explain/{type}/{id} | Explain matches with no template.
+*searchExplainGETASync* | *GET* /search/explain/{type}/{id} | Explain matches with no template.
+*searchExplainPOSTSync* | *POST* /search/explain/{type}/{id} | Explain matches with no template.
+*searchExplainPOSTASync* | *POST* /search/explain/{type}/{id} | Explain matches with no template.
+*searchExplainWithTemplateGETSync* | *GET* /search/explain/{type}/{template}/{id} | Explain matches with a template.
+*searchExplainWithTemplateGETASync* | *GET* /search/explain/{type}/{template}/{id} | Explain matches with a template.
+*searchExplainWithTemplatePOSTSync* | *POST* /search/explain/{type}/{template}/{id} | Explain matches with a template.
+*searchExplainWithTemplatePOSTASync* | *POST* /search/explain/{type}/{template}/{id} | Explain matches with a template.
 *searchIndexSync* | *POST* /search/index/{type} | Search an index with no template.
 *searchIndexASync* | *POST* /search/index/{type} | Search an index with no template.
-*searchIndexWithTemplateSync* | *POST* /search/index/{type}/{template} | Search an index with a template.
-*searchIndexWithTemplateASync* | *POST* /search/index/{type}/{template} | Search an index with a template.
+*searchIndexGETSync* | *GET* /search/index/{type} | Search an index with no template.
+*searchIndexGETASync* | *GET* /search/index/{type} | Search an index with no template.
+*searchIndexWithTemplateGETSync* | *GET* /search/index/{type}/{template} | Search an index with a template.
+*searchIndexWithTemplateGETASync* | *GET* /search/index/{type}/{template} | Search an index with a template.
+*searchIndexWithTemplatePOSTSync* | *POST* /search/index/{type}/{template} | Search an index with a template.
+*searchIndexWithTemplatePOSTASync* | *POST* /search/index/{type}/{template} | Search an index with a template.
+*searchIndicesGETSync* | *GET* /search/indices | Get indices.
+*searchIndicesGETASync* | *GET* /search/indices | Get indices.
+*searchMappingsGETSync* | *GET* /search/mappings/{type} | Get mapping with no template.
+*searchMappingsGETASync* | *GET* /search/mappings/{type} | Get mapping with no template.
+*searchMappingsWithTemplateGETSync* | *GET* /search/mappings/{type}/{template} | Get mapping with a template.
+*searchMappingsWithTemplateGETASync* | *GET* /search/mappings/{type}/{template} | Get mapping with a template.
+*searchValidateGETSync* | *GET* /search/validate/{type} | Validate matches with no template.
+*searchValidateGETASync* | *GET* /search/validate/{type} | Validate matches with no template.
+*searchValidatePOSTSync* | *POST* /search/validate/{type} | Validate matches with no template.
+*searchValidatePOSTASync* | *POST* /search/validate/{type} | Validate matches with no template.
+*searchValidateWithTemplateGETSync* | *GET* /search/validate/{type}/{template} | Validate matches with a template.
+*searchValidateWithTemplateGETASync* | *GET* /search/validate/{type}/{template} | Validate matches with a template.
+*searchValidateWithTemplatePOSTSync* | *POST* /search/validate/{type}/{template} | Validate matches with a template.
+*searchValidateWithTemplatePOSTASync* | *POST* /search/validate/{type}/{template} | Validate matches with a template.
 
 ### SocialFacebookManager
 Method | HTTP request | Description
@@ -1634,7 +1680,6 @@ Class | Description
  *LookupResource* | Expressions are instructions for the rule engine to resolve certain values. For example instead of `user 1` it'd state `user provided by the event`. Full list and definitions available at GET /bre/expressions.
  *Maintenance* | 
  *MapResource* | Expressions are instructions for the rule engine to resolve certain values. For example instead of `user 1` it'd state `user provided by the event`. Full list and definitions available at GET /bre/expressions.
- *Map«string,object»* | 
  *MetricResource* | 
  *MongoDatabaseConfig* | 
  *NestedCategory* | 
@@ -1688,7 +1733,6 @@ Class | Description
  *PageResource«ItemTemplateResource»* | 
  *PageResource«LevelingResource»* | 
  *PageResource«LocationLogResource»* | 
- *PageResource«Map«string,object»»* | 
  *PageResource«OauthAccessTokenResource»* | 
  *PageResource«ObjectResource»* | 
  *PageResource«PaymentMethodTypeResource»* | 
