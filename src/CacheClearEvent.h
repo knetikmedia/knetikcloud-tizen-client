@@ -111,18 +111,11 @@ public:
 	void setType(std::string  type);
 	/*! \brief Get 
 	 */
-	bool getCustomerSetup();
+	bool getTeardown();
 
 	/*! \brief Set 
 	 */
-	void setCustomerSetup(bool  customer_setup);
-	/*! \brief Get 
-	 */
-	bool getCustomerTeardown();
-
-	/*! \brief Set 
-	 */
-	void setCustomerTeardown(bool  customer_teardown);
+	void setTeardown(bool  teardown);
 
 private:
 	std::string client;
@@ -134,8 +127,7 @@ private:
 	bool synchronous;
 	long long timestamp;
 	std::string type;
-	bool customer_setup;
-	bool customer_teardown;
+	bool teardown;
 	void __init();
 	void __cleanup();
 

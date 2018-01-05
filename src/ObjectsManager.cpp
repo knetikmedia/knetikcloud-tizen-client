@@ -1366,7 +1366,7 @@ static bool updateObjectItemProcessor(MemoryStruct_s p_chunk, long code, char* e
 }
 
 static bool updateObjectItemHelper(char * accessToken,
-	std::string templateId, int entitlementId, bool cascade, EntitlementItem objectItem, 
+	std::string templateId, int objectId, bool cascade, ObjectResource objectItem, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -1394,8 +1394,8 @@ static bool updateObjectItemHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("EntitlementItem")) {
-		node = converttoJson(&objectItem, "EntitlementItem", "");
+	if (isprimitive("ObjectResource")) {
+		node = converttoJson(&objectItem, "ObjectResource", "");
 	}
 	
 	char *jsonStr =  objectItem.toJson();
@@ -1416,12 +1416,12 @@ static bool updateObjectItemHelper(char * accessToken,
 	pos = url.find(s_templateId);
 	url.erase(pos, s_templateId.length());
 	url.insert(pos, stringify(&templateId, "std::string"));
-	string s_entitlementId("{");
-	s_entitlementId.append("entitlement_id");
-	s_entitlementId.append("}");
-	pos = url.find(s_entitlementId);
-	url.erase(pos, s_entitlementId.length());
-	url.insert(pos, stringify(&entitlementId, "int"));
+	string s_objectId("{");
+	s_objectId.append("object_id");
+	s_objectId.append("}");
+	pos = url.find(s_objectId);
+	url.erase(pos, s_objectId.length());
+	url.insert(pos, stringify(&objectId, "int"));
 
 	//TODO: free memory of errormsg, memorystruct
 	MemoryStruct_s* p_chunk = new MemoryStruct_s();
@@ -1469,22 +1469,22 @@ static bool updateObjectItemHelper(char * accessToken,
 
 
 bool ObjectsManager::updateObjectItemAsync(char * accessToken,
-	std::string templateId, int entitlementId, bool cascade, EntitlementItem objectItem, 
+	std::string templateId, int objectId, bool cascade, ObjectResource objectItem, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return updateObjectItemHelper(accessToken,
-	templateId, entitlementId, cascade, objectItem, 
+	templateId, objectId, cascade, objectItem, 
 	handler, userData, true);
 }
 
 bool ObjectsManager::updateObjectItemSync(char * accessToken,
-	std::string templateId, int entitlementId, bool cascade, EntitlementItem objectItem, 
+	std::string templateId, int objectId, bool cascade, ObjectResource objectItem, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return updateObjectItemHelper(accessToken,
-	templateId, entitlementId, cascade, objectItem, 
+	templateId, objectId, cascade, objectItem, 
 	handler, userData, false);
 }
 

@@ -43,6 +43,9 @@ BreRule::__init()
 	//end_date = long(0);
 	//
 	//
+	//evaluation_count = long(0);
+	//
+	//
 	//event_name = std::string();
 	//
 	//
@@ -50,6 +53,9 @@ BreRule::__init()
 	//
 	//
 	//name = std::string();
+	//
+	//
+	//run_count = long(0);
 	//
 	//
 	//sort = int(0);
@@ -95,6 +101,11 @@ BreRule::__cleanup()
 	//delete end_date;
 	//end_date = NULL;
 	//}
+	//if(evaluation_count != NULL) {
+	//
+	//delete evaluation_count;
+	//evaluation_count = NULL;
+	//}
 	//if(event_name != NULL) {
 	//
 	//delete event_name;
@@ -109,6 +120,11 @@ BreRule::__cleanup()
 	//
 	//delete name;
 	//name = NULL;
+	//}
+	//if(run_count != NULL) {
+	//
+	//delete run_count;
+	//run_count = NULL;
 	//}
 	//if(sort != NULL) {
 	//
@@ -215,6 +231,17 @@ BreRule::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *evaluation_countKey = "evaluation_count";
+	node = json_object_get_member(pJsonObject, evaluation_countKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&evaluation_count, node, "long long", "");
+		} else {
+			
+		}
+	}
 	const gchar *event_nameKey = "event_name";
 	node = json_object_get_member(pJsonObject, event_nameKey);
 	if (node !=NULL) {
@@ -244,6 +271,17 @@ BreRule::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&name, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *run_countKey = "run_count";
+	node = json_object_get_member(pJsonObject, run_countKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&run_count, node, "long long", "");
 		} else {
 			
 		}
@@ -368,6 +406,15 @@ BreRule::toJson()
 	}
 	const gchar *end_dateKey = "end_date";
 	json_object_set_member(pJsonObject, end_dateKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getEvaluationCount();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+	}
+	const gchar *evaluation_countKey = "evaluation_count";
+	json_object_set_member(pJsonObject, evaluation_countKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getEventName();
 		node = converttoJson(&obj, "std::string", "");
@@ -395,6 +442,15 @@ BreRule::toJson()
 	}
 	const gchar *nameKey = "name";
 	json_object_set_member(pJsonObject, nameKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getRunCount();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+	}
+	const gchar *run_countKey = "run_count";
+	json_object_set_member(pJsonObject, run_countKey, node);
 	if (isprimitive("int")) {
 		int obj = getSort();
 		node = converttoJson(&obj, "int", "");
@@ -502,6 +558,18 @@ BreRule::setEndDate(long long  end_date)
 	this->end_date = end_date;
 }
 
+long long
+BreRule::getEvaluationCount()
+{
+	return evaluation_count;
+}
+
+void
+BreRule::setEvaluationCount(long long  evaluation_count)
+{
+	this->evaluation_count = evaluation_count;
+}
+
 std::string
 BreRule::getEventName()
 {
@@ -536,6 +604,18 @@ void
 BreRule::setName(std::string  name)
 {
 	this->name = name;
+}
+
+long long
+BreRule::getRunCount()
+{
+	return run_count;
+}
+
+void
+BreRule::setRunCount(long long  run_count)
+{
+	this->run_count = run_count;
 }
 
 int

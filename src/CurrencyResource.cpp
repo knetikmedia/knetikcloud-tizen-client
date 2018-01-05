@@ -34,6 +34,9 @@ CurrencyResource::__init()
 	//created_date = long(0);
 	//
 	//
+	//default_currency = bool(false);
+	//
+	//
 	//factor = long(0);
 	//
 	//
@@ -67,6 +70,11 @@ CurrencyResource::__cleanup()
 	//
 	//delete created_date;
 	//created_date = NULL;
+	//}
+	//if(default_currency != NULL) {
+	//
+	//delete default_currency;
+	//default_currency = NULL;
 	//}
 	//if(factor != NULL) {
 	//
@@ -130,6 +138,17 @@ CurrencyResource::fromJson(char* jsonStr)
 
 		if (isprimitive("long long")) {
 			jsonToValue(&created_date, node, "long long", "");
+		} else {
+			
+		}
+	}
+	const gchar *default_currencyKey = "default_currency";
+	node = json_object_get_member(pJsonObject, default_currencyKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&default_currency, node, "bool", "");
 		} else {
 			
 		}
@@ -228,6 +247,15 @@ CurrencyResource::toJson()
 	}
 	const gchar *created_dateKey = "created_date";
 	json_object_set_member(pJsonObject, created_dateKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getDefaultCurrency();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *default_currencyKey = "default_currency";
+	json_object_set_member(pJsonObject, default_currencyKey, node);
 	if (isprimitive("long long")) {
 		long long obj = getFactor();
 		node = converttoJson(&obj, "long long", "");
@@ -315,6 +343,18 @@ void
 CurrencyResource::setCreatedDate(long long  created_date)
 {
 	this->created_date = created_date;
+}
+
+bool
+CurrencyResource::getDefaultCurrency()
+{
+	return default_currency;
+}
+
+void
+CurrencyResource::setDefaultCurrency(bool  default_currency)
+{
+	this->default_currency = default_currency;
 }
 
 long long

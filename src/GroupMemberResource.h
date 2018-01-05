@@ -10,6 +10,8 @@
 
 #include <string>
 #include "Property.h"
+#include "SimpleGroupResource.h"
+#include "SimpleUserResource.h"
 #include <list>
 #include <map>
 #include "Object.h"
@@ -55,27 +57,27 @@ public:
 	/*! \brief Set A map of additional properties, keyed on the property name (private). Must match the names and types defined in the template for this type, or be an extra not from the template
 	 */
 	void setAdditionalProperties(std::map <std::string, std::string> additional_properties);
-	/*! \brief Get The url of the user's avatar image
+	/*! \brief Get The group. Id is the unique name
 	 */
-	std::string getAvatarUrl();
+	SimpleGroupResource getGroup();
 
-	/*! \brief Set The url of the user's avatar image
+	/*! \brief Set The group. Id is the unique name
 	 */
-	void setAvatarUrl(std::string  avatar_url);
-	/*! \brief Get The public username of the user
+	void setGroup(SimpleGroupResource  group);
+	/*! \brief Get Whether this membership is explicit (the user was added directly to the group) or implicit (the user was added only to one or more child groups)
 	 */
-	std::string getDisplayName();
+	bool getImplicit();
 
-	/*! \brief Set The public username of the user
+	/*! \brief Set Whether this membership is explicit (the user was added directly to the group) or implicit (the user was added only to one or more child groups)
 	 */
-	void setDisplayName(std::string  display_name);
-	/*! \brief Get The id of the user
+	void setImplicit(bool  implicit);
+	/*! \brief Get The id of the membership entry
 	 */
-	int getId();
+	long long getMembershipId();
 
-	/*! \brief Set The id of the user
+	/*! \brief Set The id of the membership entry
 	 */
-	void setId(int  id);
+	void setMembershipId(long long  membership_id);
 	/*! \brief Get The position of the member in the group if applicable. Read notes for details
 	 */
 	std::string getOrder();
@@ -97,23 +99,23 @@ public:
 	/*! \brief Set A template this member additional properties are validated against (private). May be null and no validation of properties will be done
 	 */
 	void setTemplate(std::string  _template);
-	/*! \brief Get The username of the user
+	/*! \brief Get The user
 	 */
-	std::string getUsername();
+	SimpleUserResource getUser();
 
-	/*! \brief Set The username of the user
+	/*! \brief Set The user
 	 */
-	void setUsername(std::string  username);
+	void setUser(SimpleUserResource  user);
 
 private:
 	std::map <std::string, std::string>additional_properties;
-	std::string avatar_url;
-	std::string display_name;
-	int id;
+	SimpleGroupResource group;
+	bool implicit;
+	long long membership_id;
 	std::string order;
 	std::string status;
 	std::string _template;
-	std::string username;
+	SimpleUserResource user;
 	void __init();
 	void __cleanup();
 

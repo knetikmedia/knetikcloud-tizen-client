@@ -52,10 +52,7 @@ CacheClearEvent::__init()
 	//type = std::string();
 	//
 	//
-	//customer_setup = bool(false);
-	//
-	//
-	//customer_teardown = bool(false);
+	//teardown = bool(false);
 	//
 }
 
@@ -107,15 +104,10 @@ CacheClearEvent::__cleanup()
 	//delete type;
 	//type = NULL;
 	//}
-	//if(customer_setup != NULL) {
+	//if(teardown != NULL) {
 	//
-	//delete customer_setup;
-	//customer_setup = NULL;
-	//}
-	//if(customer_teardown != NULL) {
-	//
-	//delete customer_teardown;
-	//customer_teardown = NULL;
+	//delete teardown;
+	//teardown = NULL;
 	//}
 	//
 }
@@ -227,24 +219,13 @@ CacheClearEvent::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *customer_setupKey = "customer_setup";
-	node = json_object_get_member(pJsonObject, customer_setupKey);
+	const gchar *teardownKey = "teardown";
+	node = json_object_get_member(pJsonObject, teardownKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("bool")) {
-			jsonToValue(&customer_setup, node, "bool", "");
-		} else {
-			
-		}
-	}
-	const gchar *customer_teardownKey = "customer_teardown";
-	node = json_object_get_member(pJsonObject, customer_teardownKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("bool")) {
-			jsonToValue(&customer_teardown, node, "bool", "");
+			jsonToValue(&teardown, node, "bool", "");
 		} else {
 			
 		}
@@ -348,23 +329,14 @@ CacheClearEvent::toJson()
 	const gchar *typeKey = "type";
 	json_object_set_member(pJsonObject, typeKey, node);
 	if (isprimitive("bool")) {
-		bool obj = getCustomerSetup();
+		bool obj = getTeardown();
 		node = converttoJson(&obj, "bool", "");
 	}
 	else {
 		
 	}
-	const gchar *customer_setupKey = "customer_setup";
-	json_object_set_member(pJsonObject, customer_setupKey, node);
-	if (isprimitive("bool")) {
-		bool obj = getCustomerTeardown();
-		node = converttoJson(&obj, "bool", "");
-	}
-	else {
-		
-	}
-	const gchar *customer_teardownKey = "customer_teardown";
-	json_object_set_member(pJsonObject, customer_teardownKey, node);
+	const gchar *teardownKey = "teardown";
+	json_object_set_member(pJsonObject, teardownKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -482,27 +454,15 @@ CacheClearEvent::setType(std::string  type)
 }
 
 bool
-CacheClearEvent::getCustomerSetup()
+CacheClearEvent::getTeardown()
 {
-	return customer_setup;
+	return teardown;
 }
 
 void
-CacheClearEvent::setCustomerSetup(bool  customer_setup)
+CacheClearEvent::setTeardown(bool  teardown)
 {
-	this->customer_setup = customer_setup;
-}
-
-bool
-CacheClearEvent::getCustomerTeardown()
-{
-	return customer_teardown;
-}
-
-void
-CacheClearEvent::setCustomerTeardown(bool  customer_teardown)
-{
-	this->customer_teardown = customer_teardown;
+	this->teardown = teardown;
 }
 
 

@@ -403,7 +403,7 @@ static bool getCurrenciesProcessor(MemoryStruct_s p_chunk, long code, char* erro
 }
 
 static bool getCurrenciesHelper(char * accessToken,
-	bool filterEnabledCurrencies, std::string filterType, int size, int page, std::string order, 
+	bool filterDefault, bool filterEnabledCurrencies, std::string filterType, int size, int page, std::string order, 
 	void(* handler)(PageResource«CurrencyResource», Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -420,6 +420,13 @@ static bool getCurrenciesHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&filterDefault, "bool");
+	queryParams.insert(pair<string, string>("filter_default", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("filter_default");
+	}
+
 
 	itemAtq = stringify(&filterEnabledCurrencies, "bool");
 	queryParams.insert(pair<string, string>("filter_enabled_currencies", itemAtq));
@@ -509,22 +516,22 @@ static bool getCurrenciesHelper(char * accessToken,
 
 
 bool CurrenciesManager::getCurrenciesAsync(char * accessToken,
-	bool filterEnabledCurrencies, std::string filterType, int size, int page, std::string order, 
+	bool filterDefault, bool filterEnabledCurrencies, std::string filterType, int size, int page, std::string order, 
 	void(* handler)(PageResource«CurrencyResource», Error, void* )
 	, void* userData)
 {
 	return getCurrenciesHelper(accessToken,
-	filterEnabledCurrencies, filterType, size, page, order, 
+	filterDefault, filterEnabledCurrencies, filterType, size, page, order, 
 	handler, userData, true);
 }
 
 bool CurrenciesManager::getCurrenciesSync(char * accessToken,
-	bool filterEnabledCurrencies, std::string filterType, int size, int page, std::string order, 
+	bool filterDefault, bool filterEnabledCurrencies, std::string filterType, int size, int page, std::string order, 
 	void(* handler)(PageResource«CurrencyResource», Error, void* )
 	, void* userData)
 {
 	return getCurrenciesHelper(accessToken,
-	filterEnabledCurrencies, filterType, size, page, order, 
+	filterDefault, filterEnabledCurrencies, filterType, size, page, order, 
 	handler, userData, false);
 }
 

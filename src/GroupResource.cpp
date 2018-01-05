@@ -48,6 +48,9 @@ GroupResource::__init()
 	//
 	//sub_member_count = int(0);
 	//
+	//new std::list()std::list> tags;
+	//
+	//
 	//
 	//_template = std::string();
 	//
@@ -98,6 +101,11 @@ GroupResource::__cleanup()
 	//
 	//delete sub_member_count;
 	//sub_member_count = NULL;
+	//}
+	//if(tags != NULL) {
+	//tags.RemoveAll(true);
+	//delete tags;
+	//tags = NULL;
 	//}
 	//if(_template != NULL) {
 	//
@@ -205,6 +213,28 @@ GroupResource::fromJson(char* jsonStr)
 		} else {
 			
 		}
+	}
+	const gchar *tagsKey = "tags";
+	node = json_object_get_member(pJsonObject, tagsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<std::string> new_list;
+			std::string inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("std::string")) {
+					jsonToValue(&inst, temp_json, "std::string", "");
+				} else {
+					
+				}
+				new_list.push_back(inst);
+			}
+			tags = new_list;
+		}
+		
 	}
 	const gchar *_templateKey = "template";
 	node = json_object_get_member(pJsonObject, _templateKey);
@@ -322,6 +352,21 @@ GroupResource::toJson()
 	}
 	const gchar *sub_member_countKey = "sub_member_count";
 	json_object_set_member(pJsonObject, sub_member_countKey, node);
+	if (isprimitive("std::string")) {
+		list<std::string> new_list = static_cast<list <std::string> > (getTags());
+		node = converttoJson(&new_list, "std::string", "array");
+	} else {
+		node = json_node_alloc();
+		list<std::string> new_list = static_cast<list <std::string> > (getTags());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+	}
+
+
+	
+	const gchar *tagsKey = "tags";
+	json_object_set_member(pJsonObject, tagsKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getTemplate();
 		node = converttoJson(&obj, "std::string", "");
@@ -442,6 +487,18 @@ void
 GroupResource::setSubMemberCount(int  sub_member_count)
 {
 	this->sub_member_count = sub_member_count;
+}
+
+std::list<std::string>
+GroupResource::getTags()
+{
+	return tags;
+}
+
+void
+GroupResource::setTags(std::list <std::string> tags)
+{
+	this->tags = tags;
 }
 
 std::string

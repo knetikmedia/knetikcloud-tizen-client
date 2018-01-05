@@ -90,6 +90,13 @@ public:
 	/*! \brief Set The date the rule ceases to take effect, or null if never. Unix timestamp in seconds
 	 */
 	void setEndDate(long long  end_date);
+	/*! \brief Get How many times the rule has been evaluated (it's conditions checked, whether it then runs or not)
+	 */
+	long long getEvaluationCount();
+
+	/*! \brief Set How many times the rule has been evaluated (it's conditions checked, whether it then runs or not)
+	 */
+	void setEvaluationCount(long long  evaluation_count);
 	/*! \brief Get The event name of the trigger this rule runs for. Affects which parameters are available
 	 */
 	std::string getEventName();
@@ -111,6 +118,13 @@ public:
 	/*! \brief Set The human readable name of the rule
 	 */
 	void setName(std::string  name);
+	/*! \brief Get How many times the rule has run
+	 */
+	long long getRunCount();
+
+	/*! \brief Set How many times the rule has run
+	 */
+	void setRunCount(long long  run_count);
 	/*! \brief Get Used to sort rules to control the order they run in. Larger numbered sort values run first.  Default 500
 	 */
 	int getSort();
@@ -140,9 +154,11 @@ private:
 	std::string description;
 	bool enabled;
 	long long end_date;
+	long long evaluation_count;
 	std::string event_name;
 	std::string id;
 	std::string name;
+	long long run_count;
 	int sort;
 	long long start_date;
 	bool system_rule;

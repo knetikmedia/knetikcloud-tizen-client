@@ -5,7 +5,6 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
-#include "EntitlementItem.h"
 #include "ItemTemplateResource.h"
 #include "ObjectResource.h"
 #include "PageResource«ItemTemplateResource».h"
@@ -269,7 +268,7 @@ bool getObjectTemplatesAsync(char * accessToken,
  *
  * 
  * \param templateId The id of the template this object is part of *Required*
- * \param entitlementId The id of the entitlement *Required*
+ * \param objectId The id of the object *Required*
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param objectItem The object item object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -277,7 +276,7 @@ bool getObjectTemplatesAsync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool updateObjectItemSync(char * accessToken,
-	std::string templateId, int entitlementId, bool cascade, EntitlementItem objectItem, 
+	std::string templateId, int objectId, bool cascade, ObjectResource objectItem, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 
@@ -285,7 +284,7 @@ bool updateObjectItemSync(char * accessToken,
  *
  * 
  * \param templateId The id of the template this object is part of *Required*
- * \param entitlementId The id of the entitlement *Required*
+ * \param objectId The id of the object *Required*
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param objectItem The object item object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -293,7 +292,7 @@ bool updateObjectItemSync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool updateObjectItemAsync(char * accessToken,
-	std::string templateId, int entitlementId, bool cascade, EntitlementItem objectItem, 
+	std::string templateId, int objectId, bool cascade, ObjectResource objectItem, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 

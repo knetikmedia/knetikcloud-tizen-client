@@ -28,13 +28,13 @@ GroupMemberResource::__init()
 	//
 	//
 	//
-	//avatar_url = std::string();
+	//group = new SimpleGroupResource();
 	//
 	//
-	//display_name = std::string();
+	//implicit = bool(false);
 	//
 	//
-	//id = int(0);
+	//membership_id = long(0);
 	//
 	//
 	//order = std::string();
@@ -46,7 +46,7 @@ GroupMemberResource::__init()
 	//_template = std::string();
 	//
 	//
-	//username = std::string();
+	//user = new SimpleUserResource();
 	//
 }
 
@@ -58,20 +58,20 @@ GroupMemberResource::__cleanup()
 	//delete additional_properties;
 	//additional_properties = NULL;
 	//}
-	//if(avatar_url != NULL) {
+	//if(group != NULL) {
 	//
-	//delete avatar_url;
-	//avatar_url = NULL;
+	//delete group;
+	//group = NULL;
 	//}
-	//if(display_name != NULL) {
+	//if(implicit != NULL) {
 	//
-	//delete display_name;
-	//display_name = NULL;
+	//delete implicit;
+	//implicit = NULL;
 	//}
-	//if(id != NULL) {
+	//if(membership_id != NULL) {
 	//
-	//delete id;
-	//id = NULL;
+	//delete membership_id;
+	//membership_id = NULL;
 	//}
 	//if(order != NULL) {
 	//
@@ -88,10 +88,10 @@ GroupMemberResource::__cleanup()
 	//delete _template;
 	//_template = NULL;
 	//}
-	//if(username != NULL) {
+	//if(user != NULL) {
 	//
-	//delete username;
-	//username = NULL;
+	//delete user;
+	//user = NULL;
 	//}
 	//
 }
@@ -113,35 +113,38 @@ GroupMemberResource::fromJson(char* jsonStr)
 		}
 		
 	}
-	const gchar *avatar_urlKey = "avatar_url";
-	node = json_object_get_member(pJsonObject, avatar_urlKey);
+	const gchar *groupKey = "group";
+	node = json_object_get_member(pJsonObject, groupKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&avatar_url, node, "std::string", "");
+		if (isprimitive("SimpleGroupResource")) {
+			jsonToValue(&group, node, "SimpleGroupResource", "SimpleGroupResource");
+		} else {
+			
+			SimpleGroupResource* obj = static_cast<SimpleGroupResource*> (&group);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *implicitKey = "implicit";
+	node = json_object_get_member(pJsonObject, implicitKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&implicit, node, "bool", "");
 		} else {
 			
 		}
 	}
-	const gchar *display_nameKey = "display_name";
-	node = json_object_get_member(pJsonObject, display_nameKey);
+	const gchar *membership_idKey = "membership_id";
+	node = json_object_get_member(pJsonObject, membership_idKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&display_name, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *idKey = "id";
-	node = json_object_get_member(pJsonObject, idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&id, node, "int", "");
+		if (isprimitive("long long")) {
+			jsonToValue(&membership_id, node, "long long", "");
 		} else {
 			
 		}
@@ -179,14 +182,17 @@ GroupMemberResource::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *usernameKey = "username";
-	node = json_object_get_member(pJsonObject, usernameKey);
+	const gchar *userKey = "user";
+	node = json_object_get_member(pJsonObject, userKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&username, node, "std::string", "");
+		if (isprimitive("SimpleUserResource")) {
+			jsonToValue(&user, node, "SimpleUserResource", "SimpleUserResource");
 		} else {
+			
+			SimpleUserResource* obj = static_cast<SimpleUserResource*> (&user);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -221,33 +227,38 @@ GroupMemberResource::toJson()
 
 	const gchar *additional_propertiesKey = "additional_properties";
 	json_object_set_member(pJsonObject, additional_propertiesKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getAvatarUrl();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("SimpleGroupResource")) {
+		SimpleGroupResource obj = getGroup();
+		node = converttoJson(&obj, "SimpleGroupResource", "");
+	}
+	else {
+		
+		SimpleGroupResource obj = static_cast<SimpleGroupResource> (getGroup());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *groupKey = "group";
+	json_object_set_member(pJsonObject, groupKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getImplicit();
+		node = converttoJson(&obj, "bool", "");
 	}
 	else {
 		
 	}
-	const gchar *avatar_urlKey = "avatar_url";
-	json_object_set_member(pJsonObject, avatar_urlKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getDisplayName();
-		node = converttoJson(&obj, "std::string", "");
+	const gchar *implicitKey = "implicit";
+	json_object_set_member(pJsonObject, implicitKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getMembershipId();
+		node = converttoJson(&obj, "long long", "");
 	}
 	else {
 		
 	}
-	const gchar *display_nameKey = "display_name";
-	json_object_set_member(pJsonObject, display_nameKey, node);
-	if (isprimitive("int")) {
-		int obj = getId();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *idKey = "id";
-	json_object_set_member(pJsonObject, idKey, node);
+	const gchar *membership_idKey = "membership_id";
+	json_object_set_member(pJsonObject, membership_idKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getOrder();
 		node = converttoJson(&obj, "std::string", "");
@@ -275,15 +286,20 @@ GroupMemberResource::toJson()
 	}
 	const gchar *_templateKey = "template";
 	json_object_set_member(pJsonObject, _templateKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getUsername();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("SimpleUserResource")) {
+		SimpleUserResource obj = getUser();
+		node = converttoJson(&obj, "SimpleUserResource", "");
 	}
 	else {
 		
+		SimpleUserResource obj = static_cast<SimpleUserResource> (getUser());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
 	}
-	const gchar *usernameKey = "username";
-	json_object_set_member(pJsonObject, usernameKey, node);
+	const gchar *userKey = "user";
+	json_object_set_member(pJsonObject, userKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -304,40 +320,40 @@ GroupMemberResource::setAdditionalProperties(std::map <string, string> additiona
 	this->additional_properties = additional_properties;
 }
 
-std::string
-GroupMemberResource::getAvatarUrl()
+SimpleGroupResource
+GroupMemberResource::getGroup()
 {
-	return avatar_url;
+	return group;
 }
 
 void
-GroupMemberResource::setAvatarUrl(std::string  avatar_url)
+GroupMemberResource::setGroup(SimpleGroupResource  group)
 {
-	this->avatar_url = avatar_url;
+	this->group = group;
 }
 
-std::string
-GroupMemberResource::getDisplayName()
+bool
+GroupMemberResource::getImplicit()
 {
-	return display_name;
-}
-
-void
-GroupMemberResource::setDisplayName(std::string  display_name)
-{
-	this->display_name = display_name;
-}
-
-int
-GroupMemberResource::getId()
-{
-	return id;
+	return implicit;
 }
 
 void
-GroupMemberResource::setId(int  id)
+GroupMemberResource::setImplicit(bool  implicit)
 {
-	this->id = id;
+	this->implicit = implicit;
+}
+
+long long
+GroupMemberResource::getMembershipId()
+{
+	return membership_id;
+}
+
+void
+GroupMemberResource::setMembershipId(long long  membership_id)
+{
+	this->membership_id = membership_id;
 }
 
 std::string
@@ -376,16 +392,16 @@ GroupMemberResource::setTemplate(std::string  _template)
 	this->_template = _template;
 }
 
-std::string
-GroupMemberResource::getUsername()
+SimpleUserResource
+GroupMemberResource::getUser()
 {
-	return username;
+	return user;
 }
 
 void
-GroupMemberResource::setUsername(std::string  username)
+GroupMemberResource::setUser(SimpleUserResource  user)
 {
-	this->username = username;
+	this->user = user;
 }
 
 

@@ -171,9 +171,9 @@ bool createGroupTemplateAsync(char * accessToken,
 	, void* userData);
 
 
-/*! \brief Removes a group from the system IF no resources are attached to it. *Synchronous*
+/*! \brief Removes a group from the system. *Synchronous*
  *
- * 
+ * All groups listing this as the parent are also removed and users are in turn removed from this and those groups. This may result in users no longer being in this group's parent if they were not added to it directly as well.
  * \param uniqueName The group unique name *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -184,9 +184,9 @@ bool deleteGroupSync(char * accessToken,
 	
 	void(* handler)(Error, void* ) , void* userData);
 
-/*! \brief Removes a group from the system IF no resources are attached to it. *Asynchronous*
+/*! \brief Removes a group from the system. *Asynchronous*
  *
- * 
+ * All groups listing this as the parent are also removed and users are in turn removed from this and those groups. This may result in users no longer being in this group's parent if they were not added to it directly as well.
  * \param uniqueName The group unique name *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -280,6 +280,33 @@ bool getGroupSync(char * accessToken,
 bool getGroupAsync(char * accessToken,
 	std::string uniqueName, 
 	void(* handler)(GroupResource, Error, void* )
+	, void* userData);
+
+
+/*! \brief Get group ancestors. *Synchronous*
+ *
+ * Returns a list of ancestor groups in reverse order (parent, then grandparent, etc
+ * \param uniqueName The group unique name *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool getGroupAncestorsSync(char * accessToken,
+	std::string uniqueName, 
+	void(* handler)(std::list<GroupResource>, Error, void* )
+	, void* userData);
+
+/*! \brief Get group ancestors. *Asynchronous*
+ *
+ * Returns a list of ancestor groups in reverse order (parent, then grandparent, etc
+ * \param uniqueName The group unique name *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool getGroupAncestorsAsync(char * accessToken,
+	std::string uniqueName, 
+	void(* handler)(std::list<GroupResource>, Error, void* )
 	, void* userData);
 
 
@@ -564,7 +591,7 @@ bool removeGroupMemberAsync(char * accessToken,
 
 /*! \brief Update a group. *Synchronous*
  *
- * 
+ * If adding/removing/changing parent, user membership in group/new parent groups may be modified. The parent being removed will remove members from this sub group unless they were added explicitly to the parent and the new parent will gain members unless they were already a part of it.
  * \param uniqueName The group unique name *Required*
  * \param groupResource The updated group
  * \param handler The callback function to be invoked on completion. *Required*
@@ -578,7 +605,7 @@ bool updateGroupSync(char * accessToken,
 
 /*! \brief Update a group. *Asynchronous*
  *
- * 
+ * If adding/removing/changing parent, user membership in group/new parent groups may be modified. The parent being removed will remove members from this sub group unless they were added explicitly to the parent and the new parent will gain members unless they were already a part of it.
  * \param uniqueName The group unique name *Required*
  * \param groupResource The updated group
  * \param handler The callback function to be invoked on completion. *Required*

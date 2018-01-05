@@ -47,6 +47,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get The description of the property
+	 */
+	std::string getDescription();
+
+	/*! \brief Set The description of the property
+	 */
+	void setDescription(std::string  description);
 	/*! \brief Get A list of the fields on both the property definition and property of this type
 	 */
 	PropertyFieldListResource getFieldList();
@@ -54,6 +61,13 @@ public:
 	/*! \brief Set A list of the fields on both the property definition and property of this type
 	 */
 	void setFieldList(PropertyFieldListResource  field_list);
+	/*! \brief Get The friendly front-facing name of the property
+	 */
+	std::string getFriendlyName();
+
+	/*! \brief Set The friendly front-facing name of the property
+	 */
+	void setFriendlyName(std::string  friendly_name);
 	/*! \brief Get The name of the property
 	 */
 	std::string getName();
@@ -61,6 +75,27 @@ public:
 	/*! \brief Set The name of the property
 	 */
 	void setName(std::string  name);
+	/*! \brief Get The JSON path to the option label
+	 */
+	std::string getOptionLabelPath();
+
+	/*! \brief Set The JSON path to the option label
+	 */
+	void setOptionLabelPath(std::string  option_label_path);
+	/*! \brief Get The JSON path to the option value
+	 */
+	std::string getOptionValuePath();
+
+	/*! \brief Set The JSON path to the option value
+	 */
+	void setOptionValuePath(std::string  option_value_path);
+	/*! \brief Get URL of service containing the property options (assumed JSON array)
+	 */
+	std::string getOptionsUrl();
+
+	/*! \brief Set URL of service containing the property options (assumed JSON array)
+	 */
+	void setOptionsUrl(std::string  options_url);
 	/*! \brief Get Whether the property is required
 	 */
 	bool getRequired();
@@ -119,8 +154,13 @@ public:
 	void setMinLength(int  min_length);
 
 private:
+	std::string description;
 	PropertyFieldListResource field_list;
+	std::string friendly_name;
 	std::string name;
+	std::string option_label_path;
+	std::string option_value_path;
+	std::string options_url;
 	bool required;
 	std::string type;
 	std::string file_type;

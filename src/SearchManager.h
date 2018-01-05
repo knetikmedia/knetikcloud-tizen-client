@@ -25,7 +25,7 @@ public:
 	SearchManager();
 	virtual ~SearchManager();
 
-/*! \brief Search an index. *Synchronous*
+/*! \brief Search an index with no template. *Synchronous*
  *
  * The body is an ElasticSearch query in JSON format. Please see their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html'>documentation</a> for details on the format and search options. The searchable object's format depends on on the type but mostly matches the resource from it's main endpoint. Exceptions include referenced objects (like user) being replaced with the full user resource to allow deeper searching.
  * \param type The index type *Required*
@@ -41,7 +41,7 @@ bool searchIndexSync(char * accessToken,
 	void(* handler)(PageResource«Map«string,object»», Error, void* )
 	, void* userData);
 
-/*! \brief Search an index. *Asynchronous*
+/*! \brief Search an index with no template. *Asynchronous*
  *
  * The body is an ElasticSearch query in JSON format. Please see their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html'>documentation</a> for details on the format and search options. The searchable object's format depends on on the type but mostly matches the resource from it's main endpoint. Exceptions include referenced objects (like user) being replaced with the full user resource to allow deeper searching.
  * \param type The index type *Required*
@@ -54,6 +54,41 @@ bool searchIndexSync(char * accessToken,
  */
 bool searchIndexAsync(char * accessToken,
 	std::string type, std::string query, int size, int page, 
+	void(* handler)(PageResource«Map«string,object»», Error, void* )
+	, void* userData);
+
+
+/*! \brief Search an index with a template. *Synchronous*
+ *
+ * The body is an ElasticSearch query in JSON format. Please see their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html'>documentation</a> for details on the format and search options. The searchable object's format depends on on the type but mostly matches the resource from it's main endpoint. Exceptions include referenced objects (like user) being replaced with the full user resource to allow deeper searching.
+ * \param type The index type *Required*
+ * \param _template The index template *Required*
+ * \param query The query to be used for the search
+ * \param size The number of documents returned per page
+ * \param page The number of the page returned, starting with 1
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool searchIndexWithTemplateSync(char * accessToken,
+	std::string type, std::string _template, std::string query, int size, int page, 
+	void(* handler)(PageResource«Map«string,object»», Error, void* )
+	, void* userData);
+
+/*! \brief Search an index with a template. *Asynchronous*
+ *
+ * The body is an ElasticSearch query in JSON format. Please see their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html'>documentation</a> for details on the format and search options. The searchable object's format depends on on the type but mostly matches the resource from it's main endpoint. Exceptions include referenced objects (like user) being replaced with the full user resource to allow deeper searching.
+ * \param type The index type *Required*
+ * \param _template The index template *Required*
+ * \param query The query to be used for the search
+ * \param size The number of documents returned per page
+ * \param page The number of the page returned, starting with 1
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool searchIndexWithTemplateAsync(char * accessToken,
+	std::string type, std::string _template, std::string query, int size, int page, 
 	void(* handler)(PageResource«Map«string,object»», Error, void* )
 	, void* userData);
 

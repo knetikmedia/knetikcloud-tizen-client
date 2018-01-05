@@ -104,6 +104,13 @@ public:
 	/*! \brief Set The number of users in child groups
 	 */
 	void setSubMemberCount(int  sub_member_count);
+	/*! \brief Get Tags for search
+	 */
+	std::list<std::string> getTags();
+
+	/*! \brief Set Tags for search
+	 */
+	void setTags(std::list <std::string> tags);
 	/*! \brief Get A group template this group is validated against. May be null and no validation of additional_properties will be done
 	 */
 	std::string getTemplate();
@@ -111,11 +118,11 @@ public:
 	/*! \brief Set A group template this group is validated against. May be null and no validation of additional_properties will be done
 	 */
 	void setTemplate(std::string  _template);
-	/*! \brief Get Unique name used in url and references. Uppercase, lowercase, numbers and hyphens only. Max 50 characters. Cannot be altered once created
+	/*! \brief Get Unique name used in url and references. Uppercase, lowercase, numbers and hyphens only. Max 50 characters. Cannot be altered once created. Default: random UUID
 	 */
 	std::string getUniqueName();
 
-	/*! \brief Set Unique name used in url and references. Uppercase, lowercase, numbers and hyphens only. Max 50 characters. Cannot be altered once created
+	/*! \brief Set Unique name used in url and references. Uppercase, lowercase, numbers and hyphens only. Max 50 characters. Cannot be altered once created. Default: random UUID
 	 */
 	void setUniqueName(std::string  unique_name);
 
@@ -128,6 +135,7 @@ private:
 	std::string parent;
 	std::string status;
 	int sub_member_count;
+	std::list <std::string>tags;
 	std::string _template;
 	std::string unique_name;
 	void __init();

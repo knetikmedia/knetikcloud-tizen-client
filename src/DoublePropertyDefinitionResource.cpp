@@ -25,10 +25,25 @@ DoublePropertyDefinitionResource::__init()
 {
 	//
 	//
+	//description = std::string();
+	//
+	//
 	//field_list = new PropertyFieldListResource();
 	//
 	//
+	//friendly_name = std::string();
+	//
+	//
 	//name = std::string();
+	//
+	//
+	//option_label_path = std::string();
+	//
+	//
+	//option_value_path = std::string();
+	//
+	//
+	//options_url = std::string();
 	//
 	//
 	//required = bool(false);
@@ -47,15 +62,40 @@ DoublePropertyDefinitionResource::__init()
 void
 DoublePropertyDefinitionResource::__cleanup()
 {
+	//if(description != NULL) {
+	//
+	//delete description;
+	//description = NULL;
+	//}
 	//if(field_list != NULL) {
 	//
 	//delete field_list;
 	//field_list = NULL;
 	//}
+	//if(friendly_name != NULL) {
+	//
+	//delete friendly_name;
+	//friendly_name = NULL;
+	//}
 	//if(name != NULL) {
 	//
 	//delete name;
 	//name = NULL;
+	//}
+	//if(option_label_path != NULL) {
+	//
+	//delete option_label_path;
+	//option_label_path = NULL;
+	//}
+	//if(option_value_path != NULL) {
+	//
+	//delete option_value_path;
+	//option_value_path = NULL;
+	//}
+	//if(options_url != NULL) {
+	//
+	//delete options_url;
+	//options_url = NULL;
 	//}
 	//if(required != NULL) {
 	//
@@ -85,6 +125,17 @@ DoublePropertyDefinitionResource::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *descriptionKey = "description";
+	node = json_object_get_member(pJsonObject, descriptionKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&description, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *field_listKey = "field_list";
 	node = json_object_get_member(pJsonObject, field_listKey);
 	if (node !=NULL) {
@@ -99,6 +150,17 @@ DoublePropertyDefinitionResource::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *friendly_nameKey = "friendly_name";
+	node = json_object_get_member(pJsonObject, friendly_nameKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&friendly_name, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *nameKey = "name";
 	node = json_object_get_member(pJsonObject, nameKey);
 	if (node !=NULL) {
@@ -106,6 +168,39 @@ DoublePropertyDefinitionResource::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&name, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *option_label_pathKey = "option_label_path";
+	node = json_object_get_member(pJsonObject, option_label_pathKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&option_label_path, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *option_value_pathKey = "option_value_path";
+	node = json_object_get_member(pJsonObject, option_value_pathKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&option_value_path, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *options_urlKey = "options_url";
+	node = json_object_get_member(pJsonObject, options_urlKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&options_url, node, "std::string", "");
 		} else {
 			
 		}
@@ -166,6 +261,15 @@ DoublePropertyDefinitionResource::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("std::string")) {
+		std::string obj = getDescription();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *descriptionKey = "description";
+	json_object_set_member(pJsonObject, descriptionKey, node);
 	if (isprimitive("PropertyFieldListResource")) {
 		PropertyFieldListResource obj = getFieldList();
 		node = converttoJson(&obj, "PropertyFieldListResource", "");
@@ -181,6 +285,15 @@ DoublePropertyDefinitionResource::toJson()
 	const gchar *field_listKey = "field_list";
 	json_object_set_member(pJsonObject, field_listKey, node);
 	if (isprimitive("std::string")) {
+		std::string obj = getFriendlyName();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *friendly_nameKey = "friendly_name";
+	json_object_set_member(pJsonObject, friendly_nameKey, node);
+	if (isprimitive("std::string")) {
 		std::string obj = getName();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -189,6 +302,33 @@ DoublePropertyDefinitionResource::toJson()
 	}
 	const gchar *nameKey = "name";
 	json_object_set_member(pJsonObject, nameKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getOptionLabelPath();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *option_label_pathKey = "option_label_path";
+	json_object_set_member(pJsonObject, option_label_pathKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getOptionValuePath();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *option_value_pathKey = "option_value_path";
+	json_object_set_member(pJsonObject, option_value_pathKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getOptionsUrl();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *options_urlKey = "options_url";
+	json_object_set_member(pJsonObject, options_urlKey, node);
 	if (isprimitive("bool")) {
 		bool obj = getRequired();
 		node = converttoJson(&obj, "bool", "");
@@ -233,6 +373,18 @@ DoublePropertyDefinitionResource::toJson()
 	return ret;
 }
 
+std::string
+DoublePropertyDefinitionResource::getDescription()
+{
+	return description;
+}
+
+void
+DoublePropertyDefinitionResource::setDescription(std::string  description)
+{
+	this->description = description;
+}
+
 PropertyFieldListResource
 DoublePropertyDefinitionResource::getFieldList()
 {
@@ -246,6 +398,18 @@ DoublePropertyDefinitionResource::setFieldList(PropertyFieldListResource  field_
 }
 
 std::string
+DoublePropertyDefinitionResource::getFriendlyName()
+{
+	return friendly_name;
+}
+
+void
+DoublePropertyDefinitionResource::setFriendlyName(std::string  friendly_name)
+{
+	this->friendly_name = friendly_name;
+}
+
+std::string
 DoublePropertyDefinitionResource::getName()
 {
 	return name;
@@ -255,6 +419,42 @@ void
 DoublePropertyDefinitionResource::setName(std::string  name)
 {
 	this->name = name;
+}
+
+std::string
+DoublePropertyDefinitionResource::getOptionLabelPath()
+{
+	return option_label_path;
+}
+
+void
+DoublePropertyDefinitionResource::setOptionLabelPath(std::string  option_label_path)
+{
+	this->option_label_path = option_label_path;
+}
+
+std::string
+DoublePropertyDefinitionResource::getOptionValuePath()
+{
+	return option_value_path;
+}
+
+void
+DoublePropertyDefinitionResource::setOptionValuePath(std::string  option_value_path)
+{
+	this->option_value_path = option_value_path;
+}
+
+std::string
+DoublePropertyDefinitionResource::getOptionsUrl()
+{
+	return options_url;
+}
+
+void
+DoublePropertyDefinitionResource::setOptionsUrl(std::string  options_url)
+{
+	this->options_url = options_url;
 }
 
 bool

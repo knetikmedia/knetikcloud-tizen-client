@@ -83,6 +83,7 @@ bool deleteCurrencyAsync(char * accessToken,
 /*! \brief List and search currencies. *Synchronous*
  *
  * 
+ * \param filterDefault Filter for the one currency that is set as default (true), or all that are not (false)
  * \param filterEnabledCurrencies Filter for alternate currencies setup explicitely in system config
  * \param filterType Filter currencies by type.  Allowable values: ('virtual', 'real')
  * \param size The number of objects returned per page
@@ -93,13 +94,14 @@ bool deleteCurrencyAsync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool getCurrenciesSync(char * accessToken,
-	bool filterEnabledCurrencies, std::string filterType, int size, int page, std::string order, 
+	bool filterDefault, bool filterEnabledCurrencies, std::string filterType, int size, int page, std::string order, 
 	void(* handler)(PageResource«CurrencyResource», Error, void* )
 	, void* userData);
 
 /*! \brief List and search currencies. *Asynchronous*
  *
  * 
+ * \param filterDefault Filter for the one currency that is set as default (true), or all that are not (false)
  * \param filterEnabledCurrencies Filter for alternate currencies setup explicitely in system config
  * \param filterType Filter currencies by type.  Allowable values: ('virtual', 'real')
  * \param size The number of objects returned per page
@@ -110,7 +112,7 @@ bool getCurrenciesSync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool getCurrenciesAsync(char * accessToken,
-	bool filterEnabledCurrencies, std::string filterType, int size, int page, std::string order, 
+	bool filterDefault, bool filterEnabledCurrencies, std::string filterType, int size, int page, std::string order, 
 	void(* handler)(PageResource«CurrencyResource», Error, void* )
 	, void* userData);
 

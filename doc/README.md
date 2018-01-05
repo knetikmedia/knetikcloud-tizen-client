@@ -1022,8 +1022,10 @@ Method | HTTP request | Description
 ### SearchManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-*searchIndexSync* | *POST* /search/index/{type} | Search an index.
-*searchIndexASync* | *POST* /search/index/{type} | Search an index.
+*searchIndexSync* | *POST* /search/index/{type} | Search an index with no template.
+*searchIndexASync* | *POST* /search/index/{type} | Search an index with no template.
+*searchIndexWithTemplateSync* | *POST* /search/index/{type}/{template} | Search an index with a template.
+*searchIndexWithTemplateASync* | *POST* /search/index/{type}/{template} | Search an index with a template.
 
 ### SocialFacebookManager
 Method | HTTP request | Description
@@ -1340,14 +1342,16 @@ Method | HTTP request | Description
 *createGroupMemberTemplateASync* | *POST* /users/groups/members/templates | Create an group member template.
 *createGroupTemplateSync* | *POST* /users/groups/templates | Create a group template.
 *createGroupTemplateASync* | *POST* /users/groups/templates | Create a group template.
-*deleteGroupSync* | *DELETE* /users/groups/{unique_name} | Removes a group from the system IF no resources are attached to it.
-*deleteGroupASync* | *DELETE* /users/groups/{unique_name} | Removes a group from the system IF no resources are attached to it.
+*deleteGroupSync* | *DELETE* /users/groups/{unique_name} | Removes a group from the system.
+*deleteGroupASync* | *DELETE* /users/groups/{unique_name} | Removes a group from the system.
 *deleteGroupMemberTemplateSync* | *DELETE* /users/groups/members/templates/{id} | Delete an group member template.
 *deleteGroupMemberTemplateASync* | *DELETE* /users/groups/members/templates/{id} | Delete an group member template.
 *deleteGroupTemplateSync* | *DELETE* /users/groups/templates/{id} | Delete a group template.
 *deleteGroupTemplateASync* | *DELETE* /users/groups/templates/{id} | Delete a group template.
 *getGroupSync* | *GET* /users/groups/{unique_name} | Loads a specific group's details.
 *getGroupASync* | *GET* /users/groups/{unique_name} | Loads a specific group's details.
+*getGroupAncestorsSync* | *GET* /users/groups/{unique_name}/ancestors | Get group ancestors.
+*getGroupAncestorsASync* | *GET* /users/groups/{unique_name}/ancestors | Get group ancestors.
 *getGroupMemberSync* | *GET* /users/groups/{unique_name}/members/{user_id} | Get a user from a group.
 *getGroupMemberASync* | *GET* /users/groups/{unique_name}/members/{user_id} | Get a user from a group.
 *getGroupMemberTemplateSync* | *GET* /users/groups/members/templates/{id} | Get a single group member template.
@@ -1762,6 +1766,7 @@ Class | Description
  *SelectedSettingRequest* | 
  *SelectedSettingResource* | 
  *SettingOption* | 
+ *SimpleGroupResource* | 
  *SimpleReferenceResource«int»* | 
  *SimpleReferenceResource«long»* | 
  *SimpleReferenceResource«object»* | 

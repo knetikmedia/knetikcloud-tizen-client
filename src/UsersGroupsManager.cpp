@@ -1440,6 +1440,150 @@ bool UsersGroupsManager::getGroupSync(char * accessToken,
 	handler, userData, false);
 }
 
+static bool getGroupAncestorsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(std::list<GroupResource>, Error, void* )
+	= reinterpret_cast<void(*)(std::list<GroupResource>, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	std::list<GroupResource> out;
+	
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+		pJson = json_from_string(data, NULL);
+		JsonArray * jsonarray = json_node_get_array (pJson);
+		guint length = json_array_get_length (jsonarray);
+		for(guint i = 0; i < length; i++){
+			JsonNode* myJson = json_array_get_element (jsonarray, i);
+			char * singlenodestr = json_to_string(myJson, false);
+			GroupResource singlemodel;
+			singlemodel.fromJson(singlenodestr);
+			out.push_front(singlemodel);
+			g_free(static_cast<gpointer>(singlenodestr));
+			json_node_free(myJson);
+		}
+		json_array_unref (jsonarray);
+		json_node_free(pJson);
+
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unkown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool getGroupAncestorsHelper(char * accessToken,
+	std::string uniqueName, 
+	void(* handler)(std::list<GroupResource>, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/users/groups/{unique_name}/ancestors");
+	int pos;
+
+	string s_uniqueName("{");
+	s_uniqueName.append("unique_name");
+	s_uniqueName.append("}");
+	pos = url.find(s_uniqueName);
+	url.erase(pos, s_uniqueName.length());
+	url.insert(pos, stringify(&uniqueName, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("GET");
+
+	if(strcmp("PUT", "GET") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(UsersGroupsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = getGroupAncestorsProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (UsersGroupsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), getGroupAncestorsProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __UsersGroupsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool UsersGroupsManager::getGroupAncestorsAsync(char * accessToken,
+	std::string uniqueName, 
+	void(* handler)(std::list<GroupResource>, Error, void* )
+	, void* userData)
+{
+	return getGroupAncestorsHelper(accessToken,
+	uniqueName, 
+	handler, userData, true);
+}
+
+bool UsersGroupsManager::getGroupAncestorsSync(char * accessToken,
+	std::string uniqueName, 
+	void(* handler)(std::list<GroupResource>, Error, void* )
+	, void* userData)
+{
+	return getGroupAncestorsHelper(accessToken,
+	uniqueName, 
+	handler, userData, false);
+}
+
 static bool getGroupMemberProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
