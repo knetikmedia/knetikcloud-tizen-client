@@ -28,7 +28,7 @@ public:
 
 /*! \brief Create a reward set. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> REWARDS_ADMIN
  * \param rewardSetResource The reward set resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -41,7 +41,7 @@ bool createRewardSetSync(char * accessToken,
 
 /*! \brief Create a reward set. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> REWARDS_ADMIN
  * \param rewardSetResource The reward set resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -55,7 +55,7 @@ bool createRewardSetAsync(char * accessToken,
 
 /*! \brief Delete a reward set. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> REWARDS_ADMIN
  * \param id The reward id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -68,7 +68,7 @@ bool deleteRewardSetSync(char * accessToken,
 
 /*! \brief Delete a reward set. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> REWARDS_ADMIN
  * \param id The reward id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -82,7 +82,7 @@ bool deleteRewardSetAsync(char * accessToken,
 
 /*! \brief Get a single reward set. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The reward id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -95,7 +95,7 @@ bool getRewardSetSync(char * accessToken,
 
 /*! \brief Get a single reward set. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The reward id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -109,7 +109,7 @@ bool getRewardSetAsync(char * accessToken,
 
 /*! \brief List and search reward sets. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -124,7 +124,7 @@ bool getRewardSetsSync(char * accessToken,
 
 /*! \brief List and search reward sets. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -140,7 +140,7 @@ bool getRewardSetsAsync(char * accessToken,
 
 /*! \brief Update a reward set. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> REWARDS_ADMIN
  * \param id The reward id *Required*
  * \param rewardSetResource The reward set resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -154,7 +154,7 @@ bool updateRewardSetSync(char * accessToken,
 
 /*! \brief Update a reward set. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> REWARDS_ADMIN
  * \param id The reward id *Required*
  * \param rewardSetResource The reward set resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -170,7 +170,7 @@ bool updateRewardSetAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

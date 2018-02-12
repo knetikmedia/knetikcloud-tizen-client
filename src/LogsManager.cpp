@@ -403,7 +403,7 @@ static bool getBREEventLogsProcessor(MemoryStruct_s p_chunk, long code, char* er
 }
 
 static bool getBREEventLogsHelper(char * accessToken,
-	std::string filterStartDate, std::string filterEventName, std::string filterEventId, int size, int page, std::string order, 
+	std::string filterStartDate, std::string filterEventName, std::string filterEventId, int size, int page, std::string order, std::string filterRuleId, 
 	void(* handler)(PageResource«BreEventLog», Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -462,6 +462,13 @@ static bool getBREEventLogsHelper(char * accessToken,
 		queryParams.erase("order");
 	}
 
+
+	itemAtq = stringify(&filterRuleId, "std::string");
+	queryParams.insert(pair<string, string>("filter_rule_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("filter_rule_id");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -516,22 +523,22 @@ static bool getBREEventLogsHelper(char * accessToken,
 
 
 bool LogsManager::getBREEventLogsAsync(char * accessToken,
-	std::string filterStartDate, std::string filterEventName, std::string filterEventId, int size, int page, std::string order, 
+	std::string filterStartDate, std::string filterEventName, std::string filterEventId, int size, int page, std::string order, std::string filterRuleId, 
 	void(* handler)(PageResource«BreEventLog», Error, void* )
 	, void* userData)
 {
 	return getBREEventLogsHelper(accessToken,
-	filterStartDate, filterEventName, filterEventId, size, page, order, 
+	filterStartDate, filterEventName, filterEventId, size, page, order, filterRuleId, 
 	handler, userData, true);
 }
 
 bool LogsManager::getBREEventLogsSync(char * accessToken,
-	std::string filterStartDate, std::string filterEventName, std::string filterEventId, int size, int page, std::string order, 
+	std::string filterStartDate, std::string filterEventName, std::string filterEventId, int size, int page, std::string order, std::string filterRuleId, 
 	void(* handler)(PageResource«BreEventLog», Error, void* )
 	, void* userData)
 {
 	return getBREEventLogsHelper(accessToken,
-	filterStartDate, filterEventName, filterEventId, size, page, order, 
+	filterStartDate, filterEventName, filterEventId, size, page, order, filterRuleId, 
 	handler, userData, false);
 }
 
@@ -753,7 +760,7 @@ static bool getBREForwardLogsProcessor(MemoryStruct_s p_chunk, long code, char* 
 }
 
 static bool getBREForwardLogsHelper(char * accessToken,
-	std::string filterStartDate, std::string filterEndDate, int filterStatusCode, int size, int page, std::string order, 
+	std::string filterStartDate, std::string filterEndDate, int filterStatusCode, int filterUrl, int size, int page, std::string order, 
 	void(* handler)(PageResource«ForwardLog», Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -789,6 +796,13 @@ static bool getBREForwardLogsHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("filter_status_code", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("filter_status_code");
+	}
+
+
+	itemAtq = stringify(&filterUrl, "int");
+	queryParams.insert(pair<string, string>("filter_url", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("filter_url");
 	}
 
 
@@ -866,22 +880,22 @@ static bool getBREForwardLogsHelper(char * accessToken,
 
 
 bool LogsManager::getBREForwardLogsAsync(char * accessToken,
-	std::string filterStartDate, std::string filterEndDate, int filterStatusCode, int size, int page, std::string order, 
+	std::string filterStartDate, std::string filterEndDate, int filterStatusCode, int filterUrl, int size, int page, std::string order, 
 	void(* handler)(PageResource«ForwardLog», Error, void* )
 	, void* userData)
 {
 	return getBREForwardLogsHelper(accessToken,
-	filterStartDate, filterEndDate, filterStatusCode, size, page, order, 
+	filterStartDate, filterEndDate, filterStatusCode, filterUrl, size, page, order, 
 	handler, userData, true);
 }
 
 bool LogsManager::getBREForwardLogsSync(char * accessToken,
-	std::string filterStartDate, std::string filterEndDate, int filterStatusCode, int size, int page, std::string order, 
+	std::string filterStartDate, std::string filterEndDate, int filterStatusCode, int filterUrl, int size, int page, std::string order, 
 	void(* handler)(PageResource«ForwardLog», Error, void* )
 	, void* userData)
 {
 	return getBREForwardLogsHelper(accessToken,
-	filterStartDate, filterEndDate, filterStatusCode, size, page, order, 
+	filterStartDate, filterEndDate, filterStatusCode, filterUrl, size, page, order, 
 	handler, userData, false);
 }
 

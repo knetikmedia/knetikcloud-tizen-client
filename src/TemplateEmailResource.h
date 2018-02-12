@@ -61,6 +61,13 @@ public:
 	/*! \brief Set A list of user ids to send the message to.
 	 */
 	void setRecipients(std::list <int> recipients);
+	/*! \brief Get The subject for email
+	 */
+	std::string getSubject();
+
+	/*! \brief Set The subject for email
+	 */
+	void setSubject(std::string  subject);
 	/*! \brief Get The key for the template
 	 */
 	std::string getTemplateKey();
@@ -79,6 +86,7 @@ public:
 private:
 	std::string from;
 	std::list <int>recipients;
+	std::string subject;
 	std::string template_key;
 	std::list <KeyValuePair«string,string»>template_vars;
 	void __init();

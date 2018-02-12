@@ -30,7 +30,7 @@ public:
 
 /*! \brief Creates a subscription item and associated plans. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SUBSCRIPTIONS_ADMIN
  * \param subscriptionResource The subscription to be created
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -43,7 +43,7 @@ bool createSubscriptionSync(char * accessToken,
 
 /*! \brief Creates a subscription item and associated plans. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SUBSCRIPTIONS_ADMIN
  * \param subscriptionResource The subscription to be created
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -57,7 +57,7 @@ bool createSubscriptionAsync(char * accessToken,
 
 /*! \brief Create a subscription template. *Synchronous*
  *
- * Subscription Templates define a type of subscription and the properties they have.
+ * Subscription Templates define a type of subscription and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param subscriptionTemplateResource The new subscription template
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -70,7 +70,7 @@ bool createSubscriptionTemplateSync(char * accessToken,
 
 /*! \brief Create a subscription template. *Asynchronous*
  *
- * Subscription Templates define a type of subscription and the properties they have.
+ * Subscription Templates define a type of subscription and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param subscriptionTemplateResource The new subscription template
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -84,7 +84,7 @@ bool createSubscriptionTemplateAsync(char * accessToken,
 
 /*! \brief Delete a subscription plan. *Synchronous*
  *
- * Must not be locked or a migration target
+ * Must not be locked or a migration target. <br><br><b>Permissions Needed:</b> SUBSCRIPTIONS_ADMIN
  * \param id The id of the subscription *Required*
  * \param planId The id of the plan *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -98,7 +98,7 @@ bool deleteSubscriptionSync(char * accessToken,
 
 /*! \brief Delete a subscription plan. *Asynchronous*
  *
- * Must not be locked or a migration target
+ * Must not be locked or a migration target. <br><br><b>Permissions Needed:</b> SUBSCRIPTIONS_ADMIN
  * \param id The id of the subscription *Required*
  * \param planId The id of the plan *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -113,7 +113,7 @@ bool deleteSubscriptionAsync(char * accessToken,
 
 /*! \brief Delete a subscription template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade force deleting the template if it's attached to other objects, cascade = detach
  * \param handler The callback function to be invoked on completion. *Required*
@@ -127,7 +127,7 @@ bool deleteSubscriptionTemplateSync(char * accessToken,
 
 /*! \brief Delete a subscription template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade force deleting the template if it's attached to other objects, cascade = detach
  * \param handler The callback function to be invoked on completion. *Required*
@@ -142,7 +142,7 @@ bool deleteSubscriptionTemplateAsync(char * accessToken,
 
 /*! \brief Retrieve a single subscription item and associated plans. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The id of the subscription *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -155,7 +155,7 @@ bool getSubscriptionSync(char * accessToken,
 
 /*! \brief Retrieve a single subscription item and associated plans. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The id of the subscription *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -169,7 +169,7 @@ bool getSubscriptionAsync(char * accessToken,
 
 /*! \brief Get a single subscription template. *Synchronous*
  *
- * Subscription Templates define a type of subscription and the properties they have.
+ * Subscription Templates define a type of subscription and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -182,7 +182,7 @@ bool getSubscriptionTemplateSync(char * accessToken,
 
 /*! \brief Get a single subscription template. *Asynchronous*
  *
- * Subscription Templates define a type of subscription and the properties they have.
+ * Subscription Templates define a type of subscription and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -196,7 +196,7 @@ bool getSubscriptionTemplateAsync(char * accessToken,
 
 /*! \brief List and search subscription templates. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or SUBSCRIPTIONS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -211,7 +211,7 @@ bool getSubscriptionTemplatesSync(char * accessToken,
 
 /*! \brief List and search subscription templates. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or SUBSCRIPTIONS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -227,7 +227,7 @@ bool getSubscriptionTemplatesAsync(char * accessToken,
 
 /*! \brief List available subscription items and associated plans. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -242,7 +242,7 @@ bool getSubscriptionsSync(char * accessToken,
 
 /*! \brief List available subscription items and associated plans. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -258,7 +258,7 @@ bool getSubscriptionsAsync(char * accessToken,
 
 /*! \brief Processes subscriptions and charge dues. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SUBSCRIPTIONS_ADMIN
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -270,7 +270,7 @@ bool processSubscriptionsSync(char * accessToken,
 
 /*! \brief Processes subscriptions and charge dues. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SUBSCRIPTIONS_ADMIN
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -283,7 +283,7 @@ bool processSubscriptionsAsync(char * accessToken,
 
 /*! \brief Updates a subscription item and associated plans. *Synchronous*
  *
- * Will not remove plans left out
+ * Will not remove plans left out. <br><br><b>Permissions Needed:</b> SUBSCRIPTIONS_ADMIN
  * \param id The id of the subscription *Required*
  * \param subscriptionResource The subscription resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -297,7 +297,7 @@ bool updateSubscriptionSync(char * accessToken,
 
 /*! \brief Updates a subscription item and associated plans. *Asynchronous*
  *
- * Will not remove plans left out
+ * Will not remove plans left out. <br><br><b>Permissions Needed:</b> SUBSCRIPTIONS_ADMIN
  * \param id The id of the subscription *Required*
  * \param subscriptionResource The subscription resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -312,7 +312,7 @@ bool updateSubscriptionAsync(char * accessToken,
 
 /*! \brief Update a subscription template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param subscriptionTemplateResource The subscription template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -326,7 +326,7 @@ bool updateSubscriptionTemplateSync(char * accessToken,
 
 /*! \brief Update a subscription template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param subscriptionTemplateResource The subscription template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -342,7 +342,7 @@ bool updateSubscriptionTemplateAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

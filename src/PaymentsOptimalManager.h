@@ -27,7 +27,7 @@ public:
 
 /*! \brief Initiate silent post with Optimal. *Synchronous*
  *
- * Will return the url for a hosted payment endpoint to post to. See Optimal documentation for details.
+ * Will return the url for a hosted payment endpoint to post to. See Optimal documentation for details. <br><br><b>Permissions Needed:</b> OPTIMAL_ADMIN or owner
  * \param request The payment request to initiate
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -40,7 +40,7 @@ bool silentPostOptimalSync(char * accessToken,
 
 /*! \brief Initiate silent post with Optimal. *Asynchronous*
  *
- * Will return the url for a hosted payment endpoint to post to. See Optimal documentation for details.
+ * Will return the url for a hosted payment endpoint to post to. See Optimal documentation for details. <br><br><b>Permissions Needed:</b> OPTIMAL_ADMIN or owner
  * \param request The payment request to initiate
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -55,7 +55,7 @@ bool silentPostOptimalAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

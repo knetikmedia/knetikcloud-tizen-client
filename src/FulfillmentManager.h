@@ -28,7 +28,7 @@ public:
 
 /*! \brief Create a fulfillment type. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> FULFILLMENT_ADMIN
  * \param type The fulfillment type
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -41,7 +41,7 @@ bool createFulfillmentTypeSync(char * accessToken,
 
 /*! \brief Create a fulfillment type. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> FULFILLMENT_ADMIN
  * \param type The fulfillment type
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -55,7 +55,7 @@ bool createFulfillmentTypeAsync(char * accessToken,
 
 /*! \brief Delete a fulfillment type. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> FULFILLMENT_ADMIN
  * \param id The id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -68,7 +68,7 @@ bool deleteFulfillmentTypeSync(char * accessToken,
 
 /*! \brief Delete a fulfillment type. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> FULFILLMENT_ADMIN
  * \param id The id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -82,7 +82,7 @@ bool deleteFulfillmentTypeAsync(char * accessToken,
 
 /*! \brief Get a single fulfillment type. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -95,7 +95,7 @@ bool getFulfillmentTypeSync(char * accessToken,
 
 /*! \brief Get a single fulfillment type. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -109,7 +109,7 @@ bool getFulfillmentTypeAsync(char * accessToken,
 
 /*! \brief List and search fulfillment types. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -124,7 +124,7 @@ bool getFulfillmentTypesSync(char * accessToken,
 
 /*! \brief List and search fulfillment types. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -140,7 +140,7 @@ bool getFulfillmentTypesAsync(char * accessToken,
 
 /*! \brief Update a fulfillment type. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> FULFILLMENT_ADMIN
  * \param id The id *Required*
  * \param fulfillmentType The fulfillment type
  * \param handler The callback function to be invoked on completion. *Required*
@@ -154,7 +154,7 @@ bool updateFulfillmentTypeSync(char * accessToken,
 
 /*! \brief Update a fulfillment type. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> FULFILLMENT_ADMIN
  * \param id The id *Required*
  * \param fulfillmentType The fulfillment type
  * \param handler The callback function to be invoked on completion. *Required*
@@ -170,7 +170,7 @@ bool updateFulfillmentTypeAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

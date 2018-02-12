@@ -27,8 +27,14 @@ ActivityOccurrenceResource::__init()
 	//
 	//activity_id = long(0);
 	//
+	//new std::list()std::list> bans;
+	//
+	//
 	//
 	//challenge_activity_id = long(0);
+	//
+	//
+	//core_settings = new CoreActivityOccurrenceSettings();
 	//
 	//
 	//created_date = long(0);
@@ -38,6 +44,9 @@ ActivityOccurrenceResource::__init()
 	//
 	//
 	//event_id = long(0);
+	//
+	//
+	//host = new SimpleUserResource();
 	//
 	//
 	//id = long(0);
@@ -73,10 +82,20 @@ ActivityOccurrenceResource::__cleanup()
 	//delete activity_id;
 	//activity_id = NULL;
 	//}
+	//if(bans != NULL) {
+	//bans.RemoveAll(true);
+	//delete bans;
+	//bans = NULL;
+	//}
 	//if(challenge_activity_id != NULL) {
 	//
 	//delete challenge_activity_id;
 	//challenge_activity_id = NULL;
+	//}
+	//if(core_settings != NULL) {
+	//
+	//delete core_settings;
+	//core_settings = NULL;
 	//}
 	//if(created_date != NULL) {
 	//
@@ -92,6 +111,11 @@ ActivityOccurrenceResource::__cleanup()
 	//
 	//delete event_id;
 	//event_id = NULL;
+	//}
+	//if(host != NULL) {
+	//
+	//delete host;
+	//host = NULL;
 	//}
 	//if(id != NULL) {
 	//
@@ -152,6 +176,28 @@ ActivityOccurrenceResource::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *bansKey = "bans";
+	node = json_object_get_member(pJsonObject, bansKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<int> new_list;
+			int inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("int")) {
+					jsonToValue(&inst, temp_json, "int", "");
+				} else {
+					
+				}
+				new_list.push_back(inst);
+			}
+			bans = new_list;
+		}
+		
+	}
 	const gchar *challenge_activity_idKey = "challenge_activity_id";
 	node = json_object_get_member(pJsonObject, challenge_activity_idKey);
 	if (node !=NULL) {
@@ -160,6 +206,20 @@ ActivityOccurrenceResource::fromJson(char* jsonStr)
 		if (isprimitive("long long")) {
 			jsonToValue(&challenge_activity_id, node, "long long", "");
 		} else {
+			
+		}
+	}
+	const gchar *core_settingsKey = "core_settings";
+	node = json_object_get_member(pJsonObject, core_settingsKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CoreActivityOccurrenceSettings")) {
+			jsonToValue(&core_settings, node, "CoreActivityOccurrenceSettings", "CoreActivityOccurrenceSettings");
+		} else {
+			
+			CoreActivityOccurrenceSettings* obj = static_cast<CoreActivityOccurrenceSettings*> (&core_settings);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -196,6 +256,20 @@ ActivityOccurrenceResource::fromJson(char* jsonStr)
 		if (isprimitive("long long")) {
 			jsonToValue(&event_id, node, "long long", "");
 		} else {
+			
+		}
+	}
+	const gchar *hostKey = "host";
+	node = json_object_get_member(pJsonObject, hostKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("SimpleUserResource")) {
+			jsonToValue(&host, node, "SimpleUserResource", "SimpleUserResource");
+		} else {
+			
+			SimpleUserResource* obj = static_cast<SimpleUserResource*> (&host);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -334,6 +408,21 @@ ActivityOccurrenceResource::toJson()
 	}
 	const gchar *activity_idKey = "activity_id";
 	json_object_set_member(pJsonObject, activity_idKey, node);
+	if (isprimitive("int")) {
+		list<int> new_list = static_cast<list <int> > (getBans());
+		node = converttoJson(&new_list, "int", "array");
+	} else {
+		node = json_node_alloc();
+		list<int> new_list = static_cast<list <int> > (getBans());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+	}
+
+
+	
+	const gchar *bansKey = "bans";
+	json_object_set_member(pJsonObject, bansKey, node);
 	if (isprimitive("long long")) {
 		long long obj = getChallengeActivityId();
 		node = converttoJson(&obj, "long long", "");
@@ -343,6 +432,20 @@ ActivityOccurrenceResource::toJson()
 	}
 	const gchar *challenge_activity_idKey = "challenge_activity_id";
 	json_object_set_member(pJsonObject, challenge_activity_idKey, node);
+	if (isprimitive("CoreActivityOccurrenceSettings")) {
+		CoreActivityOccurrenceSettings obj = getCoreSettings();
+		node = converttoJson(&obj, "CoreActivityOccurrenceSettings", "");
+	}
+	else {
+		
+		CoreActivityOccurrenceSettings obj = static_cast<CoreActivityOccurrenceSettings> (getCoreSettings());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *core_settingsKey = "core_settings";
+	json_object_set_member(pJsonObject, core_settingsKey, node);
 	if (isprimitive("long long")) {
 		long long obj = getCreatedDate();
 		node = converttoJson(&obj, "long long", "");
@@ -375,6 +478,20 @@ ActivityOccurrenceResource::toJson()
 	}
 	const gchar *event_idKey = "event_id";
 	json_object_set_member(pJsonObject, event_idKey, node);
+	if (isprimitive("SimpleUserResource")) {
+		SimpleUserResource obj = getHost();
+		node = converttoJson(&obj, "SimpleUserResource", "");
+	}
+	else {
+		
+		SimpleUserResource obj = static_cast<SimpleUserResource> (getHost());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *hostKey = "host";
+	json_object_set_member(pJsonObject, hostKey, node);
 	if (isprimitive("long long")) {
 		long long obj = getId();
 		node = converttoJson(&obj, "long long", "");
@@ -499,6 +616,18 @@ ActivityOccurrenceResource::setActivityId(long long  activity_id)
 	this->activity_id = activity_id;
 }
 
+std::list<int>
+ActivityOccurrenceResource::getBans()
+{
+	return bans;
+}
+
+void
+ActivityOccurrenceResource::setBans(std::list <int> bans)
+{
+	this->bans = bans;
+}
+
 long long
 ActivityOccurrenceResource::getChallengeActivityId()
 {
@@ -509,6 +638,18 @@ void
 ActivityOccurrenceResource::setChallengeActivityId(long long  challenge_activity_id)
 {
 	this->challenge_activity_id = challenge_activity_id;
+}
+
+CoreActivityOccurrenceSettings
+ActivityOccurrenceResource::getCoreSettings()
+{
+	return core_settings;
+}
+
+void
+ActivityOccurrenceResource::setCoreSettings(CoreActivityOccurrenceSettings  core_settings)
+{
+	this->core_settings = core_settings;
 }
 
 long long
@@ -545,6 +686,18 @@ void
 ActivityOccurrenceResource::setEventId(long long  event_id)
 {
 	this->event_id = event_id;
+}
+
+SimpleUserResource
+ActivityOccurrenceResource::getHost()
+{
+	return host;
+}
+
+void
+ActivityOccurrenceResource::setHost(SimpleUserResource  host)
+{
+	this->host = host;
 }
 
 long long

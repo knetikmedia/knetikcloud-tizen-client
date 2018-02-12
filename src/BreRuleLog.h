@@ -9,6 +9,8 @@
 
 
 #include <string>
+#include "BreActionLog.h"
+#include <list>
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -45,6 +47,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get The actions of the BRE rule
+	 */
+	std::list<BreActionLog> getActions();
+
+	/*! \brief Set The actions of the BRE rule
+	 */
+	void setActions(std::list <BreActionLog> actions);
 	/*! \brief Get Whether the rule ran
 	 */
 	bool getRan();
@@ -89,6 +98,7 @@ public:
 	void setRuleStartDate(long long  rule_start_date);
 
 private:
+	std::list <BreActionLog>actions;
 	bool ran;
 	std::string reason;
 	long long rule_end_date;

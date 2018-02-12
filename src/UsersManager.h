@@ -5,7 +5,10 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
+#include "ChatMessageRequest.h"
+#include "ChatMessageResource.h"
 #include "NewPasswordRequest.h"
+#include "PageResource«ChatMessageResource».h"
 #include "PageResource«TemplateResource».h"
 #include "PageResource«UserBaseResource».h"
 #include "PasswordResetRequest.h"
@@ -33,7 +36,7 @@ public:
 
 /*! \brief Add a tag to a user. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USERS_ADMIN
  * \param userId The id of the user *Required*
  * \param tag tag *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -47,7 +50,7 @@ bool addUserTagSync(char * accessToken,
 
 /*! \brief Add a tag to a user. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USERS_ADMIN
  * \param userId The id of the user *Required*
  * \param tag tag *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -62,7 +65,7 @@ bool addUserTagAsync(char * accessToken,
 
 /*! \brief Create a user template. *Synchronous*
  *
- * User Templates define a type of user and the properties they have
+ * User Templates define a type of user and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param userTemplateResource The user template resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -75,7 +78,7 @@ bool createUserTemplateSync(char * accessToken,
 
 /*! \brief Create a user template. *Asynchronous*
  *
- * User Templates define a type of user and the properties they have
+ * User Templates define a type of user and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param userTemplateResource The user template resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -89,7 +92,7 @@ bool createUserTemplateAsync(char * accessToken,
 
 /*! \brief Delete a user template. *Synchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -103,7 +106,7 @@ bool deleteUserTemplateSync(char * accessToken,
 
 /*! \brief Delete a user template. *Asynchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -116,9 +119,40 @@ bool deleteUserTemplateAsync(char * accessToken,
 	void(* handler)(Error, void* ) , void* userData);
 
 
+/*! \brief Get a list of direct messages with this user. *Synchronous*
+ *
+ * <b>Permissions Needed:</b> ANY
+ * \param recipientId The user id *Required*
+ * \param size The number of objects returned per page
+ * \param page The number of the page returned, starting with 1
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool getDirectMessages1Sync(char * accessToken,
+	int recipientId, int size, int page, 
+	void(* handler)(PageResource«ChatMessageResource», Error, void* )
+	, void* userData);
+
+/*! \brief Get a list of direct messages with this user. *Asynchronous*
+ *
+ * <b>Permissions Needed:</b> ANY
+ * \param recipientId The user id *Required*
+ * \param size The number of objects returned per page
+ * \param page The number of the page returned, starting with 1
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool getDirectMessages1Async(char * accessToken,
+	int recipientId, int size, int page, 
+	void(* handler)(PageResource«ChatMessageResource», Error, void* )
+	, void* userData);
+
+
 /*! \brief Get a single user. *Synchronous*
  *
- * Additional private info is included as USERS_ADMIN
+ * Additional private info is included as USERS_ADMIN. <br><br><b>Permissions Needed:</b> ANY
  * \param id The id of the user or 'me' *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -131,7 +165,7 @@ bool getUserSync(char * accessToken,
 
 /*! \brief Get a single user. *Asynchronous*
  *
- * Additional private info is included as USERS_ADMIN
+ * Additional private info is included as USERS_ADMIN. <br><br><b>Permissions Needed:</b> ANY
  * \param id The id of the user or 'me' *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -145,7 +179,7 @@ bool getUserAsync(char * accessToken,
 
 /*! \brief List tags for a user. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USERS_ADMIN
  * \param userId The id of the user *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -158,7 +192,7 @@ bool getUserTagsSync(char * accessToken,
 
 /*! \brief List tags for a user. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USERS_ADMIN
  * \param userId The id of the user *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -172,7 +206,7 @@ bool getUserTagsAsync(char * accessToken,
 
 /*! \brief Get a single user template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or USERS_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -185,7 +219,7 @@ bool getUserTemplateSync(char * accessToken,
 
 /*! \brief Get a single user template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or USERS_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -199,7 +233,7 @@ bool getUserTemplateAsync(char * accessToken,
 
 /*! \brief List and search user templates. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or USERS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -214,7 +248,7 @@ bool getUserTemplatesSync(char * accessToken,
 
 /*! \brief List and search user templates. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or USERS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -230,7 +264,7 @@ bool getUserTemplatesAsync(char * accessToken,
 
 /*! \brief List and search users. *Synchronous*
  *
- * Additional private info is included as USERS_ADMIN
+ * Additional private info is included as USERS_ADMIN. <br><br><b>Permissions Needed:</b> ANY
  * \param filterDisplayname Filter for users whose display name starts with provided string.
  * \param filterEmail Filter for users whose email starts with provided string. Requires USERS_ADMIN permission
  * \param filterFirstname Filter for users whose first name starts with provided string. Requires USERS_ADMIN permission
@@ -257,7 +291,7 @@ bool getUsersSync(char * accessToken,
 
 /*! \brief List and search users. *Asynchronous*
  *
- * Additional private info is included as USERS_ADMIN
+ * Additional private info is included as USERS_ADMIN. <br><br><b>Permissions Needed:</b> ANY
  * \param filterDisplayname Filter for users whose display name starts with provided string.
  * \param filterEmail Filter for users whose email starts with provided string. Requires USERS_ADMIN permission
  * \param filterFirstname Filter for users whose first name starts with provided string. Requires USERS_ADMIN permission
@@ -285,7 +319,7 @@ bool getUsersAsync(char * accessToken,
 
 /*! \brief Choose a new password after a reset. *Synchronous*
  *
- * Finish resetting a user's password using the secret provided from the password-reset endpoint.  Password should be in plain text and will be encrypted on receipt. Use SSL for security.
+ * Finish resetting a user's password using the secret provided from the password-reset endpoint.  Password should be in plain text and will be encrypted on receipt. Use SSL for security. <br><br><b>Permissions Needed:</b> ANY
  * \param id The id of the user *Required*
  * \param newPasswordRequest The new password request object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -299,7 +333,7 @@ bool passwordResetSync(char * accessToken,
 
 /*! \brief Choose a new password after a reset. *Asynchronous*
  *
- * Finish resetting a user's password using the secret provided from the password-reset endpoint.  Password should be in plain text and will be encrypted on receipt. Use SSL for security.
+ * Finish resetting a user's password using the secret provided from the password-reset endpoint.  Password should be in plain text and will be encrypted on receipt. Use SSL for security. <br><br><b>Permissions Needed:</b> ANY
  * \param id The id of the user *Required*
  * \param newPasswordRequest The new password request object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -312,9 +346,38 @@ bool passwordResetAsync(char * accessToken,
 	void(* handler)(Error, void* ) , void* userData);
 
 
+/*! \brief Send a user message. *Synchronous*
+ *
+ * 
+ * \param recipientId The user id *Required*
+ * \param chatMessageRequest The chat message request
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool postUserMessageSync(char * accessToken,
+	int recipientId, ChatMessageRequest chatMessageRequest, 
+	void(* handler)(ChatMessageResource, Error, void* )
+	, void* userData);
+
+/*! \brief Send a user message. *Asynchronous*
+ *
+ * 
+ * \param recipientId The user id *Required*
+ * \param chatMessageRequest The chat message request
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool postUserMessageAsync(char * accessToken,
+	int recipientId, ChatMessageRequest chatMessageRequest, 
+	void(* handler)(ChatMessageResource, Error, void* )
+	, void* userData);
+
+
 /*! \brief Register a new user. *Synchronous*
  *
- * Password should be in plain text and will be encrypted on receipt. Use SSL for security
+ * Password should be in plain text and will be encrypted on receipt. Use SSL for security. <br><br><b>Permissions Needed:</b> ANY
  * \param userResource The user resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -327,7 +390,7 @@ bool registerUserSync(char * accessToken,
 
 /*! \brief Register a new user. *Asynchronous*
  *
- * Password should be in plain text and will be encrypted on receipt. Use SSL for security
+ * Password should be in plain text and will be encrypted on receipt. Use SSL for security. <br><br><b>Permissions Needed:</b> ANY
  * \param userResource The user resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -341,7 +404,7 @@ bool registerUserAsync(char * accessToken,
 
 /*! \brief Remove a tag from a user. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USERS_ADMIN
  * \param userId The id of the user *Required*
  * \param tag The tag to remove *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -355,7 +418,7 @@ bool removeUserTagSync(char * accessToken,
 
 /*! \brief Remove a tag from a user. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USERS_ADMIN
  * \param userId The id of the user *Required*
  * \param tag The tag to remove *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -370,7 +433,7 @@ bool removeUserTagAsync(char * accessToken,
 
 /*! \brief Set a user's password. *Synchronous*
  *
- * Password should be in plain text and will be encrypted on receipt. Use SSL for security.
+ * Password should be in plain text and will be encrypted on receipt. Use SSL for security. <br><br><b>Permissions Needed:</b> USERS_ADMIN or (USERS_USER and owner)
  * \param id The id of the user *Required*
  * \param password The new plain text password
  * \param handler The callback function to be invoked on completion. *Required*
@@ -384,7 +447,7 @@ bool setPasswordSync(char * accessToken,
 
 /*! \brief Set a user's password. *Asynchronous*
  *
- * Password should be in plain text and will be encrypted on receipt. Use SSL for security.
+ * Password should be in plain text and will be encrypted on receipt. Use SSL for security. <br><br><b>Permissions Needed:</b> USERS_ADMIN or (USERS_USER and owner)
  * \param id The id of the user *Required*
  * \param password The new plain text password
  * \param handler The callback function to be invoked on completion. *Required*
@@ -399,7 +462,7 @@ bool setPasswordAsync(char * accessToken,
 
 /*! \brief Reset a user's password. *Synchronous*
  *
- * A reset code will be generated and a 'forgot_password' BRE event will be fired with that code.  The default system rule will send an email to the selected user if an email service has been setup. You can modify that rule in BRE to send an SMS instead or any other type of notification as you see fit
+ * A reset code will be generated and a 'forgot_password' BRE event will be fired with that code.  The default system rule will send an email to the selected user if an email service has been setup. You can modify that rule in BRE to send an SMS instead or any other type of notification as you see fit. <br><br><b>Permissions Needed:</b> ANY
  * \param id The id of the user *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -412,7 +475,7 @@ bool startPasswordResetSync(char * accessToken,
 
 /*! \brief Reset a user's password. *Asynchronous*
  *
- * A reset code will be generated and a 'forgot_password' BRE event will be fired with that code.  The default system rule will send an email to the selected user if an email service has been setup. You can modify that rule in BRE to send an SMS instead or any other type of notification as you see fit
+ * A reset code will be generated and a 'forgot_password' BRE event will be fired with that code.  The default system rule will send an email to the selected user if an email service has been setup. You can modify that rule in BRE to send an SMS instead or any other type of notification as you see fit. <br><br><b>Permissions Needed:</b> ANY
  * \param id The id of the user *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -426,7 +489,7 @@ bool startPasswordResetAsync(char * accessToken,
 
 /*! \brief Reset a user's password without user id. *Synchronous*
  *
- * A reset code will be generated and a 'forgot_password' BRE event will be fired with that code.  The default system rule will send an email to the selected user if an email service has been setup. You can modify that rule in BRE to send an SMS instead or any other type of notification as you see fit.  Must submit their email, username, or mobile phone number
+ * A reset code will be generated and a 'forgot_password' BRE event will be fired with that code.  The default system rule will send an email to the selected user if an email service has been setup. You can modify that rule in BRE to send an SMS instead or any other type of notification as you see fit.  Must submit their email, username, or mobile phone number. <br><br><b>Permissions Needed:</b> ANY
  * \param passwordReset An object containing one of three methods to look up a user
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -439,7 +502,7 @@ bool submitPasswordResetSync(char * accessToken,
 
 /*! \brief Reset a user's password without user id. *Asynchronous*
  *
- * A reset code will be generated and a 'forgot_password' BRE event will be fired with that code.  The default system rule will send an email to the selected user if an email service has been setup. You can modify that rule in BRE to send an SMS instead or any other type of notification as you see fit.  Must submit their email, username, or mobile phone number
+ * A reset code will be generated and a 'forgot_password' BRE event will be fired with that code.  The default system rule will send an email to the selected user if an email service has been setup. You can modify that rule in BRE to send an SMS instead or any other type of notification as you see fit.  Must submit their email, username, or mobile phone number. <br><br><b>Permissions Needed:</b> ANY
  * \param passwordReset An object containing one of three methods to look up a user
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -453,7 +516,7 @@ bool submitPasswordResetAsync(char * accessToken,
 
 /*! \brief Update a user. *Synchronous*
  *
- * Password will not be edited on this endpoint, use password specific endpoints.
+ * Password will not be edited on this endpoint, use password specific endpoints. <br><br><b>Permissions Needed:</b> USERS_ADMIN or owner
  * \param id The id of the user or 'me' *Required*
  * \param userResource The user resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -467,7 +530,7 @@ bool updateUserSync(char * accessToken,
 
 /*! \brief Update a user. *Asynchronous*
  *
- * Password will not be edited on this endpoint, use password specific endpoints.
+ * Password will not be edited on this endpoint, use password specific endpoints. <br><br><b>Permissions Needed:</b> USERS_ADMIN or owner
  * \param id The id of the user or 'me' *Required*
  * \param userResource The user resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -482,7 +545,7 @@ bool updateUserAsync(char * accessToken,
 
 /*! \brief Update a user template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param userTemplateResource The user template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -496,7 +559,7 @@ bool updateUserTemplateSync(char * accessToken,
 
 /*! \brief Update a user template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param userTemplateResource The user template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -512,7 +575,7 @@ bool updateUserTemplateAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

@@ -30,7 +30,7 @@ public:
 
 /*! \brief Create an object. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param templateId The id of the template this object is to be part of *Required*
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param objectItem The object item object
@@ -45,7 +45,7 @@ bool createObjectItemSync(char * accessToken,
 
 /*! \brief Create an object. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param templateId The id of the template this object is to be part of *Required*
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param objectItem The object item object
@@ -61,7 +61,7 @@ bool createObjectItemAsync(char * accessToken,
 
 /*! \brief Create an object template. *Synchronous*
  *
- * Object templates define a type of entitlement and the properties they have
+ * Object templates define a type of entitlement and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param _template The entitlement template to be created
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -74,7 +74,7 @@ bool createObjectTemplateSync(char * accessToken,
 
 /*! \brief Create an object template. *Asynchronous*
  *
- * Object templates define a type of entitlement and the properties they have
+ * Object templates define a type of entitlement and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param _template The entitlement template to be created
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -88,7 +88,7 @@ bool createObjectTemplateAsync(char * accessToken,
 
 /*! \brief Delete an object. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param templateId The id of the template this object is part of *Required*
  * \param objectId The id of the object *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -102,7 +102,7 @@ bool deleteObjectItemSync(char * accessToken,
 
 /*! \brief Delete an object. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param templateId The id of the template this object is part of *Required*
  * \param objectId The id of the object *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -117,7 +117,7 @@ bool deleteObjectItemAsync(char * accessToken,
 
 /*! \brief Delete an entitlement template. *Synchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -131,7 +131,7 @@ bool deleteObjectTemplateSync(char * accessToken,
 
 /*! \brief Delete an entitlement template. *Asynchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -146,7 +146,7 @@ bool deleteObjectTemplateAsync(char * accessToken,
 
 /*! \brief Get a single object. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param templateId The id of the template this object is part of *Required*
  * \param objectId The id of the object *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -160,7 +160,7 @@ bool getObjectItemSync(char * accessToken,
 
 /*! \brief Get a single object. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param templateId The id of the template this object is part of *Required*
  * \param objectId The id of the object *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -175,7 +175,7 @@ bool getObjectItemAsync(char * accessToken,
 
 /*! \brief List and search objects. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param templateId The id of the template to get objects for *Required*
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -191,7 +191,7 @@ bool getObjectItemsSync(char * accessToken,
 
 /*! \brief List and search objects. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param templateId The id of the template to get objects for *Required*
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -208,7 +208,7 @@ bool getObjectItemsAsync(char * accessToken,
 
 /*! \brief Get a single entitlement template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ACHIEVEMENTS_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -221,7 +221,7 @@ bool getObjectTemplateSync(char * accessToken,
 
 /*! \brief Get a single entitlement template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ACHIEVEMENTS_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -235,7 +235,7 @@ bool getObjectTemplateAsync(char * accessToken,
 
 /*! \brief List and search entitlement templates. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ACHIEVEMENTS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -250,7 +250,7 @@ bool getObjectTemplatesSync(char * accessToken,
 
 /*! \brief List and search entitlement templates. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ACHIEVEMENTS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -266,7 +266,7 @@ bool getObjectTemplatesAsync(char * accessToken,
 
 /*! \brief Update an object. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param templateId The id of the template this object is part of *Required*
  * \param objectId The id of the object *Required*
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
@@ -282,7 +282,7 @@ bool updateObjectItemSync(char * accessToken,
 
 /*! \brief Update an object. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param templateId The id of the template this object is part of *Required*
  * \param objectId The id of the object *Required*
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
@@ -299,7 +299,7 @@ bool updateObjectItemAsync(char * accessToken,
 
 /*! \brief Update an entitlement template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param _template The updated template
  * \param handler The callback function to be invoked on completion. *Required*
@@ -313,7 +313,7 @@ bool updateObjectTemplateSync(char * accessToken,
 
 /*! \brief Update an entitlement template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param _template The updated template
  * \param handler The callback function to be invoked on completion. *Required*
@@ -329,7 +329,7 @@ bool updateObjectTemplateAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

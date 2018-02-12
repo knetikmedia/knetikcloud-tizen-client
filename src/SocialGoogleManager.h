@@ -27,7 +27,7 @@ public:
 
 /*! \brief Link google account. *Synchronous*
  *
- * Links the current user account to a google account, using the acccess token from google. Can also be used to update the access token after it has expired.
+ * Links the current user account to a google account, using the acccess token from google. Can also be used to update the access token after it has expired. <br><br><b>Permissions Needed:</b> Non-google user token
  * \param googleToken The token from google
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -40,7 +40,7 @@ bool linkAccounts1Sync(char * accessToken,
 
 /*! \brief Link google account. *Asynchronous*
  *
- * Links the current user account to a google account, using the acccess token from google. Can also be used to update the access token after it has expired.
+ * Links the current user account to a google account, using the acccess token from google. Can also be used to update the access token after it has expired. <br><br><b>Permissions Needed:</b> Non-google user token
  * \param googleToken The token from google
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -55,7 +55,7 @@ bool linkAccounts1Async(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

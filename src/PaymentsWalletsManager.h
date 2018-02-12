@@ -32,7 +32,7 @@ public:
 
 /*! \brief Returns the user's wallet for the given currency code. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> WALLETS_ADMIN or owner
  * \param userId The ID of the user for whom wallet is being retrieved *Required*
  * \param currencyCode Currency code of the user's wallet *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -46,7 +46,7 @@ bool getUserWalletSync(char * accessToken,
 
 /*! \brief Returns the user's wallet for the given currency code. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> WALLETS_ADMIN or owner
  * \param userId The ID of the user for whom wallet is being retrieved *Required*
  * \param currencyCode Currency code of the user's wallet *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -61,7 +61,7 @@ bool getUserWalletAsync(char * accessToken,
 
 /*! \brief Retrieve a user's wallet transactions. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> WALLETS_ADMIN or owner
  * \param userId The ID of the user for whom wallet transactions are being retrieved *Required*
  * \param currencyCode Currency code of the user's wallet *Required*
  * \param filterType Filter for transactions with specified type
@@ -82,7 +82,7 @@ bool getUserWalletTransactionsSync(char * accessToken,
 
 /*! \brief Retrieve a user's wallet transactions. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> WALLETS_ADMIN or owner
  * \param userId The ID of the user for whom wallet transactions are being retrieved *Required*
  * \param currencyCode Currency code of the user's wallet *Required*
  * \param filterType Filter for transactions with specified type
@@ -104,7 +104,7 @@ bool getUserWalletTransactionsAsync(char * accessToken,
 
 /*! \brief List all of a user's wallets. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> WALLETS_ADMIN or owner
  * \param userId The ID of the user for whom wallets are being retrieved *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -117,7 +117,7 @@ bool getUserWalletsSync(char * accessToken,
 
 /*! \brief List all of a user's wallets. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> WALLETS_ADMIN or owner
  * \param userId The ID of the user for whom wallets are being retrieved *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -131,7 +131,7 @@ bool getUserWalletsAsync(char * accessToken,
 
 /*! \brief Retrieves a summation of wallet balances by currency code. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> WALLETS_ADMIN
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -143,7 +143,7 @@ bool getWalletBalancesSync(char * accessToken,
 
 /*! \brief Retrieves a summation of wallet balances by currency code. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> WALLETS_ADMIN
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -156,7 +156,7 @@ bool getWalletBalancesAsync(char * accessToken,
 
 /*! \brief Retrieve wallet transactions across the system. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> WALLETS_ADMIN
  * \param filterInvoice Filter for transactions from a specific invoice
  * \param filterType Filter for transactions with specified type
  * \param filterDate A comma separated string without spaces.  First value is the operator to search on, second value is the log start date, a unix timestamp in seconds. Can be repeated for a range, eg: GT,123,LT,456  Allowed operators: (GT, LT, EQ, GOE, LOE).
@@ -179,7 +179,7 @@ bool getWalletTransactionsSync(char * accessToken,
 
 /*! \brief Retrieve wallet transactions across the system. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> WALLETS_ADMIN
  * \param filterInvoice Filter for transactions from a specific invoice
  * \param filterType Filter for transactions with specified type
  * \param filterDate A comma separated string without spaces.  First value is the operator to search on, second value is the log start date, a unix timestamp in seconds. Can be repeated for a range, eg: GT,123,LT,456  Allowed operators: (GT, LT, EQ, GOE, LOE).
@@ -203,7 +203,7 @@ bool getWalletTransactionsAsync(char * accessToken,
 
 /*! \brief Retrieve a list of wallets across the system. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> WALLETS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -218,7 +218,7 @@ bool getWalletsSync(char * accessToken,
 
 /*! \brief Retrieve a list of wallets across the system. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> WALLETS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -234,7 +234,7 @@ bool getWalletsAsync(char * accessToken,
 
 /*! \brief Updates the balance for a user's wallet. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> WALLETS_ADMIN
  * \param userId The ID of the user for whom wallet is being modified *Required*
  * \param currencyCode Currency code of the user's wallet *Required*
  * \param request The requested balance modification to be made to the user's wallet
@@ -249,7 +249,7 @@ bool updateWalletBalanceSync(char * accessToken,
 
 /*! \brief Updates the balance for a user's wallet. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> WALLETS_ADMIN
  * \param userId The ID of the user for whom wallet is being modified *Required*
  * \param currencyCode Currency code of the user's wallet *Required*
  * \param request The requested balance modification to be made to the user's wallet
@@ -266,7 +266,7 @@ bool updateWalletBalanceAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

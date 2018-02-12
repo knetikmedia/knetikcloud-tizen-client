@@ -27,7 +27,7 @@ public:
 
 /*! \brief Returns aggregated endpoint usage information by day. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USAGE_ADMIN
  * \param startDate The beginning of the range being requested, unix timestamp in seconds *Required*
  * \param endDate The ending of the range being requested, unix timestamp in seconds *Required*
  * \param combineEndpoints Whether to combine counts from different endpoint. Removes the url and method from the result object
@@ -46,7 +46,7 @@ bool getUsageByDaySync(char * accessToken,
 
 /*! \brief Returns aggregated endpoint usage information by day. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USAGE_ADMIN
  * \param startDate The beginning of the range being requested, unix timestamp in seconds *Required*
  * \param endDate The ending of the range being requested, unix timestamp in seconds *Required*
  * \param combineEndpoints Whether to combine counts from different endpoint. Removes the url and method from the result object
@@ -66,7 +66,7 @@ bool getUsageByDayAsync(char * accessToken,
 
 /*! \brief Returns aggregated endpoint usage information by hour. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USAGE_ADMIN
  * \param startDate The beginning of the range being requested, unix timestamp in seconds *Required*
  * \param endDate The ending of the range being requested, unix timestamp in seconds *Required*
  * \param combineEndpoints Whether to combine counts from different endpoint. Removes the url and method from the result object
@@ -85,7 +85,7 @@ bool getUsageByHourSync(char * accessToken,
 
 /*! \brief Returns aggregated endpoint usage information by hour. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USAGE_ADMIN
  * \param startDate The beginning of the range being requested, unix timestamp in seconds *Required*
  * \param endDate The ending of the range being requested, unix timestamp in seconds *Required*
  * \param combineEndpoints Whether to combine counts from different endpoint. Removes the url and method from the result object
@@ -105,7 +105,7 @@ bool getUsageByHourAsync(char * accessToken,
 
 /*! \brief Returns aggregated endpoint usage information by minute. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USAGE_ADMIN
  * \param startDate The beginning of the range being requested, unix timestamp in seconds *Required*
  * \param endDate The ending of the range being requested, unix timestamp in seconds *Required*
  * \param combineEndpoints Whether to combine counts from different endpoint. Removes the url and method from the result object
@@ -124,7 +124,7 @@ bool getUsageByMinuteSync(char * accessToken,
 
 /*! \brief Returns aggregated endpoint usage information by minute. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USAGE_ADMIN
  * \param startDate The beginning of the range being requested, unix timestamp in seconds *Required*
  * \param endDate The ending of the range being requested, unix timestamp in seconds *Required*
  * \param combineEndpoints Whether to combine counts from different endpoint. Removes the url and method from the result object
@@ -144,7 +144,7 @@ bool getUsageByMinuteAsync(char * accessToken,
 
 /*! \brief Returns aggregated endpoint usage information by month. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USAGE_ADMIN
  * \param startDate The beginning of the range being requested, unix timestamp in seconds *Required*
  * \param endDate The ending of the range being requested, unix timestamp in seconds *Required*
  * \param combineEndpoints Whether to combine counts from different endpoint. Removes the url and method from the result object
@@ -163,7 +163,7 @@ bool getUsageByMonthSync(char * accessToken,
 
 /*! \brief Returns aggregated endpoint usage information by month. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USAGE_ADMIN
  * \param startDate The beginning of the range being requested, unix timestamp in seconds *Required*
  * \param endDate The ending of the range being requested, unix timestamp in seconds *Required*
  * \param combineEndpoints Whether to combine counts from different endpoint. Removes the url and method from the result object
@@ -183,7 +183,7 @@ bool getUsageByMonthAsync(char * accessToken,
 
 /*! \brief Returns aggregated endpoint usage information by year. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USAGE_ADMIN
  * \param startDate The beginning of the range being requested, unix timestamp in seconds *Required*
  * \param endDate The ending of the range being requested, unix timestamp in seconds *Required*
  * \param combineEndpoints Whether to combine counts from different endpoints. Removes the url and method from the result object
@@ -202,7 +202,7 @@ bool getUsageByYearSync(char * accessToken,
 
 /*! \brief Returns aggregated endpoint usage information by year. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USAGE_ADMIN
  * \param startDate The beginning of the range being requested, unix timestamp in seconds *Required*
  * \param endDate The ending of the range being requested, unix timestamp in seconds *Required*
  * \param combineEndpoints Whether to combine counts from different endpoints. Removes the url and method from the result object
@@ -222,7 +222,7 @@ bool getUsageByYearAsync(char * accessToken,
 
 /*! \brief Returns list of endpoints called (method and url). *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USAGE_ADMIN
  * \param startDate The beginning of the range being requested, unix timestamp in seconds *Required*
  * \param endDate The ending of the range being requested, unix timestamp in seconds *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -236,7 +236,7 @@ bool getUsageEndpointsSync(char * accessToken,
 
 /*! \brief Returns list of endpoints called (method and url). *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USAGE_ADMIN
  * \param startDate The beginning of the range being requested, unix timestamp in seconds *Required*
  * \param endDate The ending of the range being requested, unix timestamp in seconds *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -252,7 +252,7 @@ bool getUsageEndpointsAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

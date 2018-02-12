@@ -70,18 +70,18 @@ public:
 	/*! \brief Set The description of the device
 	 */
 	void setDescription(std::string  description);
-	/*! \brief Get The type of device. Use mobile to specifically register mobile devices. This particular type will be used to send and receive notifications
+	/*! \brief Get The type of device. Use mobile_device to specifically register mobile devices. This particular type will be used to send and receive notifications
 	 */
 	std::string getDeviceType();
 
-	/*! \brief Set The type of device. Use mobile to specifically register mobile devices. This particular type will be used to send and receive notifications
+	/*! \brief Set The type of device. Use mobile_device to specifically register mobile devices. This particular type will be used to send and receive notifications
 	 */
 	void setDeviceType(std::string  device_type);
-	/*! \brief Get The unique ID for this device
+	/*! \brief Get The unique ID for this device. Cannot be changed after creation. Default: random
 	 */
 	std::string getId();
 
-	/*! \brief Set The unique ID for this device
+	/*! \brief Set The unique ID for this device. Cannot be changed after creation. Default: random
 	 */
 	void setId(std::string  id);
 	/*! \brief Get The physical location of the device, coordinates or named place (office, living room, etc)

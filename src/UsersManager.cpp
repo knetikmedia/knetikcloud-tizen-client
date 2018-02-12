@@ -492,6 +492,177 @@ bool UsersManager::deleteUserTemplateSync(char * accessToken,
 	handler, userData, false);
 }
 
+static bool getDirectMessages1Processor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(PageResource«ChatMessageResource», Error, void* )
+	= reinterpret_cast<void(*)(PageResource«ChatMessageResource», Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	PageResource«ChatMessageResource» out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("PageResource«ChatMessageResource»")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "PageResource«ChatMessageResource»", "PageResource«ChatMessageResource»");
+			json_node_free(pJson);
+
+			if ("PageResource«ChatMessageResource»" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unkown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool getDirectMessages1Helper(char * accessToken,
+	int recipientId, int size, int page, 
+	void(* handler)(PageResource«ChatMessageResource», Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+
+	itemAtq = stringify(&size, "int");
+	queryParams.insert(pair<string, string>("size", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("size");
+	}
+
+
+	itemAtq = stringify(&page, "int");
+	queryParams.insert(pair<string, string>("page", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("page");
+	}
+
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/users/users/{recipient_id}/messages");
+	int pos;
+
+	string s_recipientId("{");
+	s_recipientId.append("recipient_id");
+	s_recipientId.append("}");
+	pos = url.find(s_recipientId);
+	url.erase(pos, s_recipientId.length());
+	url.insert(pos, stringify(&recipientId, "int"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("GET");
+
+	if(strcmp("PUT", "GET") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(UsersManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = getDirectMessages1Processor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (UsersManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), getDirectMessages1Processor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __UsersManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool UsersManager::getDirectMessages1Async(char * accessToken,
+	int recipientId, int size, int page, 
+	void(* handler)(PageResource«ChatMessageResource», Error, void* )
+	, void* userData)
+{
+	return getDirectMessages1Helper(accessToken,
+	recipientId, size, page, 
+	handler, userData, true);
+}
+
+bool UsersManager::getDirectMessages1Sync(char * accessToken,
+	int recipientId, int size, int page, 
+	void(* handler)(PageResource«ChatMessageResource», Error, void* )
+	, void* userData)
+{
+	return getDirectMessages1Helper(accessToken,
+	recipientId, size, page, 
+	handler, userData, false);
+}
+
 static bool getUserProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
@@ -1518,6 +1689,176 @@ bool UsersManager::passwordResetSync(char * accessToken,
 {
 	return passwordResetHelper(accessToken,
 	id, newPasswordRequest, 
+	handler, userData, false);
+}
+
+static bool postUserMessageProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(ChatMessageResource, Error, void* )
+	= reinterpret_cast<void(*)(ChatMessageResource, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	ChatMessageResource out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("ChatMessageResource")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "ChatMessageResource", "ChatMessageResource");
+			json_node_free(pJson);
+
+			if ("ChatMessageResource" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unkown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool postUserMessageHelper(char * accessToken,
+	int recipientId, ChatMessageRequest chatMessageRequest, 
+	void(* handler)(ChatMessageResource, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	if (isprimitive("ChatMessageRequest")) {
+		node = converttoJson(&chatMessageRequest, "ChatMessageRequest", "");
+	}
+	
+	char *jsonStr =  chatMessageRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	string url("/users/{recipient_id}/messages");
+	int pos;
+
+	string s_recipientId("{");
+	s_recipientId.append("recipient_id");
+	s_recipientId.append("}");
+	pos = url.find(s_recipientId);
+	url.erase(pos, s_recipientId.length());
+	url.insert(pos, stringify(&recipientId, "int"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("POST");
+
+	if(strcmp("PUT", "POST") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(UsersManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = postUserMessageProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (UsersManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), postUserMessageProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __UsersManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool UsersManager::postUserMessageAsync(char * accessToken,
+	int recipientId, ChatMessageRequest chatMessageRequest, 
+	void(* handler)(ChatMessageResource, Error, void* )
+	, void* userData)
+{
+	return postUserMessageHelper(accessToken,
+	recipientId, chatMessageRequest, 
+	handler, userData, true);
+}
+
+bool UsersManager::postUserMessageSync(char * accessToken,
+	int recipientId, ChatMessageRequest chatMessageRequest, 
+	void(* handler)(ChatMessageResource, Error, void* )
+	, void* userData)
+{
+	return postUserMessageHelper(accessToken,
+	recipientId, chatMessageRequest, 
 	handler, userData, false);
 }
 

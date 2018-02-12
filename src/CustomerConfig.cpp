@@ -31,9 +31,6 @@ CustomerConfig::__init()
 	//database = new DatabaseConfig();
 	//
 	//
-	//io = new IOConfig();
-	//
-	//
 	//name = std::string();
 	//
 	//
@@ -53,11 +50,6 @@ CustomerConfig::__cleanup()
 	//
 	//delete database;
 	//database = NULL;
-	//}
-	//if(io != NULL) {
-	//
-	//delete io;
-	//io = NULL;
 	//}
 	//if(name != NULL) {
 	//
@@ -98,20 +90,6 @@ CustomerConfig::fromJson(char* jsonStr)
 		} else {
 			
 			DatabaseConfig* obj = static_cast<DatabaseConfig*> (&database);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *ioKey = "io";
-	node = json_object_get_member(pJsonObject, ioKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("IOConfig")) {
-			jsonToValue(&io, node, "IOConfig", "IOConfig");
-		} else {
-			
-			IOConfig* obj = static_cast<IOConfig*> (&io);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -176,20 +154,6 @@ CustomerConfig::toJson()
 	}
 	const gchar *databaseKey = "database";
 	json_object_set_member(pJsonObject, databaseKey, node);
-	if (isprimitive("IOConfig")) {
-		IOConfig obj = getIo();
-		node = converttoJson(&obj, "IOConfig", "");
-	}
-	else {
-		
-		IOConfig obj = static_cast<IOConfig> (getIo());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *ioKey = "io";
-	json_object_set_member(pJsonObject, ioKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getName();
 		node = converttoJson(&obj, "std::string", "");
@@ -243,18 +207,6 @@ void
 CustomerConfig::setDatabase(DatabaseConfig  database)
 {
 	this->database = database;
-}
-
-IOConfig
-CustomerConfig::getIo()
-{
-	return io;
-}
-
-void
-CustomerConfig::setIo(IOConfig  io)
-{
-	this->io = io;
 }
 
 std::string

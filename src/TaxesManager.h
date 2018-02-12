@@ -30,7 +30,7 @@ public:
 
 /*! \brief Create a country tax. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TAX_ADMIN
  * \param taxResource The tax object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -43,7 +43,7 @@ bool createCountryTaxSync(char * accessToken,
 
 /*! \brief Create a country tax. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TAX_ADMIN
  * \param taxResource The tax object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -57,7 +57,7 @@ bool createCountryTaxAsync(char * accessToken,
 
 /*! \brief Create a state tax. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TAX_ADMIN
  * \param countryCodeIso3 The iso3 code of the country *Required*
  * \param taxResource The tax object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -71,7 +71,7 @@ bool createStateTaxSync(char * accessToken,
 
 /*! \brief Create a state tax. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TAX_ADMIN
  * \param countryCodeIso3 The iso3 code of the country *Required*
  * \param taxResource The tax object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -86,7 +86,7 @@ bool createStateTaxAsync(char * accessToken,
 
 /*! \brief Delete an existing tax. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TAX_ADMIN
  * \param countryCodeIso3 The iso3 code of the country *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -99,7 +99,7 @@ bool deleteCountryTaxSync(char * accessToken,
 
 /*! \brief Delete an existing tax. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TAX_ADMIN
  * \param countryCodeIso3 The iso3 code of the country *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -113,7 +113,7 @@ bool deleteCountryTaxAsync(char * accessToken,
 
 /*! \brief Delete an existing state tax. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TAX_ADMIN
  * \param countryCodeIso3 The iso3 code of the country *Required*
  * \param stateCode The code of the state *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -127,7 +127,7 @@ bool deleteStateTaxSync(char * accessToken,
 
 /*! \brief Delete an existing state tax. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TAX_ADMIN
  * \param countryCodeIso3 The iso3 code of the country *Required*
  * \param stateCode The code of the state *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -142,7 +142,7 @@ bool deleteStateTaxAsync(char * accessToken,
 
 /*! \brief Get a single tax. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param countryCodeIso3 The iso3 code of the country *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -155,7 +155,7 @@ bool getCountryTaxSync(char * accessToken,
 
 /*! \brief Get a single tax. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param countryCodeIso3 The iso3 code of the country *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -169,7 +169,7 @@ bool getCountryTaxAsync(char * accessToken,
 
 /*! \brief List and search taxes. *Synchronous*
  *
- * Get a list of taxes
+ * <b>Permissions Needed:</b> TAX_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -184,7 +184,7 @@ bool getCountryTaxesSync(char * accessToken,
 
 /*! \brief List and search taxes. *Asynchronous*
  *
- * Get a list of taxes
+ * <b>Permissions Needed:</b> TAX_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -200,7 +200,7 @@ bool getCountryTaxesAsync(char * accessToken,
 
 /*! \brief Get a single state tax. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param countryCodeIso3 The iso3 code of the country *Required*
  * \param stateCode The code of the state *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -214,7 +214,7 @@ bool getStateTaxSync(char * accessToken,
 
 /*! \brief Get a single state tax. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param countryCodeIso3 The iso3 code of the country *Required*
  * \param stateCode The code of the state *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -229,7 +229,7 @@ bool getStateTaxAsync(char * accessToken,
 
 /*! \brief List and search taxes across all countries. *Synchronous*
  *
- * Get a list of taxes
+ * <b>Permissions Needed:</b> ANY
  * \param size The number of objects returned per page
  * \param page The number of the page returned
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -244,7 +244,7 @@ bool getStateTaxesForCountriesSync(char * accessToken,
 
 /*! \brief List and search taxes across all countries. *Asynchronous*
  *
- * Get a list of taxes
+ * <b>Permissions Needed:</b> ANY
  * \param size The number of objects returned per page
  * \param page The number of the page returned
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -260,7 +260,7 @@ bool getStateTaxesForCountriesAsync(char * accessToken,
 
 /*! \brief List and search taxes within a country. *Synchronous*
  *
- * Get a list of taxes
+ * <b>Permissions Needed:</b> ANY
  * \param countryCodeIso3 The iso3 code of the country *Required*
  * \param size The number of objects returned per page
  * \param page The number of the page returned
@@ -276,7 +276,7 @@ bool getStateTaxesForCountrySync(char * accessToken,
 
 /*! \brief List and search taxes within a country. *Asynchronous*
  *
- * Get a list of taxes
+ * <b>Permissions Needed:</b> ANY
  * \param countryCodeIso3 The iso3 code of the country *Required*
  * \param size The number of objects returned per page
  * \param page The number of the page returned
@@ -293,7 +293,7 @@ bool getStateTaxesForCountryAsync(char * accessToken,
 
 /*! \brief Create or update a tax. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TAX_ADMIN
  * \param countryCodeIso3 The iso3 code of the country *Required*
  * \param taxResource The tax object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -307,7 +307,7 @@ bool updateCountryTaxSync(char * accessToken,
 
 /*! \brief Create or update a tax. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TAX_ADMIN
  * \param countryCodeIso3 The iso3 code of the country *Required*
  * \param taxResource The tax object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -322,7 +322,7 @@ bool updateCountryTaxAsync(char * accessToken,
 
 /*! \brief Create or update a state tax. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TAX_ADMIN
  * \param countryCodeIso3 The iso3 code of the country *Required*
  * \param stateCode The code of the state *Required*
  * \param taxResource The tax object
@@ -337,7 +337,7 @@ bool updateStateTaxSync(char * accessToken,
 
 /*! \brief Create or update a state tax. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TAX_ADMIN
  * \param countryCodeIso3 The iso3 code of the country *Required*
  * \param stateCode The code of the state *Required*
  * \param taxResource The tax object
@@ -354,7 +354,7 @@ bool updateStateTaxAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

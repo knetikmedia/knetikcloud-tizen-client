@@ -28,7 +28,7 @@ public:
 
 /*! \brief Lookup a specific expression. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_EXPRESSIONS_USER
  * \param type Specifiy the type of expression as returned by the listing endpoint *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -41,7 +41,7 @@ bool getBREExpressionSync(char * accessToken,
 
 /*! \brief Lookup a specific expression. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_EXPRESSIONS_USER
  * \param type Specifiy the type of expression as returned by the listing endpoint *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -53,9 +53,9 @@ bool getBREExpressionAsync(char * accessToken,
 	, void* userData);
 
 
-/*! \brief Get a list of supported expressions to use in conditions or actions.. *Synchronous*
+/*! \brief Get a list of supported expressions to use in conditions or actions. *Synchronous*
  *
- * Each resource contains a type and a definition that are read-only, all the other fields must be provided when using the expression in a rule.
+ * Each resource contains a type and a definition that are read-only, all the other fields must be provided when using the expression in a rule. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_EXPRESSIONS_USER
  * \param filterTypeGroup Filter for expressions by type group
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -66,9 +66,9 @@ bool getBREExpressionsSync(char * accessToken,
 	void(* handler)(std::list<ExpressionResource>, Error, void* )
 	, void* userData);
 
-/*! \brief Get a list of supported expressions to use in conditions or actions.. *Asynchronous*
+/*! \brief Get a list of supported expressions to use in conditions or actions. *Asynchronous*
  *
- * Each resource contains a type and a definition that are read-only, all the other fields must be provided when using the expression in a rule.
+ * Each resource contains a type and a definition that are read-only, all the other fields must be provided when using the expression in a rule. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_EXPRESSIONS_USER
  * \param filterTypeGroup Filter for expressions by type group
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -82,7 +82,7 @@ bool getBREExpressionsAsync(char * accessToken,
 
 /*! \brief Returns the textual representation of an expression. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_EXPRESSIONS_USER
  * \param expression The expression resource to be converted
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -95,7 +95,7 @@ bool getExpressionAsTextSync(char * accessToken,
 
 /*! \brief Returns the textual representation of an expression. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_EXPRESSIONS_USER
  * \param expression The expression resource to be converted
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -110,7 +110,7 @@ bool getExpressionAsTextAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

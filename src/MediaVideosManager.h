@@ -40,7 +40,7 @@ public:
 
 /*! \brief Adds a user to a video's whitelist. *Synchronous*
  *
- * Whitelisted users can view video regardless of privacy setting.
+ * Whitelisted users can view video regardless of privacy setting. <br><br><b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param id The video id *Required*
  * \param userId The user id
  * \param handler The callback function to be invoked on completion. *Required*
@@ -54,7 +54,7 @@ bool addUserToVideoWhitelistSync(char * accessToken,
 
 /*! \brief Adds a user to a video's whitelist. *Asynchronous*
  *
- * Whitelisted users can view video regardless of privacy setting.
+ * Whitelisted users can view video regardless of privacy setting. <br><br><b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param id The video id *Required*
  * \param userId The user id
  * \param handler The callback function to be invoked on completion. *Required*
@@ -69,7 +69,7 @@ bool addUserToVideoWhitelistAsync(char * accessToken,
 
 /*! \brief Adds a new video in the system. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoResource The video object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -82,7 +82,7 @@ bool addVideoSync(char * accessToken,
 
 /*! \brief Adds a new video in the system. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoResource The video object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -96,7 +96,7 @@ bool addVideoAsync(char * accessToken,
 
 /*! \brief Add a new video comment. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id  *Required*
  * \param commentResource The comment object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -110,7 +110,7 @@ bool addVideoCommentSync(char * accessToken,
 
 /*! \brief Add a new video comment. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id  *Required*
  * \param commentResource The comment object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -125,7 +125,7 @@ bool addVideoCommentAsync(char * accessToken,
 
 /*! \brief Adds a contributor to a video. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id *Required*
  * \param contributionResource The contribution object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -139,7 +139,7 @@ bool addVideoContributorSync(char * accessToken,
 
 /*! \brief Adds a contributor to a video. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id *Required*
  * \param contributionResource The contribution object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -154,7 +154,7 @@ bool addVideoContributorAsync(char * accessToken,
 
 /*! \brief Add a new flag. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id *Required*
  * \param reason The flag reason
  * \param handler The callback function to be invoked on completion. *Required*
@@ -168,7 +168,7 @@ bool addVideoFlagSync(char * accessToken,
 
 /*! \brief Add a new flag. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id *Required*
  * \param reason The flag reason
  * \param handler The callback function to be invoked on completion. *Required*
@@ -183,7 +183,7 @@ bool addVideoFlagAsync(char * accessToken,
 
 /*! \brief Adds one or more existing videos as related to this one. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id *Required*
  * \param videoRelationshipResource The video relationship object 
  * \param handler The callback function to be invoked on completion. *Required*
@@ -197,7 +197,7 @@ bool addVideoRelationshipsSync(char * accessToken,
 
 /*! \brief Adds one or more existing videos as related to this one. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id *Required*
  * \param videoRelationshipResource The video relationship object 
  * \param handler The callback function to be invoked on completion. *Required*
@@ -212,7 +212,7 @@ bool addVideoRelationshipsAsync(char * accessToken,
 
 /*! \brief Create a video disposition. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id *Required*
  * \param dispositionResource The disposition object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -226,7 +226,7 @@ bool createVideoDispositionSync(char * accessToken,
 
 /*! \brief Create a video disposition. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id *Required*
  * \param dispositionResource The disposition object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -241,7 +241,7 @@ bool createVideoDispositionAsync(char * accessToken,
 
 /*! \brief Create a video template. *Synchronous*
  *
- * Video Templates define a type of video and the properties they have
+ * Video Templates define a type of video and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param videoTemplateResource The video template resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -254,7 +254,7 @@ bool createVideoTemplateSync(char * accessToken,
 
 /*! \brief Create a video template. *Asynchronous*
  *
- * Video Templates define a type of video and the properties they have
+ * Video Templates define a type of video and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param videoTemplateResource The video template resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -268,7 +268,7 @@ bool createVideoTemplateAsync(char * accessToken,
 
 /*! \brief Deletes a video from the system if no resources are attached to it. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param id The video id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -281,7 +281,7 @@ bool deleteVideoSync(char * accessToken,
 
 /*! \brief Deletes a video from the system if no resources are attached to it. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param id The video id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -295,7 +295,7 @@ bool deleteVideoAsync(char * accessToken,
 
 /*! \brief Delete a video comment. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id *Required*
  * \param id The comment id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -309,7 +309,7 @@ bool deleteVideoCommentSync(char * accessToken,
 
 /*! \brief Delete a video comment. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id *Required*
  * \param id The comment id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -324,7 +324,7 @@ bool deleteVideoCommentAsync(char * accessToken,
 
 /*! \brief Delete a video disposition. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param dispositionId The disposition id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -337,7 +337,7 @@ bool deleteVideoDispositionSync(char * accessToken,
 
 /*! \brief Delete a video disposition. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param dispositionId The disposition id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -351,7 +351,7 @@ bool deleteVideoDispositionAsync(char * accessToken,
 
 /*! \brief Delete a flag. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -364,7 +364,7 @@ bool deleteVideoFlagSync(char * accessToken,
 
 /*! \brief Delete a flag. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -378,7 +378,7 @@ bool deleteVideoFlagAsync(char * accessToken,
 
 /*! \brief Delete a video's relationship. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id *Required*
  * \param id The relationship id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -392,7 +392,7 @@ bool deleteVideoRelationshipSync(char * accessToken,
 
 /*! \brief Delete a video's relationship. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id *Required*
  * \param id The relationship id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -407,7 +407,7 @@ bool deleteVideoRelationshipAsync(char * accessToken,
 
 /*! \brief Delete a video template. *Synchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -421,7 +421,7 @@ bool deleteVideoTemplateSync(char * accessToken,
 
 /*! \brief Delete a video template. *Asynchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -436,7 +436,7 @@ bool deleteVideoTemplateAsync(char * accessToken,
 
 /*! \brief Get user videos. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param userId The user id *Required*
  * \param excludeFlagged Skip videos that have been flagged by the current user
  * \param size The number of objects returned per page
@@ -452,7 +452,7 @@ bool getUserVideosSync(char * accessToken,
 
 /*! \brief Get user videos. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param userId The user id *Required*
  * \param excludeFlagged Skip videos that have been flagged by the current user
  * \param size The number of objects returned per page
@@ -469,7 +469,7 @@ bool getUserVideosAsync(char * accessToken,
 
 /*! \brief Loads a specific video details. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param id The video id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -482,7 +482,7 @@ bool getVideoSync(char * accessToken,
 
 /*! \brief Loads a specific video details. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param id The video id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -496,7 +496,7 @@ bool getVideoAsync(char * accessToken,
 
 /*! \brief Returns a page of comments for a video. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param videoId The video id *Required*
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -511,7 +511,7 @@ bool getVideoCommentsSync(char * accessToken,
 
 /*! \brief Returns a page of comments for a video. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param videoId The video id *Required*
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -527,7 +527,7 @@ bool getVideoCommentsAsync(char * accessToken,
 
 /*! \brief Returns a page of dispositions for a video. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param videoId The video id *Required*
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -542,7 +542,7 @@ bool getVideoDispositionsSync(char * accessToken,
 
 /*! \brief Returns a page of dispositions for a video. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param videoId The video id *Required*
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -558,7 +558,7 @@ bool getVideoDispositionsAsync(char * accessToken,
 
 /*! \brief Returns a page of video relationships. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param videoId The video id *Required*
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -573,7 +573,7 @@ bool getVideoRelationshipsSync(char * accessToken,
 
 /*! \brief Returns a page of video relationships. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param videoId The video id *Required*
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -589,7 +589,7 @@ bool getVideoRelationshipsAsync(char * accessToken,
 
 /*! \brief Get a single video template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or VIDEOS_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -602,7 +602,7 @@ bool getVideoTemplateSync(char * accessToken,
 
 /*! \brief Get a single video template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or VIDEOS_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -616,7 +616,7 @@ bool getVideoTemplateAsync(char * accessToken,
 
 /*! \brief List and search video templates. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or VIDEOS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -631,7 +631,7 @@ bool getVideoTemplatesSync(char * accessToken,
 
 /*! \brief List and search video templates. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or VIDEOS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -647,7 +647,7 @@ bool getVideoTemplatesAsync(char * accessToken,
 
 /*! \brief Search videos using the documented filters. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param excludeFlagged Skip videos that have been flagged by the current user
  * \param filterVideosByUploader Filter for videos by uploader id
  * \param filterCategory Filter for videos from a specific category by id
@@ -674,7 +674,7 @@ bool getVideosSync(char * accessToken,
 
 /*! \brief Search videos using the documented filters. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param excludeFlagged Skip videos that have been flagged by the current user
  * \param filterVideosByUploader Filter for videos by uploader id
  * \param filterCategory Filter for videos from a specific category by id
@@ -702,7 +702,7 @@ bool getVideosAsync(char * accessToken,
 
 /*! \brief Removes a user from a video's whitelist. *Synchronous*
  *
- * Remove the user with the id given in the path from the whitelist of users that can view this video regardless of privacy setting.
+ * Remove the user with the id given in the path from the whitelist of users that can view this video regardless of privacy setting. <br><br><b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id *Required*
  * \param id The user id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -716,7 +716,7 @@ bool removeUserFromVideoWhitelistSync(char * accessToken,
 
 /*! \brief Removes a user from a video's whitelist. *Asynchronous*
  *
- * Remove the user with the id given in the path from the whitelist of users that can view this video regardless of privacy setting.
+ * Remove the user with the id given in the path from the whitelist of users that can view this video regardless of privacy setting. <br><br><b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id *Required*
  * \param id The user id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -731,7 +731,7 @@ bool removeUserFromVideoWhitelistAsync(char * accessToken,
 
 /*! \brief Removes a contributor from a video. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id *Required*
  * \param id The contributor id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -745,7 +745,7 @@ bool removeVideoContributorSync(char * accessToken,
 
 /*! \brief Removes a contributor from a video. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id *Required*
  * \param id The contributor id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -760,7 +760,7 @@ bool removeVideoContributorAsync(char * accessToken,
 
 /*! \brief Modifies a video's details. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param id The video id *Required*
  * \param videoResource The video object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -774,7 +774,7 @@ bool updateVideoSync(char * accessToken,
 
 /*! \brief Modifies a video's details. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param id The video id *Required*
  * \param videoResource The video object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -789,7 +789,7 @@ bool updateVideoAsync(char * accessToken,
 
 /*! \brief Update a video comment. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id *Required*
  * \param id The comment id *Required*
  * \param content The comment content
@@ -804,7 +804,7 @@ bool updateVideoCommentSync(char * accessToken,
 
 /*! \brief Update a video comment. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id *Required*
  * \param id The comment id *Required*
  * \param content The comment content
@@ -820,7 +820,7 @@ bool updateVideoCommentAsync(char * accessToken,
 
 /*! \brief Update a video's relationship details. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id *Required*
  * \param relationshipId The relationship id *Required*
  * \param details The video relationship details
@@ -835,7 +835,7 @@ bool updateVideoRelationshipSync(char * accessToken,
 
 /*! \brief Update a video's relationship details. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
  * \param videoId The video id *Required*
  * \param relationshipId The relationship id *Required*
  * \param details The video relationship details
@@ -851,7 +851,7 @@ bool updateVideoRelationshipAsync(char * accessToken,
 
 /*! \brief Update a video template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param videoTemplateResource The video template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -865,7 +865,7 @@ bool updateVideoTemplateSync(char * accessToken,
 
 /*! \brief Update a video template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param videoTemplateResource The video template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -880,7 +880,7 @@ bool updateVideoTemplateAsync(char * accessToken,
 
 /*! \brief Increment a video's view count. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The video id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -893,7 +893,7 @@ bool viewVideoSync(char * accessToken,
 
 /*! \brief Increment a video's view count. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The video id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -908,7 +908,7 @@ bool viewVideoAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

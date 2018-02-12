@@ -30,7 +30,7 @@ public:
 
 /*! \brief Add a flag. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param flagResource The flag resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -43,7 +43,7 @@ bool addFlagSync(char * accessToken,
 
 /*! \brief Add a flag. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param flagResource The flag resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -57,7 +57,7 @@ bool addFlagAsync(char * accessToken,
 
 /*! \brief Delete a flag. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> MODERATION_ADMIN or owner
  * \param contextName The name of the context
  * \param contextId The id of the context
  * \param userId The id of the user
@@ -72,7 +72,7 @@ bool deleteFlagSync(char * accessToken,
 
 /*! \brief Delete a flag. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> MODERATION_ADMIN or owner
  * \param contextName The name of the context
  * \param contextId The id of the context
  * \param userId The id of the user
@@ -88,7 +88,7 @@ bool deleteFlagAsync(char * accessToken,
 
 /*! \brief Returns a page of flags. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> MODERATION_ADMIN or owner
  * \param filterContext Filter by flag context
  * \param filterContextId Filter by flag context ID
  * \param filterUserId Filter by user ID
@@ -105,7 +105,7 @@ bool getFlagsSync(char * accessToken,
 
 /*! \brief Returns a page of flags. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> MODERATION_ADMIN or owner
  * \param filterContext Filter by flag context
  * \param filterContextId Filter by flag context ID
  * \param filterUserId Filter by user ID
@@ -123,7 +123,7 @@ bool getFlagsAsync(char * accessToken,
 
 /*! \brief Get a flag report. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> MODERATION_ADMIN
  * \param id The flag report id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -136,7 +136,7 @@ bool getModerationReportSync(char * accessToken,
 
 /*! \brief Get a flag report. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> MODERATION_ADMIN
  * \param id The flag report id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -150,7 +150,7 @@ bool getModerationReportAsync(char * accessToken,
 
 /*! \brief Returns a page of flag reports. *Synchronous*
  *
- * Context can be either a free-form string or a pre-defined context name
+ * Context can be either a free-form string or a pre-defined context name. <br><br><b>Permissions Needed:</b> MODERATION_ADMIN
  * \param excludeResolved Ignore resolved context
  * \param filterContext Filter by moderation context
  * \param filterContextId Filter by moderation context ID
@@ -167,7 +167,7 @@ bool getModerationReportsSync(char * accessToken,
 
 /*! \brief Returns a page of flag reports. *Asynchronous*
  *
- * Context can be either a free-form string or a pre-defined context name
+ * Context can be either a free-form string or a pre-defined context name. <br><br><b>Permissions Needed:</b> MODERATION_ADMIN
  * \param excludeResolved Ignore resolved context
  * \param filterContext Filter by moderation context
  * \param filterContextId Filter by moderation context ID
@@ -185,7 +185,7 @@ bool getModerationReportsAsync(char * accessToken,
 
 /*! \brief Update a flag report. *Synchronous*
  *
- * Lets you set the resolution of a report. Resolution types is {banned,ignore} in case of 'banned' you will need to pass the reason.
+ * Lets you set the resolution of a report. Resolution types is {banned,ignore} in case of 'banned' you will need to pass the reason. <br><br><b>Permissions Needed:</b> MODERATION_ADMIN
  * \param id The flag report id *Required*
  * \param flagReportResource The new flag report
  * \param handler The callback function to be invoked on completion. *Required*
@@ -199,7 +199,7 @@ bool updateModerationReportSync(char * accessToken,
 
 /*! \brief Update a flag report. *Asynchronous*
  *
- * Lets you set the resolution of a report. Resolution types is {banned,ignore} in case of 'banned' you will need to pass the reason.
+ * Lets you set the resolution of a report. Resolution types is {banned,ignore} in case of 'banned' you will need to pass the reason. <br><br><b>Permissions Needed:</b> MODERATION_ADMIN
  * \param id The flag report id *Required*
  * \param flagReportResource The new flag report
  * \param handler The callback function to be invoked on completion. *Required*
@@ -215,7 +215,7 @@ bool updateModerationReportAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

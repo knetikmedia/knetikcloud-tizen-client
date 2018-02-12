@@ -30,7 +30,7 @@ public:
 
 /*! \brief Create a new article. *Synchronous*
  *
- * Articles are blobs of text with titles, a category and assets. Formatting and display of the text is in the hands of the front end.
+ * Articles are blobs of text with titles, a category and assets. Formatting and display of the text is in the hands of the front end.<br><br><b>Permissions:</b> ARTICLES_ADMIN
  * \param articleResource The new article
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -43,7 +43,7 @@ bool createArticleSync(char * accessToken,
 
 /*! \brief Create a new article. *Asynchronous*
  *
- * Articles are blobs of text with titles, a category and assets. Formatting and display of the text is in the hands of the front end.
+ * Articles are blobs of text with titles, a category and assets. Formatting and display of the text is in the hands of the front end.<br><br><b>Permissions:</b> ARTICLES_ADMIN
  * \param articleResource The new article
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -57,7 +57,7 @@ bool createArticleAsync(char * accessToken,
 
 /*! \brief Create an article template. *Synchronous*
  *
- * Article Templates define a type of article and the properties they have
+ * Article Templates define a type of article and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param articleTemplateResource The article template resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -70,7 +70,7 @@ bool createArticleTemplateSync(char * accessToken,
 
 /*! \brief Create an article template. *Asynchronous*
  *
- * Article Templates define a type of article and the properties they have
+ * Article Templates define a type of article and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param articleTemplateResource The article template resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -84,7 +84,7 @@ bool createArticleTemplateAsync(char * accessToken,
 
 /*! \brief Delete an existing article. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ARTICLES_ADMIN
  * \param id The article id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -97,7 +97,7 @@ bool deleteArticleSync(char * accessToken,
 
 /*! \brief Delete an existing article. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ARTICLES_ADMIN
  * \param id The article id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -111,7 +111,7 @@ bool deleteArticleAsync(char * accessToken,
 
 /*! \brief Delete an article template. *Synchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -125,7 +125,7 @@ bool deleteArticleTemplateSync(char * accessToken,
 
 /*! \brief Delete an article template. *Asynchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -140,7 +140,7 @@ bool deleteArticleTemplateAsync(char * accessToken,
 
 /*! \brief Get a single article. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The article id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -153,7 +153,7 @@ bool getArticleSync(char * accessToken,
 
 /*! \brief Get a single article. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The article id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -167,7 +167,7 @@ bool getArticleAsync(char * accessToken,
 
 /*! \brief Get a single article template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ARTICLES_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -180,7 +180,7 @@ bool getArticleTemplateSync(char * accessToken,
 
 /*! \brief Get a single article template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ARTICLES_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -194,7 +194,7 @@ bool getArticleTemplateAsync(char * accessToken,
 
 /*! \brief List and search article templates. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ARTICLES_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -209,7 +209,7 @@ bool getArticleTemplatesSync(char * accessToken,
 
 /*! \brief List and search article templates. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ARTICLES_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -225,7 +225,7 @@ bool getArticleTemplatesAsync(char * accessToken,
 
 /*! \brief List and search articles. *Synchronous*
  *
- * Get a list of articles with optional filtering. Assets will not be filled in on the resources returned. Use 'Get a single article' to retrieve the full resource with assets for a given item as needed.
+ * Get a list of articles with optional filtering. Assets will not be filled in on the resources returned. Use 'Get a single article' to retrieve the full resource with assets for a given item as needed. <br><br><b>Permissions Needed:</b> ANY
  * \param filterActiveOnly Filter for articles that are active (true) or inactive (false)
  * \param filterCategory Filter for articles from a specific category by id
  * \param filterTagset Filter for articles with at least one of a specified set of tags (separated by comma)
@@ -246,7 +246,7 @@ bool getArticlesSync(char * accessToken,
 
 /*! \brief List and search articles. *Asynchronous*
  *
- * Get a list of articles with optional filtering. Assets will not be filled in on the resources returned. Use 'Get a single article' to retrieve the full resource with assets for a given item as needed.
+ * Get a list of articles with optional filtering. Assets will not be filled in on the resources returned. Use 'Get a single article' to retrieve the full resource with assets for a given item as needed. <br><br><b>Permissions Needed:</b> ANY
  * \param filterActiveOnly Filter for articles that are active (true) or inactive (false)
  * \param filterCategory Filter for articles from a specific category by id
  * \param filterTagset Filter for articles with at least one of a specified set of tags (separated by comma)
@@ -268,7 +268,7 @@ bool getArticlesAsync(char * accessToken,
 
 /*! \brief Update an existing article. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ARTICLES_ADMIN
  * \param id The article id *Required*
  * \param articleResource The article object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -282,7 +282,7 @@ bool updateArticleSync(char * accessToken,
 
 /*! \brief Update an existing article. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ARTICLES_ADMIN
  * \param id The article id *Required*
  * \param articleResource The article object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -297,7 +297,7 @@ bool updateArticleAsync(char * accessToken,
 
 /*! \brief Update an article template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param articleTemplateResource The article template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -311,7 +311,7 @@ bool updateArticleTemplateSync(char * accessToken,
 
 /*! \brief Update an article template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param articleTemplateResource The article template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -327,7 +327,7 @@ bool updateArticleTemplateAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

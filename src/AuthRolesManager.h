@@ -31,7 +31,7 @@ public:
 
 /*! \brief Create a new role. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ROLES_ADMIN
  * \param roleResource The role resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -44,7 +44,7 @@ bool createRoleSync(char * accessToken,
 
 /*! \brief Create a new role. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ROLES_ADMIN
  * \param roleResource The role resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -58,7 +58,7 @@ bool createRoleAsync(char * accessToken,
 
 /*! \brief Delete a role. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ROLES_ADMIN
  * \param role The role value *Required*
  * \param force If true, removes role from users/clients
  * \param handler The callback function to be invoked on completion. *Required*
@@ -72,7 +72,7 @@ bool deleteRoleSync(char * accessToken,
 
 /*! \brief Delete a role. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ROLES_ADMIN
  * \param role The role value *Required*
  * \param force If true, removes role from users/clients
  * \param handler The callback function to be invoked on completion. *Required*
@@ -87,7 +87,7 @@ bool deleteRoleAsync(char * accessToken,
 
 /*! \brief Get roles for a client. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ROLES_ADMIN
  * \param clientKey The client key *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -100,7 +100,7 @@ bool getClientRolesSync(char * accessToken,
 
 /*! \brief Get roles for a client. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ROLES_ADMIN
  * \param clientKey The client key *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -114,7 +114,7 @@ bool getClientRolesAsync(char * accessToken,
 
 /*! \brief Get a single role. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ROLES_ADMIN
  * \param role The role value *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -127,7 +127,7 @@ bool getRoleSync(char * accessToken,
 
 /*! \brief Get a single role. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ROLES_ADMIN
  * \param role The role value *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -141,7 +141,7 @@ bool getRoleAsync(char * accessToken,
 
 /*! \brief List and search roles. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ROLES_ADMIN
  * \param filterName Filter for roles that have a name starting with specified string
  * \param filterRole Filter for roles that have a role starting with specified string
  * \param size The number of objects returned per page
@@ -158,7 +158,7 @@ bool getRolesSync(char * accessToken,
 
 /*! \brief List and search roles. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ROLES_ADMIN
  * \param filterName Filter for roles that have a name starting with specified string
  * \param filterRole Filter for roles that have a role starting with specified string
  * \param size The number of objects returned per page
@@ -176,7 +176,7 @@ bool getRolesAsync(char * accessToken,
 
 /*! \brief Get roles for a user. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ROLES_ADMIN
  * \param userId The user's id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -189,7 +189,7 @@ bool getUserRolesSync(char * accessToken,
 
 /*! \brief Get roles for a user. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ROLES_ADMIN
  * \param userId The user's id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -203,7 +203,7 @@ bool getUserRolesAsync(char * accessToken,
 
 /*! \brief Set roles for a client. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ROLES_ADMIN
  * \param clientKey The client key *Required*
  * \param rolesList The list of unique roles
  * \param handler The callback function to be invoked on completion. *Required*
@@ -217,7 +217,7 @@ bool setClientRolesSync(char * accessToken,
 
 /*! \brief Set roles for a client. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ROLES_ADMIN
  * \param clientKey The client key *Required*
  * \param rolesList The list of unique roles
  * \param handler The callback function to be invoked on completion. *Required*
@@ -232,7 +232,7 @@ bool setClientRolesAsync(char * accessToken,
 
 /*! \brief Set permissions for a role. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ROLES_ADMIN
  * \param role The role value *Required*
  * \param permissionsList The list of unique permissions
  * \param handler The callback function to be invoked on completion. *Required*
@@ -246,7 +246,7 @@ bool setPermissionsForRoleSync(char * accessToken,
 
 /*! \brief Set permissions for a role. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ROLES_ADMIN
  * \param role The role value *Required*
  * \param permissionsList The list of unique permissions
  * \param handler The callback function to be invoked on completion. *Required*
@@ -261,7 +261,7 @@ bool setPermissionsForRoleAsync(char * accessToken,
 
 /*! \brief Set roles for a user. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ROLES_ADMIN
  * \param userId The user's id *Required*
  * \param rolesList The list of unique roles
  * \param handler The callback function to be invoked on completion. *Required*
@@ -275,7 +275,7 @@ bool setUserRolesSync(char * accessToken,
 
 /*! \brief Set roles for a user. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ROLES_ADMIN
  * \param userId The user's id *Required*
  * \param rolesList The list of unique roles
  * \param handler The callback function to be invoked on completion. *Required*
@@ -290,7 +290,7 @@ bool setUserRolesAsync(char * accessToken,
 
 /*! \brief Update a role. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ROLES_ADMIN
  * \param role The role value *Required*
  * \param roleResource The role resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -304,7 +304,7 @@ bool updateRoleSync(char * accessToken,
 
 /*! \brief Update a role. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ROLES_ADMIN
  * \param role The role value *Required*
  * \param roleResource The role resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -320,7 +320,7 @@ bool updateRoleAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

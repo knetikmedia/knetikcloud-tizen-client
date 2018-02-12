@@ -34,7 +34,7 @@ public:
 
 /*! \brief Create an invoice. *Synchronous*
  *
- * Create an invoice(s) by providing a cart GUID. Note that there may be multiple invoices created, one per vendor.
+ * Create an invoice(s) by providing a cart GUID. Note that there may be multiple invoices created, one per vendor. <br><br><b>Permissions Needed:</b> INVOICES_USER or INVOICES_ADMIN
  * \param req Invoice to be created
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -47,7 +47,7 @@ bool createInvoiceSync(char * accessToken,
 
 /*! \brief Create an invoice. *Asynchronous*
  *
- * Create an invoice(s) by providing a cart GUID. Note that there may be multiple invoices created, one per vendor.
+ * Create an invoice(s) by providing a cart GUID. Note that there may be multiple invoices created, one per vendor. <br><br><b>Permissions Needed:</b> INVOICES_USER or INVOICES_ADMIN
  * \param req Invoice to be created
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -61,7 +61,7 @@ bool createInvoiceAsync(char * accessToken,
 
 /*! \brief Lists available fulfillment statuses. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -73,7 +73,7 @@ bool getFulFillmentStatusesSync(char * accessToken,
 
 /*! \brief Lists available fulfillment statuses. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -86,7 +86,7 @@ bool getFulFillmentStatusesAsync(char * accessToken,
 
 /*! \brief Retrieve an invoice. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVOICES_USER and owner, or INVOICES_ADMIN
  * \param id The id of the invoice *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -99,7 +99,7 @@ bool getInvoiceSync(char * accessToken,
 
 /*! \brief Retrieve an invoice. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVOICES_USER and owner, or INVOICES_ADMIN
  * \param id The id of the invoice *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -113,7 +113,7 @@ bool getInvoiceAsync(char * accessToken,
 
 /*! \brief List invoice logs. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVOICES_USER and owner, or INVOICES_ADMIN
  * \param id The id of the invoice *Required*
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -128,7 +128,7 @@ bool getInvoiceLogsSync(char * accessToken,
 
 /*! \brief List invoice logs. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVOICES_USER and owner, or INVOICES_ADMIN
  * \param id The id of the invoice *Required*
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -144,7 +144,7 @@ bool getInvoiceLogsAsync(char * accessToken,
 
 /*! \brief Retrieve invoices. *Synchronous*
  *
- * Without INVOICES_ADMIN permission the results are automatically filtered for only the logged in user's invoices. It is recomended however that filter_user be added to avoid issues for admin users accidentally getting additional invoices.
+ * Without INVOICES_ADMIN permission the results are automatically filtered for only the logged in user's invoices. It is recomended however that filter_user be added to avoid issues for admin users accidentally getting additional invoices. <br><br><b>Permissions Needed:</b> INVOICES_USER and owner, or INVOICES_ADMIN
  * \param filterUser The id of a user to get invoices for. Automtically added if not being called with admin permissions.
  * \param filterEmail Filters invoices by customer's email. Admins only.
  * \param filterFulfillmentStatus Filters invoices by fulfillment status type. Can be a comma separated list of statuses
@@ -173,7 +173,7 @@ bool getInvoicesSync(char * accessToken,
 
 /*! \brief Retrieve invoices. *Asynchronous*
  *
- * Without INVOICES_ADMIN permission the results are automatically filtered for only the logged in user's invoices. It is recomended however that filter_user be added to avoid issues for admin users accidentally getting additional invoices.
+ * Without INVOICES_ADMIN permission the results are automatically filtered for only the logged in user's invoices. It is recomended however that filter_user be added to avoid issues for admin users accidentally getting additional invoices. <br><br><b>Permissions Needed:</b> INVOICES_USER and owner, or INVOICES_ADMIN
  * \param filterUser The id of a user to get invoices for. Automtically added if not being called with admin permissions.
  * \param filterEmail Filters invoices by customer's email. Admins only.
  * \param filterFulfillmentStatus Filters invoices by fulfillment status type. Can be a comma separated list of statuses
@@ -203,7 +203,7 @@ bool getInvoicesAsync(char * accessToken,
 
 /*! \brief Lists available payment statuses. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -215,7 +215,7 @@ bool getPaymentStatusesSync(char * accessToken,
 
 /*! \brief Lists available payment statuses. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -228,7 +228,7 @@ bool getPaymentStatusesAsync(char * accessToken,
 
 /*! \brief Pay an invoice using a saved payment method. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVOICES_USER and owner, or INVOICES_ADMIN
  * \param id The id of the invoice *Required*
  * \param request The payment method details. Will default to the appropriate user's wallet in the invoice currency if ommited.
  * \param handler The callback function to be invoked on completion. *Required*
@@ -242,7 +242,7 @@ bool payInvoiceSync(char * accessToken,
 
 /*! \brief Pay an invoice using a saved payment method. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVOICES_USER and owner, or INVOICES_ADMIN
  * \param id The id of the invoice *Required*
  * \param request The payment method details. Will default to the appropriate user's wallet in the invoice currency if ommited.
  * \param handler The callback function to be invoked on completion. *Required*
@@ -257,7 +257,7 @@ bool payInvoiceAsync(char * accessToken,
 
 /*! \brief Set the fulfillment status of a bundled invoice item. *Synchronous*
  *
- * This allows external fulfillment systems to report success or failure. Fulfillment status changes are restricted by a specific flow determining which status can lead to which.
+ * This allows external fulfillment systems to report success or failure. Fulfillment status changes are restricted by a specific flow determining which status can lead to which. <br><br><b>Permissions Needed:</b> INVOICES_ADMIN
  * \param id The id of the invoice *Required*
  * \param bundleSku The sku of the bundle in the invoice that contains the given target *Required*
  * \param sku The sku of an item in the bundle in the invoice *Required*
@@ -273,7 +273,7 @@ bool setBundledInvoiceItemFulfillmentStatusSync(char * accessToken,
 
 /*! \brief Set the fulfillment status of a bundled invoice item. *Asynchronous*
  *
- * This allows external fulfillment systems to report success or failure. Fulfillment status changes are restricted by a specific flow determining which status can lead to which.
+ * This allows external fulfillment systems to report success or failure. Fulfillment status changes are restricted by a specific flow determining which status can lead to which. <br><br><b>Permissions Needed:</b> INVOICES_ADMIN
  * \param id The id of the invoice *Required*
  * \param bundleSku The sku of the bundle in the invoice that contains the given target *Required*
  * \param sku The sku of an item in the bundle in the invoice *Required*
@@ -290,7 +290,7 @@ bool setBundledInvoiceItemFulfillmentStatusAsync(char * accessToken,
 
 /*! \brief Set the external reference of an invoice. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVOICES_ADMIN
  * \param id The id of the invoice *Required*
  * \param externalRef External reference info
  * \param handler The callback function to be invoked on completion. *Required*
@@ -304,7 +304,7 @@ bool setExternalRefSync(char * accessToken,
 
 /*! \brief Set the external reference of an invoice. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVOICES_ADMIN
  * \param id The id of the invoice *Required*
  * \param externalRef External reference info
  * \param handler The callback function to be invoked on completion. *Required*
@@ -319,7 +319,7 @@ bool setExternalRefAsync(char * accessToken,
 
 /*! \brief Set the fulfillment status of an invoice item. *Synchronous*
  *
- * This allows external fulfillment systems to report success or failure. Fulfillment status changes are restricted by a specific flow determining which status can lead to which.
+ * This allows external fulfillment systems to report success or failure. Fulfillment status changes are restricted by a specific flow determining which status can lead to which. <br><br><b>Permissions Needed:</b> INVOICES_ADMIN
  * \param id The id of the invoice *Required*
  * \param sku The sku of an item in the invoice *Required*
  * \param status The new fulfillment status for the item. Additional options may be available based on configuration.  Allowable values:  'unfulfilled', 'fulfilled', 'not fulfillable', 'failed', 'processing', 'failed_permanent', 'delayed' *Required*
@@ -334,7 +334,7 @@ bool setInvoiceItemFulfillmentStatusSync(char * accessToken,
 
 /*! \brief Set the fulfillment status of an invoice item. *Asynchronous*
  *
- * This allows external fulfillment systems to report success or failure. Fulfillment status changes are restricted by a specific flow determining which status can lead to which.
+ * This allows external fulfillment systems to report success or failure. Fulfillment status changes are restricted by a specific flow determining which status can lead to which. <br><br><b>Permissions Needed:</b> INVOICES_ADMIN
  * \param id The id of the invoice *Required*
  * \param sku The sku of an item in the invoice *Required*
  * \param status The new fulfillment status for the item. Additional options may be available based on configuration.  Allowable values:  'unfulfilled', 'fulfilled', 'not fulfillable', 'failed', 'processing', 'failed_permanent', 'delayed' *Required*
@@ -350,7 +350,7 @@ bool setInvoiceItemFulfillmentStatusAsync(char * accessToken,
 
 /*! \brief Set the order notes of an invoice. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVOICES_ADMIN
  * \param id The id of the invoice *Required*
  * \param orderNotes Payment status info
  * \param handler The callback function to be invoked on completion. *Required*
@@ -364,7 +364,7 @@ bool setOrderNotesSync(char * accessToken,
 
 /*! \brief Set the order notes of an invoice. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVOICES_ADMIN
  * \param id The id of the invoice *Required*
  * \param orderNotes Payment status info
  * \param handler The callback function to be invoked on completion. *Required*
@@ -379,7 +379,7 @@ bool setOrderNotesAsync(char * accessToken,
 
 /*! \brief Set the payment status of an invoice. *Synchronous*
  *
- * This may trigger fulfillment if setting the status to 'paid'. This is mainly intended to support external payment systems that cannot be incorporated into the payment method system. Payment status changes are restricted by a specific flow determining which status can lead to which.
+ * This may trigger fulfillment if setting the status to 'paid'. This is mainly intended to support external payment systems that cannot be incorporated into the payment method system. Payment status changes are restricted by a specific flow determining which status can lead to which. <br><br><b>Permissions Needed:</b> INVOICES_ADMIN
  * \param id The id of the invoice *Required*
  * \param request Payment status info
  * \param handler The callback function to be invoked on completion. *Required*
@@ -393,7 +393,7 @@ bool setPaymentStatusSync(char * accessToken,
 
 /*! \brief Set the payment status of an invoice. *Asynchronous*
  *
- * This may trigger fulfillment if setting the status to 'paid'. This is mainly intended to support external payment systems that cannot be incorporated into the payment method system. Payment status changes are restricted by a specific flow determining which status can lead to which.
+ * This may trigger fulfillment if setting the status to 'paid'. This is mainly intended to support external payment systems that cannot be incorporated into the payment method system. Payment status changes are restricted by a specific flow determining which status can lead to which. <br><br><b>Permissions Needed:</b> INVOICES_ADMIN
  * \param id The id of the invoice *Required*
  * \param request Payment status info
  * \param handler The callback function to be invoked on completion. *Required*
@@ -408,7 +408,7 @@ bool setPaymentStatusAsync(char * accessToken,
 
 /*! \brief Set or update billing info. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVOICES_USER and owner, or INVOICES_ADMIN
  * \param id The id of the invoice *Required*
  * \param billingInfoRequest Address info
  * \param handler The callback function to be invoked on completion. *Required*
@@ -422,7 +422,7 @@ bool updateBillingInfoSync(char * accessToken,
 
 /*! \brief Set or update billing info. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVOICES_USER and owner, or INVOICES_ADMIN
  * \param id The id of the invoice *Required*
  * \param billingInfoRequest Address info
  * \param handler The callback function to be invoked on completion. *Required*
@@ -438,7 +438,7 @@ bool updateBillingInfoAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

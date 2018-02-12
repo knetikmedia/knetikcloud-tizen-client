@@ -28,6 +28,9 @@ ActivityResource::__init()
 	//
 	//
 	//
+	//core_settings = new CoreActivitySettings();
+	//
+	//
 	//created_date = long(0);
 	//
 	//new std::list()std::list> entitlements;
@@ -81,6 +84,11 @@ ActivityResource::__cleanup()
 	//additional_properties.RemoveAll(true);
 	//delete additional_properties;
 	//additional_properties = NULL;
+	//}
+	//if(core_settings != NULL) {
+	//
+	//delete core_settings;
+	//core_settings = NULL;
 	//}
 	//if(created_date != NULL) {
 	//
@@ -176,6 +184,20 @@ ActivityResource::fromJson(char* jsonStr)
 			additional_properties = new_map;
 		}
 		
+	}
+	const gchar *core_settingsKey = "core_settings";
+	node = json_object_get_member(pJsonObject, core_settingsKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CoreActivitySettings")) {
+			jsonToValue(&core_settings, node, "CoreActivitySettings", "CoreActivitySettings");
+		} else {
+			
+			CoreActivitySettings* obj = static_cast<CoreActivitySettings*> (&core_settings);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
 	}
 	const gchar *created_dateKey = "created_date";
 	node = json_object_get_member(pJsonObject, created_dateKey);
@@ -402,6 +424,20 @@ ActivityResource::toJson()
 
 	const gchar *additional_propertiesKey = "additional_properties";
 	json_object_set_member(pJsonObject, additional_propertiesKey, node);
+	if (isprimitive("CoreActivitySettings")) {
+		CoreActivitySettings obj = getCoreSettings();
+		node = converttoJson(&obj, "CoreActivitySettings", "");
+	}
+	else {
+		
+		CoreActivitySettings obj = static_cast<CoreActivitySettings> (getCoreSettings());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *core_settingsKey = "core_settings";
+	json_object_set_member(pJsonObject, core_settingsKey, node);
 	if (isprimitive("long long")) {
 		long long obj = getCreatedDate();
 		node = converttoJson(&obj, "long long", "");
@@ -592,6 +628,18 @@ void
 ActivityResource::setAdditionalProperties(std::map <string, string> additional_properties)
 {
 	this->additional_properties = additional_properties;
+}
+
+CoreActivitySettings
+ActivityResource::getCoreSettings()
+{
+	return core_settings;
+}
+
+void
+ActivityResource::setCoreSettings(CoreActivitySettings  core_settings)
+{
+	this->core_settings = core_settings;
 }
 
 long long

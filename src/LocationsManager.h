@@ -29,7 +29,7 @@ public:
 
 /*! \brief Get a list of countries. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -41,7 +41,7 @@ bool getCountriesSync(char * accessToken,
 
 /*! \brief Get a list of countries. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -54,7 +54,7 @@ bool getCountriesAsync(char * accessToken,
 
 /*! \brief Get the iso3 code of your country. *Synchronous*
  *
- * Determined by geo ip location
+ * Determined by geo ip location. <br><br><b>Permissions Needed:</b> ANY
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -66,7 +66,7 @@ bool getCountryByGeoLocationSync(char * accessToken,
 
 /*! \brief Get the iso3 code of your country. *Asynchronous*
  *
- * Determined by geo ip location
+ * Determined by geo ip location. <br><br><b>Permissions Needed:</b> ANY
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -79,7 +79,7 @@ bool getCountryByGeoLocationAsync(char * accessToken,
 
 /*! \brief Get a list of a country's states. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param countryCodeIso3 The iso3 code of the country *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -92,7 +92,7 @@ bool getCountryStatesSync(char * accessToken,
 
 /*! \brief Get a list of a country's states. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param countryCodeIso3 The iso3 code of the country *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -106,7 +106,7 @@ bool getCountryStatesAsync(char * accessToken,
 
 /*! \brief Get the currency information of your country. *Synchronous*
  *
- * Determined by geo ip location, currency to country mapping and a fallback setting
+ * Determined by geo ip location, currency to country mapping and a fallback setting. <br><br><b>Permissions Needed:</b> ANY
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -118,7 +118,7 @@ bool getCurrencyByGeoLocationSync(char * accessToken,
 
 /*! \brief Get the currency information of your country. *Asynchronous*
  *
- * Determined by geo ip location, currency to country mapping and a fallback setting
+ * Determined by geo ip location, currency to country mapping and a fallback setting. <br><br><b>Permissions Needed:</b> ANY
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -132,7 +132,7 @@ bool getCurrencyByGeoLocationAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

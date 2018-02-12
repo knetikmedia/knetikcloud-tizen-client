@@ -29,7 +29,7 @@ public:
 
 /*! \brief Get batch result with token. *Synchronous*
  *
- * Tokens expire in 24 hours
+ * Tokens expire in 24 hours. <br><br><b>Permissions Needed:</b> ANY
  * \param token token *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -42,7 +42,7 @@ bool getBatchSync(char * accessToken,
 
 /*! \brief Get batch result with token. *Asynchronous*
  *
- * Tokens expire in 24 hours
+ * Tokens expire in 24 hours. <br><br><b>Permissions Needed:</b> ANY
  * \param token token *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -56,7 +56,7 @@ bool getBatchAsync(char * accessToken,
 
 /*! \brief Request to run API call given the method, content type, path url, and body of request. *Synchronous*
  *
- * Should the request take longer than one of the alloted timeout parameters, a token will be returned instead, which can be used on the token endpoint in this service
+ * Should the request take longer than one of the alloted timeout parameters, a token will be returned instead, which can be used on the token endpoint in this service. <br><br><b>Permissions Needed:</b> ANY
  * \param batch The batch object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -69,7 +69,7 @@ bool sendBatchSync(char * accessToken,
 
 /*! \brief Request to run API call given the method, content type, path url, and body of request. *Asynchronous*
  *
- * Should the request take longer than one of the alloted timeout parameters, a token will be returned instead, which can be used on the token endpoint in this service
+ * Should the request take longer than one of the alloted timeout parameters, a token will be returned instead, which can be used on the token endpoint in this service. <br><br><b>Permissions Needed:</b> ANY
  * \param batch The batch object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -84,7 +84,7 @@ bool sendBatchAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

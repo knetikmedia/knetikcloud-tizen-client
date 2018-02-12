@@ -10,7 +10,6 @@
 
 #include <string>
 #include "DatabaseConfig.h"
-#include "IOConfig.h"
 #include "S3Config.h"
 #include "Object.h"
 
@@ -64,13 +63,6 @@ public:
 	void setDatabase(DatabaseConfig  database);
 	/*! \brief Get 
 	 */
-	IOConfig getIo();
-
-	/*! \brief Set 
-	 */
-	void setIo(IOConfig  io);
-	/*! \brief Get 
-	 */
 	std::string getName();
 
 	/*! \brief Set 
@@ -87,7 +79,6 @@ public:
 private:
 	std::string aliases;
 	DatabaseConfig database;
-	IOConfig io;
 	std::string name;
 	S3Config s3_config;
 	void __init();

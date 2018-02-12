@@ -34,6 +34,9 @@ ChallengeActivityResource::__init()
 	//challenge_id = long(0);
 	//
 	//
+	//core_settings = new CoreChallengeActivitySettings();
+	//
+	//
 	//entitlement = new ActivityEntitlementResource();
 	//
 	//
@@ -67,6 +70,11 @@ ChallengeActivityResource::__cleanup()
 	//
 	//delete challenge_id;
 	//challenge_id = NULL;
+	//}
+	//if(core_settings != NULL) {
+	//
+	//delete core_settings;
+	//core_settings = NULL;
 	//}
 	//if(entitlement != NULL) {
 	//
@@ -132,6 +140,20 @@ ChallengeActivityResource::fromJson(char* jsonStr)
 		if (isprimitive("long long")) {
 			jsonToValue(&challenge_id, node, "long long", "");
 		} else {
+			
+		}
+	}
+	const gchar *core_settingsKey = "core_settings";
+	node = json_object_get_member(pJsonObject, core_settingsKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CoreChallengeActivitySettings")) {
+			jsonToValue(&core_settings, node, "CoreChallengeActivitySettings", "CoreChallengeActivitySettings");
+		} else {
+			
+			CoreChallengeActivitySettings* obj = static_cast<CoreChallengeActivitySettings*> (&core_settings);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -258,6 +280,20 @@ ChallengeActivityResource::toJson()
 	}
 	const gchar *challenge_idKey = "challenge_id";
 	json_object_set_member(pJsonObject, challenge_idKey, node);
+	if (isprimitive("CoreChallengeActivitySettings")) {
+		CoreChallengeActivitySettings obj = getCoreSettings();
+		node = converttoJson(&obj, "CoreChallengeActivitySettings", "");
+	}
+	else {
+		
+		CoreChallengeActivitySettings obj = static_cast<CoreChallengeActivitySettings> (getCoreSettings());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *core_settingsKey = "core_settings";
+	json_object_set_member(pJsonObject, core_settingsKey, node);
 	if (isprimitive("ActivityEntitlementResource")) {
 		ActivityEntitlementResource obj = getEntitlement();
 		node = converttoJson(&obj, "ActivityEntitlementResource", "");
@@ -371,6 +407,18 @@ void
 ChallengeActivityResource::setChallengeId(long long  challenge_id)
 {
 	this->challenge_id = challenge_id;
+}
+
+CoreChallengeActivitySettings
+ChallengeActivityResource::getCoreSettings()
+{
+	return core_settings;
+}
+
+void
+ChallengeActivityResource::setCoreSettings(CoreChallengeActivitySettings  core_settings)
+{
+	this->core_settings = core_settings;
 }
 
 ActivityEntitlementResource

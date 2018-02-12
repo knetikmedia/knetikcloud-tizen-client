@@ -11,7 +11,9 @@
 #include <string>
 #include "ActivityEntitlementResource.h"
 #include "ActivityUserResource.h"
+#include "CoreActivityOccurrenceSettings.h"
 #include "SelectedSettingResource.h"
+#include "SimpleUserResource.h"
 #include <list>
 #include "Object.h"
 
@@ -56,6 +58,13 @@ public:
 	/*! \brief Set The id of the activity
 	 */
 	void setActivityId(long long  activity_id);
+	/*! \brief Get The ids of banned users that cannot join the occurrence. See occurrence-user delete endpoint
+	 */
+	std::list<int> getBans();
+
+	/*! \brief Set The ids of banned users that cannot join the occurrence. See occurrence-user delete endpoint
+	 */
+	void setBans(std::list <int> bans);
 	/*! \brief Get The id of the challenge activity (as part of the event, required if eventId set)
 	 */
 	long long getChallengeActivityId();
@@ -63,6 +72,13 @@ public:
 	/*! \brief Set The id of the challenge activity (as part of the event, required if eventId set)
 	 */
 	void setChallengeActivityId(long long  challenge_activity_id);
+	/*! \brief Get Defines core settings about the activity occurrence that affect how it behaves in the system. Validated against core settings in activity/challenge-activity.
+	 */
+	CoreActivityOccurrenceSettings getCoreSettings();
+
+	/*! \brief Set Defines core settings about the activity occurrence that affect how it behaves in the system. Validated against core settings in activity/challenge-activity.
+	 */
+	void setCoreSettings(CoreActivityOccurrenceSettings  core_settings);
 	/*! \brief Get The date this occurrence was created, unix timestamp in seconds
 	 */
 	long long getCreatedDate();
@@ -84,6 +100,13 @@ public:
 	/*! \brief Set The id of the event
 	 */
 	void setEventId(long long  event_id);
+	/*! \brief Get The host of the occurrence, if not a participant (will be left out of users array). Must be the caller that creates the occurrence unless admin. Requires activity/challenge to allow host_option of 'non_player' if not admin as well
+	 */
+	SimpleUserResource getHost();
+
+	/*! \brief Set The host of the occurrence, if not a participant (will be left out of users array). Must be the caller that creates the occurrence unless admin. Requires activity/challenge to allow host_option of 'non_player' if not admin as well
+	 */
+	void setHost(SimpleUserResource  host);
 	/*! \brief Get The id of the activity occurrence
 	 */
 	long long getId();
@@ -143,10 +166,13 @@ public:
 
 private:
 	long long activity_id;
+	std::list <int>bans;
 	long long challenge_activity_id;
+	CoreActivityOccurrenceSettings core_settings;
 	long long created_date;
 	ActivityEntitlementResource entitlement;
 	long long event_id;
+	SimpleUserResource host;
 	long long id;
 	std::string reward_status;
 	std::list <SelectedSettingResource>settings;

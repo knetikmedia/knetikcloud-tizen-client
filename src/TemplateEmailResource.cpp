@@ -31,6 +31,9 @@ TemplateEmailResource::__init()
 	//
 	//
 	//
+	//subject = std::string();
+	//
+	//
 	//template_key = std::string();
 	//
 	//new std::list()std::list> template_vars;
@@ -50,6 +53,11 @@ TemplateEmailResource::__cleanup()
 	//recipients.RemoveAll(true);
 	//delete recipients;
 	//recipients = NULL;
+	//}
+	//if(subject != NULL) {
+	//
+	//delete subject;
+	//subject = NULL;
 	//}
 	//if(template_key != NULL) {
 	//
@@ -101,6 +109,17 @@ TemplateEmailResource::fromJson(char* jsonStr)
 			recipients = new_list;
 		}
 		
+	}
+	const gchar *subjectKey = "subject";
+	node = json_object_get_member(pJsonObject, subjectKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&subject, node, "std::string", "");
+		} else {
+			
+		}
 	}
 	const gchar *template_keyKey = "template_key";
 	node = json_object_get_member(pJsonObject, template_keyKey);
@@ -174,6 +193,15 @@ TemplateEmailResource::toJson()
 	const gchar *recipientsKey = "recipients";
 	json_object_set_member(pJsonObject, recipientsKey, node);
 	if (isprimitive("std::string")) {
+		std::string obj = getSubject();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *subjectKey = "subject";
+	json_object_set_member(pJsonObject, subjectKey, node);
+	if (isprimitive("std::string")) {
 		std::string obj = getTemplateKey();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -237,6 +265,18 @@ void
 TemplateEmailResource::setRecipients(std::list <int> recipients)
 {
 	this->recipients = recipients;
+}
+
+std::string
+TemplateEmailResource::getSubject()
+{
+	return subject;
+}
+
+void
+TemplateEmailResource::setSubject(std::string  subject)
+{
+	this->subject = subject;
 }
 
 std::string

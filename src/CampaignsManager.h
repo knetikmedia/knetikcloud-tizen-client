@@ -31,7 +31,7 @@ public:
 
 /*! \brief Add a challenge to a campaign. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CAMPAIGNS_ADMIN
  * \param id The id of the campaign *Required*
  * \param challengeId The id of the challenge
  * \param handler The callback function to be invoked on completion. *Required*
@@ -45,7 +45,7 @@ bool addChallengeToCampaignSync(char * accessToken,
 
 /*! \brief Add a challenge to a campaign. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CAMPAIGNS_ADMIN
  * \param id The id of the campaign *Required*
  * \param challengeId The id of the challenge
  * \param handler The callback function to be invoked on completion. *Required*
@@ -60,7 +60,7 @@ bool addChallengeToCampaignAsync(char * accessToken,
 
 /*! \brief Create a campaign. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CAMPAIGNS_ADMIN
  * \param campaignResource The campaign resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -73,7 +73,7 @@ bool createCampaignSync(char * accessToken,
 
 /*! \brief Create a campaign. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CAMPAIGNS_ADMIN
  * \param campaignResource The campaign resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -87,7 +87,7 @@ bool createCampaignAsync(char * accessToken,
 
 /*! \brief Create a campaign template. *Synchronous*
  *
- * Campaign Templates define a type of campaign and the properties they have
+ * Campaign Templates define a type of campaign and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param campaignTemplateResource The campaign template resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -100,7 +100,7 @@ bool createCampaignTemplateSync(char * accessToken,
 
 /*! \brief Create a campaign template. *Asynchronous*
  *
- * Campaign Templates define a type of campaign and the properties they have
+ * Campaign Templates define a type of campaign and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param campaignTemplateResource The campaign template resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -114,7 +114,7 @@ bool createCampaignTemplateAsync(char * accessToken,
 
 /*! \brief Delete a campaign. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CAMPAIGNS_ADMIN
  * \param id The campaign id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -127,7 +127,7 @@ bool deleteCampaignSync(char * accessToken,
 
 /*! \brief Delete a campaign. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CAMPAIGNS_ADMIN
  * \param id The campaign id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -141,7 +141,7 @@ bool deleteCampaignAsync(char * accessToken,
 
 /*! \brief Delete a campaign template. *Synchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -155,7 +155,7 @@ bool deleteCampaignTemplateSync(char * accessToken,
 
 /*! \brief Delete a campaign template. *Asynchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -170,7 +170,7 @@ bool deleteCampaignTemplateAsync(char * accessToken,
 
 /*! \brief Returns a single campaign. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The campaign id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -183,7 +183,7 @@ bool getCampaignSync(char * accessToken,
 
 /*! \brief Returns a single campaign. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The campaign id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -197,7 +197,7 @@ bool getCampaignAsync(char * accessToken,
 
 /*! \brief List the challenges associated with a campaign. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The campaign id *Required*
  * \param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the challenge start date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
  * \param filterEndDate A comma separated string without spaces.  First value is the operator to search on, second value is the challenge end date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
@@ -215,7 +215,7 @@ bool getCampaignChallengesSync(char * accessToken,
 
 /*! \brief List the challenges associated with a campaign. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The campaign id *Required*
  * \param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the challenge start date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
  * \param filterEndDate A comma separated string without spaces.  First value is the operator to search on, second value is the challenge end date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
@@ -234,7 +234,7 @@ bool getCampaignChallengesAsync(char * accessToken,
 
 /*! \brief Get a single campaign template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CAMPAIGNS_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -247,7 +247,7 @@ bool getCampaignTemplateSync(char * accessToken,
 
 /*! \brief Get a single campaign template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CAMPAIGNS_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -261,7 +261,7 @@ bool getCampaignTemplateAsync(char * accessToken,
 
 /*! \brief List and search campaign templates. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CAMPAIGNS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -276,7 +276,7 @@ bool getCampaignTemplatesSync(char * accessToken,
 
 /*! \brief List and search campaign templates. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CAMPAIGNS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -292,7 +292,7 @@ bool getCampaignTemplatesAsync(char * accessToken,
 
 /*! \brief List and search campaigns. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterActive Filter for campaigns that are active
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -308,7 +308,7 @@ bool getCampaignsSync(char * accessToken,
 
 /*! \brief List and search campaigns. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterActive Filter for campaigns that are active
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -325,7 +325,7 @@ bool getCampaignsAsync(char * accessToken,
 
 /*! \brief Remove a challenge from a campaign. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CAMPAIGNS_ADMIN
  * \param campaignId The campaign id *Required*
  * \param id The challenge id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -339,7 +339,7 @@ bool removeChallengeFromCampaignSync(char * accessToken,
 
 /*! \brief Remove a challenge from a campaign. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CAMPAIGNS_ADMIN
  * \param campaignId The campaign id *Required*
  * \param id The challenge id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -354,7 +354,7 @@ bool removeChallengeFromCampaignAsync(char * accessToken,
 
 /*! \brief Update a campaign. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CAMPAIGNS_ADMIN
  * \param id The campaign id *Required*
  * \param campaignResource The campaign resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -368,7 +368,7 @@ bool updateCampaignSync(char * accessToken,
 
 /*! \brief Update a campaign. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CAMPAIGNS_ADMIN
  * \param id The campaign id *Required*
  * \param campaignResource The campaign resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -383,7 +383,7 @@ bool updateCampaignAsync(char * accessToken,
 
 /*! \brief Update an campaign template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param campaignTemplateResource The campaign template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -397,7 +397,7 @@ bool updateCampaignTemplateSync(char * accessToken,
 
 /*! \brief Update an campaign template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param campaignTemplateResource The campaign template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -413,7 +413,7 @@ bool updateCampaignTemplateAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

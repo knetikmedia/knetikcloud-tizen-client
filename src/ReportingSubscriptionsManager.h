@@ -27,7 +27,7 @@ public:
 
 /*! \brief Get a list of available subscription reports in most recent first order. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SUBSCRIPTIONS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param handler The callback function to be invoked on completion. *Required*
@@ -41,7 +41,7 @@ bool getSubscriptionReportsSync(char * accessToken,
 
 /*! \brief Get a list of available subscription reports in most recent first order. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SUBSCRIPTIONS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param handler The callback function to be invoked on completion. *Required*
@@ -57,7 +57,7 @@ bool getSubscriptionReportsAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

@@ -28,7 +28,7 @@ public:
 
 /*! \brief Retrieves leaderboard details and paginated entries. *Synchronous*
  *
- * The context type identifies the type of entity (i.e., 'activity') being tracked on the leaderboard. The context ID is the unique ID of the actual entity tracked by the leaderboard. Sorting is based on the fields of LeaderboardEntryResource rather than the returned LeaderboardResource.
+ * The context type identifies the type of entity (i.e., 'activity') being tracked on the leaderboard. The context ID is the unique ID of the actual entity tracked by the leaderboard. Sorting is based on the fields of LeaderboardEntryResource rather than the returned LeaderboardResource. <br><br><b>Permissions Needed:</b> ANY
  * \param contextType The context type for the leaderboard *Required*
  * \param contextId The context id for the leaderboard *Required*
  * \param size The number of objects returned per page
@@ -45,7 +45,7 @@ bool getLeaderboardSync(char * accessToken,
 
 /*! \brief Retrieves leaderboard details and paginated entries. *Asynchronous*
  *
- * The context type identifies the type of entity (i.e., 'activity') being tracked on the leaderboard. The context ID is the unique ID of the actual entity tracked by the leaderboard. Sorting is based on the fields of LeaderboardEntryResource rather than the returned LeaderboardResource.
+ * The context type identifies the type of entity (i.e., 'activity') being tracked on the leaderboard. The context ID is the unique ID of the actual entity tracked by the leaderboard. Sorting is based on the fields of LeaderboardEntryResource rather than the returned LeaderboardResource. <br><br><b>Permissions Needed:</b> ANY
  * \param contextType The context type for the leaderboard *Required*
  * \param contextId The context id for the leaderboard *Required*
  * \param size The number of objects returned per page
@@ -63,7 +63,7 @@ bool getLeaderboardAsync(char * accessToken,
 
 /*! \brief Retrieves a specific user entry with rank. *Synchronous*
  *
- * The context type identifies the type of entity (i.e., 'activity') being tracked on the leaderboard. The context ID is the unique ID of the actual entity tracked by the leaderboard
+ * The context type identifies the type of entity (i.e., 'activity') being tracked on the leaderboard. The context ID is the unique ID of the actual entity tracked by the leaderboard. <br><br><b>Permissions Needed:</b> ANY
  * \param contextType The context type for the leaderboard *Required*
  * \param contextId The context id for the leaderboard *Required*
  * \param id The id of a user *Required*
@@ -78,7 +78,7 @@ bool getLeaderboardRankSync(char * accessToken,
 
 /*! \brief Retrieves a specific user entry with rank. *Asynchronous*
  *
- * The context type identifies the type of entity (i.e., 'activity') being tracked on the leaderboard. The context ID is the unique ID of the actual entity tracked by the leaderboard
+ * The context type identifies the type of entity (i.e., 'activity') being tracked on the leaderboard. The context ID is the unique ID of the actual entity tracked by the leaderboard. <br><br><b>Permissions Needed:</b> ANY
  * \param contextType The context type for the leaderboard *Required*
  * \param contextId The context id for the leaderboard *Required*
  * \param id The id of a user *Required*
@@ -94,7 +94,7 @@ bool getLeaderboardRankAsync(char * accessToken,
 
 /*! \brief Get a list of available leaderboard strategy names. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -106,7 +106,7 @@ bool getLeaderboardStrategiesSync(char * accessToken,
 
 /*! \brief Get a list of available leaderboard strategy names. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -120,7 +120,7 @@ bool getLeaderboardStrategiesAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

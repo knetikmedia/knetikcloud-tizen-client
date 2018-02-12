@@ -30,7 +30,7 @@ public:
 
 /*! \brief Get the details for a single transaction. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRANSACTIONS_ADMIN or owner
  * \param id id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -43,7 +43,7 @@ bool getTransactionSync(char * accessToken,
 
 /*! \brief Get the details for a single transaction. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRANSACTIONS_ADMIN or owner
  * \param id id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -57,7 +57,7 @@ bool getTransactionAsync(char * accessToken,
 
 /*! \brief List and search transactions. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRANSACTIONS_ADMIN or owner
  * \param filterInvoice Filter for transactions from a specific invoice
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -73,7 +73,7 @@ bool getTransactionsSync(char * accessToken,
 
 /*! \brief List and search transactions. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRANSACTIONS_ADMIN or owner
  * \param filterInvoice Filter for transactions from a specific invoice
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -90,7 +90,7 @@ bool getTransactionsAsync(char * accessToken,
 
 /*! \brief Refund a payment transaction, in full or in part. *Synchronous*
  *
- * Will not allow for refunding more than the full amount even with multiple partial refunds. Money is refunded to the payment method used to make the original payment. Payment method must support refunds.
+ * Will not allow for refunding more than the full amount even with multiple partial refunds. Money is refunded to the payment method used to make the original payment. Payment method must support refunds. <br><br><b>Permissions Needed:</b> PAYMENTS_ADMIN
  * \param id The id of the transaction to refund *Required*
  * \param request Request containing refund details
  * \param handler The callback function to be invoked on completion. *Required*
@@ -104,7 +104,7 @@ bool refundTransactionSync(char * accessToken,
 
 /*! \brief Refund a payment transaction, in full or in part. *Asynchronous*
  *
- * Will not allow for refunding more than the full amount even with multiple partial refunds. Money is refunded to the payment method used to make the original payment. Payment method must support refunds.
+ * Will not allow for refunding more than the full amount even with multiple partial refunds. Money is refunded to the payment method used to make the original payment. Payment method must support refunds. <br><br><b>Permissions Needed:</b> PAYMENTS_ADMIN
  * \param id The id of the transaction to refund *Required*
  * \param request Request containing refund details
  * \param handler The callback function to be invoked on completion. *Required*
@@ -120,7 +120,7 @@ bool refundTransactionAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

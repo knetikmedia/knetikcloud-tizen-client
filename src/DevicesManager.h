@@ -32,7 +32,7 @@ public:
 
 /*! \brief Add device users. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> DEVICES_ADMIN or owner
  * \param userResources userResources *Required*
  * \param id id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -46,7 +46,7 @@ bool addDeviceUsersSync(char * accessToken,
 
 /*! \brief Add device users. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> DEVICES_ADMIN or owner
  * \param userResources userResources *Required*
  * \param id id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -61,7 +61,7 @@ bool addDeviceUsersAsync(char * accessToken,
 
 /*! \brief Create a device. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param device device *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -74,7 +74,7 @@ bool createDeviceSync(char * accessToken,
 
 /*! \brief Create a device. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param device device *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -88,7 +88,7 @@ bool createDeviceAsync(char * accessToken,
 
 /*! \brief Create a device template. *Synchronous*
  *
- * Device Templates define a type of device and the properties they have
+ * Device Templates define a type of device and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param deviceTemplateResource The device template resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -101,7 +101,7 @@ bool createDeviceTemplateSync(char * accessToken,
 
 /*! \brief Create a device template. *Asynchronous*
  *
- * Device Templates define a type of device and the properties they have
+ * Device Templates define a type of device and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param deviceTemplateResource The device template resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -115,7 +115,7 @@ bool createDeviceTemplateAsync(char * accessToken,
 
 /*! \brief Delete a device. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> DEVICES_ADMIN or owner
  * \param id id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -128,7 +128,7 @@ bool deleteDeviceSync(char * accessToken,
 
 /*! \brief Delete a device. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> DEVICES_ADMIN or owner
  * \param id id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -142,7 +142,7 @@ bool deleteDeviceAsync(char * accessToken,
 
 /*! \brief Delete an device template. *Synchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -156,7 +156,7 @@ bool deleteDeviceTemplateSync(char * accessToken,
 
 /*! \brief Delete an device template. *Asynchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -171,7 +171,7 @@ bool deleteDeviceTemplateAsync(char * accessToken,
 
 /*! \brief Delete a device user. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> DEVICES_ADMIN or owner
  * \param id The id of the device *Required*
  * \param userId The user id of the device user *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -185,7 +185,7 @@ bool deleteDeviceUserSync(char * accessToken,
 
 /*! \brief Delete a device user. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> DEVICES_ADMIN or owner
  * \param id The id of the device *Required*
  * \param userId The user id of the device user *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -200,7 +200,7 @@ bool deleteDeviceUserAsync(char * accessToken,
 
 /*! \brief Delete all device users. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> DEVICES_ADMIN or owner
  * \param id The id of the device *Required*
  * \param filterId Filter for device users to delete with a user id in a given comma separated list of ids
  * \param handler The callback function to be invoked on completion. *Required*
@@ -214,7 +214,7 @@ bool deleteDeviceUsersSync(char * accessToken,
 
 /*! \brief Delete all device users. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> DEVICES_ADMIN or owner
  * \param id The id of the device *Required*
  * \param filterId Filter for device users to delete with a user id in a given comma separated list of ids
  * \param handler The callback function to be invoked on completion. *Required*
@@ -229,7 +229,7 @@ bool deleteDeviceUsersAsync(char * accessToken,
 
 /*! \brief Get a single device. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> DEVICES_ADMIN or owner
  * \param id id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -242,7 +242,7 @@ bool getDeviceSync(char * accessToken,
 
 /*! \brief Get a single device. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> DEVICES_ADMIN or owner
  * \param id id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -256,7 +256,7 @@ bool getDeviceAsync(char * accessToken,
 
 /*! \brief Get a single device template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> description
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -269,7 +269,7 @@ bool getDeviceTemplateSync(char * accessToken,
 
 /*! \brief Get a single device template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> description
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -283,7 +283,7 @@ bool getDeviceTemplateAsync(char * accessToken,
 
 /*! \brief List and search device templates. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or DEVICES_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -298,7 +298,7 @@ bool getDeviceTemplatesSync(char * accessToken,
 
 /*! \brief List and search device templates. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or DEVICES_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -314,7 +314,7 @@ bool getDeviceTemplatesAsync(char * accessToken,
 
 /*! \brief List and search devices. *Synchronous*
  *
- * Get a list of devices with optional filtering
+ * Get a list of devices with optional filtering. <br><br><b>Permissions Needed:</b> DEVICES_ADMIN or user
  * \param filterMake Filter for devices with specified make
  * \param filterModel Filter for devices with specified model
  * \param filterOs Filter for devices with specified OS
@@ -335,7 +335,7 @@ bool getDevicesSync(char * accessToken,
 
 /*! \brief List and search devices. *Asynchronous*
  *
- * Get a list of devices with optional filtering
+ * Get a list of devices with optional filtering. <br><br><b>Permissions Needed:</b> DEVICES_ADMIN or user
  * \param filterMake Filter for devices with specified make
  * \param filterModel Filter for devices with specified model
  * \param filterOs Filter for devices with specified OS
@@ -357,7 +357,7 @@ bool getDevicesAsync(char * accessToken,
 
 /*! \brief Update a device. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CUSTOMERS_ADMIN
  * \param device device *Required*
  * \param id id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -371,7 +371,7 @@ bool updateDeviceSync(char * accessToken,
 
 /*! \brief Update a device. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CUSTOMERS_ADMIN
  * \param device device *Required*
  * \param id id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -386,7 +386,7 @@ bool updateDeviceAsync(char * accessToken,
 
 /*! \brief Update an device template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param deviceTemplateResource The device template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -400,7 +400,7 @@ bool updateDeviceTemplateSync(char * accessToken,
 
 /*! \brief Update an device template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param deviceTemplateResource The device template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -416,7 +416,7 @@ bool updateDeviceTemplateAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

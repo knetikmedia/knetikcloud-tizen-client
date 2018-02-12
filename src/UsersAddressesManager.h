@@ -28,7 +28,7 @@ public:
 
 /*! \brief Create a new address. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USERS_ADMIN or owner
  * \param userId The id of the user *Required*
  * \param savedAddressResource The new address
  * \param handler The callback function to be invoked on completion. *Required*
@@ -42,7 +42,7 @@ bool createAddressSync(char * accessToken,
 
 /*! \brief Create a new address. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USERS_ADMIN or owner
  * \param userId The id of the user *Required*
  * \param savedAddressResource The new address
  * \param handler The callback function to be invoked on completion. *Required*
@@ -57,7 +57,7 @@ bool createAddressAsync(char * accessToken,
 
 /*! \brief Delete an address. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USERS_ADMIN or owner
  * \param userId The id of the user *Required*
  * \param id The id of the address *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -71,7 +71,7 @@ bool deleteAddressSync(char * accessToken,
 
 /*! \brief Delete an address. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USERS_ADMIN or owner
  * \param userId The id of the user *Required*
  * \param id The id of the address *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -86,7 +86,7 @@ bool deleteAddressAsync(char * accessToken,
 
 /*! \brief Get a single address. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USERS_ADMIN or owner
  * \param userId The id of the user *Required*
  * \param id The id of the address *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -100,7 +100,7 @@ bool getAddressSync(char * accessToken,
 
 /*! \brief Get a single address. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USERS_ADMIN or owner
  * \param userId The id of the user *Required*
  * \param id The id of the address *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -115,7 +115,7 @@ bool getAddressAsync(char * accessToken,
 
 /*! \brief List and search addresses. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USERS_ADMIN or owner
  * \param userId The id of the user *Required*
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -131,7 +131,7 @@ bool getAddressesSync(char * accessToken,
 
 /*! \brief List and search addresses. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USERS_ADMIN or owner
  * \param userId The id of the user *Required*
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -148,7 +148,7 @@ bool getAddressesAsync(char * accessToken,
 
 /*! \brief Update an address. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USERS_ADMIN or owner
  * \param userId The id of the user *Required*
  * \param id The id of the address *Required*
  * \param savedAddressResource The saved address resource object
@@ -163,7 +163,7 @@ bool updateAddressSync(char * accessToken,
 
 /*! \brief Update an address. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> USERS_ADMIN or owner
  * \param userId The id of the user *Required*
  * \param id The id of the address *Required*
  * \param savedAddressResource The saved address resource object
@@ -180,7 +180,7 @@ bool updateAddressAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

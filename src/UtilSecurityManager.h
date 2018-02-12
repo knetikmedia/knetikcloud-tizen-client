@@ -28,7 +28,7 @@ public:
 
 /*! \brief Returns the authentication log for a user. *Synchronous*
  *
- * A log entry is recorded everytime a user requests a new token. Standard pagination available
+ * A log entry is recorded everytime a user requests a new token. Standard pagination available. <br><br><b>Permissions Needed:</b> SECURITY_ADMIN
  * \param userId The user id
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -44,7 +44,7 @@ bool getUserLocationLogSync(char * accessToken,
 
 /*! \brief Returns the authentication log for a user. *Asynchronous*
  *
- * A log entry is recorded everytime a user requests a new token. Standard pagination available
+ * A log entry is recorded everytime a user requests a new token. Standard pagination available. <br><br><b>Permissions Needed:</b> SECURITY_ADMIN
  * \param userId The user id
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -61,7 +61,7 @@ bool getUserLocationLogAsync(char * accessToken,
 
 /*! \brief Returns the authentication token details. Use /users endpoint for detailed user's info. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SECURITY_ADMIN
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -73,7 +73,7 @@ bool getUserTokenDetailsSync(char * accessToken,
 
 /*! \brief Returns the authentication token details. Use /users endpoint for detailed user's info. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SECURITY_ADMIN
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -87,7 +87,7 @@ bool getUserTokenDetailsAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

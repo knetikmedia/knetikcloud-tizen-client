@@ -27,7 +27,7 @@ public:
 
 /*! \brief Get current version info. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -39,7 +39,7 @@ bool getVersionSync(char * accessToken,
 
 /*! \brief Get current version info. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -53,7 +53,7 @@ bool getVersionAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

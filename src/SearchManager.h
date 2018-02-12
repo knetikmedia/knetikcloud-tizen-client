@@ -26,7 +26,7 @@ public:
 
 /*! \brief Count matches with no template. *Synchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _count.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _count.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -39,7 +39,7 @@ bool searchCountGETSync(char * accessToken,
 
 /*! \brief Count matches with no template. *Asynchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _count.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _count.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -53,7 +53,7 @@ bool searchCountGETAsync(char * accessToken,
 
 /*! \brief Count matches with no template. *Synchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _count.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _count.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param query The query to be used for the search
  * \param handler The callback function to be invoked on completion. *Required*
@@ -67,7 +67,7 @@ bool searchCountPOSTSync(char * accessToken,
 
 /*! \brief Count matches with no template. *Asynchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _count.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _count.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param query The query to be used for the search
  * \param handler The callback function to be invoked on completion. *Required*
@@ -82,7 +82,7 @@ bool searchCountPOSTAsync(char * accessToken,
 
 /*! \brief Count matches with a template. *Synchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _count.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _count.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param _template The index template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -96,7 +96,7 @@ bool searchCountWithTemplateGETSync(char * accessToken,
 
 /*! \brief Count matches with a template. *Asynchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _count.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _count.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param _template The index template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -111,7 +111,7 @@ bool searchCountWithTemplateGETAsync(char * accessToken,
 
 /*! \brief Count matches with a template. *Synchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _count.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _count.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param _template The index template *Required*
  * \param query The query to be used for the search
@@ -126,7 +126,7 @@ bool searchCountWithTemplatePOSTSync(char * accessToken,
 
 /*! \brief Count matches with a template. *Asynchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _count.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _count.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param _template The index template *Required*
  * \param query The query to be used for the search
@@ -142,7 +142,7 @@ bool searchCountWithTemplatePOSTAsync(char * accessToken,
 
 /*! \brief Get document with no template. *Synchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param id The index id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -156,7 +156,7 @@ bool searchDocumentGETSync(char * accessToken,
 
 /*! \brief Get document with no template. *Asynchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param id The index id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -171,7 +171,7 @@ bool searchDocumentGETAsync(char * accessToken,
 
 /*! \brief Get document with a template. *Synchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param id The index id *Required*
  * \param _template The index template *Required*
@@ -186,7 +186,7 @@ bool searchDocumentWithTemplateGETSync(char * accessToken,
 
 /*! \brief Get document with a template. *Asynchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param id The index id *Required*
  * \param _template The index template *Required*
@@ -202,7 +202,7 @@ bool searchDocumentWithTemplateGETAsync(char * accessToken,
 
 /*! \brief Explain matches with no template. *Synchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _explain.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _explain.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param id The index id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -216,7 +216,7 @@ bool searchExplainGETSync(char * accessToken,
 
 /*! \brief Explain matches with no template. *Asynchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _explain.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _explain.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param id The index id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -231,7 +231,7 @@ bool searchExplainGETAsync(char * accessToken,
 
 /*! \brief Explain matches with no template. *Synchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _explain.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _explain.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param id The index id *Required*
  * \param query The query to be used for the search
@@ -246,7 +246,7 @@ bool searchExplainPOSTSync(char * accessToken,
 
 /*! \brief Explain matches with no template. *Asynchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _explain.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _explain.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param id The index id *Required*
  * \param query The query to be used for the search
@@ -262,7 +262,7 @@ bool searchExplainPOSTAsync(char * accessToken,
 
 /*! \brief Explain matches with a template. *Synchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _explain.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _explain.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param id The index id *Required*
  * \param _template The index template *Required*
@@ -277,7 +277,7 @@ bool searchExplainWithTemplateGETSync(char * accessToken,
 
 /*! \brief Explain matches with a template. *Asynchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _explain.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _explain.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param id The index id *Required*
  * \param _template The index template *Required*
@@ -293,7 +293,7 @@ bool searchExplainWithTemplateGETAsync(char * accessToken,
 
 /*! \brief Explain matches with a template. *Synchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _explain.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _explain.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param id The index id *Required*
  * \param _template The index template *Required*
@@ -309,7 +309,7 @@ bool searchExplainWithTemplatePOSTSync(char * accessToken,
 
 /*! \brief Explain matches with a template. *Asynchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _explain.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _explain.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param id The index id *Required*
  * \param _template The index template *Required*
@@ -326,7 +326,7 @@ bool searchExplainWithTemplatePOSTAsync(char * accessToken,
 
 /*! \brief Search an index with no template. *Synchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _search.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _search.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param query The query to be used for the search
  * \param handler The callback function to be invoked on completion. *Required*
@@ -340,7 +340,7 @@ bool searchIndexSync(char * accessToken,
 
 /*! \brief Search an index with no template. *Asynchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _search.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _search.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param query The query to be used for the search
  * \param handler The callback function to be invoked on completion. *Required*
@@ -355,7 +355,7 @@ bool searchIndexAsync(char * accessToken,
 
 /*! \brief Search an index with no template. *Synchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _search.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _search.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -368,7 +368,7 @@ bool searchIndexGETSync(char * accessToken,
 
 /*! \brief Search an index with no template. *Asynchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _search.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _search.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -382,7 +382,7 @@ bool searchIndexGETAsync(char * accessToken,
 
 /*! \brief Search an index with a template. *Synchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _search.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _search.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param _template The index template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -396,7 +396,7 @@ bool searchIndexWithTemplateGETSync(char * accessToken,
 
 /*! \brief Search an index with a template. *Asynchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _search.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _search.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param _template The index template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -411,7 +411,7 @@ bool searchIndexWithTemplateGETAsync(char * accessToken,
 
 /*! \brief Search an index with a template. *Synchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _search.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _search.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param _template The index template *Required*
  * \param query The query to be used for the search
@@ -426,7 +426,7 @@ bool searchIndexWithTemplatePOSTSync(char * accessToken,
 
 /*! \brief Search an index with a template. *Asynchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _search.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _search.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param _template The index template *Required*
  * \param query The query to be used for the search
@@ -442,7 +442,7 @@ bool searchIndexWithTemplatePOSTAsync(char * accessToken,
 
 /*! \brief Get indices. *Synchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _cat/indices for indices.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _cat/indices for indices.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -454,7 +454,7 @@ bool searchIndicesGETSync(char * accessToken,
 
 /*! \brief Get indices. *Asynchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _cat/indices for indices.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _cat/indices for indices.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -467,7 +467,7 @@ bool searchIndicesGETAsync(char * accessToken,
 
 /*! \brief Get mapping with no template. *Synchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _mapping.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _mapping.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -480,7 +480,7 @@ bool searchMappingsGETSync(char * accessToken,
 
 /*! \brief Get mapping with no template. *Asynchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _mapping.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _mapping.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -494,7 +494,7 @@ bool searchMappingsGETAsync(char * accessToken,
 
 /*! \brief Get mapping with a template. *Synchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _mapping.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _mapping.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param _template The index template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -508,7 +508,7 @@ bool searchMappingsWithTemplateGETSync(char * accessToken,
 
 /*! \brief Get mapping with a template. *Asynchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _mapping.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _mapping.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param _template The index template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -523,7 +523,7 @@ bool searchMappingsWithTemplateGETAsync(char * accessToken,
 
 /*! \brief Validate matches with no template. *Synchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _validate/query.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-validate.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _validate/query.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-validate.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -536,7 +536,7 @@ bool searchValidateGETSync(char * accessToken,
 
 /*! \brief Validate matches with no template. *Asynchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _validate/query.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-validate.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _validate/query.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-validate.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -550,7 +550,7 @@ bool searchValidateGETAsync(char * accessToken,
 
 /*! \brief Validate matches with no template. *Synchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _validate/query.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-validate.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _validate/query.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-validate.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param query The query to be used for the search
  * \param handler The callback function to be invoked on completion. *Required*
@@ -564,7 +564,7 @@ bool searchValidatePOSTSync(char * accessToken,
 
 /*! \brief Validate matches with no template. *Asynchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _validate/query.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-validate.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _validate/query.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-validate.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param query The query to be used for the search
  * \param handler The callback function to be invoked on completion. *Required*
@@ -579,7 +579,7 @@ bool searchValidatePOSTAsync(char * accessToken,
 
 /*! \brief Validate matches with a template. *Synchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _validate/query.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-validate.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _validate/query.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-validate.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param _template The index template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -593,7 +593,7 @@ bool searchValidateWithTemplateGETSync(char * accessToken,
 
 /*! \brief Validate matches with a template. *Asynchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _validate/query.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-validate.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _validate/query.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-validate.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param _template The index template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -608,7 +608,7 @@ bool searchValidateWithTemplateGETAsync(char * accessToken,
 
 /*! \brief Validate matches with a template. *Synchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _validate/query.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-validate.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _validate/query.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-validate.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param _template The index template *Required*
  * \param query The query to be used for the search
@@ -623,7 +623,7 @@ bool searchValidateWithTemplatePOSTSync(char * accessToken,
 
 /*! \brief Validate matches with a template. *Asynchronous*
  *
- * This is a 1 to 1 mapping of a ElasticSearch call to _validate/query.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-validate.html'>API guide</a>
+ * This is a 1 to 1 mapping of a ElasticSearch call to _validate/query.  Further information can be found at their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/search-validate.html'>API guide</a>. <br><br><b>Permissions Needed:</b> SEARCH_ADMIN
  * \param type The index type *Required*
  * \param _template The index template *Required*
  * \param query The query to be used for the search
@@ -640,7 +640,7 @@ bool searchValidateWithTemplatePOSTAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

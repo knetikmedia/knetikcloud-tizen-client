@@ -27,7 +27,7 @@ public:
 
 /*! \brief Retrieve a challenge event leaderboard details. *Synchronous*
  *
- * Lists all leaderboard entries with additional user details
+ * Lists all leaderboard entries with additional user details. <br><br><b>Permissions Needed:</b> REPORTING_CHALLENGES_ADMIN
  * \param filterEvent A sepecific challenge event id
  * \param size The number of objects returned per page
  * \param page The number of the page returned
@@ -43,7 +43,7 @@ bool getChallengeEventLeaderboardSync(char * accessToken,
 
 /*! \brief Retrieve a challenge event leaderboard details. *Asynchronous*
  *
- * Lists all leaderboard entries with additional user details
+ * Lists all leaderboard entries with additional user details. <br><br><b>Permissions Needed:</b> REPORTING_CHALLENGES_ADMIN
  * \param filterEvent A sepecific challenge event id
  * \param size The number of objects returned per page
  * \param page The number of the page returned
@@ -60,7 +60,7 @@ bool getChallengeEventLeaderboardAsync(char * accessToken,
 
 /*! \brief Retrieve a challenge event participant details. *Synchronous*
  *
- * Lists all user submitted scores sorted by value, including those that do not apear in the leaderboard due to value or aggregation
+ * Lists all user submitted scores sorted by value, including those that do not apear in the leaderboard due to value or aggregation. <br><br><b>Permissions Needed:</b> REPORTING_CHALLENGES_ADMIN
  * \param filterEvent A sepecific challenge event id
  * \param size The number of objects returned per page
  * \param page The number of the page returned
@@ -76,7 +76,7 @@ bool getChallengeEventParticipantsSync(char * accessToken,
 
 /*! \brief Retrieve a challenge event participant details. *Asynchronous*
  *
- * Lists all user submitted scores sorted by value, including those that do not apear in the leaderboard due to value or aggregation
+ * Lists all user submitted scores sorted by value, including those that do not apear in the leaderboard due to value or aggregation. <br><br><b>Permissions Needed:</b> REPORTING_CHALLENGES_ADMIN
  * \param filterEvent A sepecific challenge event id
  * \param size The number of objects returned per page
  * \param page The number of the page returned
@@ -94,7 +94,7 @@ bool getChallengeEventParticipantsAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

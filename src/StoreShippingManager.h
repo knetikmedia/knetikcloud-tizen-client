@@ -29,7 +29,7 @@ public:
 
 /*! \brief Create a shipping item. *Synchronous*
  *
- * A shipping item represents a shipping option and cost. SKUs have to be unique in the entire store.
+ * A shipping item represents a shipping option and cost. SKUs have to be unique in the entire store. <br><br><b>Permissions Needed:</b> SHIPPING_ADMIN
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param shippingItem The shipping item object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -43,7 +43,7 @@ bool createShippingItemSync(char * accessToken,
 
 /*! \brief Create a shipping item. *Asynchronous*
  *
- * A shipping item represents a shipping option and cost. SKUs have to be unique in the entire store.
+ * A shipping item represents a shipping option and cost. SKUs have to be unique in the entire store. <br><br><b>Permissions Needed:</b> SHIPPING_ADMIN
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param shippingItem The shipping item object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -85,7 +85,7 @@ bool createShippingTemplateAsync(char * accessToken,
 
 /*! \brief Delete a shipping item. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SHIPPING_ADMIN
  * \param id The id of the shipping item *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -98,7 +98,7 @@ bool deleteShippingItemSync(char * accessToken,
 
 /*! \brief Delete a shipping item. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SHIPPING_ADMIN
  * \param id The id of the shipping item *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -112,7 +112,7 @@ bool deleteShippingItemAsync(char * accessToken,
 
 /*! \brief Delete a shipping template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade force deleting the template if it's attached to other objects, cascade = detach
  * \param handler The callback function to be invoked on completion. *Required*
@@ -126,7 +126,7 @@ bool deleteShippingTemplateSync(char * accessToken,
 
 /*! \brief Delete a shipping template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade force deleting the template if it's attached to other objects, cascade = detach
  * \param handler The callback function to be invoked on completion. *Required*
@@ -141,7 +141,7 @@ bool deleteShippingTemplateAsync(char * accessToken,
 
 /*! \brief Get a single shipping item. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The id of the shipping item *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -154,7 +154,7 @@ bool getShippingItemSync(char * accessToken,
 
 /*! \brief Get a single shipping item. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The id of the shipping item *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -168,7 +168,7 @@ bool getShippingItemAsync(char * accessToken,
 
 /*! \brief Get a single shipping template. *Synchronous*
  *
- * Shipping Templates define a type of shipping and the properties they have.
+ * Shipping Templates define a type of shipping and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN or SHIPPING_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -181,7 +181,7 @@ bool getShippingTemplateSync(char * accessToken,
 
 /*! \brief Get a single shipping template. *Asynchronous*
  *
- * Shipping Templates define a type of shipping and the properties they have.
+ * Shipping Templates define a type of shipping and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN or SHIPPING_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -195,7 +195,7 @@ bool getShippingTemplateAsync(char * accessToken,
 
 /*! \brief List and search shipping templates. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or SHIPPING_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -210,7 +210,7 @@ bool getShippingTemplatesSync(char * accessToken,
 
 /*! \brief List and search shipping templates. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or SHIPPING_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -226,7 +226,7 @@ bool getShippingTemplatesAsync(char * accessToken,
 
 /*! \brief Update a shipping item. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SHIPPING_ADMIN
  * \param id The id of the shipping item *Required*
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param shippingItem The shipping item object
@@ -241,7 +241,7 @@ bool updateShippingItemSync(char * accessToken,
 
 /*! \brief Update a shipping item. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SHIPPING_ADMIN
  * \param id The id of the shipping item *Required*
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param shippingItem The shipping item object
@@ -257,7 +257,7 @@ bool updateShippingItemAsync(char * accessToken,
 
 /*! \brief Update a shipping template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param shippingTemplateResource The shipping template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -271,7 +271,7 @@ bool updateShippingTemplateSync(char * accessToken,
 
 /*! \brief Update a shipping template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param shippingTemplateResource The shipping template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -287,7 +287,7 @@ bool updateShippingTemplateAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

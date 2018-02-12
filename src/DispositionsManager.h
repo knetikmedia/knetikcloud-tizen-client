@@ -29,7 +29,7 @@ public:
 
 /*! \brief Add a new disposition. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> DISPOSITIONS_USER and user, or DISPOSITIONS_ADMIN
  * \param disposition The new disposition record
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -42,7 +42,7 @@ bool addDispositionSync(char * accessToken,
 
 /*! \brief Add a new disposition. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> DISPOSITIONS_USER and user, or DISPOSITIONS_ADMIN
  * \param disposition The new disposition record
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -56,7 +56,7 @@ bool addDispositionAsync(char * accessToken,
 
 /*! \brief Delete a disposition. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> DISPOSITIONS_USER and owner, or DISPOSITIONS_ADMIN
  * \param id The id of the disposition record *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -69,7 +69,7 @@ bool deleteDispositionSync(char * accessToken,
 
 /*! \brief Delete a disposition. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> DISPOSITIONS_USER and owner, or DISPOSITIONS_ADMIN
  * \param id The id of the disposition record *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -83,7 +83,7 @@ bool deleteDispositionAsync(char * accessToken,
 
 /*! \brief Returns a disposition. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The id of the disposition record *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -96,7 +96,7 @@ bool getDispositionSync(char * accessToken,
 
 /*! \brief Returns a disposition. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The id of the disposition record *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -110,7 +110,7 @@ bool getDispositionAsync(char * accessToken,
 
 /*! \brief Returns a list of disposition counts. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterContext Filter for dispositions within a context type (games, articles, polls, etc). Optionally with a specific id like filter_context=video:47
  * \param filterOwner Filter for dispositions from a specific user by id or 'me'
  * \param handler The callback function to be invoked on completion. *Required*
@@ -124,7 +124,7 @@ bool getDispositionCountsSync(char * accessToken,
 
 /*! \brief Returns a list of disposition counts. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterContext Filter for dispositions within a context type (games, articles, polls, etc). Optionally with a specific id like filter_context=video:47
  * \param filterOwner Filter for dispositions from a specific user by id or 'me'
  * \param handler The callback function to be invoked on completion. *Required*
@@ -139,7 +139,7 @@ bool getDispositionCountsAsync(char * accessToken,
 
 /*! \brief Returns a page of dispositions. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterContext Filter for dispositions within a context type (games, articles, polls, etc). Optionally with a specific id like filter_context=video:47
  * \param filterOwner Filter for dispositions from a specific user by id or 'me'
  * \param size The number of objects returned per page
@@ -156,7 +156,7 @@ bool getDispositionsSync(char * accessToken,
 
 /*! \brief Returns a page of dispositions. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterContext Filter for dispositions within a context type (games, articles, polls, etc). Optionally with a specific id like filter_context=video:47
  * \param filterOwner Filter for dispositions from a specific user by id or 'me'
  * \param size The number of objects returned per page
@@ -175,7 +175,7 @@ bool getDispositionsAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

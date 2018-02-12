@@ -28,7 +28,7 @@ public:
 
 /*! \brief Create a currency. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CURRENCIES_ADMIN
  * \param currency The currency object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -41,7 +41,7 @@ bool createCurrencySync(char * accessToken,
 
 /*! \brief Create a currency. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CURRENCIES_ADMIN
  * \param currency The currency object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -55,7 +55,7 @@ bool createCurrencyAsync(char * accessToken,
 
 /*! \brief Delete a currency. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CURRENCIES_ADMIN
  * \param code The currency code *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -68,7 +68,7 @@ bool deleteCurrencySync(char * accessToken,
 
 /*! \brief Delete a currency. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CURRENCIES_ADMIN
  * \param code The currency code *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -82,7 +82,7 @@ bool deleteCurrencyAsync(char * accessToken,
 
 /*! \brief List and search currencies. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterDefault Filter for the one currency that is set as default (true), or all that are not (false)
  * \param filterEnabledCurrencies Filter for alternate currencies setup explicitely in system config
  * \param filterType Filter currencies by type.  Allowable values: ('virtual', 'real')
@@ -100,7 +100,7 @@ bool getCurrenciesSync(char * accessToken,
 
 /*! \brief List and search currencies. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterDefault Filter for the one currency that is set as default (true), or all that are not (false)
  * \param filterEnabledCurrencies Filter for alternate currencies setup explicitely in system config
  * \param filterType Filter currencies by type.  Allowable values: ('virtual', 'real')
@@ -119,7 +119,7 @@ bool getCurrenciesAsync(char * accessToken,
 
 /*! \brief Get a single currency. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param code The currency code *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -132,7 +132,7 @@ bool getCurrencySync(char * accessToken,
 
 /*! \brief Get a single currency. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param code The currency code *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -146,7 +146,7 @@ bool getCurrencyAsync(char * accessToken,
 
 /*! \brief Update a currency. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CURRENCIES_ADMIN
  * \param code The currency code *Required*
  * \param currency The currency object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -160,7 +160,7 @@ bool updateCurrencySync(char * accessToken,
 
 /*! \brief Update a currency. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CURRENCIES_ADMIN
  * \param code The currency code *Required*
  * \param currency The currency object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -176,7 +176,7 @@ bool updateCurrencyAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

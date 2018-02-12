@@ -1902,7 +1902,7 @@ static bool getUserInventoryProcessor(MemoryStruct_s p_chunk, long code, char* e
 }
 
 static bool getUserInventoryHelper(char * accessToken,
-	int userId, int id, 
+	std::string userId, int id, 
 	void(* handler)(UserInventoryResource, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -1931,7 +1931,7 @@ static bool getUserInventoryHelper(char * accessToken,
 	s_userId.append("}");
 	pos = url.find(s_userId);
 	url.erase(pos, s_userId.length());
-	url.insert(pos, stringify(&userId, "int"));
+	url.insert(pos, stringify(&userId, "std::string"));
 	string s_id("{");
 	s_id.append("id");
 	s_id.append("}");
@@ -1985,7 +1985,7 @@ static bool getUserInventoryHelper(char * accessToken,
 
 
 bool UsersInventoryManager::getUserInventoryAsync(char * accessToken,
-	int userId, int id, 
+	std::string userId, int id, 
 	void(* handler)(UserInventoryResource, Error, void* )
 	, void* userData)
 {
@@ -1995,7 +1995,7 @@ bool UsersInventoryManager::getUserInventoryAsync(char * accessToken,
 }
 
 bool UsersInventoryManager::getUserInventorySync(char * accessToken,
-	int userId, int id, 
+	std::string userId, int id, 
 	void(* handler)(UserInventoryResource, Error, void* )
 	, void* userData)
 {

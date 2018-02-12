@@ -35,7 +35,7 @@ public:
 
 /*! \brief Add an answer to a question. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param questionId The id of the question *Required*
  * \param answer The new answer
  * \param handler The callback function to be invoked on completion. *Required*
@@ -49,7 +49,7 @@ bool addQuestionAnswersSync(char * accessToken,
 
 /*! \brief Add an answer to a question. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param questionId The id of the question *Required*
  * \param answer The new answer
  * \param handler The callback function to be invoked on completion. *Required*
@@ -64,7 +64,7 @@ bool addQuestionAnswersAsync(char * accessToken,
 
 /*! \brief Add a tag to a question. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param id The id of the question *Required*
  * \param tag The new tag
  * \param handler The callback function to be invoked on completion. *Required*
@@ -78,7 +78,7 @@ bool addQuestionTagSync(char * accessToken,
 
 /*! \brief Add a tag to a question. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param id The id of the question *Required*
  * \param tag The new tag
  * \param handler The callback function to be invoked on completion. *Required*
@@ -93,7 +93,7 @@ bool addQuestionTagAsync(char * accessToken,
 
 /*! \brief Add a tag to a batch of questions. *Synchronous*
  *
- * All questions that dont't have the tag and match filters will have it added. The returned number is the number of questions updated.
+ * All questions that dont't have the tag and match filters will have it added. The returned number is the number of questions updated. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param tag The tag to add
  * \param filterSearch Filter for documents whose question, answers or tags contains provided string
  * \param filterIdset Filter for documents whose id is in the comma separated list provided
@@ -114,7 +114,7 @@ bool addTagToQuestionsBatchSync(char * accessToken,
 
 /*! \brief Add a tag to a batch of questions. *Asynchronous*
  *
- * All questions that dont't have the tag and match filters will have it added. The returned number is the number of questions updated.
+ * All questions that dont't have the tag and match filters will have it added. The returned number is the number of questions updated. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param tag The tag to add
  * \param filterSearch Filter for documents whose question, answers or tags contains provided string
  * \param filterIdset Filter for documents whose id is in the comma separated list provided
@@ -136,7 +136,7 @@ bool addTagToQuestionsBatchAsync(char * accessToken,
 
 /*! \brief Create an import job. *Synchronous*
  *
- * Set up a job to import a set of trivia questions from a cvs file at a remote url. the file will be validated asynchronously but will not be processed until started manually with the process endpoint.
+ * Set up a job to import a set of trivia questions from a cvs file at a remote url. the file will be validated asynchronously but will not be processed until started manually with the process endpoint. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param request The new import job
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -149,7 +149,7 @@ bool createImportJobSync(char * accessToken,
 
 /*! \brief Create an import job. *Asynchronous*
  *
- * Set up a job to import a set of trivia questions from a cvs file at a remote url. the file will be validated asynchronously but will not be processed until started manually with the process endpoint.
+ * Set up a job to import a set of trivia questions from a cvs file at a remote url. the file will be validated asynchronously but will not be processed until started manually with the process endpoint. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param request The new import job
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -163,7 +163,7 @@ bool createImportJobAsync(char * accessToken,
 
 /*! \brief Create a question. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param question The new question
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -176,7 +176,7 @@ bool createQuestionSync(char * accessToken,
 
 /*! \brief Create a question. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param question The new question
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -190,7 +190,7 @@ bool createQuestionAsync(char * accessToken,
 
 /*! \brief Create a question template. *Synchronous*
  *
- * Question templates define a type of question and the properties they have
+ * Question templates define a type of question and the properties they have. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param questionTemplateResource The question template resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -203,7 +203,7 @@ bool createQuestionTemplateSync(char * accessToken,
 
 /*! \brief Create a question template. *Asynchronous*
  *
- * Question templates define a type of question and the properties they have
+ * Question templates define a type of question and the properties they have. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param questionTemplateResource The question template resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -217,7 +217,7 @@ bool createQuestionTemplateAsync(char * accessToken,
 
 /*! \brief Delete an import job. *Synchronous*
  *
- * Also deletes all questions that were imported by it
+ * Also deletes all questions that were imported by it. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param id The id of the job *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -230,7 +230,7 @@ bool deleteImportJobSync(char * accessToken,
 
 /*! \brief Delete an import job. *Asynchronous*
  *
- * Also deletes all questions that were imported by it
+ * Also deletes all questions that were imported by it. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param id The id of the job *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -244,7 +244,7 @@ bool deleteImportJobAsync(char * accessToken,
 
 /*! \brief Delete a question. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param id The id of the question *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -257,7 +257,7 @@ bool deleteQuestionSync(char * accessToken,
 
 /*! \brief Delete a question. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param id The id of the question *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -271,7 +271,7 @@ bool deleteQuestionAsync(char * accessToken,
 
 /*! \brief Remove an answer from a question. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param questionId The id of the question *Required*
  * \param id The id of the answer *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -285,7 +285,7 @@ bool deleteQuestionAnswersSync(char * accessToken,
 
 /*! \brief Remove an answer from a question. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param questionId The id of the question *Required*
  * \param id The id of the answer *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -300,7 +300,7 @@ bool deleteQuestionAnswersAsync(char * accessToken,
 
 /*! \brief Delete a question template. *Synchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -314,7 +314,7 @@ bool deleteQuestionTemplateSync(char * accessToken,
 
 /*! \brief Delete a question template. *Asynchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -329,7 +329,7 @@ bool deleteQuestionTemplateAsync(char * accessToken,
 
 /*! \brief Get an import job. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param id The id of the job *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -342,7 +342,7 @@ bool getImportJobSync(char * accessToken,
 
 /*! \brief Get an import job. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param id The id of the job *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -356,7 +356,7 @@ bool getImportJobAsync(char * accessToken,
 
 /*! \brief Get a list of import job. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param filterVendor Filter for jobs by vendor id
  * \param filterCategory Filter for jobs by category id
  * \param filterName Filter for jobs which name *STARTS* with the given string
@@ -375,7 +375,7 @@ bool getImportJobsSync(char * accessToken,
 
 /*! \brief Get a list of import job. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param filterVendor Filter for jobs by vendor id
  * \param filterCategory Filter for jobs by category id
  * \param filterName Filter for jobs which name *STARTS* with the given string
@@ -395,7 +395,7 @@ bool getImportJobsAsync(char * accessToken,
 
 /*! \brief Get a single question. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param id The id of the question *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -408,7 +408,7 @@ bool getQuestionSync(char * accessToken,
 
 /*! \brief Get a single question. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param id The id of the question *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -422,7 +422,7 @@ bool getQuestionAsync(char * accessToken,
 
 /*! \brief Get an answer for a question. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param questionId The id of the question *Required*
  * \param id The id of the answer *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -436,7 +436,7 @@ bool getQuestionAnswerSync(char * accessToken,
 
 /*! \brief Get an answer for a question. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param questionId The id of the question *Required*
  * \param id The id of the answer *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -451,7 +451,7 @@ bool getQuestionAnswerAsync(char * accessToken,
 
 /*! \brief List the answers available for a question. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param questionId The id of the question *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -464,7 +464,7 @@ bool getQuestionAnswersSync(char * accessToken,
 
 /*! \brief List the answers available for a question. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param questionId The id of the question *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -478,7 +478,7 @@ bool getQuestionAnswersAsync(char * accessToken,
 
 /*! \brief List question deltas in ascending order of updated date. *Synchronous*
  *
- * The 'since' parameter is important to avoid getting a full list of all questions. Implementors should make sure they pass the updated date of the last resource loaded, not the date of the last request, in order to avoid gaps
+ * The 'since' parameter is important to avoid getting a full list of all questions. Implementors should make sure they pass the updated date of the last resource loaded, not the date of the last request, in order to avoid gaps. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param since Timestamp in seconds
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -491,7 +491,7 @@ bool getQuestionDeltasSync(char * accessToken,
 
 /*! \brief List question deltas in ascending order of updated date. *Asynchronous*
  *
- * The 'since' parameter is important to avoid getting a full list of all questions. Implementors should make sure they pass the updated date of the last resource loaded, not the date of the last request, in order to avoid gaps
+ * The 'since' parameter is important to avoid getting a full list of all questions. Implementors should make sure they pass the updated date of the last resource loaded, not the date of the last request, in order to avoid gaps. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param since Timestamp in seconds
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -505,7 +505,7 @@ bool getQuestionDeltasAsync(char * accessToken,
 
 /*! \brief List the tags for a question. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param id The id of the question *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -518,7 +518,7 @@ bool getQuestionTagsSync(char * accessToken,
 
 /*! \brief List the tags for a question. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param id The id of the question *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -532,7 +532,7 @@ bool getQuestionTagsAsync(char * accessToken,
 
 /*! \brief Get a single question template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or TRIVIA_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -545,7 +545,7 @@ bool getQuestionTemplateSync(char * accessToken,
 
 /*! \brief Get a single question template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or TRIVIA_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -559,7 +559,7 @@ bool getQuestionTemplateAsync(char * accessToken,
 
 /*! \brief List and search question templates. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or TRIVIA_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -574,7 +574,7 @@ bool getQuestionTemplatesSync(char * accessToken,
 
 /*! \brief List and search question templates. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or TRIVIA_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -590,7 +590,7 @@ bool getQuestionTemplatesAsync(char * accessToken,
 
 /*! \brief List and search questions. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -613,7 +613,7 @@ bool getQuestionsSync(char * accessToken,
 
 /*! \brief List and search questions. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -637,7 +637,7 @@ bool getQuestionsAsync(char * accessToken,
 
 /*! \brief Count questions based on filters. *Synchronous*
  *
- * This is also provided by the list endpoint so you don't need to call this for pagination purposes
+ * This is also provided by the list endpoint so you don't need to call this for pagination purposes. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param filterSearch Filter for documents whose question, answers or tags contains provided string
  * \param filterIdset Filter for documents whose id is in the comma separated list provided
  * \param filterCategory Filter for questions with specified category, by id
@@ -656,7 +656,7 @@ bool getQuestionsCountSync(char * accessToken,
 
 /*! \brief Count questions based on filters. *Asynchronous*
  *
- * This is also provided by the list endpoint so you don't need to call this for pagination purposes
+ * This is also provided by the list endpoint so you don't need to call this for pagination purposes. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param filterSearch Filter for documents whose question, answers or tags contains provided string
  * \param filterIdset Filter for documents whose id is in the comma separated list provided
  * \param filterCategory Filter for questions with specified category, by id
@@ -676,7 +676,7 @@ bool getQuestionsCountAsync(char * accessToken,
 
 /*! \brief Start processing an import job. *Synchronous*
  *
- * Will process the CSV file and add new questions asynchronously. The status of the job must be 'VALID'.
+ * Will process the CSV file and add new questions asynchronously. The status of the job must be 'VALID'. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param id The id of the job *Required*
  * \param publishNow Whether the new questions should be published live immediately *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -690,7 +690,7 @@ bool processImportJobSync(char * accessToken,
 
 /*! \brief Start processing an import job. *Asynchronous*
  *
- * Will process the CSV file and add new questions asynchronously. The status of the job must be 'VALID'.
+ * Will process the CSV file and add new questions asynchronously. The status of the job must be 'VALID'. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param id The id of the job *Required*
  * \param publishNow Whether the new questions should be published live immediately *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -705,7 +705,7 @@ bool processImportJobAsync(char * accessToken,
 
 /*! \brief Remove a tag from a question. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param id The id of the question *Required*
  * \param tag The tag to remove *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -719,7 +719,7 @@ bool removeQuestionTagSync(char * accessToken,
 
 /*! \brief Remove a tag from a question. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param id The id of the question *Required*
  * \param tag The tag to remove *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -734,7 +734,7 @@ bool removeQuestionTagAsync(char * accessToken,
 
 /*! \brief Remove a tag from a batch of questions. *Synchronous*
  *
- * ll questions that have the tag and match filters will have it removed. The returned number is the number of questions updated.
+ * ll questions that have the tag and match filters will have it removed. The returned number is the number of questions updated. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param tag The tag to remove *Required*
  * \param filterSearch Filter for documents whose question, answers or tags contains provided string
  * \param filterIdset Filter for documents whose id is in the comma separated list provided
@@ -755,7 +755,7 @@ bool removeTagToQuestionsBatchSync(char * accessToken,
 
 /*! \brief Remove a tag from a batch of questions. *Asynchronous*
  *
- * ll questions that have the tag and match filters will have it removed. The returned number is the number of questions updated.
+ * ll questions that have the tag and match filters will have it removed. The returned number is the number of questions updated. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param tag The tag to remove *Required*
  * \param filterSearch Filter for documents whose question, answers or tags contains provided string
  * \param filterIdset Filter for documents whose id is in the comma separated list provided
@@ -777,7 +777,7 @@ bool removeTagToQuestionsBatchAsync(char * accessToken,
 
 /*! \brief List and search tags by the beginning of the string. *Synchronous*
  *
- * For performance reasons, search & category filters are mutually exclusive. If category is specified, search filter will be ignored in order to do fast matches for typeahead.
+ * For performance reasons, search & category filters are mutually exclusive. If category is specified, search filter will be ignored in order to do fast matches for typeahead. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param filterSearch Filter for tags starting with the given text
  * \param filterCategory Filter for tags on questions from a specific category
  * \param filterImportId Filter for tags on questions from a specific import job
@@ -792,7 +792,7 @@ bool searchQuestionTagsSync(char * accessToken,
 
 /*! \brief List and search tags by the beginning of the string. *Asynchronous*
  *
- * For performance reasons, search & category filters are mutually exclusive. If category is specified, search filter will be ignored in order to do fast matches for typeahead.
+ * For performance reasons, search & category filters are mutually exclusive. If category is specified, search filter will be ignored in order to do fast matches for typeahead. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param filterSearch Filter for tags starting with the given text
  * \param filterCategory Filter for tags on questions from a specific category
  * \param filterImportId Filter for tags on questions from a specific import job
@@ -808,7 +808,7 @@ bool searchQuestionTagsAsync(char * accessToken,
 
 /*! \brief Update an import job. *Synchronous*
  *
- * Changes should be made before process is started for there to be any effect.
+ * Changes should be made before process is started for there to be any effect. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param id The id of the job *Required*
  * \param request The updated job
  * \param handler The callback function to be invoked on completion. *Required*
@@ -822,7 +822,7 @@ bool updateImportJobSync(char * accessToken,
 
 /*! \brief Update an import job. *Asynchronous*
  *
- * Changes should be made before process is started for there to be any effect.
+ * Changes should be made before process is started for there to be any effect. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param id The id of the job *Required*
  * \param request The updated job
  * \param handler The callback function to be invoked on completion. *Required*
@@ -837,7 +837,7 @@ bool updateImportJobAsync(char * accessToken,
 
 /*! \brief Update a question. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param id The id of the question *Required*
  * \param question The updated question
  * \param handler The callback function to be invoked on completion. *Required*
@@ -851,7 +851,7 @@ bool updateQuestionSync(char * accessToken,
 
 /*! \brief Update a question. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param id The id of the question *Required*
  * \param question The updated question
  * \param handler The callback function to be invoked on completion. *Required*
@@ -866,7 +866,7 @@ bool updateQuestionAsync(char * accessToken,
 
 /*! \brief Update an answer for a question. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param questionId The id of the question *Required*
  * \param id The id of the answer *Required*
  * \param answer The updated answer
@@ -881,7 +881,7 @@ bool updateQuestionAnswerSync(char * accessToken,
 
 /*! \brief Update an answer for a question. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param questionId The id of the question *Required*
  * \param id The id of the answer *Required*
  * \param answer The updated answer
@@ -897,7 +897,7 @@ bool updateQuestionAnswerAsync(char * accessToken,
 
 /*! \brief Update a question template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param questionTemplateResource The question template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -911,7 +911,7 @@ bool updateQuestionTemplateSync(char * accessToken,
 
 /*! \brief Update a question template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param questionTemplateResource The question template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -926,7 +926,7 @@ bool updateQuestionTemplateAsync(char * accessToken,
 
 /*! \brief Bulk update questions. *Synchronous*
  *
- * Will update all questions that match filters used (or all questions in system if no filters used). Body should match a question resource with only those properties you wish to set. Null values will be ignored. Returned number is how many were updated.
+ * Will update all questions that match filters used (or all questions in system if no filters used). Body should match a question resource with only those properties you wish to set. Null values will be ignored. Returned number is how many were updated. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param question New values for a set of question fields
  * \param filterSearch Filter for documents whose question, answers or tags contains provided string
  * \param filterIdset Filter for documents whose id is in the comma separated list provided
@@ -946,7 +946,7 @@ bool updateQuestionsInBulkSync(char * accessToken,
 
 /*! \brief Bulk update questions. *Asynchronous*
  *
- * Will update all questions that match filters used (or all questions in system if no filters used). Body should match a question resource with only those properties you wish to set. Null values will be ignored. Returned number is how many were updated.
+ * Will update all questions that match filters used (or all questions in system if no filters used). Body should match a question resource with only those properties you wish to set. Null values will be ignored. Returned number is how many were updated. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
  * \param question New values for a set of question fields
  * \param filterSearch Filter for documents whose question, answers or tags contains provided string
  * \param filterIdset Filter for documents whose id is in the comma separated list provided
@@ -968,7 +968,7 @@ bool updateQuestionsInBulkAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

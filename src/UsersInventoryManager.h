@@ -36,7 +36,7 @@ public:
 
 /*! \brief Adds an item to the user inventory. *Synchronous*
  *
- * The inventory is fulfilled asynchronously UNLESS the invoice is explicitely skipped. Depending on the use case, it might require the client to verify that the entitlement was added after the fact or configure a BRE rule to get a notification in real time
+ * The inventory is fulfilled asynchronously UNLESS the invoice is explicitely skipped. Depending on the use case, it might require the client to verify that the entitlement was added after the fact or configure a BRE rule to get a notification in real time. <br><br><b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param id The id of the user *Required*
  * \param userInventoryAddRequest The user inventory add request object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -50,7 +50,7 @@ bool addItemToUserInventorySync(char * accessToken,
 
 /*! \brief Adds an item to the user inventory. *Asynchronous*
  *
- * The inventory is fulfilled asynchronously UNLESS the invoice is explicitely skipped. Depending on the use case, it might require the client to verify that the entitlement was added after the fact or configure a BRE rule to get a notification in real time
+ * The inventory is fulfilled asynchronously UNLESS the invoice is explicitely skipped. Depending on the use case, it might require the client to verify that the entitlement was added after the fact or configure a BRE rule to get a notification in real time. <br><br><b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param id The id of the user *Required*
  * \param userInventoryAddRequest The user inventory add request object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -65,7 +65,7 @@ bool addItemToUserInventoryAsync(char * accessToken,
 
 /*! \brief Check for access to an item without consuming. *Synchronous*
  *
- * Useful for pre-check and accounts for all various buisness rules
+ * Useful for pre-check and accounts for all various buisness rules. <br><br><b>Permissions Needed:</b> INVENTORY_ADMIN or owner
  * \param userId The id of the user to check for or 'me' for logged in user *Required*
  * \param itemId The id of the item *Required*
  * \param sku The specific sku of an entitlement list addition to check entitlement for. This is of very limited and specific use and should generally be left out
@@ -80,7 +80,7 @@ bool checkUserEntitlementItemSync(char * accessToken,
 
 /*! \brief Check for access to an item without consuming. *Asynchronous*
  *
- * Useful for pre-check and accounts for all various buisness rules
+ * Useful for pre-check and accounts for all various buisness rules. <br><br><b>Permissions Needed:</b> INVENTORY_ADMIN or owner
  * \param userId The id of the user to check for or 'me' for logged in user *Required*
  * \param itemId The id of the item *Required*
  * \param sku The specific sku of an entitlement list addition to check entitlement for. This is of very limited and specific use and should generally be left out
@@ -96,7 +96,7 @@ bool checkUserEntitlementItemAsync(char * accessToken,
 
 /*! \brief Create an entitlement item. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param entitlementItem The entitlement item object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -110,7 +110,7 @@ bool createEntitlementItemSync(char * accessToken,
 
 /*! \brief Create an entitlement item. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param entitlementItem The entitlement item object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -125,7 +125,7 @@ bool createEntitlementItemAsync(char * accessToken,
 
 /*! \brief Create an entitlement template. *Synchronous*
  *
- * Entitlement templates define a type of entitlement and the properties they have
+ * Entitlement templates define a type of entitlement and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param _template The entitlement template to be created
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -138,7 +138,7 @@ bool createEntitlementTemplateSync(char * accessToken,
 
 /*! \brief Create an entitlement template. *Asynchronous*
  *
- * Entitlement templates define a type of entitlement and the properties they have
+ * Entitlement templates define a type of entitlement and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param _template The entitlement template to be created
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -152,7 +152,7 @@ bool createEntitlementTemplateAsync(char * accessToken,
 
 /*! \brief Delete an entitlement item. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param entitlementId The id of the entitlement *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -165,7 +165,7 @@ bool deleteEntitlementItemSync(char * accessToken,
 
 /*! \brief Delete an entitlement item. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param entitlementId The id of the entitlement *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -179,7 +179,7 @@ bool deleteEntitlementItemAsync(char * accessToken,
 
 /*! \brief Delete an entitlement template. *Synchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -193,7 +193,7 @@ bool deleteEntitlementTemplateSync(char * accessToken,
 
 /*! \brief Delete an entitlement template. *Asynchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -208,7 +208,7 @@ bool deleteEntitlementTemplateAsync(char * accessToken,
 
 /*! \brief Get a single entitlement item. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param entitlementId The id of the entitlement *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -221,7 +221,7 @@ bool getEntitlementItemSync(char * accessToken,
 
 /*! \brief Get a single entitlement item. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param entitlementId The id of the entitlement *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -235,7 +235,7 @@ bool getEntitlementItemAsync(char * accessToken,
 
 /*! \brief List and search entitlement items. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterTemplate Filter for entitlements using a specified template
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -251,7 +251,7 @@ bool getEntitlementItemsSync(char * accessToken,
 
 /*! \brief List and search entitlement items. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterTemplate Filter for entitlements using a specified template
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -268,7 +268,7 @@ bool getEntitlementItemsAsync(char * accessToken,
 
 /*! \brief Get a single entitlement template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ACHIEVEMENTS_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -281,7 +281,7 @@ bool getEntitlementTemplateSync(char * accessToken,
 
 /*! \brief Get a single entitlement template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ACHIEVEMENTS_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -295,7 +295,7 @@ bool getEntitlementTemplateAsync(char * accessToken,
 
 /*! \brief List and search entitlement templates. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ACHIEVEMENTS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -310,7 +310,7 @@ bool getEntitlementTemplatesSync(char * accessToken,
 
 /*! \brief List and search entitlement templates. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ACHIEVEMENTS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -326,7 +326,7 @@ bool getEntitlementTemplatesAsync(char * accessToken,
 
 /*! \brief List the user inventory entries for a given user. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN or owner
  * \param id The id of the user *Required*
  * \param inactive If true, accepts inactive user inventories
  * \param size The number of objects returned per page
@@ -347,7 +347,7 @@ bool getUserInventoriesSync(char * accessToken,
 
 /*! \brief List the user inventory entries for a given user. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN or owner
  * \param id The id of the user *Required*
  * \param inactive If true, accepts inactive user inventories
  * \param size The number of objects returned per page
@@ -369,7 +369,7 @@ bool getUserInventoriesAsync(char * accessToken,
 
 /*! \brief Get an inventory entry. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param userId The id of the inventory owner or 'me' for the logged in user *Required*
  * \param id The id of the user inventory *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -377,13 +377,13 @@ bool getUserInventoriesAsync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool getUserInventorySync(char * accessToken,
-	int userId, int id, 
+	std::string userId, int id, 
 	void(* handler)(UserInventoryResource, Error, void* )
 	, void* userData);
 
 /*! \brief Get an inventory entry. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param userId The id of the inventory owner or 'me' for the logged in user *Required*
  * \param id The id of the user inventory *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -391,14 +391,14 @@ bool getUserInventorySync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool getUserInventoryAsync(char * accessToken,
-	int userId, int id, 
+	std::string userId, int id, 
 	void(* handler)(UserInventoryResource, Error, void* )
 	, void* userData);
 
 
 /*! \brief List the log entries for this inventory entry. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN or owner
  * \param userId The id of the inventory owner or 'me' for the logged in user *Required*
  * \param id The id of the user inventory *Required*
  * \param size The number of objects returned per page
@@ -414,7 +414,7 @@ bool getUserInventoryLogSync(char * accessToken,
 
 /*! \brief List the log entries for this inventory entry. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN or owner
  * \param userId The id of the inventory owner or 'me' for the logged in user *Required*
  * \param id The id of the user inventory *Required*
  * \param size The number of objects returned per page
@@ -431,7 +431,7 @@ bool getUserInventoryLogAsync(char * accessToken,
 
 /*! \brief List the user inventory entries for all users. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param inactive If true, accepts inactive user inventories
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -451,7 +451,7 @@ bool getUsersInventorySync(char * accessToken,
 
 /*! \brief List the user inventory entries for all users. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param inactive If true, accepts inactive user inventories
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -472,7 +472,7 @@ bool getUsersInventoryAsync(char * accessToken,
 
 /*! \brief Grant an entitlement. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param userId The id of the user to grant the entitlement to *Required*
  * \param grantRequest grantRequest *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -486,7 +486,7 @@ bool grantUserEntitlementSync(char * accessToken,
 
 /*! \brief Grant an entitlement. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param userId The id of the user to grant the entitlement to *Required*
  * \param grantRequest grantRequest *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -501,7 +501,7 @@ bool grantUserEntitlementAsync(char * accessToken,
 
 /*! \brief Update an entitlement item. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param entitlementId The id of the entitlement *Required*
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param entitlementItem The entitlement item object
@@ -516,7 +516,7 @@ bool updateEntitlementItemSync(char * accessToken,
 
 /*! \brief Update an entitlement item. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param entitlementId The id of the entitlement *Required*
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param entitlementItem The entitlement item object
@@ -532,7 +532,7 @@ bool updateEntitlementItemAsync(char * accessToken,
 
 /*! \brief Update an entitlement template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param _template The updated template
  * \param handler The callback function to be invoked on completion. *Required*
@@ -546,7 +546,7 @@ bool updateEntitlementTemplateSync(char * accessToken,
 
 /*! \brief Update an entitlement template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param _template The updated template
  * \param handler The callback function to be invoked on completion. *Required*
@@ -561,7 +561,7 @@ bool updateEntitlementTemplateAsync(char * accessToken,
 
 /*! \brief Set the behavior data for an inventory entry. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param userId The id of the user *Required*
  * \param id The id of the user inventory *Required*
  * \param data The data map
@@ -576,7 +576,7 @@ bool updateUserInventoryBehaviorDataSync(char * accessToken,
 
 /*! \brief Set the behavior data for an inventory entry. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param userId The id of the user *Required*
  * \param id The id of the user inventory *Required*
  * \param data The data map
@@ -592,7 +592,7 @@ bool updateUserInventoryBehaviorDataAsync(char * accessToken,
 
 /*! \brief Set the expiration date. *Synchronous*
  *
- * Will change the current grace period for a subscription but not the bill date (possibly even ending before having the chance to re-bill)
+ * Will change the current grace period for a subscription but not the bill date (possibly even ending before having the chance to re-bill). <br><br><b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param userId user_id *Required*
  * \param id The id of the user inventory *Required*
  * \param timestamp The new expiration date as a unix timestamp in seconds. May be null (no body).
@@ -607,7 +607,7 @@ bool updateUserInventoryExpiresSync(char * accessToken,
 
 /*! \brief Set the expiration date. *Asynchronous*
  *
- * Will change the current grace period for a subscription but not the bill date (possibly even ending before having the chance to re-bill)
+ * Will change the current grace period for a subscription but not the bill date (possibly even ending before having the chance to re-bill). <br><br><b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param userId user_id *Required*
  * \param id The id of the user inventory *Required*
  * \param timestamp The new expiration date as a unix timestamp in seconds. May be null (no body).
@@ -623,7 +623,7 @@ bool updateUserInventoryExpiresAsync(char * accessToken,
 
 /*! \brief Set the status for an inventory entry. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param userId The id of the user *Required*
  * \param id The id of the user inventory *Required*
  * \param inventoryStatus The inventory status object
@@ -638,7 +638,7 @@ bool updateUserInventoryStatusSync(char * accessToken,
 
 /*! \brief Set the status for an inventory entry. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN
  * \param userId The id of the user *Required*
  * \param id The id of the user inventory *Required*
  * \param inventoryStatus The inventory status object
@@ -654,7 +654,7 @@ bool updateUserInventoryStatusAsync(char * accessToken,
 
 /*! \brief Use an item. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN or owner
  * \param userId The id of the user to check for or 'me' for logged in user *Required*
  * \param itemId The id of the item *Required*
  * \param sku The specific sku of an entitlement_list addition to check entitlement for. This is of very limited and specific use and should generally be left out
@@ -670,7 +670,7 @@ bool useUserEntitlementItemSync(char * accessToken,
 
 /*! \brief Use an item. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> INVENTORY_ADMIN or owner
  * \param userId The id of the user to check for or 'me' for logged in user *Required*
  * \param itemId The id of the item *Required*
  * \param sku The specific sku of an entitlement_list addition to check entitlement for. This is of very limited and specific use and should generally be left out
@@ -688,7 +688,7 @@ bool useUserEntitlementItemAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

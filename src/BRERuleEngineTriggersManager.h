@@ -28,7 +28,7 @@ public:
 
 /*! \brief Create a trigger. *Synchronous*
  *
- * Customer added triggers will not be fired automatically or have rules associated with them by default. Custom rules must be added to get use from the trigger and it must then be fired from the outside. See the Bre Event services
+ * Customer added triggers will not be fired automatically or have rules associated with them by default. Custom rules must be added to get use from the trigger and it must then be fired from the outside. See the Bre Event services. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_TRIGGERS_ADMIN
  * \param breTriggerResource The BRE trigger resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -41,7 +41,7 @@ bool createBRETriggerSync(char * accessToken,
 
 /*! \brief Create a trigger. *Asynchronous*
  *
- * Customer added triggers will not be fired automatically or have rules associated with them by default. Custom rules must be added to get use from the trigger and it must then be fired from the outside. See the Bre Event services
+ * Customer added triggers will not be fired automatically or have rules associated with them by default. Custom rules must be added to get use from the trigger and it must then be fired from the outside. See the Bre Event services. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_TRIGGERS_ADMIN
  * \param breTriggerResource The BRE trigger resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -55,7 +55,7 @@ bool createBRETriggerAsync(char * accessToken,
 
 /*! \brief Delete a trigger. *Synchronous*
  *
- * May fail if there are existing rules against it. Cannot delete core triggers
+ * May fail if there are existing rules against it. Cannot delete core triggers. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_TRIGGERS_ADMIN
  * \param eventName The trigger event name *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -68,7 +68,7 @@ bool deleteBRETriggerSync(char * accessToken,
 
 /*! \brief Delete a trigger. *Asynchronous*
  *
- * May fail if there are existing rules against it. Cannot delete core triggers
+ * May fail if there are existing rules against it. Cannot delete core triggers. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_TRIGGERS_ADMIN
  * \param eventName The trigger event name *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -82,7 +82,7 @@ bool deleteBRETriggerAsync(char * accessToken,
 
 /*! \brief Get a single trigger. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_TRIGGERS_USER
  * \param eventName The trigger event name *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -95,7 +95,7 @@ bool getBRETriggerSync(char * accessToken,
 
 /*! \brief Get a single trigger. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_TRIGGERS_USER
  * \param eventName The trigger event name *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -109,7 +109,7 @@ bool getBRETriggerAsync(char * accessToken,
 
 /*! \brief List triggers. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_TRIGGERS_USER
  * \param filterSystem Filter for triggers that are system triggers when true, or not when false. Leave off for both mixed
  * \param filterCategory Filter for triggers that are within a specific category
  * \param filterTags Filter for triggers that have all of the given tags (comma separated list)
@@ -128,7 +128,7 @@ bool getBRETriggersSync(char * accessToken,
 
 /*! \brief List triggers. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_TRIGGERS_USER
  * \param filterSystem Filter for triggers that are system triggers when true, or not when false. Leave off for both mixed
  * \param filterCategory Filter for triggers that are within a specific category
  * \param filterTags Filter for triggers that have all of the given tags (comma separated list)
@@ -148,7 +148,7 @@ bool getBRETriggersAsync(char * accessToken,
 
 /*! \brief Update a trigger. *Synchronous*
  *
- * May fail if new parameters mismatch requirements of existing rules. Cannot update core triggers
+ * May fail if new parameters mismatch requirements of existing rules. Cannot update core triggers. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_TRIGGERS_ADMIN
  * \param eventName The trigger event name *Required*
  * \param breTriggerResource The BRE trigger resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -162,7 +162,7 @@ bool updateBRETriggerSync(char * accessToken,
 
 /*! \brief Update a trigger. *Asynchronous*
  *
- * May fail if new parameters mismatch requirements of existing rules. Cannot update core triggers
+ * May fail if new parameters mismatch requirements of existing rules. Cannot update core triggers. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_TRIGGERS_ADMIN
  * \param eventName The trigger event name *Required*
  * \param breTriggerResource The BRE trigger resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -178,7 +178,7 @@ bool updateBRETriggerAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

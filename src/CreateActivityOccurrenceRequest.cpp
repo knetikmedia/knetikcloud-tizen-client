@@ -31,10 +31,16 @@ CreateActivityOccurrenceRequest::__init()
 	//challenge_activity_id = long(0);
 	//
 	//
+	//core_settings = new CoreActivityOccurrenceSettings();
+	//
+	//
 	//entitlement = new ItemIdRequest();
 	//
 	//
 	//event_id = long(0);
+	//
+	//
+	//host = int(0);
 	//
 	//new std::list()std::list> settings;
 	//
@@ -63,6 +69,11 @@ CreateActivityOccurrenceRequest::__cleanup()
 	//delete challenge_activity_id;
 	//challenge_activity_id = NULL;
 	//}
+	//if(core_settings != NULL) {
+	//
+	//delete core_settings;
+	//core_settings = NULL;
+	//}
 	//if(entitlement != NULL) {
 	//
 	//delete entitlement;
@@ -72,6 +83,11 @@ CreateActivityOccurrenceRequest::__cleanup()
 	//
 	//delete event_id;
 	//event_id = NULL;
+	//}
+	//if(host != NULL) {
+	//
+	//delete host;
+	//host = NULL;
 	//}
 	//if(settings != NULL) {
 	//settings.RemoveAll(true);
@@ -123,6 +139,20 @@ CreateActivityOccurrenceRequest::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *core_settingsKey = "core_settings";
+	node = json_object_get_member(pJsonObject, core_settingsKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CoreActivityOccurrenceSettings")) {
+			jsonToValue(&core_settings, node, "CoreActivityOccurrenceSettings", "CoreActivityOccurrenceSettings");
+		} else {
+			
+			CoreActivityOccurrenceSettings* obj = static_cast<CoreActivityOccurrenceSettings*> (&core_settings);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *entitlementKey = "entitlement";
 	node = json_object_get_member(pJsonObject, entitlementKey);
 	if (node !=NULL) {
@@ -144,6 +174,17 @@ CreateActivityOccurrenceRequest::fromJson(char* jsonStr)
 
 		if (isprimitive("long long")) {
 			jsonToValue(&event_id, node, "long long", "");
+		} else {
+			
+		}
+	}
+	const gchar *hostKey = "host";
+	node = json_object_get_member(pJsonObject, hostKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&host, node, "int", "");
 		} else {
 			
 		}
@@ -248,6 +289,20 @@ CreateActivityOccurrenceRequest::toJson()
 	}
 	const gchar *challenge_activity_idKey = "challenge_activity_id";
 	json_object_set_member(pJsonObject, challenge_activity_idKey, node);
+	if (isprimitive("CoreActivityOccurrenceSettings")) {
+		CoreActivityOccurrenceSettings obj = getCoreSettings();
+		node = converttoJson(&obj, "CoreActivityOccurrenceSettings", "");
+	}
+	else {
+		
+		CoreActivityOccurrenceSettings obj = static_cast<CoreActivityOccurrenceSettings> (getCoreSettings());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *core_settingsKey = "core_settings";
+	json_object_set_member(pJsonObject, core_settingsKey, node);
 	if (isprimitive("ItemIdRequest")) {
 		ItemIdRequest obj = getEntitlement();
 		node = converttoJson(&obj, "ItemIdRequest", "");
@@ -271,6 +326,15 @@ CreateActivityOccurrenceRequest::toJson()
 	}
 	const gchar *event_idKey = "event_id";
 	json_object_set_member(pJsonObject, event_idKey, node);
+	if (isprimitive("int")) {
+		int obj = getHost();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *hostKey = "host";
+	json_object_set_member(pJsonObject, hostKey, node);
 	if (isprimitive("SelectedSettingRequest")) {
 		list<SelectedSettingRequest> new_list = static_cast<list <SelectedSettingRequest> > (getSettings());
 		node = converttoJson(&new_list, "SelectedSettingRequest", "array");
@@ -371,6 +435,18 @@ CreateActivityOccurrenceRequest::setChallengeActivityId(long long  challenge_act
 	this->challenge_activity_id = challenge_activity_id;
 }
 
+CoreActivityOccurrenceSettings
+CreateActivityOccurrenceRequest::getCoreSettings()
+{
+	return core_settings;
+}
+
+void
+CreateActivityOccurrenceRequest::setCoreSettings(CoreActivityOccurrenceSettings  core_settings)
+{
+	this->core_settings = core_settings;
+}
+
 ItemIdRequest
 CreateActivityOccurrenceRequest::getEntitlement()
 {
@@ -393,6 +469,18 @@ void
 CreateActivityOccurrenceRequest::setEventId(long long  event_id)
 {
 	this->event_id = event_id;
+}
+
+int
+CreateActivityOccurrenceRequest::getHost()
+{
+	return host;
+}
+
+void
+CreateActivityOccurrenceRequest::setHost(int  host)
+{
+	this->host = host;
 }
 
 std::list<SelectedSettingRequest>

@@ -10,6 +10,7 @@
 
 #include <string>
 #include "ActivityEntitlementResource.h"
+#include "CoreChallengeActivitySettings.h"
 #include "Property.h"
 #include "RewardSetResource.h"
 #include "SelectedSettingResource.h"
@@ -72,6 +73,13 @@ public:
 	/*! \brief Set The id of the challenge
 	 */
 	void setChallengeId(long long  challenge_id);
+	/*! \brief Get Defines core settings about the activity that affect how it can be created/played by users. Values may be left null to inherit from parent activity.
+	 */
+	CoreChallengeActivitySettings getCoreSettings();
+
+	/*! \brief Set Defines core settings about the activity that affect how it can be created/played by users. Values may be left null to inherit from parent activity.
+	 */
+	void setCoreSettings(CoreChallengeActivitySettings  core_settings);
 	/*! \brief Get The entitlement item needed to participate in the activity as part of this event. Null indicates free entry. When creating/updating only id is used. Item must be pre-existing
 	 */
 	ActivityEntitlementResource getEntitlement();
@@ -112,6 +120,7 @@ private:
 	long long activity_id;
 	std::map <std::string, std::string>additional_properties;
 	long long challenge_id;
+	CoreChallengeActivitySettings core_settings;
 	ActivityEntitlementResource entitlement;
 	long long id;
 	RewardSetResource reward_set;

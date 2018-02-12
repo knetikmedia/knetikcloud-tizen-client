@@ -32,7 +32,7 @@ public:
 
 /*! \brief Add a user log entry. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> owner
  * \param logEntry The user log entry to be added
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -45,7 +45,7 @@ bool addUserLogSync(char * accessToken,
 
 /*! \brief Add a user log entry. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> owner
  * \param logEntry The user log entry to be added
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -59,7 +59,7 @@ bool addUserLogAsync(char * accessToken,
 
 /*! \brief Get an existing BRE event log entry by id. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_EVENTS_ADMIN
  * \param id The BRE event log entry id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -72,7 +72,7 @@ bool getBREEventLogSync(char * accessToken,
 
 /*! \brief Get an existing BRE event log entry by id. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_EVENTS_ADMIN
  * \param id The BRE event log entry id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -86,44 +86,46 @@ bool getBREEventLogAsync(char * accessToken,
 
 /*! \brief Returns a list of BRE event log entries. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_EVENTS_ADMIN
  * \param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the event log start date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
  * \param filterEventName Filter event logs by event name
  * \param filterEventId Filter event logs by request id
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+ * \param filterRuleId Filter event logs by request id
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool getBREEventLogsSync(char * accessToken,
-	std::string filterStartDate, std::string filterEventName, std::string filterEventId, int size, int page, std::string order, 
+	std::string filterStartDate, std::string filterEventName, std::string filterEventId, int size, int page, std::string order, std::string filterRuleId, 
 	void(* handler)(PageResource«BreEventLog», Error, void* )
 	, void* userData);
 
 /*! \brief Returns a list of BRE event log entries. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_EVENTS_ADMIN
  * \param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the event log start date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
  * \param filterEventName Filter event logs by event name
  * \param filterEventId Filter event logs by request id
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+ * \param filterRuleId Filter event logs by request id
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool getBREEventLogsAsync(char * accessToken,
-	std::string filterStartDate, std::string filterEventName, std::string filterEventId, int size, int page, std::string order, 
+	std::string filterStartDate, std::string filterEventName, std::string filterEventId, int size, int page, std::string order, std::string filterRuleId, 
 	void(* handler)(PageResource«BreEventLog», Error, void* )
 	, void* userData);
 
 
 /*! \brief Get an existing forward log entry by id. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_EVENTS_ADMIN
  * \param id The forward log entry id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -136,7 +138,7 @@ bool getBREForwardLogSync(char * accessToken,
 
 /*! \brief Get an existing forward log entry by id. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_EVENTS_ADMIN
  * \param id The forward log entry id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -150,10 +152,11 @@ bool getBREForwardLogAsync(char * accessToken,
 
 /*! \brief Returns a list of forward log entries. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_EVENTS_ADMIN
  * \param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the log start date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
  * \param filterEndDate A comma separated string without spaces.  First value is the operator to search on, second value is the log end date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
  * \param filterStatusCode Filter forward logs by http status code
+ * \param filterUrl Filter forward logs by URL starting with...
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -162,16 +165,17 @@ bool getBREForwardLogAsync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool getBREForwardLogsSync(char * accessToken,
-	std::string filterStartDate, std::string filterEndDate, int filterStatusCode, int size, int page, std::string order, 
+	std::string filterStartDate, std::string filterEndDate, int filterStatusCode, int filterUrl, int size, int page, std::string order, 
 	void(* handler)(PageResource«ForwardLog», Error, void* )
 	, void* userData);
 
 /*! \brief Returns a list of forward log entries. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_EVENTS_ADMIN
  * \param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the log start date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
  * \param filterEndDate A comma separated string without spaces.  First value is the operator to search on, second value is the log end date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
  * \param filterStatusCode Filter forward logs by http status code
+ * \param filterUrl Filter forward logs by URL starting with...
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -180,14 +184,14 @@ bool getBREForwardLogsSync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool getBREForwardLogsAsync(char * accessToken,
-	std::string filterStartDate, std::string filterEndDate, int filterStatusCode, int size, int page, std::string order, 
+	std::string filterStartDate, std::string filterEndDate, int filterStatusCode, int filterUrl, int size, int page, std::string order, 
 	void(* handler)(PageResource«ForwardLog», Error, void* )
 	, void* userData);
 
 
 /*! \brief Returns a user log entry by id. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> LOGS_ADMIN or owner
  * \param id The user log entry id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -200,7 +204,7 @@ bool getUserLogSync(char * accessToken,
 
 /*! \brief Returns a user log entry by id. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> LOGS_ADMIN or owner
  * \param id The user log entry id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -214,7 +218,7 @@ bool getUserLogAsync(char * accessToken,
 
 /*! \brief Returns a page of user logs entries. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> LOGS_ADMIN or owner
  * \param filterUser Filter for actions taken by a specific user by id
  * \param filterActionName Filter for actions of a specific name
  * \param size The number of objects returned per page
@@ -231,7 +235,7 @@ bool getUserLogsSync(char * accessToken,
 
 /*! \brief Returns a page of user logs entries. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> LOGS_ADMIN or owner
  * \param filterUser Filter for actions taken by a specific user by id
  * \param filterActionName Filter for actions of a specific name
  * \param size The number of objects returned per page
@@ -250,7 +254,7 @@ bool getUserLogsAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

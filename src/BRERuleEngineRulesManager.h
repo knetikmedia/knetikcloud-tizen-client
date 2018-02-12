@@ -30,7 +30,7 @@ public:
 
 /*! \brief Create a rule. *Synchronous*
  *
- * Rules define which actions to run when a given event verifies the specified condition. Full list of predicates and other type of expressions can be found at GET /bre/expressions/
+ * Rules define which actions to run when a given event verifies the specified condition. Full list of predicates and other type of expressions can be found at GET /bre/expressions/. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
  * \param breRule The BRE rule object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -43,7 +43,7 @@ bool createBRERuleSync(char * accessToken,
 
 /*! \brief Create a rule. *Asynchronous*
  *
- * Rules define which actions to run when a given event verifies the specified condition. Full list of predicates and other type of expressions can be found at GET /bre/expressions/
+ * Rules define which actions to run when a given event verifies the specified condition. Full list of predicates and other type of expressions can be found at GET /bre/expressions/. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
  * \param breRule The BRE rule object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -57,7 +57,7 @@ bool createBRERuleAsync(char * accessToken,
 
 /*! \brief Delete a rule. *Synchronous*
  *
- * May fail if there are existing rules against it. Cannot delete core rules
+ * May fail if there are existing rules against it. Cannot delete core rules. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
  * \param id The id of the rule *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -70,7 +70,7 @@ bool deleteBRERuleSync(char * accessToken,
 
 /*! \brief Delete a rule. *Asynchronous*
  *
- * May fail if there are existing rules against it. Cannot delete core rules
+ * May fail if there are existing rules against it. Cannot delete core rules. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
  * \param id The id of the rule *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -84,7 +84,7 @@ bool deleteBRERuleAsync(char * accessToken,
 
 /*! \brief Returns a string representation of the provided expression. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
  * \param expression The expression
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -97,7 +97,7 @@ bool getBREExpressionAsStringSync(char * accessToken,
 
 /*! \brief Returns a string representation of the provided expression. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
  * \param expression The expression
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -111,7 +111,7 @@ bool getBREExpressionAsStringAsync(char * accessToken,
 
 /*! \brief Get a single rule. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
  * \param id The id of the rule *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -124,7 +124,7 @@ bool getBRERuleSync(char * accessToken,
 
 /*! \brief Get a single rule. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
  * \param id The id of the rule *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -138,7 +138,7 @@ bool getBRERuleAsync(char * accessToken,
 
 /*! \brief List rules. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
  * \param filterName Filter for rules containing the given name
  * \param filterEnabled Filter for rules by active status, null for both
  * \param filterSystem Filter for rules that are system rules when true, or not when false. Leave off for both mixed
@@ -158,7 +158,7 @@ bool getBRERulesSync(char * accessToken,
 
 /*! \brief List rules. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
  * \param filterName Filter for rules containing the given name
  * \param filterEnabled Filter for rules by active status, null for both
  * \param filterSystem Filter for rules that are system rules when true, or not when false. Leave off for both mixed
@@ -179,7 +179,7 @@ bool getBRERulesAsync(char * accessToken,
 
 /*! \brief Enable or disable a rule. *Synchronous*
  *
- * This is helpful for turning off systems rules which cannot be deleted or modified otherwise
+ * This is helpful for turning off systems rules which cannot be deleted or modified otherwise. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
  * \param id The id of the rule *Required*
  * \param enabled The boolean value
  * \param handler The callback function to be invoked on completion. *Required*
@@ -193,7 +193,7 @@ bool setBRERuleSync(char * accessToken,
 
 /*! \brief Enable or disable a rule. *Asynchronous*
  *
- * This is helpful for turning off systems rules which cannot be deleted or modified otherwise
+ * This is helpful for turning off systems rules which cannot be deleted or modified otherwise. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
  * \param id The id of the rule *Required*
  * \param enabled The boolean value
  * \param handler The callback function to be invoked on completion. *Required*
@@ -208,7 +208,7 @@ bool setBRERuleAsync(char * accessToken,
 
 /*! \brief Update a rule. *Synchronous*
  *
- * Cannot update system rules
+ * Cannot update system rules. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
  * \param id The id of the rule *Required*
  * \param breRule The BRE rule object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -222,7 +222,7 @@ bool updateBRERuleSync(char * accessToken,
 
 /*! \brief Update a rule. *Asynchronous*
  *
- * Cannot update system rules
+ * Cannot update system rules. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
  * \param id The id of the rule *Required*
  * \param breRule The BRE rule object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -238,7 +238,7 @@ bool updateBRERuleAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

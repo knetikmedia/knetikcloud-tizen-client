@@ -29,7 +29,7 @@ public:
 
 /*! \brief Add a new comment. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> COMMENTS_USER or COMMENTS_ADMIN
  * \param commentResource The comment to be added
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -42,7 +42,7 @@ bool addCommentSync(char * accessToken,
 
 /*! \brief Add a new comment. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> COMMENTS_USER or COMMENTS_ADMIN
  * \param commentResource The comment to be added
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -56,7 +56,7 @@ bool addCommentAsync(char * accessToken,
 
 /*! \brief Delete a comment. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> COMMENTS_USER or COMMENTS_ADMIN
  * \param id The comment id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -69,7 +69,7 @@ bool deleteCommentSync(char * accessToken,
 
 /*! \brief Delete a comment. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> COMMENTS_USER or COMMENTS_ADMIN
  * \param id The comment id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -83,7 +83,7 @@ bool deleteCommentAsync(char * accessToken,
 
 /*! \brief Return a comment. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The comment id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -96,7 +96,7 @@ bool getCommentSync(char * accessToken,
 
 /*! \brief Return a comment. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The comment id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -110,7 +110,7 @@ bool getCommentAsync(char * accessToken,
 
 /*! \brief Returns a page of comments. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param context Get comments by context type *Required*
  * \param contextId Get comments by context id *Required*
  * \param size The number of objects returned per page
@@ -126,7 +126,7 @@ bool getCommentsSync(char * accessToken,
 
 /*! \brief Returns a page of comments. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param context Get comments by context type *Required*
  * \param contextId Get comments by context id *Required*
  * \param size The number of objects returned per page
@@ -143,7 +143,7 @@ bool getCommentsAsync(char * accessToken,
 
 /*! \brief Update a comment. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> COMMENTS_USER or COMMENTS_ADMIN
  * \param id The comment id *Required*
  * \param content The comment content
  * \param handler The callback function to be invoked on completion. *Required*
@@ -157,7 +157,7 @@ bool updateCommentSync(char * accessToken,
 
 /*! \brief Update a comment. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> COMMENTS_USER or COMMENTS_ADMIN
  * \param id The comment id *Required*
  * \param content The comment content
  * \param handler The callback function to be invoked on completion. *Required*
@@ -173,7 +173,7 @@ bool updateCommentAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

@@ -30,7 +30,7 @@ public:
 
 /*! \brief Create a BRE category template. *Synchronous*
  *
- * Templates define a type of BRE category and the properties they have
+ * Templates define a type of BRE category and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param _template The category template to create
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -43,7 +43,7 @@ bool createBRECategoryTemplateSync(char * accessToken,
 
 /*! \brief Create a BRE category template. *Asynchronous*
  *
- * Templates define a type of BRE category and the properties they have
+ * Templates define a type of BRE category and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param _template The category template to create
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -57,7 +57,7 @@ bool createBRECategoryTemplateAsync(char * accessToken,
 
 /*! \brief Delete a BRE category template. *Synchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -71,7 +71,7 @@ bool deleteBRECategoryTemplateSync(char * accessToken,
 
 /*! \brief Delete a BRE category template. *Asynchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -86,7 +86,7 @@ bool deleteBRECategoryTemplateAsync(char * accessToken,
 
 /*! \brief List categories. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_CATEGORIES_USER
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param handler The callback function to be invoked on completion. *Required*
@@ -100,7 +100,7 @@ bool getBRECategoriesSync(char * accessToken,
 
 /*! \brief List categories. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_CATEGORIES_USER
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param handler The callback function to be invoked on completion. *Required*
@@ -115,7 +115,7 @@ bool getBRECategoriesAsync(char * accessToken,
 
 /*! \brief Get a single category. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_CATEGORIES_USER
  * \param name The category name *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -128,7 +128,7 @@ bool getBRECategorySync(char * accessToken,
 
 /*! \brief Get a single category. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_CATEGORIES_USER
  * \param name The category name *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -142,7 +142,7 @@ bool getBRECategoryAsync(char * accessToken,
 
 /*! \brief Get a single BRE category template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or BRE_RULE_ENGINE_CATEGORIES_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -155,7 +155,7 @@ bool getBRECategoryTemplateSync(char * accessToken,
 
 /*! \brief Get a single BRE category template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or BRE_RULE_ENGINE_CATEGORIES_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -169,7 +169,7 @@ bool getBRECategoryTemplateAsync(char * accessToken,
 
 /*! \brief List and search BRE category templates. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or BRE_RULE_ENGINE_CATEGORIES_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -184,7 +184,7 @@ bool getBRECategoryTemplatesSync(char * accessToken,
 
 /*! \brief List and search BRE category templates. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or BRE_RULE_ENGINE_CATEGORIES_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -200,7 +200,7 @@ bool getBRECategoryTemplatesAsync(char * accessToken,
 
 /*! \brief Update a category. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_CATEGORIES_ADMIN
  * \param name The category name *Required*
  * \param category The updated BRE category information
  * \param handler The callback function to be invoked on completion. *Required*
@@ -214,7 +214,7 @@ bool updateBRECategorySync(char * accessToken,
 
 /*! \brief Update a category. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_CATEGORIES_ADMIN
  * \param name The category name *Required*
  * \param category The updated BRE category information
  * \param handler The callback function to be invoked on completion. *Required*
@@ -229,7 +229,7 @@ bool updateBRECategoryAsync(char * accessToken,
 
 /*! \brief Update a BRE category template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param _template The updated category template definition
  * \param handler The callback function to be invoked on completion. *Required*
@@ -243,7 +243,7 @@ bool updateBRECategoryTemplateSync(char * accessToken,
 
 /*! \brief Update a BRE category template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param _template The updated category template definition
  * \param handler The callback function to be invoked on completion. *Required*
@@ -259,7 +259,7 @@ bool updateBRECategoryTemplateAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

@@ -28,7 +28,7 @@ public:
 
 /*! \brief Create a sale. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SALES_ADMIN
  * \param catalogSale The catalog sale object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -41,7 +41,7 @@ bool createCatalogSaleSync(char * accessToken,
 
 /*! \brief Create a sale. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SALES_ADMIN
  * \param catalogSale The catalog sale object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -55,7 +55,7 @@ bool createCatalogSaleAsync(char * accessToken,
 
 /*! \brief Delete a sale. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SALES_ADMIN
  * \param id The id of the sale *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -68,7 +68,7 @@ bool deleteCatalogSaleSync(char * accessToken,
 
 /*! \brief Delete a sale. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SALES_ADMIN
  * \param id The id of the sale *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -82,7 +82,7 @@ bool deleteCatalogSaleAsync(char * accessToken,
 
 /*! \brief Get a single sale. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SALES_USER or SALES_ADMIN
  * \param id The id of the sale *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -95,7 +95,7 @@ bool getCatalogSaleSync(char * accessToken,
 
 /*! \brief Get a single sale. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SALES_USER or SALES_ADMIN
  * \param id The id of the sale *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -109,7 +109,7 @@ bool getCatalogSaleAsync(char * accessToken,
 
 /*! \brief List and search sales. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SALES_USER or SALES_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -124,7 +124,7 @@ bool getCatalogSalesSync(char * accessToken,
 
 /*! \brief List and search sales. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SALES_USER or SALES_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -140,7 +140,7 @@ bool getCatalogSalesAsync(char * accessToken,
 
 /*! \brief Update a sale. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SALES_ADMIN
  * \param id The id of the sale *Required*
  * \param catalogSale The catalog sale object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -154,7 +154,7 @@ bool updateCatalogSaleSync(char * accessToken,
 
 /*! \brief Update a sale. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SALES_ADMIN
  * \param id The id of the sale *Required*
  * \param catalogSale The catalog sale object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -170,7 +170,7 @@ bool updateCatalogSaleAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

@@ -30,7 +30,7 @@ public:
 
 /*! \brief Create a new payment method for a user. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PAYMENTS_ADMIN or owner
  * \param userId ID of the user for whom the payment method is being created *Required*
  * \param paymentMethod Payment method being created
  * \param handler The callback function to be invoked on completion. *Required*
@@ -44,7 +44,7 @@ bool createPaymentMethodSync(char * accessToken,
 
 /*! \brief Create a new payment method for a user. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PAYMENTS_ADMIN or owner
  * \param userId ID of the user for whom the payment method is being created *Required*
  * \param paymentMethod Payment method being created
  * \param handler The callback function to be invoked on completion. *Required*
@@ -59,7 +59,7 @@ bool createPaymentMethodAsync(char * accessToken,
 
 /*! \brief Delete an existing payment method for a user. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PAYMENTS_ADMIN or owner
  * \param userId ID of the user for whom the payment method is being updated *Required*
  * \param id ID of the payment method being deleted *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -73,7 +73,7 @@ bool deletePaymentMethodSync(char * accessToken,
 
 /*! \brief Delete an existing payment method for a user. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PAYMENTS_ADMIN or owner
  * \param userId ID of the user for whom the payment method is being updated *Required*
  * \param id ID of the payment method being deleted *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -88,7 +88,7 @@ bool deletePaymentMethodAsync(char * accessToken,
 
 /*! \brief Get a single payment method for a user. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PAYMENTS_ADMIN or owner
  * \param userId ID of the user for whom the payment method is being retrieved *Required*
  * \param id ID of the payment method being retrieved *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -102,7 +102,7 @@ bool getPaymentMethodSync(char * accessToken,
 
 /*! \brief Get a single payment method for a user. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PAYMENTS_ADMIN or owner
  * \param userId ID of the user for whom the payment method is being retrieved *Required*
  * \param id ID of the payment method being retrieved *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -117,7 +117,7 @@ bool getPaymentMethodAsync(char * accessToken,
 
 /*! \brief Get a single payment method type. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id ID of the payment method type being retrieved *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -130,7 +130,7 @@ bool getPaymentMethodTypeSync(char * accessToken,
 
 /*! \brief Get a single payment method type. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id ID of the payment method type being retrieved *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -144,7 +144,7 @@ bool getPaymentMethodTypeAsync(char * accessToken,
 
 /*! \brief Get all payment method types. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterName Filter for payment method types whose name matches a given string
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -160,7 +160,7 @@ bool getPaymentMethodTypesSync(char * accessToken,
 
 /*! \brief Get all payment method types. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterName Filter for payment method types whose name matches a given string
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -177,7 +177,7 @@ bool getPaymentMethodTypesAsync(char * accessToken,
 
 /*! \brief Get all payment methods for a user. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PAYMENTS_ADMIN or owner
  * \param userId ID of the user for whom the payment methods are being retrieved *Required*
  * \param filterName Filter for payment methods whose name starts with a given string
  * \param filterPaymentType Filter for payment methods with a specific payment type
@@ -197,7 +197,7 @@ bool getPaymentMethodsSync(char * accessToken,
 
 /*! \brief Get all payment methods for a user. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PAYMENTS_ADMIN or owner
  * \param userId ID of the user for whom the payment methods are being retrieved *Required*
  * \param filterName Filter for payment methods whose name starts with a given string
  * \param filterPaymentType Filter for payment methods with a specific payment type
@@ -218,7 +218,7 @@ bool getPaymentMethodsAsync(char * accessToken,
 
 /*! \brief Authorize payment of an invoice for later capture. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PAYMENTS_ADMIN or PAYMENTS_USER
  * \param request Payment authorization request
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -231,7 +231,7 @@ bool paymentAuthorizationSync(char * accessToken,
 
 /*! \brief Authorize payment of an invoice for later capture. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PAYMENTS_ADMIN or PAYMENTS_USER
  * \param request Payment authorization request
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -245,7 +245,7 @@ bool paymentAuthorizationAsync(char * accessToken,
 
 /*! \brief Capture an existing invoice payment authorization. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PAYMENTS_ADMIN
  * \param id ID of the payment authorization to capture *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -258,7 +258,7 @@ bool paymentCaptureSync(char * accessToken,
 
 /*! \brief Capture an existing invoice payment authorization. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PAYMENTS_ADMIN
  * \param id ID of the payment authorization to capture *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -272,7 +272,7 @@ bool paymentCaptureAsync(char * accessToken,
 
 /*! \brief Update an existing payment method for a user. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PAYMENTS_ADMIN or owner
  * \param userId ID of the user for whom the payment method is being updated *Required*
  * \param id ID of the payment method being updated *Required*
  * \param paymentMethod The updated payment method data
@@ -287,7 +287,7 @@ bool updatePaymentMethodSync(char * accessToken,
 
 /*! \brief Update an existing payment method for a user. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PAYMENTS_ADMIN or owner
  * \param userId ID of the user for whom the payment method is being updated *Required*
  * \param id ID of the payment method being updated *Required*
  * \param paymentMethod The updated payment method data
@@ -304,7 +304,7 @@ bool updatePaymentMethodAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

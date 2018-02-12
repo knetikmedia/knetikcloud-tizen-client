@@ -32,7 +32,7 @@ public:
 
 /*! \brief Add your vote to a poll. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> POLLS_ADMIN or POLLS_USER
  * \param id The poll id *Required*
  * \param answerKey The answer key
  * \param handler The callback function to be invoked on completion. *Required*
@@ -46,7 +46,7 @@ bool answerPollSync(char * accessToken,
 
 /*! \brief Add your vote to a poll. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> POLLS_ADMIN or POLLS_USER
  * \param id The poll id *Required*
  * \param answerKey The answer key
  * \param handler The callback function to be invoked on completion. *Required*
@@ -61,7 +61,7 @@ bool answerPollAsync(char * accessToken,
 
 /*! \brief Create a new poll. *Synchronous*
  *
- * Polls are blobs of text with titles, a category and assets. Formatting and display of the text is in the hands of the front end.
+ * Polls are blobs of text with titles, a category and assets. Formatting and display of the text is in the hands of the front end. <br><br><b>Permissions Needed:</b> POLLS_ADMIN
  * \param pollResource The poll object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -74,7 +74,7 @@ bool createPollSync(char * accessToken,
 
 /*! \brief Create a new poll. *Asynchronous*
  *
- * Polls are blobs of text with titles, a category and assets. Formatting and display of the text is in the hands of the front end.
+ * Polls are blobs of text with titles, a category and assets. Formatting and display of the text is in the hands of the front end. <br><br><b>Permissions Needed:</b> POLLS_ADMIN
  * \param pollResource The poll object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -88,7 +88,7 @@ bool createPollAsync(char * accessToken,
 
 /*! \brief Create a poll template. *Synchronous*
  *
- * Poll templates define a type of poll and the properties they have
+ * Poll templates define a type of poll and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param pollTemplateResource The poll template resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -101,7 +101,7 @@ bool createPollTemplateSync(char * accessToken,
 
 /*! \brief Create a poll template. *Asynchronous*
  *
- * Poll templates define a type of poll and the properties they have
+ * Poll templates define a type of poll and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param pollTemplateResource The poll template resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -115,7 +115,7 @@ bool createPollTemplateAsync(char * accessToken,
 
 /*! \brief Delete an existing poll. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> POLLS_ADMIN
  * \param id The poll id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -128,7 +128,7 @@ bool deletePollSync(char * accessToken,
 
 /*! \brief Delete an existing poll. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> POLLS_ADMIN
  * \param id The poll id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -142,7 +142,7 @@ bool deletePollAsync(char * accessToken,
 
 /*! \brief Delete a poll template. *Synchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -156,7 +156,7 @@ bool deletePollTemplateSync(char * accessToken,
 
 /*! \brief Delete a poll template. *Asynchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -171,7 +171,7 @@ bool deletePollTemplateAsync(char * accessToken,
 
 /*! \brief Get a single poll. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The poll id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -184,7 +184,7 @@ bool getPollSync(char * accessToken,
 
 /*! \brief Get a single poll. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The poll id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -198,7 +198,7 @@ bool getPollAsync(char * accessToken,
 
 /*! \brief Get poll answer. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> POLLS_ADMIN or POLLS_USER
  * \param id The poll id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -211,7 +211,7 @@ bool getPollAnswerSync(char * accessToken,
 
 /*! \brief Get poll answer. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> POLLS_ADMIN or POLLS_USER
  * \param id The poll id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -225,7 +225,7 @@ bool getPollAnswerAsync(char * accessToken,
 
 /*! \brief Get a single poll template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or POLLS_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -238,7 +238,7 @@ bool getPollTemplateSync(char * accessToken,
 
 /*! \brief Get a single poll template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or POLLS_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -252,7 +252,7 @@ bool getPollTemplateAsync(char * accessToken,
 
 /*! \brief List and search poll templates. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or POLLS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -267,7 +267,7 @@ bool getPollTemplatesSync(char * accessToken,
 
 /*! \brief List and search poll templates. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or POLLS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -283,7 +283,7 @@ bool getPollTemplatesAsync(char * accessToken,
 
 /*! \brief List and search polls. *Synchronous*
  *
- * Get a list of polls with optional filtering. Assets will not be filled in on the resources returned. Use 'Get a single poll' to retrieve the full resource with assets for a given item as needed.
+ * Get a list of polls with optional filtering. Assets will not be filled in on the resources returned. Use 'Get a single poll' to retrieve the full resource with assets for a given item as needed. <br><br><b>Permissions Needed:</b> ANY
  * \param filterCategory Filter for polls from a specific category by id
  * \param filterTagset Filter for polls with specified tags (separated by comma)
  * \param filterText Filter for polls whose text contains a string
@@ -301,7 +301,7 @@ bool getPollsSync(char * accessToken,
 
 /*! \brief List and search polls. *Asynchronous*
  *
- * Get a list of polls with optional filtering. Assets will not be filled in on the resources returned. Use 'Get a single poll' to retrieve the full resource with assets for a given item as needed.
+ * Get a list of polls with optional filtering. Assets will not be filled in on the resources returned. Use 'Get a single poll' to retrieve the full resource with assets for a given item as needed. <br><br><b>Permissions Needed:</b> ANY
  * \param filterCategory Filter for polls from a specific category by id
  * \param filterTagset Filter for polls with specified tags (separated by comma)
  * \param filterText Filter for polls whose text contains a string
@@ -320,7 +320,7 @@ bool getPollsAsync(char * accessToken,
 
 /*! \brief Update an existing poll. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> POLLS_ADMIN
  * \param id The poll id *Required*
  * \param pollResource The poll object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -334,7 +334,7 @@ bool updatePollSync(char * accessToken,
 
 /*! \brief Update an existing poll. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> POLLS_ADMIN
  * \param id The poll id *Required*
  * \param pollResource The poll object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -349,7 +349,7 @@ bool updatePollAsync(char * accessToken,
 
 /*! \brief Update a poll template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param pollTemplateResource The poll template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -363,7 +363,7 @@ bool updatePollTemplateSync(char * accessToken,
 
 /*! \brief Update a poll template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param pollTemplateResource The poll template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -379,7 +379,7 @@ bool updatePollTemplateAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

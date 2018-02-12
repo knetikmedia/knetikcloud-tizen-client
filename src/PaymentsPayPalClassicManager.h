@@ -30,7 +30,7 @@ public:
 
 /*! \brief Create a PayPal Classic billing agreement for the user. *Synchronous*
  *
- * Returns the token that should be used to forward the user to PayPal so they can accept the agreement.
+ * Returns the token that should be used to forward the user to PayPal so they can accept the agreement. <br><br><b>Permissions Needed:</b> PAYPAL_CLASSIC_ADMIN or owner
  * \param request The request to create a PayPal billing agreement
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -43,7 +43,7 @@ bool createPayPalBillingAgreementUrlSync(char * accessToken,
 
 /*! \brief Create a PayPal Classic billing agreement for the user. *Asynchronous*
  *
- * Returns the token that should be used to forward the user to PayPal so they can accept the agreement.
+ * Returns the token that should be used to forward the user to PayPal so they can accept the agreement. <br><br><b>Permissions Needed:</b> PAYPAL_CLASSIC_ADMIN or owner
  * \param request The request to create a PayPal billing agreement
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -57,7 +57,7 @@ bool createPayPalBillingAgreementUrlAsync(char * accessToken,
 
 /*! \brief Create a payment token for PayPal express checkout. *Synchronous*
  *
- * Returns the token that should be used to forward the user to PayPal so they can complete the checkout.
+ * Returns the token that should be used to forward the user to PayPal so they can complete the checkout. <br><br><b>Permissions Needed:</b> PAYPAL_CLASSIC_ADMIN or owner
  * \param request The request to create a PayPal payment token
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -70,7 +70,7 @@ bool createPayPalExpressCheckoutSync(char * accessToken,
 
 /*! \brief Create a payment token for PayPal express checkout. *Asynchronous*
  *
- * Returns the token that should be used to forward the user to PayPal so they can complete the checkout.
+ * Returns the token that should be used to forward the user to PayPal so they can complete the checkout. <br><br><b>Permissions Needed:</b> PAYPAL_CLASSIC_ADMIN or owner
  * \param request The request to create a PayPal payment token
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -84,7 +84,7 @@ bool createPayPalExpressCheckoutAsync(char * accessToken,
 
 /*! \brief Finalizes a billing agreement after the user has accepted through PayPal. *Synchronous*
  *
- * Returns the ID of the new payment method created for the user for the billing agreement.
+ * Returns the ID of the new payment method created for the user for the billing agreement. <br><br><b>Permissions Needed:</b> PAYPAL_CLASSIC_ADMIN or owner
  * \param request The request to finalize a PayPal billing agreement
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -97,7 +97,7 @@ bool finalizePayPalBillingAgreementSync(char * accessToken,
 
 /*! \brief Finalizes a billing agreement after the user has accepted through PayPal. *Asynchronous*
  *
- * Returns the ID of the new payment method created for the user for the billing agreement.
+ * Returns the ID of the new payment method created for the user for the billing agreement. <br><br><b>Permissions Needed:</b> PAYPAL_CLASSIC_ADMIN or owner
  * \param request The request to finalize a PayPal billing agreement
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -111,7 +111,7 @@ bool finalizePayPalBillingAgreementAsync(char * accessToken,
 
 /*! \brief Finalizes a payment after the user has completed checkout with PayPal. *Synchronous*
  *
- * The invoice will be marked paid/failed by asynchronous IPN callback.
+ * The invoice will be marked paid/failed by asynchronous IPN callback. <br><br><b>Permissions Needed:</b> PAYPAL_CLASSIC_ADMIN or owner
  * \param request The request to finalize the payment
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -124,7 +124,7 @@ bool finalizePayPalCheckoutSync(char * accessToken,
 
 /*! \brief Finalizes a payment after the user has completed checkout with PayPal. *Asynchronous*
  *
- * The invoice will be marked paid/failed by asynchronous IPN callback.
+ * The invoice will be marked paid/failed by asynchronous IPN callback. <br><br><b>Permissions Needed:</b> PAYPAL_CLASSIC_ADMIN or owner
  * \param request The request to finalize the payment
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -139,7 +139,7 @@ bool finalizePayPalCheckoutAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

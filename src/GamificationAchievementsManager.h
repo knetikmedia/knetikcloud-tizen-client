@@ -34,7 +34,7 @@ public:
 
 /*! \brief Create a new achievement definition. *Synchronous*
  *
- * If the definition contains a trigger event name, a BRE rule is created, so that tracking logic is executed when the triggering event occurs. If no trigger event name is specified, the user's achievement status must manually be updated via the API.
+ * If the definition contains a trigger event name, a BRE rule is created, so that tracking logic is executed when the triggering event occurs. If no trigger event name is specified, the user's achievement status must manually be updated via the API. <br><br><b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN
  * \param achievement The achievement definition
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -47,7 +47,7 @@ bool createAchievementSync(char * accessToken,
 
 /*! \brief Create a new achievement definition. *Asynchronous*
  *
- * If the definition contains a trigger event name, a BRE rule is created, so that tracking logic is executed when the triggering event occurs. If no trigger event name is specified, the user's achievement status must manually be updated via the API.
+ * If the definition contains a trigger event name, a BRE rule is created, so that tracking logic is executed when the triggering event occurs. If no trigger event name is specified, the user's achievement status must manually be updated via the API. <br><br><b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN
  * \param achievement The achievement definition
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -61,7 +61,7 @@ bool createAchievementAsync(char * accessToken,
 
 /*! \brief Create an achievement template. *Synchronous*
  *
- * Achievement templates define a type of achievement and the properties they have
+ * Achievement templates define a type of achievement and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param _template The achievement template to be created
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -74,7 +74,7 @@ bool createAchievementTemplateSync(char * accessToken,
 
 /*! \brief Create an achievement template. *Asynchronous*
  *
- * Achievement templates define a type of achievement and the properties they have
+ * Achievement templates define a type of achievement and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param _template The achievement template to be created
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -88,7 +88,7 @@ bool createAchievementTemplateAsync(char * accessToken,
 
 /*! \brief Delete an achievement definition. *Synchronous*
  *
- * Will also disable the associated generated rule, if any.
+ * Will also disable the associated generated rule, if any. <br><br><b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN
  * \param name The name of the achievement *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -101,7 +101,7 @@ bool deleteAchievementSync(char * accessToken,
 
 /*! \brief Delete an achievement definition. *Asynchronous*
  *
- * Will also disable the associated generated rule, if any.
+ * Will also disable the associated generated rule, if any. <br><br><b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN
  * \param name The name of the achievement *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -115,7 +115,7 @@ bool deleteAchievementAsync(char * accessToken,
 
 /*! \brief Delete an achievement template. *Synchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -129,7 +129,7 @@ bool deleteAchievementTemplateSync(char * accessToken,
 
 /*! \brief Delete an achievement template. *Asynchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -144,7 +144,7 @@ bool deleteAchievementTemplateAsync(char * accessToken,
 
 /*! \brief Get a single achievement definition. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN or ACHIEVEMENTS_USER
  * \param name The name of the achievement *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -157,7 +157,7 @@ bool getAchievementSync(char * accessToken,
 
 /*! \brief Get a single achievement definition. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN or ACHIEVEMENTS_USER
  * \param name The name of the achievement *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -171,7 +171,7 @@ bool getAchievementAsync(char * accessToken,
 
 /*! \brief Get a single achievement template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ACHIEVEMENTS_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -184,7 +184,7 @@ bool getAchievementTemplateSync(char * accessToken,
 
 /*! \brief Get a single achievement template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ACHIEVEMENTS_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -198,7 +198,7 @@ bool getAchievementTemplateAsync(char * accessToken,
 
 /*! \brief List and search achievement templates. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ACHIEVEMENTS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -213,7 +213,7 @@ bool getAchievementTemplatesSync(char * accessToken,
 
 /*! \brief List and search achievement templates. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ACHIEVEMENTS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -229,7 +229,7 @@ bool getAchievementTemplatesAsync(char * accessToken,
 
 /*! \brief Get the list of triggers that can be used to trigger an achievement progress update. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -241,7 +241,7 @@ bool getAchievementTriggersSync(char * accessToken,
 
 /*! \brief Get the list of triggers that can be used to trigger an achievement progress update. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -254,7 +254,7 @@ bool getAchievementTriggersAsync(char * accessToken,
 
 /*! \brief Get all achievement definitions in the system. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN or ACHIEVEMENTS_USER
  * \param filterTagset Filter for achievements with specified tags (separated by comma)
  * \param filterName Filter for achievements whose name contains a string
  * \param filterHidden Filter for achievements that are hidden or not
@@ -273,7 +273,7 @@ bool getAchievementsSync(char * accessToken,
 
 /*! \brief Get all achievement definitions in the system. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN or ACHIEVEMENTS_USER
  * \param filterTagset Filter for achievements with specified tags (separated by comma)
  * \param filterName Filter for achievements whose name contains a string
  * \param filterHidden Filter for achievements that are hidden or not
@@ -293,7 +293,7 @@ bool getAchievementsAsync(char * accessToken,
 
 /*! \brief Get a list of derived achievements. *Synchronous*
  *
- * Used by other services that depend on achievements
+ * Used by other services that depend on achievements.  <br><br><b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN
  * \param name The name of the derived achievement *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -306,7 +306,7 @@ bool getDerivedAchievementsSync(char * accessToken,
 
 /*! \brief Get a list of derived achievements. *Asynchronous*
  *
- * Used by other services that depend on achievements
+ * Used by other services that depend on achievements.  <br><br><b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN
  * \param name The name of the derived achievement *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -320,7 +320,7 @@ bool getDerivedAchievementsAsync(char * accessToken,
 
 /*! \brief Retrieve progress on a given achievement for a given user. *Synchronous*
  *
- * Assets will not be filled in on the resources returned. Use 'Get a single poll' to retrieve the full resource with assets for a given item as needed.
+ * Assets will not be filled in on the resources returned. Use 'Get a single poll' to retrieve the full resource with assets for a given item as needed. <br><br><b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN
  * \param userId The user's id *Required*
  * \param achievementName The achievement's name *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -334,7 +334,7 @@ bool getUserAchievementProgressSync(char * accessToken,
 
 /*! \brief Retrieve progress on a given achievement for a given user. *Asynchronous*
  *
- * Assets will not be filled in on the resources returned. Use 'Get a single poll' to retrieve the full resource with assets for a given item as needed.
+ * Assets will not be filled in on the resources returned. Use 'Get a single poll' to retrieve the full resource with assets for a given item as needed. <br><br><b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN
  * \param userId The user's id *Required*
  * \param achievementName The achievement's name *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -349,7 +349,7 @@ bool getUserAchievementProgressAsync(char * accessToken,
 
 /*! \brief Retrieve progress on achievements for a given user. *Synchronous*
  *
- * Assets will not be filled in on the resources returned. Use 'Get a single poll' to retrieve the full resource with assets for a given item as needed.
+ * Assets will not be filled in on the resources returned. Use 'Get a single poll' to retrieve the full resource with assets for a given item as needed. <br><br><b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN
  * \param userId The user's id *Required*
  * \param filterAchievementDerived Filter for achievements that are derived from other services
  * \param filterAchievementTagset Filter for achievements with specified tags (separated by comma)
@@ -367,7 +367,7 @@ bool getUserAchievementsProgressSync(char * accessToken,
 
 /*! \brief Retrieve progress on achievements for a given user. *Asynchronous*
  *
- * Assets will not be filled in on the resources returned. Use 'Get a single poll' to retrieve the full resource with assets for a given item as needed.
+ * Assets will not be filled in on the resources returned. Use 'Get a single poll' to retrieve the full resource with assets for a given item as needed. <br><br><b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN
  * \param userId The user's id *Required*
  * \param filterAchievementDerived Filter for achievements that are derived from other services
  * \param filterAchievementTagset Filter for achievements with specified tags (separated by comma)
@@ -386,7 +386,7 @@ bool getUserAchievementsProgressAsync(char * accessToken,
 
 /*! \brief Retrieve progress on a given achievement for all users. *Synchronous*
  *
- * Assets will not be filled in on the resources returned. Use 'Get single achievement progress for user' to retrieve the full resource with assets for a given user as needed.
+ * Assets will not be filled in on the resources returned. Use 'Get single achievement progress for user' to retrieve the full resource with assets for a given user as needed. <br><br><b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN
  * \param achievementName The achievement's name *Required*
  * \param filterAchievementDerived Filter for achievements that are derived from other services
  * \param filterAchievementTagset Filter for achievements with specified tags (separated by comma)
@@ -404,7 +404,7 @@ bool getUsersAchievementProgressSync(char * accessToken,
 
 /*! \brief Retrieve progress on a given achievement for all users. *Asynchronous*
  *
- * Assets will not be filled in on the resources returned. Use 'Get single achievement progress for user' to retrieve the full resource with assets for a given user as needed.
+ * Assets will not be filled in on the resources returned. Use 'Get single achievement progress for user' to retrieve the full resource with assets for a given user as needed. <br><br><b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN
  * \param achievementName The achievement's name *Required*
  * \param filterAchievementDerived Filter for achievements that are derived from other services
  * \param filterAchievementTagset Filter for achievements with specified tags (separated by comma)
@@ -423,7 +423,7 @@ bool getUsersAchievementProgressAsync(char * accessToken,
 
 /*! \brief Retrieve progress on achievements for all users. *Synchronous*
  *
- * Assets will not be filled in on the resources returned. Use 'Get single achievement progress for user' to retrieve the full resource with assets for a given user as needed.
+ * Assets will not be filled in on the resources returned. Use 'Get single achievement progress for user' to retrieve the full resource with assets for a given user as needed. <br><br><b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN
  * \param filterAchievementDerived Filter for achievements that are derived from other services
  * \param filterAchievementTagset Filter for achievements with specified tags (separated by comma)
  * \param filterAchievementName Filter for achievements whose name contains a string
@@ -440,7 +440,7 @@ bool getUsersAchievementsProgressSync(char * accessToken,
 
 /*! \brief Retrieve progress on achievements for all users. *Asynchronous*
  *
- * Assets will not be filled in on the resources returned. Use 'Get single achievement progress for user' to retrieve the full resource with assets for a given user as needed.
+ * Assets will not be filled in on the resources returned. Use 'Get single achievement progress for user' to retrieve the full resource with assets for a given user as needed. <br><br><b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN
  * \param filterAchievementDerived Filter for achievements that are derived from other services
  * \param filterAchievementTagset Filter for achievements with specified tags (separated by comma)
  * \param filterAchievementName Filter for achievements whose name contains a string
@@ -458,7 +458,7 @@ bool getUsersAchievementsProgressAsync(char * accessToken,
 
 /*! \brief Increment an achievement progress record for a user. *Synchronous*
  *
- * If no progress record yet exists for the user, it will be created. Otherwise it will be updated and the provided value added to the existing progress. May be negative. If progress meets or exceeds the achievement's max_value it will be marked as earned and a BRE event will be triggered for the <code>BreAchievementEarnedTrigger</code>.
+ * If no progress record yet exists for the user, it will be created. Otherwise it will be updated and the provided value added to the existing progress. May be negative. If progress meets or exceeds the achievement's max_value it will be marked as earned and a BRE event will be triggered for the <code>BreAchievementEarnedTrigger</code>. <br><br><b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN
  * \param userId The user's id *Required*
  * \param achievementName The achievement's name *Required*
  * \param progress The amount to add to the progress value
@@ -473,7 +473,7 @@ bool incrementAchievementProgressSync(char * accessToken,
 
 /*! \brief Increment an achievement progress record for a user. *Asynchronous*
  *
- * If no progress record yet exists for the user, it will be created. Otherwise it will be updated and the provided value added to the existing progress. May be negative. If progress meets or exceeds the achievement's max_value it will be marked as earned and a BRE event will be triggered for the <code>BreAchievementEarnedTrigger</code>.
+ * If no progress record yet exists for the user, it will be created. Otherwise it will be updated and the provided value added to the existing progress. May be negative. If progress meets or exceeds the achievement's max_value it will be marked as earned and a BRE event will be triggered for the <code>BreAchievementEarnedTrigger</code>. <br><br><b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN
  * \param userId The user's id *Required*
  * \param achievementName The achievement's name *Required*
  * \param progress The amount to add to the progress value
@@ -489,7 +489,7 @@ bool incrementAchievementProgressAsync(char * accessToken,
 
 /*! \brief Set an achievement progress record for a user. *Synchronous*
  *
- * If no progress record yet exists for the user, it will be created. Otherwise it will be updated and progress set to the provided value. If progress meets or exceeds the achievement's max_value it will be marked as earned and a BRE event will be triggered for the <code>BreAchievementEarnedTrigger</code>.
+ * If no progress record yet exists for the user, it will be created. Otherwise it will be updated and progress set to the provided value. If progress meets or exceeds the achievement's max_value it will be marked as earned and a BRE event will be triggered for the <code>BreAchievementEarnedTrigger</code>. <br><br><b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN
  * \param userId The user's id *Required*
  * \param achievementName The achievement's name *Required*
  * \param progress The new progress value
@@ -504,7 +504,7 @@ bool setAchievementProgressSync(char * accessToken,
 
 /*! \brief Set an achievement progress record for a user. *Asynchronous*
  *
- * If no progress record yet exists for the user, it will be created. Otherwise it will be updated and progress set to the provided value. If progress meets or exceeds the achievement's max_value it will be marked as earned and a BRE event will be triggered for the <code>BreAchievementEarnedTrigger</code>.
+ * If no progress record yet exists for the user, it will be created. Otherwise it will be updated and progress set to the provided value. If progress meets or exceeds the achievement's max_value it will be marked as earned and a BRE event will be triggered for the <code>BreAchievementEarnedTrigger</code>. <br><br><b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN
  * \param userId The user's id *Required*
  * \param achievementName The achievement's name *Required*
  * \param progress The new progress value
@@ -520,7 +520,7 @@ bool setAchievementProgressAsync(char * accessToken,
 
 /*! \brief Update an achievement definition. *Synchronous*
  *
- * The existing generated rule, if any, will be deleted. A new rule will be created if a trigger event name is specified in the new version.
+ * The existing generated rule, if any, will be deleted. A new rule will be created if a trigger event name is specified in the new version. <br><br><b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN
  * \param name The name of the achievement *Required*
  * \param achievement The achievement definition
  * \param handler The callback function to be invoked on completion. *Required*
@@ -534,7 +534,7 @@ bool updateAchievementSync(char * accessToken,
 
 /*! \brief Update an achievement definition. *Asynchronous*
  *
- * The existing generated rule, if any, will be deleted. A new rule will be created if a trigger event name is specified in the new version.
+ * The existing generated rule, if any, will be deleted. A new rule will be created if a trigger event name is specified in the new version. <br><br><b>Permissions Needed:</b> ACHIEVEMENTS_ADMIN
  * \param name The name of the achievement *Required*
  * \param achievement The achievement definition
  * \param handler The callback function to be invoked on completion. *Required*
@@ -549,7 +549,7 @@ bool updateAchievementAsync(char * accessToken,
 
 /*! \brief Update an achievement template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param _template The updated template
  * \param handler The callback function to be invoked on completion. *Required*
@@ -563,7 +563,7 @@ bool updateAchievementTemplateSync(char * accessToken,
 
 /*! \brief Update an achievement template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param _template The updated template
  * \param handler The callback function to be invoked on completion. *Required*
@@ -579,7 +579,7 @@ bool updateAchievementTemplateAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

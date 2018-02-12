@@ -30,7 +30,7 @@ public:
 
 /*! \brief Adds a new artist in the system. *Synchronous*
  *
- * Adds a new artist in the system. Use specific media contributions endpoint to add contributions
+ * Adds a new artist in the system. Use specific media contributions endpoint to add contributions. <br><br><b>Permissions Needed:</b> ANY
  * \param artistResource The new artist
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -43,7 +43,7 @@ bool addArtistSync(char * accessToken,
 
 /*! \brief Adds a new artist in the system. *Asynchronous*
  *
- * Adds a new artist in the system. Use specific media contributions endpoint to add contributions
+ * Adds a new artist in the system. Use specific media contributions endpoint to add contributions. <br><br><b>Permissions Needed:</b> ANY
  * \param artistResource The new artist
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -57,7 +57,7 @@ bool addArtistAsync(char * accessToken,
 
 /*! \brief Create an artist template. *Synchronous*
  *
- * Artist Templates define a type of artist and the properties they have
+ * Artist Templates define a type of artist and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param artistTemplateResource The artist template resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -70,7 +70,7 @@ bool createArtistTemplateSync(char * accessToken,
 
 /*! \brief Create an artist template. *Asynchronous*
  *
- * Artist Templates define a type of artist and the properties they have
+ * Artist Templates define a type of artist and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param artistTemplateResource The artist template resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -84,7 +84,7 @@ bool createArtistTemplateAsync(char * accessToken,
 
 /*! \brief Removes an artist from the system IF no resources are attached to it. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ARTISTS_ADMIN
  * \param id The artist id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -97,7 +97,7 @@ bool deleteArtistSync(char * accessToken,
 
 /*! \brief Removes an artist from the system IF no resources are attached to it. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ARTISTS_ADMIN
  * \param id The artist id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -111,7 +111,7 @@ bool deleteArtistAsync(char * accessToken,
 
 /*! \brief Delete an artist template. *Synchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -125,7 +125,7 @@ bool deleteArtistTemplateSync(char * accessToken,
 
 /*! \brief Delete an artist template. *Asynchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -140,7 +140,7 @@ bool deleteArtistTemplateAsync(char * accessToken,
 
 /*! \brief Loads a specific artist details. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The artist id *Required*
  * \param showContributions The number of contributions to show fetch
  * \param handler The callback function to be invoked on completion. *Required*
@@ -154,7 +154,7 @@ bool getArtistSync(char * accessToken,
 
 /*! \brief Loads a specific artist details. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The artist id *Required*
  * \param showContributions The number of contributions to show fetch
  * \param handler The callback function to be invoked on completion. *Required*
@@ -169,7 +169,7 @@ bool getArtistAsync(char * accessToken,
 
 /*! \brief Get a single artist template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ARTISTS_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -182,7 +182,7 @@ bool getArtistTemplateSync(char * accessToken,
 
 /*! \brief Get a single artist template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ARTISTS_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -196,7 +196,7 @@ bool getArtistTemplateAsync(char * accessToken,
 
 /*! \brief List and search artist templates. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ARTISTS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -211,7 +211,7 @@ bool getArtistTemplatesSync(char * accessToken,
 
 /*! \brief List and search artist templates. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ARTISTS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -227,7 +227,7 @@ bool getArtistTemplatesAsync(char * accessToken,
 
 /*! \brief Search for artists. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterArtistsByName Filter for artists which name *STARTS* with the given string
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -243,7 +243,7 @@ bool getArtistsSync(char * accessToken,
 
 /*! \brief Search for artists. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterArtistsByName Filter for artists which name *STARTS* with the given string
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -260,7 +260,7 @@ bool getArtistsAsync(char * accessToken,
 
 /*! \brief Modifies an artist details. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ARTISTS_ADMIN
  * \param id The artist id *Required*
  * \param artistResource The new artist
  * \param handler The callback function to be invoked on completion. *Required*
@@ -274,7 +274,7 @@ bool updateArtistSync(char * accessToken,
 
 /*! \brief Modifies an artist details. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ARTISTS_ADMIN
  * \param id The artist id *Required*
  * \param artistResource The new artist
  * \param handler The callback function to be invoked on completion. *Required*
@@ -289,7 +289,7 @@ bool updateArtistAsync(char * accessToken,
 
 /*! \brief Update an artist template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param artistTemplateResource The artist template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -303,7 +303,7 @@ bool updateArtistTemplateSync(char * accessToken,
 
 /*! \brief Update an artist template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param artistTemplateResource The artist template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -319,7 +319,7 @@ bool updateArtistTemplateAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

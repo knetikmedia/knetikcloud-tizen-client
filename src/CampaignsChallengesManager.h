@@ -34,7 +34,7 @@ public:
 
 /*! \brief Create a challenge. *Synchronous*
  *
- * Challenges do not run on their own.  They must be added to a campaign before events will spawn.
+ * Challenges do not run on their own.  They must be added to a campaign before events will spawn. <br><br><b>Permissions Needed:</b> CHALLENGES_ADMIN
  * \param challengeResource The challenge resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -47,7 +47,7 @@ bool createChallengeSync(char * accessToken,
 
 /*! \brief Create a challenge. *Asynchronous*
  *
- * Challenges do not run on their own.  They must be added to a campaign before events will spawn.
+ * Challenges do not run on their own.  They must be added to a campaign before events will spawn. <br><br><b>Permissions Needed:</b> CHALLENGES_ADMIN
  * \param challengeResource The challenge resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -61,7 +61,7 @@ bool createChallengeAsync(char * accessToken,
 
 /*! \brief Create a challenge activity. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CHALLENGES_ADMIN
  * \param challengeId The challenge id *Required*
  * \param challengeActivityResource The challenge activity resource object
  * \param validateSettings Whether to validate the settings being sent against the available settings on the base activity.
@@ -76,7 +76,7 @@ bool createChallengeActivitySync(char * accessToken,
 
 /*! \brief Create a challenge activity. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CHALLENGES_ADMIN
  * \param challengeId The challenge id *Required*
  * \param challengeActivityResource The challenge activity resource object
  * \param validateSettings Whether to validate the settings being sent against the available settings on the base activity.
@@ -92,7 +92,7 @@ bool createChallengeActivityAsync(char * accessToken,
 
 /*! \brief Create a challenge activity template. *Synchronous*
  *
- * Challenge Activity Templates define a type of challenge activity and the properties they have
+ * Challenge Activity Templates define a type of challenge activity and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param challengeActivityTemplateResource The challengeActivity template resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -105,7 +105,7 @@ bool createChallengeActivityTemplateSync(char * accessToken,
 
 /*! \brief Create a challenge activity template. *Asynchronous*
  *
- * Challenge Activity Templates define a type of challenge activity and the properties they have
+ * Challenge Activity Templates define a type of challenge activity and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param challengeActivityTemplateResource The challengeActivity template resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -119,7 +119,7 @@ bool createChallengeActivityTemplateAsync(char * accessToken,
 
 /*! \brief Create a challenge template. *Synchronous*
  *
- * Challenge Templates define a type of challenge and the properties they have
+ * Challenge Templates define a type of challenge and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param challengeTemplateResource The challenge template resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -132,7 +132,7 @@ bool createChallengeTemplateSync(char * accessToken,
 
 /*! \brief Create a challenge template. *Asynchronous*
  *
- * Challenge Templates define a type of challenge and the properties they have
+ * Challenge Templates define a type of challenge and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param challengeTemplateResource The challenge template resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -146,7 +146,7 @@ bool createChallengeTemplateAsync(char * accessToken,
 
 /*! \brief Delete a challenge. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CHALLENGES_ADMIN
  * \param id The challenge id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -159,7 +159,7 @@ bool deleteChallengeSync(char * accessToken,
 
 /*! \brief Delete a challenge. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CHALLENGES_ADMIN
  * \param id The challenge id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -173,7 +173,7 @@ bool deleteChallengeAsync(char * accessToken,
 
 /*! \brief Delete a challenge activity. *Synchronous*
  *
- * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge
+ * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge. <br><br><b>Permissions Needed:</b> CHALLENGES_ADMIN
  * \param id The challenge_activity id *Required*
  * \param challengeId The challenge id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -187,7 +187,7 @@ bool deleteChallengeActivitySync(char * accessToken,
 
 /*! \brief Delete a challenge activity. *Asynchronous*
  *
- * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge
+ * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge. <br><br><b>Permissions Needed:</b> CHALLENGES_ADMIN
  * \param id The challenge_activity id *Required*
  * \param challengeId The challenge id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -202,7 +202,7 @@ bool deleteChallengeActivityAsync(char * accessToken,
 
 /*! \brief Delete a challenge activity template. *Synchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -216,7 +216,7 @@ bool deleteChallengeActivityTemplateSync(char * accessToken,
 
 /*! \brief Delete a challenge activity template. *Asynchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -231,7 +231,7 @@ bool deleteChallengeActivityTemplateAsync(char * accessToken,
 
 /*! \brief Delete a challenge event. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CHALLENGES_ADMIN
  * \param id The challenge event id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -244,7 +244,7 @@ bool deleteChallengeEventSync(char * accessToken,
 
 /*! \brief Delete a challenge event. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CHALLENGES_ADMIN
  * \param id The challenge event id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -258,7 +258,7 @@ bool deleteChallengeEventAsync(char * accessToken,
 
 /*! \brief Delete a challenge template. *Synchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -272,7 +272,7 @@ bool deleteChallengeTemplateSync(char * accessToken,
 
 /*! \brief Delete a challenge template. *Asynchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -287,7 +287,7 @@ bool deleteChallengeTemplateAsync(char * accessToken,
 
 /*! \brief Retrieve a challenge. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The challenge id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -300,7 +300,7 @@ bool getChallengeSync(char * accessToken,
 
 /*! \brief Retrieve a challenge. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The challenge id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -314,7 +314,7 @@ bool getChallengeAsync(char * accessToken,
 
 /*! \brief List and search challenge activities. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param challengeId The challenge id *Required*
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -330,7 +330,7 @@ bool getChallengeActivitiesSync(char * accessToken,
 
 /*! \brief List and search challenge activities. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param challengeId The challenge id *Required*
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -347,7 +347,7 @@ bool getChallengeActivitiesAsync(char * accessToken,
 
 /*! \brief Get a single challenge activity. *Synchronous*
  *
- * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge
+ * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge. <br><br><b>Permissions Needed:</b> ANY
  * \param id The challenge_activity id *Required*
  * \param challengeId The challenge id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -361,7 +361,7 @@ bool getChallengeActivitySync(char * accessToken,
 
 /*! \brief Get a single challenge activity. *Asynchronous*
  *
- * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge
+ * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge. <br><br><b>Permissions Needed:</b> ANY
  * \param id The challenge_activity id *Required*
  * \param challengeId The challenge id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -376,7 +376,7 @@ bool getChallengeActivityAsync(char * accessToken,
 
 /*! \brief Get a single challenge activity template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CHALLENGES_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -389,7 +389,7 @@ bool getChallengeActivityTemplateSync(char * accessToken,
 
 /*! \brief Get a single challenge activity template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CHALLENGES_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -403,7 +403,7 @@ bool getChallengeActivityTemplateAsync(char * accessToken,
 
 /*! \brief List and search challenge activity templates. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CHALLENGES_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -418,7 +418,7 @@ bool getChallengeActivityTemplatesSync(char * accessToken,
 
 /*! \brief List and search challenge activity templates. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CHALLENGES_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -434,7 +434,7 @@ bool getChallengeActivityTemplatesAsync(char * accessToken,
 
 /*! \brief Retrieve a single challenge event details. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The challenge event id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -447,7 +447,7 @@ bool getChallengeEventSync(char * accessToken,
 
 /*! \brief Retrieve a single challenge event details. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The challenge event id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -461,7 +461,7 @@ bool getChallengeEventAsync(char * accessToken,
 
 /*! \brief Retrieve a list of challenge events. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the event start date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
  * \param filterEndDate A comma separated string without spaces.  First value is the operator to search on, second value is the event end date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
  * \param filterCampaigns check only for events from currently running campaigns
@@ -480,7 +480,7 @@ bool getChallengeEventsSync(char * accessToken,
 
 /*! \brief Retrieve a list of challenge events. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the event start date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
  * \param filterEndDate A comma separated string without spaces.  First value is the operator to search on, second value is the event end date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
  * \param filterCampaigns check only for events from currently running campaigns
@@ -500,7 +500,7 @@ bool getChallengeEventsAsync(char * accessToken,
 
 /*! \brief Get a single challenge template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CHALLENGES_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -513,7 +513,7 @@ bool getChallengeTemplateSync(char * accessToken,
 
 /*! \brief Get a single challenge template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CHALLENGES_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -527,7 +527,7 @@ bool getChallengeTemplateAsync(char * accessToken,
 
 /*! \brief List and search challenge templates. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CHALLENGES_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -542,7 +542,7 @@ bool getChallengeTemplatesSync(char * accessToken,
 
 /*! \brief List and search challenge templates. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CHALLENGES_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -558,7 +558,7 @@ bool getChallengeTemplatesAsync(char * accessToken,
 
 /*! \brief Retrieve a list of challenges. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterActiveCampaign Filter for challenges that are tied to active campaigns
  * \param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the challenge start date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
  * \param filterEndDate A comma separated string without spaces.  First value is the operator to search on, second value is the challenge end date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
@@ -576,7 +576,7 @@ bool getChallengesSync(char * accessToken,
 
 /*! \brief Retrieve a list of challenges. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterActiveCampaign Filter for challenges that are tied to active campaigns
  * \param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the challenge start date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
  * \param filterEndDate A comma separated string without spaces.  First value is the operator to search on, second value is the challenge end date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
@@ -595,7 +595,7 @@ bool getChallengesAsync(char * accessToken,
 
 /*! \brief Update a challenge. *Synchronous*
  *
- * If the challenge is a copy, changes will propagate to all the related challenges
+ * If the challenge is a copy, changes will propagate to all the related challenges. <br><br><b>Permissions Needed:</b> CHALLENGES_ADMIN
  * \param id The challenge id *Required*
  * \param challengeResource The challenge resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -609,7 +609,7 @@ bool updateChallengeSync(char * accessToken,
 
 /*! \brief Update a challenge. *Asynchronous*
  *
- * If the challenge is a copy, changes will propagate to all the related challenges
+ * If the challenge is a copy, changes will propagate to all the related challenges. <br><br><b>Permissions Needed:</b> CHALLENGES_ADMIN
  * \param id The challenge id *Required*
  * \param challengeResource The challenge resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -624,7 +624,7 @@ bool updateChallengeAsync(char * accessToken,
 
 /*! \brief Update a challenge activity. *Synchronous*
  *
- * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge
+ * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge. <br><br><b>Permissions Needed:</b> CHALLENGES_ADMIN
  * \param id The challenge_activity id *Required*
  * \param challengeId The challenge id *Required*
  * \param challengeActivityResource The challenge activity resource object
@@ -640,7 +640,7 @@ bool updateChallengeActivitySync(char * accessToken,
 
 /*! \brief Update a challenge activity. *Asynchronous*
  *
- * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge
+ * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge. <br><br><b>Permissions Needed:</b> CHALLENGES_ADMIN
  * \param id The challenge_activity id *Required*
  * \param challengeId The challenge id *Required*
  * \param challengeActivityResource The challenge activity resource object
@@ -657,7 +657,7 @@ bool updateChallengeActivityAsync(char * accessToken,
 
 /*! \brief Update an challenge activity template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param challengeActivityTemplateResource The challengeActivity template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -671,7 +671,7 @@ bool updateChallengeActivityTemplateSync(char * accessToken,
 
 /*! \brief Update an challenge activity template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param challengeActivityTemplateResource The challengeActivity template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -686,7 +686,7 @@ bool updateChallengeActivityTemplateAsync(char * accessToken,
 
 /*! \brief Update a challenge template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param challengeTemplateResource The challenge template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -700,7 +700,7 @@ bool updateChallengeTemplateSync(char * accessToken,
 
 /*! \brief Update a challenge template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param challengeTemplateResource The challenge template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -716,7 +716,7 @@ bool updateChallengeTemplateAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

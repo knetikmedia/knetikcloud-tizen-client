@@ -45,11 +45,11 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get The description of the config.  Max 140 characters
+	/*! \brief Get The description of the config.  Max 255 characters
 	 */
 	std::string getDescription();
 
-	/*! \brief Set The description of the config.  Max 140 characters
+	/*! \brief Set The description of the config.  Max 255 characters
 	 */
 	void setDescription(std::string  description);
 	/*! \brief Get The name of the config

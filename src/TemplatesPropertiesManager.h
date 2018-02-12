@@ -27,7 +27,7 @@ public:
 
 /*! \brief Get details for a template property type. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param type type *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -40,7 +40,7 @@ bool getTemplatePropertyTypeSync(char * accessToken,
 
 /*! \brief Get details for a template property type. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param type type *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -54,7 +54,7 @@ bool getTemplatePropertyTypeAsync(char * accessToken,
 
 /*! \brief List template property types. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -66,7 +66,7 @@ bool getTemplatePropertyTypesSync(char * accessToken,
 
 /*! \brief List template property types. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -80,7 +80,7 @@ bool getTemplatePropertyTypesAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

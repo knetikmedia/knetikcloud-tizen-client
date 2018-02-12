@@ -31,7 +31,7 @@ public:
 
 /*! \brief Create a new category. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CATEGORIES_ADMIN
  * \param category The category to create
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -44,7 +44,7 @@ bool createCategorySync(char * accessToken,
 
 /*! \brief Create a new category. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CATEGORIES_ADMIN
  * \param category The category to create
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -58,7 +58,7 @@ bool createCategoryAsync(char * accessToken,
 
 /*! \brief Create a category template. *Synchronous*
  *
- * Templates define a type of category and the properties they have
+ * Templates define a type of category and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param _template The template to create
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -71,7 +71,7 @@ bool createCategoryTemplateSync(char * accessToken,
 
 /*! \brief Create a category template. *Asynchronous*
  *
- * Templates define a type of category and the properties they have
+ * Templates define a type of category and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param _template The template to create
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -85,7 +85,7 @@ bool createCategoryTemplateAsync(char * accessToken,
 
 /*! \brief Delete an existing category. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CATEGORIES_ADMIN
  * \param id The id of the category to be deleted *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -98,7 +98,7 @@ bool deleteCategorySync(char * accessToken,
 
 /*! \brief Delete an existing category. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CATEGORIES_ADMIN
  * \param id The id of the category to be deleted *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -112,7 +112,7 @@ bool deleteCategoryAsync(char * accessToken,
 
 /*! \brief Delete a category template. *Synchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -126,7 +126,7 @@ bool deleteCategoryTemplateSync(char * accessToken,
 
 /*! \brief Delete a category template. *Asynchronous*
  *
- * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+ * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade The value needed to delete used templates
  * \param handler The callback function to be invoked on completion. *Required*
@@ -141,7 +141,7 @@ bool deleteCategoryTemplateAsync(char * accessToken,
 
 /*! \brief List and search categories with optional filters. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterSearch Filter for categories whose names begin with provided string
  * \param filterActive Filter for categories that are specifically active or inactive
  * \param size The number of objects returned per page
@@ -158,7 +158,7 @@ bool getCategoriesSync(char * accessToken,
 
 /*! \brief List and search categories with optional filters. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterSearch Filter for categories whose names begin with provided string
  * \param filterActive Filter for categories that are specifically active or inactive
  * \param size The number of objects returned per page
@@ -176,7 +176,7 @@ bool getCategoriesAsync(char * accessToken,
 
 /*! \brief Get a single category. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The id of the category to retrieve *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -189,7 +189,7 @@ bool getCategorySync(char * accessToken,
 
 /*! \brief Get a single category. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The id of the category to retrieve *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -203,7 +203,7 @@ bool getCategoryAsync(char * accessToken,
 
 /*! \brief Get a single category template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CATEGORIES_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -216,7 +216,7 @@ bool getCategoryTemplateSync(char * accessToken,
 
 /*! \brief Get a single category template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CATEGORIES_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -230,7 +230,7 @@ bool getCategoryTemplateAsync(char * accessToken,
 
 /*! \brief List and search category templates. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CATEGORIES_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -245,7 +245,7 @@ bool getCategoryTemplatesSync(char * accessToken,
 
 /*! \brief List and search category templates. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CATEGORIES_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -261,7 +261,7 @@ bool getCategoryTemplatesAsync(char * accessToken,
 
 /*! \brief List all trivia tags in the system. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param handler The callback function to be invoked on completion. *Required*
@@ -275,7 +275,7 @@ bool getTagsSync(char * accessToken,
 
 /*! \brief List all trivia tags in the system. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param handler The callback function to be invoked on completion. *Required*
@@ -290,7 +290,7 @@ bool getTagsAsync(char * accessToken,
 
 /*! \brief Update an existing category. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CATEGORIES_ADMIN
  * \param id The id of the category *Required*
  * \param category The category to update
  * \param handler The callback function to be invoked on completion. *Required*
@@ -304,7 +304,7 @@ bool updateCategorySync(char * accessToken,
 
 /*! \brief Update an existing category. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CATEGORIES_ADMIN
  * \param id The id of the category *Required*
  * \param category The category to update
  * \param handler The callback function to be invoked on completion. *Required*
@@ -319,7 +319,7 @@ bool updateCategoryAsync(char * accessToken,
 
 /*! \brief Update a category template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param _template The updated template information
  * \param handler The callback function to be invoked on completion. *Required*
@@ -333,7 +333,7 @@ bool updateCategoryTemplateSync(char * accessToken,
 
 /*! \brief Update a category template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param _template The updated template information
  * \param handler The callback function to be invoked on completion. *Required*
@@ -349,7 +349,7 @@ bool updateCategoryTemplateAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

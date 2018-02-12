@@ -55,11 +55,11 @@ public:
 	/*! \brief Set A map of additional properties, keyed on the property name.  Must match the names and types defined in the template for this item type
 	 */
 	void setAdditionalProperties(std::map <std::string, std::string> additional_properties);
-	/*! \brief Get A description of the group. Max 250 characters
+	/*! \brief Get A description of the group
 	 */
 	std::string getDescription();
 
-	/*! \brief Set A description of the group. Max 250 characters
+	/*! \brief Set A description of the group
 	 */
 	void setDescription(std::string  description);
 	/*! \brief Get The number of users in the group

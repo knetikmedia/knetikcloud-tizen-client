@@ -28,7 +28,7 @@ public:
 
 /*! \brief Create a new config. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TOPICS_ADMIN
  * \param config The config object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -41,7 +41,7 @@ bool createConfigSync(char * accessToken,
 
 /*! \brief Create a new config. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TOPICS_ADMIN
  * \param config The config object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -55,7 +55,7 @@ bool createConfigAsync(char * accessToken,
 
 /*! \brief Delete an existing config. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CONFIGS_ADMIN
  * \param name The config name *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -68,7 +68,7 @@ bool deleteConfigSync(char * accessToken,
 
 /*! \brief Delete an existing config. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CONFIGS_ADMIN
  * \param name The config name *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -82,7 +82,7 @@ bool deleteConfigAsync(char * accessToken,
 
 /*! \brief Get a single config. *Synchronous*
  *
- * Only configs that are public readable will be shown without admin access
+ * Only configs that are public readable will be shown without admin access. <br><br><b>Permissions Needed:</b> ANY
  * \param name The config name *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -95,7 +95,7 @@ bool getConfigSync(char * accessToken,
 
 /*! \brief Get a single config. *Asynchronous*
  *
- * Only configs that are public readable will be shown without admin access
+ * Only configs that are public readable will be shown without admin access. <br><br><b>Permissions Needed:</b> ANY
  * \param name The config name *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -109,7 +109,7 @@ bool getConfigAsync(char * accessToken,
 
 /*! \brief List and search configs. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterSearch Filter for configs whose name contains the given string
  * \param size The number of objects returned per page
  * \param page The number of the page returned
@@ -125,7 +125,7 @@ bool getConfigsSync(char * accessToken,
 
 /*! \brief List and search configs. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterSearch Filter for configs whose name contains the given string
  * \param size The number of objects returned per page
  * \param page The number of the page returned
@@ -142,7 +142,7 @@ bool getConfigsAsync(char * accessToken,
 
 /*! \brief Update an existing config. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CONFIGS_ADMIN
  * \param name The config name *Required*
  * \param config The config object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -156,7 +156,7 @@ bool updateConfigSync(char * accessToken,
 
 /*! \brief Update an existing config. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CONFIGS_ADMIN
  * \param name The config name *Required*
  * \param config The config object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -172,7 +172,7 @@ bool updateConfigAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

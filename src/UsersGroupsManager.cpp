@@ -1283,6 +1283,155 @@ bool UsersGroupsManager::deleteGroupTemplateSync(char * accessToken,
 	handler, userData, false);
 }
 
+static bool disableGroupNotificationProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	
+	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+		handler(error, userData);
+		return true;
+
+
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unkown Error"));
+		}
+		handler(error, userData);
+		return false;
+	}
+}
+
+static bool disableGroupNotificationHelper(char * accessToken,
+	std::string uniqueName, std::string userId, ValueWrapper«boolean» disabled, 
+	
+	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	if (isprimitive("ValueWrapper«boolean»")) {
+		node = converttoJson(&disabled, "ValueWrapper«boolean»", "");
+	}
+	
+	char *jsonStr =  disabled.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	string url("/users/groups/{unique_name}/members/{user_id}/messages/disabled");
+	int pos;
+
+	string s_uniqueName("{");
+	s_uniqueName.append("unique_name");
+	s_uniqueName.append("}");
+	pos = url.find(s_uniqueName);
+	url.erase(pos, s_uniqueName.length());
+	url.insert(pos, stringify(&uniqueName, "std::string"));
+	string s_userId("{");
+	s_userId.append("user_id");
+	s_userId.append("}");
+	pos = url.find(s_userId);
+	url.erase(pos, s_userId.length());
+	url.insert(pos, stringify(&userId, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("PUT");
+
+	if(strcmp("PUT", "PUT") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(UsersGroupsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = disableGroupNotificationProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (UsersGroupsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), disableGroupNotificationProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __UsersGroupsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool UsersGroupsManager::disableGroupNotificationAsync(char * accessToken,
+	std::string uniqueName, std::string userId, ValueWrapper«boolean» disabled, 
+	
+	void(* handler)(Error, void* ) , void* userData)
+{
+	return disableGroupNotificationHelper(accessToken,
+	uniqueName, userId, disabled, 
+	handler, userData, true);
+}
+
+bool UsersGroupsManager::disableGroupNotificationSync(char * accessToken,
+	std::string uniqueName, std::string userId, ValueWrapper«boolean» disabled, 
+	
+	void(* handler)(Error, void* ) , void* userData)
+{
+	return disableGroupNotificationHelper(accessToken,
+	uniqueName, userId, disabled, 
+	handler, userData, false);
+}
+
 static bool getGroupProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
@@ -2254,6 +2403,177 @@ bool UsersGroupsManager::getGroupMembersSync(char * accessToken,
 	handler, userData, false);
 }
 
+static bool getGroupMessagesProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(PageResource«ChatMessageResource», Error, void* )
+	= reinterpret_cast<void(*)(PageResource«ChatMessageResource», Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	PageResource«ChatMessageResource» out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("PageResource«ChatMessageResource»")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "PageResource«ChatMessageResource»", "PageResource«ChatMessageResource»");
+			json_node_free(pJson);
+
+			if ("PageResource«ChatMessageResource»" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unkown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool getGroupMessagesHelper(char * accessToken,
+	std::string uniqueName, int size, int page, 
+	void(* handler)(PageResource«ChatMessageResource», Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+
+	itemAtq = stringify(&size, "int");
+	queryParams.insert(pair<string, string>("size", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("size");
+	}
+
+
+	itemAtq = stringify(&page, "int");
+	queryParams.insert(pair<string, string>("page", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("page");
+	}
+
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/users/groups/{unique_name}/messages");
+	int pos;
+
+	string s_uniqueName("{");
+	s_uniqueName.append("unique_name");
+	s_uniqueName.append("}");
+	pos = url.find(s_uniqueName);
+	url.erase(pos, s_uniqueName.length());
+	url.insert(pos, stringify(&uniqueName, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("GET");
+
+	if(strcmp("PUT", "GET") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(UsersGroupsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = getGroupMessagesProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (UsersGroupsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), getGroupMessagesProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __UsersGroupsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool UsersGroupsManager::getGroupMessagesAsync(char * accessToken,
+	std::string uniqueName, int size, int page, 
+	void(* handler)(PageResource«ChatMessageResource», Error, void* )
+	, void* userData)
+{
+	return getGroupMessagesHelper(accessToken,
+	uniqueName, size, page, 
+	handler, userData, true);
+}
+
+bool UsersGroupsManager::getGroupMessagesSync(char * accessToken,
+	std::string uniqueName, int size, int page, 
+	void(* handler)(PageResource«ChatMessageResource», Error, void* )
+	, void* userData)
+{
+	return getGroupMessagesHelper(accessToken,
+	uniqueName, size, page, 
+	handler, userData, false);
+}
+
 static bool getGroupTemplateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
@@ -2945,6 +3265,176 @@ bool UsersGroupsManager::listGroupsSync(char * accessToken,
 {
 	return listGroupsHelper(accessToken,
 	filterTemplate, filterMemberCount, filterName, filterUniqueName, filterParent, filterStatus, size, page, order, 
+	handler, userData, false);
+}
+
+static bool postGroupMessageProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(ChatMessageResource, Error, void* )
+	= reinterpret_cast<void(*)(ChatMessageResource, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	ChatMessageResource out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("ChatMessageResource")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "ChatMessageResource", "ChatMessageResource");
+			json_node_free(pJson);
+
+			if ("ChatMessageResource" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unkown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool postGroupMessageHelper(char * accessToken,
+	std::string uniqueName, ChatMessageRequest chatMessageRequest, 
+	void(* handler)(ChatMessageResource, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	if (isprimitive("ChatMessageRequest")) {
+		node = converttoJson(&chatMessageRequest, "ChatMessageRequest", "");
+	}
+	
+	char *jsonStr =  chatMessageRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	string url("/users/groups/{unique_name}/messages");
+	int pos;
+
+	string s_uniqueName("{");
+	s_uniqueName.append("unique_name");
+	s_uniqueName.append("}");
+	pos = url.find(s_uniqueName);
+	url.erase(pos, s_uniqueName.length());
+	url.insert(pos, stringify(&uniqueName, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("POST");
+
+	if(strcmp("PUT", "POST") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(UsersGroupsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = postGroupMessageProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (UsersGroupsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), postGroupMessageProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __UsersGroupsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool UsersGroupsManager::postGroupMessageAsync(char * accessToken,
+	std::string uniqueName, ChatMessageRequest chatMessageRequest, 
+	void(* handler)(ChatMessageResource, Error, void* )
+	, void* userData)
+{
+	return postGroupMessageHelper(accessToken,
+	uniqueName, chatMessageRequest, 
+	handler, userData, true);
+}
+
+bool UsersGroupsManager::postGroupMessageSync(char * accessToken,
+	std::string uniqueName, ChatMessageRequest chatMessageRequest, 
+	void(* handler)(ChatMessageResource, Error, void* )
+	, void* userData)
+{
+	return postGroupMessageHelper(accessToken,
+	uniqueName, chatMessageRequest, 
 	handler, userData, false);
 }
 

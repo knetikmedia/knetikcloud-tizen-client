@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "CoreActivityOccurrenceSettings.h"
 #include "ItemIdRequest.h"
 #include "Participant.h"
 #include "SelectedSettingRequest.h"
@@ -63,6 +64,13 @@ public:
 	/*! \brief Set The id of the challenge activity (required if playing in a challenge/event). Note that this is the challenge_activity_id in case the same activity apears twice in the challenge.
 	 */
 	void setChallengeActivityId(long long  challenge_activity_id);
+	/*! \brief Get Defines core settings about the activity that affect how it can be created/played by users.
+	 */
+	CoreActivityOccurrenceSettings getCoreSettings();
+
+	/*! \brief Set Defines core settings about the activity that affect how it can be created/played by users.
+	 */
+	void setCoreSettings(CoreActivityOccurrenceSettings  core_settings);
 	/*! \brief Get The entitlement item required to enter the occurrence. Required if not part of an event. Must come from the set of entitlement items listed in the activity
 	 */
 	ItemIdRequest getEntitlement();
@@ -77,6 +85,13 @@ public:
 	/*! \brief Set The id of the event this occurence is a part of, if any
 	 */
 	void setEventId(long long  event_id);
+	/*! \brief Get The host of the occurrence, if not a participant (will be left out of users array). Must be the caller that creates the occurrence unless admin. Requires activity/challenge to allow host_option of 'non_player' if not admin as well
+	 */
+	int getHost();
+
+	/*! \brief Set The host of the occurrence, if not a participant (will be left out of users array). Must be the caller that creates the occurrence unless admin. Requires activity/challenge to allow host_option of 'non_player' if not admin as well
+	 */
+	void setHost(int  host);
 	/*! \brief Get The values selected from the available settings defined for the activity. Ex: difficulty: hard. Can be left out if the activity is played during an event and the settings are already set at the event level. Ex: every monday, difficulty: hard, number of questions: 10, category: sport. Otherwise, the set must exactly match those of the activity.
 	 */
 	std::list<SelectedSettingRequest> getSettings();
@@ -109,8 +124,10 @@ public:
 private:
 	long long activity_id;
 	long long challenge_activity_id;
+	CoreActivityOccurrenceSettings core_settings;
 	ItemIdRequest entitlement;
 	long long event_id;
+	int host;
 	std::list <SelectedSettingRequest>settings;
 	bool simulated;
 	std::string status;

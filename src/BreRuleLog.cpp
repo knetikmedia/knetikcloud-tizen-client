@@ -24,6 +24,9 @@ void
 BreRuleLog::__init()
 {
 	//
+	//new std::list()std::list> actions;
+	//
+	//
 	//
 	//ran = bool(false);
 	//
@@ -47,6 +50,11 @@ BreRuleLog::__init()
 void
 BreRuleLog::__cleanup()
 {
+	//if(actions != NULL) {
+	//actions.RemoveAll(true);
+	//delete actions;
+	//actions = NULL;
+	//}
 	//if(ran != NULL) {
 	//
 	//delete ran;
@@ -85,6 +93,30 @@ BreRuleLog::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *actionsKey = "actions";
+	node = json_object_get_member(pJsonObject, actionsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<BreActionLog> new_list;
+			BreActionLog inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("BreActionLog")) {
+					jsonToValue(&inst, temp_json, "BreActionLog", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			actions = new_list;
+		}
+		
+	}
 	const gchar *ranKey = "ran";
 	node = json_object_get_member(pJsonObject, ranKey);
 	if (node !=NULL) {
@@ -163,6 +195,31 @@ BreRuleLog::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("BreActionLog")) {
+		list<BreActionLog> new_list = static_cast<list <BreActionLog> > (getActions());
+		node = converttoJson(&new_list, "BreActionLog", "array");
+	} else {
+		node = json_node_alloc();
+		list<BreActionLog> new_list = static_cast<list <BreActionLog> > (getActions());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+		for (list<BreActionLog>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			BreActionLog obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+		
+	}
+
+
+	
+	const gchar *actionsKey = "actions";
+	json_object_set_member(pJsonObject, actionsKey, node);
 	if (isprimitive("bool")) {
 		bool obj = getRan();
 		node = converttoJson(&obj, "bool", "");
@@ -223,6 +280,18 @@ BreRuleLog::toJson()
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+std::list<BreActionLog>
+BreRuleLog::getActions()
+{
+	return actions;
+}
+
+void
+BreRuleLog::setActions(std::list <BreActionLog> actions)
+{
+	this->actions = actions;
 }
 
 bool

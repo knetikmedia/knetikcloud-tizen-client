@@ -29,7 +29,7 @@ public:
 
 /*! \brief Create a bundle item. *Synchronous*
  *
- * The SKU for the bundle itself must be unique and there can only be one SKU.  Extra notes for price_override:  The price of all the items (multiplied by the quantity) must equal the price of the bundle.  With individual prices set, items will be processed individually and can be refunded as such.  However, if all prices are set to null, the price of the bundle will be used and will be treated as one item.
+ * The SKU for the bundle itself must be unique and there can only be one SKU.  Extra notes for price_override:  The price of all the items (multiplied by the quantity) must equal the price of the bundle.  With individual prices set, items will be processed individually and can be refunded as such.  However, if all prices are set to null, the price of the bundle will be used and will be treated as one item. <br><br><b>Permissions Needed:</b> BUNDLES_ADMIN
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param bundleItem The bundle item object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -43,7 +43,7 @@ bool createBundleItemSync(char * accessToken,
 
 /*! \brief Create a bundle item. *Asynchronous*
  *
- * The SKU for the bundle itself must be unique and there can only be one SKU.  Extra notes for price_override:  The price of all the items (multiplied by the quantity) must equal the price of the bundle.  With individual prices set, items will be processed individually and can be refunded as such.  However, if all prices are set to null, the price of the bundle will be used and will be treated as one item.
+ * The SKU for the bundle itself must be unique and there can only be one SKU.  Extra notes for price_override:  The price of all the items (multiplied by the quantity) must equal the price of the bundle.  With individual prices set, items will be processed individually and can be refunded as such.  However, if all prices are set to null, the price of the bundle will be used and will be treated as one item. <br><br><b>Permissions Needed:</b> BUNDLES_ADMIN
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param bundleItem The bundle item object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -58,7 +58,7 @@ bool createBundleItemAsync(char * accessToken,
 
 /*! \brief Create a bundle template. *Synchronous*
  *
- * Bundle Templates define a type of bundle and the properties they have.
+ * Bundle Templates define a type of bundle and the properties they have. <br><br><b>Permissions Needed:</b> BUNDLES_ADMIN
  * \param bundleTemplateResource The new bundle template
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -71,7 +71,7 @@ bool createBundleTemplateSync(char * accessToken,
 
 /*! \brief Create a bundle template. *Asynchronous*
  *
- * Bundle Templates define a type of bundle and the properties they have.
+ * Bundle Templates define a type of bundle and the properties they have. <br><br><b>Permissions Needed:</b> BUNDLES_ADMIN
  * \param bundleTemplateResource The new bundle template
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -85,7 +85,7 @@ bool createBundleTemplateAsync(char * accessToken,
 
 /*! \brief Delete a bundle item. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BUNDLES_ADMIN
  * \param id The id of the bundle *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -98,7 +98,7 @@ bool deleteBundleItemSync(char * accessToken,
 
 /*! \brief Delete a bundle item. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BUNDLES_ADMIN
  * \param id The id of the bundle *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -112,7 +112,7 @@ bool deleteBundleItemAsync(char * accessToken,
 
 /*! \brief Delete a bundle template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BUNDLES_ADMIN
  * \param id The id of the template *Required*
  * \param cascade force deleting the template if it's attached to other objects, cascade = detach
  * \param handler The callback function to be invoked on completion. *Required*
@@ -126,7 +126,7 @@ bool deleteBundleTemplateSync(char * accessToken,
 
 /*! \brief Delete a bundle template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BUNDLES_ADMIN
  * \param id The id of the template *Required*
  * \param cascade force deleting the template if it's attached to other objects, cascade = detach
  * \param handler The callback function to be invoked on completion. *Required*
@@ -141,7 +141,7 @@ bool deleteBundleTemplateAsync(char * accessToken,
 
 /*! \brief Get a single bundle item. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The id of the bundle *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -154,7 +154,7 @@ bool getBundleItemSync(char * accessToken,
 
 /*! \brief Get a single bundle item. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The id of the bundle *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -168,7 +168,7 @@ bool getBundleItemAsync(char * accessToken,
 
 /*! \brief Get a single bundle template. *Synchronous*
  *
- * Bundle Templates define a type of bundle and the properties they have.
+ * Bundle Templates define a type of bundle and the properties they have. <br><br><b>Permissions Needed:</b> ANY
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -181,7 +181,7 @@ bool getBundleTemplateSync(char * accessToken,
 
 /*! \brief Get a single bundle template. *Asynchronous*
  *
- * Bundle Templates define a type of bundle and the properties they have.
+ * Bundle Templates define a type of bundle and the properties they have. <br><br><b>Permissions Needed:</b> ANY
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -195,7 +195,7 @@ bool getBundleTemplateAsync(char * accessToken,
 
 /*! \brief List and search bundle templates. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -210,7 +210,7 @@ bool getBundleTemplatesSync(char * accessToken,
 
 /*! \brief List and search bundle templates. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -226,7 +226,7 @@ bool getBundleTemplatesAsync(char * accessToken,
 
 /*! \brief Update a bundle item. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BUNDLES_ADMIN
  * \param id The id of the bundle *Required*
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param bundleItem The bundle item object
@@ -241,7 +241,7 @@ bool updateBundleItemSync(char * accessToken,
 
 /*! \brief Update a bundle item. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BUNDLES_ADMIN
  * \param id The id of the bundle *Required*
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param bundleItem The bundle item object
@@ -257,7 +257,7 @@ bool updateBundleItemAsync(char * accessToken,
 
 /*! \brief Update a bundle template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BUNDLES_ADMIN
  * \param id The id of the template *Required*
  * \param bundleTemplateResource The bundle template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -271,7 +271,7 @@ bool updateBundleTemplateSync(char * accessToken,
 
 /*! \brief Update a bundle template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BUNDLES_ADMIN
  * \param id The id of the template *Required*
  * \param bundleTemplateResource The bundle template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -287,7 +287,7 @@ bool updateBundleTemplateAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

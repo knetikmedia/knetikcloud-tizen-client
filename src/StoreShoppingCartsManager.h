@@ -36,7 +36,7 @@ public:
 
 /*! \brief Adds a custom discount to the cart. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN
  * \param id The id of the cart *Required*
  * \param customDiscount The details of the discount to add
  * \param handler The callback function to be invoked on completion. *Required*
@@ -50,7 +50,7 @@ bool addCustomDiscountSync(char * accessToken,
 
 /*! \brief Adds a custom discount to the cart. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN
  * \param id The id of the cart *Required*
  * \param customDiscount The details of the discount to add
  * \param handler The callback function to be invoked on completion. *Required*
@@ -65,7 +65,7 @@ bool addCustomDiscountAsync(char * accessToken,
 
 /*! \brief Adds a discount coupon to the cart. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
  * \param id The id of the cart *Required*
  * \param skuRequest The request of the sku
  * \param handler The callback function to be invoked on completion. *Required*
@@ -79,7 +79,7 @@ bool addDiscountToCartSync(char * accessToken,
 
 /*! \brief Adds a discount coupon to the cart. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
  * \param id The id of the cart *Required*
  * \param skuRequest The request of the sku
  * \param handler The callback function to be invoked on completion. *Required*
@@ -94,7 +94,7 @@ bool addDiscountToCartAsync(char * accessToken,
 
 /*! \brief Add an item to the cart. *Synchronous*
  *
- * Currently, carts cannot contain virtual and real currency items at the same time. Furthermore, the API only support a single virtual item at the moment
+ * Currently, carts cannot contain virtual and real currency items at the same time. Furthermore, the API only support a single virtual item at the moment. <br><br><b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
  * \param id The id of the cart *Required*
  * \param cartItemRequest The cart item request object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -108,7 +108,7 @@ bool addItemToCartSync(char * accessToken,
 
 /*! \brief Add an item to the cart. *Asynchronous*
  *
- * Currently, carts cannot contain virtual and real currency items at the same time. Furthermore, the API only support a single virtual item at the moment
+ * Currently, carts cannot contain virtual and real currency items at the same time. Furthermore, the API only support a single virtual item at the moment. <br><br><b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
  * \param id The id of the cart *Required*
  * \param cartItemRequest The cart item request object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -123,7 +123,7 @@ bool addItemToCartAsync(char * accessToken,
 
 /*! \brief Create a cart. *Synchronous*
  *
- * You don't have to have a user to create a cart but the API requires authentication to checkout
+ * You don't have to have a user to create a cart but the API requires authentication to checkout. <br><br><b>Permissions Needed:</b> ANY
  * \param owner Set the owner of a cart. If not specified, defaults to the calling user's id. If specified and is not the calling user's id, SHOPPING_CARTS_ADMIN permission is required
  * \param currencyCode Set the currency for the cart, by currency code. May be disallowed by site settings.
  * \param handler The callback function to be invoked on completion. *Required*
@@ -137,7 +137,7 @@ bool createCartSync(char * accessToken,
 
 /*! \brief Create a cart. *Asynchronous*
  *
- * You don't have to have a user to create a cart but the API requires authentication to checkout
+ * You don't have to have a user to create a cart but the API requires authentication to checkout. <br><br><b>Permissions Needed:</b> ANY
  * \param owner Set the owner of a cart. If not specified, defaults to the calling user's id. If specified and is not the calling user's id, SHOPPING_CARTS_ADMIN permission is required
  * \param currencyCode Set the currency for the cart, by currency code. May be disallowed by site settings.
  * \param handler The callback function to be invoked on completion. *Required*
@@ -152,7 +152,7 @@ bool createCartAsync(char * accessToken,
 
 /*! \brief Returns the cart with the given GUID. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
  * \param id The id of the cart *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -165,7 +165,7 @@ bool getCartSync(char * accessToken,
 
 /*! \brief Returns the cart with the given GUID. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
  * \param id The id of the cart *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -179,7 +179,7 @@ bool getCartAsync(char * accessToken,
 
 /*! \brief Get a list of carts. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
  * \param filterOwnerId Filter by the id of the owner
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -195,7 +195,7 @@ bool getCartsSync(char * accessToken,
 
 /*! \brief Get a list of carts. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
  * \param filterOwnerId Filter by the id of the owner
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -212,7 +212,7 @@ bool getCartsAsync(char * accessToken,
 
 /*! \brief Returns whether a cart requires shipping. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
  * \param id The id of the cart *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -225,7 +225,7 @@ bool getShippableSync(char * accessToken,
 
 /*! \brief Returns whether a cart requires shipping. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
  * \param id The id of the cart *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -239,7 +239,7 @@ bool getShippableAsync(char * accessToken,
 
 /*! \brief Get the list of available shipping countries per vendor. *Synchronous*
  *
- * Since a cart can have multiple vendors with different shipping options, the countries are broken down by vendors. Please see notes about the response object as the fields are variable.
+ * Since a cart can have multiple vendors with different shipping options, the countries are broken down by vendors. Please see notes about the response object as the fields are variable. <br><br><b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
  * \param id The id of the cart *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -252,7 +252,7 @@ bool getShippingCountriesSync(char * accessToken,
 
 /*! \brief Get the list of available shipping countries per vendor. *Asynchronous*
  *
- * Since a cart can have multiple vendors with different shipping options, the countries are broken down by vendors. Please see notes about the response object as the fields are variable.
+ * Since a cart can have multiple vendors with different shipping options, the countries are broken down by vendors. Please see notes about the response object as the fields are variable. <br><br><b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
  * \param id The id of the cart *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -266,7 +266,7 @@ bool getShippingCountriesAsync(char * accessToken,
 
 /*! \brief Removes a discount coupon from the cart. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
  * \param id The id of the cart *Required*
  * \param code The SKU code of the coupon to remove *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -280,7 +280,7 @@ bool removeDiscountFromCartSync(char * accessToken,
 
 /*! \brief Removes a discount coupon from the cart. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
  * \param id The id of the cart *Required*
  * \param code The SKU code of the coupon to remove *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -295,7 +295,7 @@ bool removeDiscountFromCartAsync(char * accessToken,
 
 /*! \brief Sets the currency to use for the cart. *Synchronous*
  *
- * May be disallowed by site settings.
+ * May be disallowed by site settings. <br><br><b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
  * \param id The id of the cart *Required*
  * \param currencyCode The code of the currency
  * \param handler The callback function to be invoked on completion. *Required*
@@ -309,7 +309,7 @@ bool setCartCurrencySync(char * accessToken,
 
 /*! \brief Sets the currency to use for the cart. *Asynchronous*
  *
- * May be disallowed by site settings.
+ * May be disallowed by site settings. <br><br><b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
  * \param id The id of the cart *Required*
  * \param currencyCode The code of the currency
  * \param handler The callback function to be invoked on completion. *Required*
@@ -324,7 +324,7 @@ bool setCartCurrencyAsync(char * accessToken,
 
 /*! \brief Sets the owner of a cart if none is set already. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
  * \param id The id of the cart *Required*
  * \param userId The id of the user
  * \param handler The callback function to be invoked on completion. *Required*
@@ -338,7 +338,7 @@ bool setCartOwnerSync(char * accessToken,
 
 /*! \brief Sets the owner of a cart if none is set already. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
  * \param id The id of the cart *Required*
  * \param userId The id of the user
  * \param handler The callback function to be invoked on completion. *Required*
@@ -353,7 +353,7 @@ bool setCartOwnerAsync(char * accessToken,
 
 /*! \brief Changes the quantity of an item already in the cart. *Synchronous*
  *
- * A quantity of zero will remove the item from the cart altogether.
+ * A quantity of zero will remove the item from the cart altogether. <br><br><b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
  * \param id The id of the cart *Required*
  * \param cartItemRequest The cart item request object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -367,7 +367,7 @@ bool updateItemInCartSync(char * accessToken,
 
 /*! \brief Changes the quantity of an item already in the cart. *Asynchronous*
  *
- * A quantity of zero will remove the item from the cart altogether.
+ * A quantity of zero will remove the item from the cart altogether. <br><br><b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
  * \param id The id of the cart *Required*
  * \param cartItemRequest The cart item request object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -382,7 +382,7 @@ bool updateItemInCartAsync(char * accessToken,
 
 /*! \brief Modifies or sets the order shipping address. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
  * \param id The id of the cart *Required*
  * \param cartShippingAddressRequest The cart shipping address request object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -396,7 +396,7 @@ bool updateShippingAddressSync(char * accessToken,
 
 /*! \brief Modifies or sets the order shipping address. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
  * \param id The id of the cart *Required*
  * \param cartShippingAddressRequest The cart shipping address request object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -412,7 +412,7 @@ bool updateShippingAddressAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

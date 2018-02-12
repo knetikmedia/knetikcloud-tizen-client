@@ -29,7 +29,7 @@ public:
 
 /*! \brief Create a coupon item. *Synchronous*
  *
- * SKUs have to be unique in the entire store.
+ * SKUs have to be unique in the entire store. <br><br><b>Permissions Needed:</b> COUPONS_ADMIN
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param couponItem The coupon item object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -43,7 +43,7 @@ bool createCouponItemSync(char * accessToken,
 
 /*! \brief Create a coupon item. *Asynchronous*
  *
- * SKUs have to be unique in the entire store.
+ * SKUs have to be unique in the entire store. <br><br><b>Permissions Needed:</b> COUPONS_ADMIN
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param couponItem The coupon item object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -58,7 +58,7 @@ bool createCouponItemAsync(char * accessToken,
 
 /*! \brief Create a coupon template. *Synchronous*
  *
- * Coupon Templates define a type of coupon and the properties they have.
+ * Coupon Templates define a type of coupon and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param couponTemplateResource The new coupon template
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -71,7 +71,7 @@ bool createCouponTemplateSync(char * accessToken,
 
 /*! \brief Create a coupon template. *Asynchronous*
  *
- * Coupon Templates define a type of coupon and the properties they have.
+ * Coupon Templates define a type of coupon and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param couponTemplateResource The new coupon template
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -85,7 +85,7 @@ bool createCouponTemplateAsync(char * accessToken,
 
 /*! \brief Delete a coupon item. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> COUPONS_ADMIN
  * \param id The id of the coupon *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -98,7 +98,7 @@ bool deleteCouponItemSync(char * accessToken,
 
 /*! \brief Delete a coupon item. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> COUPONS_ADMIN
  * \param id The id of the coupon *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -112,7 +112,7 @@ bool deleteCouponItemAsync(char * accessToken,
 
 /*! \brief Delete a coupon template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade force deleting the template if it's attached to other objects, cascade = detach
  * \param handler The callback function to be invoked on completion. *Required*
@@ -126,7 +126,7 @@ bool deleteCouponTemplateSync(char * accessToken,
 
 /*! \brief Delete a coupon template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade force deleting the template if it's attached to other objects, cascade = detach
  * \param handler The callback function to be invoked on completion. *Required*
@@ -141,7 +141,7 @@ bool deleteCouponTemplateAsync(char * accessToken,
 
 /*! \brief Get a single coupon item. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> COUPONS_ADMIN
  * \param id The id of the coupon *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -154,7 +154,7 @@ bool getCouponItemSync(char * accessToken,
 
 /*! \brief Get a single coupon item. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> COUPONS_ADMIN
  * \param id The id of the coupon *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -168,7 +168,7 @@ bool getCouponItemAsync(char * accessToken,
 
 /*! \brief Get a coupon by sku. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param sku A sku of the coupon *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -181,7 +181,7 @@ bool getCouponItemBySkuSync(char * accessToken,
 
 /*! \brief Get a coupon by sku. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param sku A sku of the coupon *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -195,7 +195,7 @@ bool getCouponItemBySkuAsync(char * accessToken,
 
 /*! \brief Get a single coupon template. *Synchronous*
  *
- * Coupon Templates define a type of coupon and the properties they have.
+ * Coupon Templates define a type of coupon and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN or COUPONS_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -208,7 +208,7 @@ bool getCouponTemplateSync(char * accessToken,
 
 /*! \brief Get a single coupon template. *Asynchronous*
  *
- * Coupon Templates define a type of coupon and the properties they have.
+ * Coupon Templates define a type of coupon and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN or COUPONS_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -222,7 +222,7 @@ bool getCouponTemplateAsync(char * accessToken,
 
 /*! \brief List and search coupon templates. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or COUPONS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -237,7 +237,7 @@ bool getCouponTemplatesSync(char * accessToken,
 
 /*! \brief List and search coupon templates. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN or COUPONS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -253,7 +253,7 @@ bool getCouponTemplatesAsync(char * accessToken,
 
 /*! \brief Update a coupon item. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> COUPONS_ADMIN
  * \param id The id of the coupon *Required*
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param couponItem The coupon item object
@@ -268,7 +268,7 @@ bool updateCouponItemSync(char * accessToken,
 
 /*! \brief Update a coupon item. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> COUPONS_ADMIN
  * \param id The id of the coupon *Required*
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param couponItem The coupon item object
@@ -284,7 +284,7 @@ bool updateCouponItemAsync(char * accessToken,
 
 /*! \brief Update a coupon template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param couponTemplateResource The coupon template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -298,7 +298,7 @@ bool updateCouponTemplateSync(char * accessToken,
 
 /*! \brief Update a coupon template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param couponTemplateResource The coupon template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -314,7 +314,7 @@ bool updateCouponTemplateAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

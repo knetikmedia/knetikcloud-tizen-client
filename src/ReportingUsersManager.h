@@ -27,7 +27,7 @@ public:
 
 /*! \brief Get user registration info. *Synchronous*
  *
- * Get user registration counts grouped by time range
+ * Get user registration counts grouped by time range. <br><br><b>Permissions Needed:</b> REPORTING_USER_ADMIN
  * \param granularity The time duration to aggregate by
  * \param startDate The start of the time range to aggregate, unix timestamp in seconds. Default is beginning of time
  * \param endDate The end of the time range to aggregate, unix timestamp in seconds. Default is end of time
@@ -44,7 +44,7 @@ bool getUserRegistrationsSync(char * accessToken,
 
 /*! \brief Get user registration info. *Asynchronous*
  *
- * Get user registration counts grouped by time range
+ * Get user registration counts grouped by time range. <br><br><b>Permissions Needed:</b> REPORTING_USER_ADMIN
  * \param granularity The time duration to aggregate by
  * \param startDate The start of the time range to aggregate, unix timestamp in seconds. Default is beginning of time
  * \param endDate The end of the time range to aggregate, unix timestamp in seconds. Default is end of time
@@ -63,7 +63,7 @@ bool getUserRegistrationsAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

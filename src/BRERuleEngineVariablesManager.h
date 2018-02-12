@@ -28,7 +28,7 @@ public:
 
 /*! \brief Get a list of variable types available. *Synchronous*
  *
- * Types include integer, string, user and invoice. These are used to qualify trigger parameters and action variables with strong typing.
+ * Types include integer, string, user and invoice. These are used to qualify trigger parameters and action variables with strong typing. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_VARIABLES_USER
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -40,7 +40,7 @@ bool getBREVariableTypesSync(char * accessToken,
 
 /*! \brief Get a list of variable types available. *Asynchronous*
  *
- * Types include integer, string, user and invoice. These are used to qualify trigger parameters and action variables with strong typing.
+ * Types include integer, string, user and invoice. These are used to qualify trigger parameters and action variables with strong typing. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_VARIABLES_USER
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -53,7 +53,7 @@ bool getBREVariableTypesAsync(char * accessToken,
 
 /*! \brief List valid values for a type. *Synchronous*
  *
- * Used to lookup users to fill in a user constant for example. Only types marked as enumerable are suppoorted here.
+ * Used to lookup users to fill in a user constant for example. Only types marked as enumerable are suppoorted here. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_VARIABLES_USER
  * \param name The name of the type *Required*
  * \param filterName Filter results by those with names starting with this string
  * \param size The number of objects returned per page
@@ -69,7 +69,7 @@ bool getBREVariableValuesSync(char * accessToken,
 
 /*! \brief List valid values for a type. *Asynchronous*
  *
- * Used to lookup users to fill in a user constant for example. Only types marked as enumerable are suppoorted here.
+ * Used to lookup users to fill in a user constant for example. Only types marked as enumerable are suppoorted here. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_VARIABLES_USER
  * \param name The name of the type *Required*
  * \param filterName Filter results by those with names starting with this string
  * \param size The number of objects returned per page
@@ -87,7 +87,7 @@ bool getBREVariableValuesAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

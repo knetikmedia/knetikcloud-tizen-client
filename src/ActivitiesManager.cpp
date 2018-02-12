@@ -48,6 +48,195 @@ static gpointer __ActivitiesManagerthreadFunc(gpointer data)
 }
 
 
+static bool addUserProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(ActivityOccurrenceResource, Error, void* )
+	= reinterpret_cast<void(*)(ActivityOccurrenceResource, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	ActivityOccurrenceResource out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("ActivityOccurrenceResource")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "ActivityOccurrenceResource", "ActivityOccurrenceResource");
+			json_node_free(pJson);
+
+			if ("ActivityOccurrenceResource" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unkown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool addUserHelper(char * accessToken,
+	long long activityOccurrenceId, bool test, bool bypassRestrictions, IntWrapper userId, 
+	void(* handler)(ActivityOccurrenceResource, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+
+	itemAtq = stringify(&test, "bool");
+	queryParams.insert(pair<string, string>("test", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("test");
+	}
+
+
+	itemAtq = stringify(&bypassRestrictions, "bool");
+	queryParams.insert(pair<string, string>("bypass_restrictions", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("bypass_restrictions");
+	}
+
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	if (isprimitive("IntWrapper")) {
+		node = converttoJson(&userId, "IntWrapper", "");
+	}
+	
+	char *jsonStr =  userId.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	string url("/activity-occurrences/{activity_occurrence_id}/users");
+	int pos;
+
+	string s_activityOccurrenceId("{");
+	s_activityOccurrenceId.append("activity_occurrence_id");
+	s_activityOccurrenceId.append("}");
+	pos = url.find(s_activityOccurrenceId);
+	url.erase(pos, s_activityOccurrenceId.length());
+	url.insert(pos, stringify(&activityOccurrenceId, "long long"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("POST");
+
+	if(strcmp("PUT", "POST") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(ActivitiesManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = addUserProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (ActivitiesManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), addUserProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __ActivitiesManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool ActivitiesManager::addUserAsync(char * accessToken,
+	long long activityOccurrenceId, bool test, bool bypassRestrictions, IntWrapper userId, 
+	void(* handler)(ActivityOccurrenceResource, Error, void* )
+	, void* userData)
+{
+	return addUserHelper(accessToken,
+	activityOccurrenceId, test, bypassRestrictions, userId, 
+	handler, userData, true);
+}
+
+bool ActivitiesManager::addUserSync(char * accessToken,
+	long long activityOccurrenceId, bool test, bool bypassRestrictions, IntWrapper userId, 
+	void(* handler)(ActivityOccurrenceResource, Error, void* )
+	, void* userData)
+{
+	return addUserHelper(accessToken,
+	activityOccurrenceId, test, bypassRestrictions, userId, 
+	handler, userData, false);
+}
+
 static bool createActivityProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
@@ -1855,6 +2044,156 @@ bool ActivitiesManager::listActivityOccurrencesSync(char * accessToken,
 	handler, userData, false);
 }
 
+static bool removeUserProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	
+	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+		handler(error, userData);
+		return true;
+
+
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unkown Error"));
+		}
+		handler(error, userData);
+		return false;
+	}
+}
+
+static bool removeUserHelper(char * accessToken,
+	long long activityOccurrenceId, std::string userId, bool ban, bool bypassRestrictions, 
+	
+	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+
+	itemAtq = stringify(&ban, "bool");
+	queryParams.insert(pair<string, string>("ban", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ban");
+	}
+
+
+	itemAtq = stringify(&bypassRestrictions, "bool");
+	queryParams.insert(pair<string, string>("bypass_restrictions", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("bypass_restrictions");
+	}
+
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/activity-occurrences/{activity_occurrence_id}/users/{user_id}");
+	int pos;
+
+	string s_activityOccurrenceId("{");
+	s_activityOccurrenceId.append("activity_occurrence_id");
+	s_activityOccurrenceId.append("}");
+	pos = url.find(s_activityOccurrenceId);
+	url.erase(pos, s_activityOccurrenceId.length());
+	url.insert(pos, stringify(&activityOccurrenceId, "long long"));
+	string s_userId("{");
+	s_userId.append("user_id");
+	s_userId.append("}");
+	pos = url.find(s_userId);
+	url.erase(pos, s_userId.length());
+	url.insert(pos, stringify(&userId, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("DELETE");
+
+	if(strcmp("PUT", "DELETE") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(ActivitiesManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = removeUserProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (ActivitiesManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), removeUserProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __ActivitiesManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool ActivitiesManager::removeUserAsync(char * accessToken,
+	long long activityOccurrenceId, std::string userId, bool ban, bool bypassRestrictions, 
+	
+	void(* handler)(Error, void* ) , void* userData)
+{
+	return removeUserHelper(accessToken,
+	activityOccurrenceId, userId, ban, bypassRestrictions, 
+	handler, userData, true);
+}
+
+bool ActivitiesManager::removeUserSync(char * accessToken,
+	long long activityOccurrenceId, std::string userId, bool ban, bool bypassRestrictions, 
+	
+	void(* handler)(Error, void* ) , void* userData)
+{
+	return removeUserHelper(accessToken,
+	activityOccurrenceId, userId, ban, bypassRestrictions, 
+	handler, userData, false);
+}
+
 static bool setActivityOccurrenceResultsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
@@ -2022,6 +2361,348 @@ bool ActivitiesManager::setActivityOccurrenceResultsSync(char * accessToken,
 {
 	return setActivityOccurrenceResultsHelper(accessToken,
 	activityOccurrenceId, activityOccurrenceResults, 
+	handler, userData, false);
+}
+
+static bool setActivityOccurrenceSettingsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(ActivityOccurrenceResource, Error, void* )
+	= reinterpret_cast<void(*)(ActivityOccurrenceResource, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	ActivityOccurrenceResource out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("ActivityOccurrenceResource")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "ActivityOccurrenceResource", "ActivityOccurrenceResource");
+			json_node_free(pJson);
+
+			if ("ActivityOccurrenceResource" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unkown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool setActivityOccurrenceSettingsHelper(char * accessToken,
+	long long activityOccurrenceId, ActivityOccurrenceSettingsResource settings, 
+	void(* handler)(ActivityOccurrenceResource, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	if (isprimitive("ActivityOccurrenceSettingsResource")) {
+		node = converttoJson(&settings, "ActivityOccurrenceSettingsResource", "");
+	}
+	
+	char *jsonStr =  settings.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	string url("/activity-occurrences/{activity_occurrence_id}/settings");
+	int pos;
+
+	string s_activityOccurrenceId("{");
+	s_activityOccurrenceId.append("activity_occurrence_id");
+	s_activityOccurrenceId.append("}");
+	pos = url.find(s_activityOccurrenceId);
+	url.erase(pos, s_activityOccurrenceId.length());
+	url.insert(pos, stringify(&activityOccurrenceId, "long long"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("PUT");
+
+	if(strcmp("PUT", "PUT") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(ActivitiesManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = setActivityOccurrenceSettingsProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (ActivitiesManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), setActivityOccurrenceSettingsProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __ActivitiesManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool ActivitiesManager::setActivityOccurrenceSettingsAsync(char * accessToken,
+	long long activityOccurrenceId, ActivityOccurrenceSettingsResource settings, 
+	void(* handler)(ActivityOccurrenceResource, Error, void* )
+	, void* userData)
+{
+	return setActivityOccurrenceSettingsHelper(accessToken,
+	activityOccurrenceId, settings, 
+	handler, userData, true);
+}
+
+bool ActivitiesManager::setActivityOccurrenceSettingsSync(char * accessToken,
+	long long activityOccurrenceId, ActivityOccurrenceSettingsResource settings, 
+	void(* handler)(ActivityOccurrenceResource, Error, void* )
+	, void* userData)
+{
+	return setActivityOccurrenceSettingsHelper(accessToken,
+	activityOccurrenceId, settings, 
+	handler, userData, false);
+}
+
+static bool setUserStatusProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(ActivityUserResource, Error, void* )
+	= reinterpret_cast<void(*)(ActivityUserResource, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	ActivityUserResource out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("ActivityUserResource")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "ActivityUserResource", "ActivityUserResource");
+			json_node_free(pJson);
+
+			if ("ActivityUserResource" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unkown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool setUserStatusHelper(char * accessToken,
+	long long activityOccurrenceId, std::string userId, std::string status, 
+	void(* handler)(ActivityUserResource, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	if (isprimitive("std::string")) {
+		node = converttoJson(&status, "std::string", "");
+	}
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	string url("/activity-occurrences/{activity_occurrence_id}/users/{user_id}/status");
+	int pos;
+
+	string s_activityOccurrenceId("{");
+	s_activityOccurrenceId.append("activity_occurrence_id");
+	s_activityOccurrenceId.append("}");
+	pos = url.find(s_activityOccurrenceId);
+	url.erase(pos, s_activityOccurrenceId.length());
+	url.insert(pos, stringify(&activityOccurrenceId, "long long"));
+	string s_userId("{");
+	s_userId.append("user_id");
+	s_userId.append("}");
+	pos = url.find(s_userId);
+	url.erase(pos, s_userId.length());
+	url.insert(pos, stringify(&userId, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("PUT");
+
+	if(strcmp("PUT", "PUT") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(ActivitiesManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = setUserStatusProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (ActivitiesManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), setUserStatusProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __ActivitiesManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool ActivitiesManager::setUserStatusAsync(char * accessToken,
+	long long activityOccurrenceId, std::string userId, std::string status, 
+	void(* handler)(ActivityUserResource, Error, void* )
+	, void* userData)
+{
+	return setUserStatusHelper(accessToken,
+	activityOccurrenceId, userId, status, 
+	handler, userData, true);
+}
+
+bool ActivitiesManager::setUserStatusSync(char * accessToken,
+	long long activityOccurrenceId, std::string userId, std::string status, 
+	void(* handler)(ActivityUserResource, Error, void* )
+	, void* userData)
+{
+	return setUserStatusHelper(accessToken,
+	activityOccurrenceId, userId, status, 
 	handler, userData, false);
 }
 
@@ -2195,7 +2876,7 @@ bool ActivitiesManager::updateActivitySync(char * accessToken,
 	handler, userData, false);
 }
 
-static bool updateActivityOccurrenceProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+static bool updateActivityOccurrenceStatusProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
 	
@@ -2228,8 +2909,8 @@ static bool updateActivityOccurrenceProcessor(MemoryStruct_s p_chunk, long code,
 	}
 }
 
-static bool updateActivityOccurrenceHelper(char * accessToken,
-	long long activityOccurrenceId, std::string activityOccurrenceStatus, 
+static bool updateActivityOccurrenceStatusHelper(char * accessToken,
+	long long activityOccurrenceId, ValueWrapper«string» activityOccurrenceStatus, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -2250,9 +2931,13 @@ static bool updateActivityOccurrenceHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("std::string")) {
-		node = converttoJson(&activityOccurrenceStatus, "std::string", "");
+	if (isprimitive("ValueWrapper«string»")) {
+		node = converttoJson(&activityOccurrenceStatus, "ValueWrapper«string»", "");
 	}
+	
+	char *jsonStr =  activityOccurrenceStatus.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
 	
 
 	char *jsonStr1 =  json_to_string(node, false);
@@ -2284,7 +2969,7 @@ static bool updateActivityOccurrenceHelper(char * accessToken,
 	if(!isAsync){
 		NetClient::easycurl(ActivitiesManager::getBasePath(), url, myhttpmethod, queryParams,
 			mBody, headerList, p_chunk, &code, errormsg);
-		bool retval = updateActivityOccurrenceProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+		bool retval = updateActivityOccurrenceStatusProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
 		curl_slist_free_all(headerList);
 		if (p_chunk) {
@@ -2302,7 +2987,7 @@ static bool updateActivityOccurrenceHelper(char * accessToken,
 		RequestInfo *requestInfo = NULL;
 
 		requestInfo = new(nothrow) RequestInfo (ActivitiesManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), updateActivityOccurrenceProcessor);;
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), updateActivityOccurrenceStatusProcessor);;
 		if(requestInfo == NULL)
 			return false;
 
@@ -2314,22 +2999,22 @@ static bool updateActivityOccurrenceHelper(char * accessToken,
 
 
 
-bool ActivitiesManager::updateActivityOccurrenceAsync(char * accessToken,
-	long long activityOccurrenceId, std::string activityOccurrenceStatus, 
+bool ActivitiesManager::updateActivityOccurrenceStatusAsync(char * accessToken,
+	long long activityOccurrenceId, ValueWrapper«string» activityOccurrenceStatus, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
-	return updateActivityOccurrenceHelper(accessToken,
+	return updateActivityOccurrenceStatusHelper(accessToken,
 	activityOccurrenceId, activityOccurrenceStatus, 
 	handler, userData, true);
 }
 
-bool ActivitiesManager::updateActivityOccurrenceSync(char * accessToken,
-	long long activityOccurrenceId, std::string activityOccurrenceStatus, 
+bool ActivitiesManager::updateActivityOccurrenceStatusSync(char * accessToken,
+	long long activityOccurrenceId, ValueWrapper«string» activityOccurrenceStatus, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
-	return updateActivityOccurrenceHelper(accessToken,
+	return updateActivityOccurrenceStatusHelper(accessToken,
 	activityOccurrenceId, activityOccurrenceStatus, 
 	handler, userData, false);
 }

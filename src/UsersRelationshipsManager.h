@@ -28,7 +28,7 @@ public:
 
 /*! \brief Create a user relationship. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> RELATIONSHIPS_ADMIN
  * \param relationship The new relationship
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -41,7 +41,7 @@ bool createUserRelationshipSync(char * accessToken,
 
 /*! \brief Create a user relationship. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> RELATIONSHIPS_ADMIN
  * \param relationship The new relationship
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -55,7 +55,7 @@ bool createUserRelationshipAsync(char * accessToken,
 
 /*! \brief Delete a user relationship. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> RELATIONSHIPS_ADMIN
  * \param id The id of the relationship *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -68,7 +68,7 @@ bool deleteUserRelationshipSync(char * accessToken,
 
 /*! \brief Delete a user relationship. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> RELATIONSHIPS_ADMIN
  * \param id The id of the relationship *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -82,7 +82,7 @@ bool deleteUserRelationshipAsync(char * accessToken,
 
 /*! \brief Get a user relationship. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> RELATIONSHIPS_USER or RELATIONSHIPS_ADMIN
  * \param id The id of the relationship *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -95,7 +95,7 @@ bool getUserRelationshipSync(char * accessToken,
 
 /*! \brief Get a user relationship. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> RELATIONSHIPS_USER or RELATIONSHIPS_ADMIN
  * \param id The id of the relationship *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -109,7 +109,7 @@ bool getUserRelationshipAsync(char * accessToken,
 
 /*! \brief Get a list of user relationships. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> RELATIONSHIPS_USER or RELATIONSHIPS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -124,7 +124,7 @@ bool getUserRelationshipsSync(char * accessToken,
 
 /*! \brief Get a list of user relationships. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> RELATIONSHIPS_USER or RELATIONSHIPS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -140,7 +140,7 @@ bool getUserRelationshipsAsync(char * accessToken,
 
 /*! \brief Update a user relationship. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> RELATIONSHIPS_ADMIN
  * \param id The id of the relationship *Required*
  * \param relationship The new relationship
  * \param handler The callback function to be invoked on completion. *Required*
@@ -154,7 +154,7 @@ bool updateUserRelationshipSync(char * accessToken,
 
 /*! \brief Update a user relationship. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> RELATIONSHIPS_ADMIN
  * \param id The id of the relationship *Required*
  * \param relationship The new relationship
  * \param handler The callback function to be invoked on completion. *Required*
@@ -170,7 +170,7 @@ bool updateUserRelationshipAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

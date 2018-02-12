@@ -27,7 +27,7 @@ public:
 
 /*! \brief Link facebook account. *Synchronous*
  *
- * Links the current user account to a facebook account, using the acccess token from facebook. Can also be used to update the access token after it has expired.
+ * Links the current user account to a facebook account, using the acccess token from facebook. Can also be used to update the access token after it has expired. <br><br><b>Permissions Needed:</b> Non-facebook user token
  * \param facebookToken The token from facebook
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -40,7 +40,7 @@ bool linkAccountsSync(char * accessToken,
 
 /*! \brief Link facebook account. *Asynchronous*
  *
- * Links the current user account to a facebook account, using the acccess token from facebook. Can also be used to update the access token after it has expired.
+ * Links the current user account to a facebook account, using the acccess token from facebook. Can also be used to update the access token after it has expired. <br><br><b>Permissions Needed:</b> Non-facebook user token
  * \param facebookToken The token from facebook
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -55,7 +55,7 @@ bool linkAccountsAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

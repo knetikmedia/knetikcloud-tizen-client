@@ -89,11 +89,11 @@ public:
 	/*! \brief Set Where this global came from. System globals cannot be removed or updated
 	 */
 	void setSystemGlobal(bool  system_global);
-	/*! \brief Get The variable type the global stores. See the See Bre Variables enpoint for list
+	/*! \brief Get The variable type the global stores. See the BRE variables endpoint for list
 	 */
 	std::string getType();
 
-	/*! \brief Set The variable type the global stores. See the See Bre Variables enpoint for list
+	/*! \brief Set The variable type the global stores. See the BRE variables endpoint for list
 	 */
 	void setType(std::string  type);
 

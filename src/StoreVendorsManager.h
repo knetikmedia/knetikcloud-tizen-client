@@ -30,7 +30,7 @@ public:
 
 /*! \brief Create a vendor. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VENDORS_ADMIN
  * \param vendor The vendor
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -43,7 +43,7 @@ bool createVendorSync(char * accessToken,
 
 /*! \brief Create a vendor. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VENDORS_ADMIN
  * \param vendor The vendor
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -57,7 +57,7 @@ bool createVendorAsync(char * accessToken,
 
 /*! \brief Create a vendor template. *Synchronous*
  *
- * Vendor Templates define a type of vendor and the properties they have.
+ * Vendor Templates define a type of vendor and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param vendorTemplateResource The new vendor template
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -70,7 +70,7 @@ bool createVendorTemplateSync(char * accessToken,
 
 /*! \brief Create a vendor template. *Asynchronous*
  *
- * Vendor Templates define a type of vendor and the properties they have.
+ * Vendor Templates define a type of vendor and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param vendorTemplateResource The new vendor template
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -84,7 +84,7 @@ bool createVendorTemplateAsync(char * accessToken,
 
 /*! \brief Delete a vendor. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VENDORS_ADMIN
  * \param id The id of the vendor *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -97,7 +97,7 @@ bool deleteVendorSync(char * accessToken,
 
 /*! \brief Delete a vendor. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VENDORS_ADMIN
  * \param id The id of the vendor *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -111,7 +111,7 @@ bool deleteVendorAsync(char * accessToken,
 
 /*! \brief Delete a vendor template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade force deleting the template if it's attached to other objects, cascade = detach
  * \param handler The callback function to be invoked on completion. *Required*
@@ -125,7 +125,7 @@ bool deleteVendorTemplateSync(char * accessToken,
 
 /*! \brief Delete a vendor template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade force deleting the template if it's attached to other objects, cascade = detach
  * \param handler The callback function to be invoked on completion. *Required*
@@ -140,7 +140,7 @@ bool deleteVendorTemplateAsync(char * accessToken,
 
 /*! \brief Get a single vendor. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The id of the vendor *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -153,7 +153,7 @@ bool getVendorSync(char * accessToken,
 
 /*! \brief Get a single vendor. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The id of the vendor *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -167,7 +167,7 @@ bool getVendorAsync(char * accessToken,
 
 /*! \brief Get a single vendor template. *Synchronous*
  *
- * Vendor Templates define a type of vendor and the properties they have.
+ * Vendor Templates define a type of vendor and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -180,7 +180,7 @@ bool getVendorTemplateSync(char * accessToken,
 
 /*! \brief Get a single vendor template. *Asynchronous*
  *
- * Vendor Templates define a type of vendor and the properties they have.
+ * Vendor Templates define a type of vendor and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -194,7 +194,7 @@ bool getVendorTemplateAsync(char * accessToken,
 
 /*! \brief List and search vendor templates. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -209,7 +209,7 @@ bool getVendorTemplatesSync(char * accessToken,
 
 /*! \brief List and search vendor templates. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -225,7 +225,7 @@ bool getVendorTemplatesAsync(char * accessToken,
 
 /*! \brief List and search vendors. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterName Filters vendors by name starting with the text provided in the filter
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -241,7 +241,7 @@ bool getVendorsSync(char * accessToken,
 
 /*! \brief List and search vendors. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param filterName Filters vendors by name starting with the text provided in the filter
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -258,7 +258,7 @@ bool getVendorsAsync(char * accessToken,
 
 /*! \brief Update a vendor. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VENDORS_ADMIN
  * \param id The id of the vendor *Required*
  * \param vendor The vendor
  * \param handler The callback function to be invoked on completion. *Required*
@@ -272,7 +272,7 @@ bool updateVendorSync(char * accessToken,
 
 /*! \brief Update a vendor. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> VENDORS_ADMIN
  * \param id The id of the vendor *Required*
  * \param vendor The vendor
  * \param handler The callback function to be invoked on completion. *Required*
@@ -287,7 +287,7 @@ bool updateVendorAsync(char * accessToken,
 
 /*! \brief Update a vendor template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param vendorTemplateResource The vendor template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -301,7 +301,7 @@ bool updateVendorTemplateSync(char * accessToken,
 
 /*! \brief Update a vendor template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param vendorTemplateResource The vendor template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -317,7 +317,7 @@ bool updateVendorTemplateAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

@@ -27,7 +27,7 @@ public:
 
 /*! \brief Get a list of available actions. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_ACTIONS_USER
  * \param filterCategory Filter for actions that are within a specific category
  * \param filterName Filter for actions that have names containing the given string
  * \param filterTags Filter for actions that have all of the given tags (comma separated list)
@@ -43,7 +43,7 @@ bool getBREActionsSync(char * accessToken,
 
 /*! \brief Get a list of available actions. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> BRE_RULE_ENGINE_ACTIONS_USER
  * \param filterCategory Filter for actions that are within a specific category
  * \param filterName Filter for actions that have names containing the given string
  * \param filterTags Filter for actions that have all of the given tags (comma separated list)
@@ -61,7 +61,7 @@ bool getBREActionsAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

@@ -27,7 +27,7 @@ public:
 
 /*! \brief Delete maintenance info. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> MAINTENANCE_ADMIN
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -39,7 +39,7 @@ bool deleteMaintenanceSync(char * accessToken,
 
 /*! \brief Delete maintenance info. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> MAINTENANCE_ADMIN
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -52,7 +52,7 @@ bool deleteMaintenanceAsync(char * accessToken,
 
 /*! \brief Get current maintenance info. *Synchronous*
  *
- * Get current maintenance info. 404 if no maintenance.
+ * Get current maintenance info. 404 if no maintenance. <br><br><b>Permissions Needed:</b> ANY
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -64,7 +64,7 @@ bool getMaintenanceSync(char * accessToken,
 
 /*! \brief Get current maintenance info. *Asynchronous*
  *
- * Get current maintenance info. 404 if no maintenance.
+ * Get current maintenance info. 404 if no maintenance. <br><br><b>Permissions Needed:</b> ANY
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -77,7 +77,7 @@ bool getMaintenanceAsync(char * accessToken,
 
 /*! \brief Set current maintenance info. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> MAINTENANCE_ADMIN
  * \param maintenance The maintenance object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -90,7 +90,7 @@ bool setMaintenanceSync(char * accessToken,
 
 /*! \brief Set current maintenance info. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> MAINTENANCE_ADMIN
  * \param maintenance The maintenance object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -104,7 +104,7 @@ bool setMaintenanceAsync(char * accessToken,
 
 /*! \brief Update current maintenance info. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> MAINTENANCE_ADMIN
  * \param maintenance The maintenance object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -117,7 +117,7 @@ bool updateMaintenanceSync(char * accessToken,
 
 /*! \brief Update current maintenance info. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> MAINTENANCE_ADMIN
  * \param maintenance The maintenance object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -132,7 +132,7 @@ bool updateMaintenanceAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

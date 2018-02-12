@@ -28,7 +28,7 @@ public:
 
 /*! \brief Add a friend. *Synchronous*
  *
- * As a user, either creates or confirm a pending request. As an admin, call this endpoint twice while inverting the IDs to create a confirmed friendship.
+ * As a user, either creates or confirm a pending request. As an admin, call this endpoint twice while inverting the IDs to create a confirmed friendship. <br><br><b>Permissions Needed:</b> FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)
  * \param userId The id of the user or 'me' if logged in *Required*
  * \param id The id of the user to befriend *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -42,7 +42,7 @@ bool addFriendSync(char * accessToken,
 
 /*! \brief Add a friend. *Asynchronous*
  *
- * As a user, either creates or confirm a pending request. As an admin, call this endpoint twice while inverting the IDs to create a confirmed friendship.
+ * As a user, either creates or confirm a pending request. As an admin, call this endpoint twice while inverting the IDs to create a confirmed friendship. <br><br><b>Permissions Needed:</b> FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)
  * \param userId The id of the user or 'me' if logged in *Required*
  * \param id The id of the user to befriend *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -57,7 +57,7 @@ bool addFriendAsync(char * accessToken,
 
 /*! \brief Get friends list. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)
  * \param userId The id of the user or 'me' *Required*
  * \param filterUsername Filter for friends with the given username
  * \param filterUserId Filter for friends by user id
@@ -74,7 +74,7 @@ bool getFriendsSync(char * accessToken,
 
 /*! \brief Get friends list. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)
  * \param userId The id of the user or 'me' *Required*
  * \param filterUsername Filter for friends with the given username
  * \param filterUserId Filter for friends by user id
@@ -92,7 +92,7 @@ bool getFriendsAsync(char * accessToken,
 
 /*! \brief Returns the invite token. *Synchronous*
  *
- * This is a unique invite token that allows direct connection to the request user.  Exposing that token presents privacy issues if the token is leaked. Use friend request flow instead if confirmation is required
+ * This is a unique invite token that allows direct connection to the request user.  Exposing that token presents privacy issues if the token is leaked. Use friend request. <br><br><b>Permissions Needed:</b> FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)flow instead if confirmation is required
  * \param userId The id of the user or 'me' if logged in *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -105,7 +105,7 @@ bool getInviteTokenSync(char * accessToken,
 
 /*! \brief Returns the invite token. *Asynchronous*
  *
- * This is a unique invite token that allows direct connection to the request user.  Exposing that token presents privacy issues if the token is leaked. Use friend request flow instead if confirmation is required
+ * This is a unique invite token that allows direct connection to the request user.  Exposing that token presents privacy issues if the token is leaked. Use friend request. <br><br><b>Permissions Needed:</b> FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)flow instead if confirmation is required
  * \param userId The id of the user or 'me' if logged in *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -119,7 +119,7 @@ bool getInviteTokenAsync(char * accessToken,
 
 /*! \brief Get pending invites. *Synchronous*
  *
- * Invites that the specified user received
+ * Invites that the specified user received. <br><br><b>Permissions Needed:</b> FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)
  * \param userId The id of the user or 'me' *Required*
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -134,7 +134,7 @@ bool getInvitesSync(char * accessToken,
 
 /*! \brief Get pending invites. *Asynchronous*
  *
- * Invites that the specified user received
+ * Invites that the specified user received. <br><br><b>Permissions Needed:</b> FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)
  * \param userId The id of the user or 'me' *Required*
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -150,7 +150,7 @@ bool getInvitesAsync(char * accessToken,
 
 /*! \brief Redeem friendship token. *Synchronous*
  *
- * Immediately connects the requested user with the user mapped by the provided invite token
+ * Immediately connects the requested user with the user mapped by the provided invite token. <br><br><b>Permissions Needed:</b> FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)
  * \param userId The id of the user or 'me' if logged in *Required*
  * \param token The invite token
  * \param handler The callback function to be invoked on completion. *Required*
@@ -164,7 +164,7 @@ bool redeemFriendshipTokenSync(char * accessToken,
 
 /*! \brief Redeem friendship token. *Asynchronous*
  *
- * Immediately connects the requested user with the user mapped by the provided invite token
+ * Immediately connects the requested user with the user mapped by the provided invite token. <br><br><b>Permissions Needed:</b> FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)
  * \param userId The id of the user or 'me' if logged in *Required*
  * \param token The invite token
  * \param handler The callback function to be invoked on completion. *Required*
@@ -179,7 +179,7 @@ bool redeemFriendshipTokenAsync(char * accessToken,
 
 /*! \brief Remove or decline a friend. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)
  * \param userId The id of the user or 'me' if logged in *Required*
  * \param id The id of the user to befriend *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -193,7 +193,7 @@ bool removeOrDeclineFriendSync(char * accessToken,
 
 /*! \brief Remove or decline a friend. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)
  * \param userId The id of the user or 'me' if logged in *Required*
  * \param id The id of the user to befriend *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -209,7 +209,7 @@ bool removeOrDeclineFriendAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

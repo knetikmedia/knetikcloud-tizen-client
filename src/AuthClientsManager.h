@@ -30,7 +30,7 @@ public:
 
 /*! \brief Create a new client. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CLIENTS_ADMIN
  * \param clientResource The client resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -43,7 +43,7 @@ bool createClientSync(char * accessToken,
 
 /*! \brief Create a new client. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CLIENTS_ADMIN
  * \param clientResource The client resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -57,7 +57,7 @@ bool createClientAsync(char * accessToken,
 
 /*! \brief Delete a client. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CLIENTS_ADMIN
  * \param clientKey The key of the client *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -70,7 +70,7 @@ bool deleteClientSync(char * accessToken,
 
 /*! \brief Delete a client. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CLIENTS_ADMIN
  * \param clientKey The key of the client *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -84,7 +84,7 @@ bool deleteClientAsync(char * accessToken,
 
 /*! \brief Get a single client. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CLIENTS_ADMIN
  * \param clientKey The key of the client *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -97,7 +97,7 @@ bool getClientSync(char * accessToken,
 
 /*! \brief Get a single client. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CLIENTS_ADMIN
  * \param clientKey The key of the client *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -111,7 +111,7 @@ bool getClientAsync(char * accessToken,
 
 /*! \brief List available client grant types. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CLIENTS_ADMIN
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -123,7 +123,7 @@ bool getClientGrantTypesSync(char * accessToken,
 
 /*! \brief List available client grant types. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CLIENTS_ADMIN
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -136,7 +136,7 @@ bool getClientGrantTypesAsync(char * accessToken,
 
 /*! \brief List and search clients. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CLIENTS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -151,7 +151,7 @@ bool getClientsSync(char * accessToken,
 
 /*! \brief List and search clients. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CLIENTS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -167,7 +167,7 @@ bool getClientsAsync(char * accessToken,
 
 /*! \brief Set grant types for a client. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CLIENTS_ADMIN
  * \param clientKey The key of the client *Required*
  * \param grantList A list of unique grant types
  * \param handler The callback function to be invoked on completion. *Required*
@@ -181,7 +181,7 @@ bool setClientGrantTypesSync(char * accessToken,
 
 /*! \brief Set grant types for a client. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CLIENTS_ADMIN
  * \param clientKey The key of the client *Required*
  * \param grantList A list of unique grant types
  * \param handler The callback function to be invoked on completion. *Required*
@@ -196,7 +196,7 @@ bool setClientGrantTypesAsync(char * accessToken,
 
 /*! \brief Set redirect uris for a client. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CLIENTS_ADMIN
  * \param clientKey The key of the client *Required*
  * \param redirectList A list of unique redirect uris
  * \param handler The callback function to be invoked on completion. *Required*
@@ -210,7 +210,7 @@ bool setClientRedirectUrisSync(char * accessToken,
 
 /*! \brief Set redirect uris for a client. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CLIENTS_ADMIN
  * \param clientKey The key of the client *Required*
  * \param redirectList A list of unique redirect uris
  * \param handler The callback function to be invoked on completion. *Required*
@@ -225,7 +225,7 @@ bool setClientRedirectUrisAsync(char * accessToken,
 
 /*! \brief Update a client. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CLIENTS_ADMIN
  * \param clientKey The key of the client *Required*
  * \param clientResource The client resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -239,7 +239,7 @@ bool updateClientSync(char * accessToken,
 
 /*! \brief Update a client. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> CLIENTS_ADMIN
  * \param clientKey The key of the client *Required*
  * \param clientResource The client resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -255,7 +255,7 @@ bool updateClientAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

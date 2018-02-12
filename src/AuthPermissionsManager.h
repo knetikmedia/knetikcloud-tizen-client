@@ -28,7 +28,7 @@ public:
 
 /*! \brief Create a new permission. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PERMISSIONS_ADMIN
  * \param permissionResource The permission resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -41,7 +41,7 @@ bool createPermissionSync(char * accessToken,
 
 /*! \brief Create a new permission. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PERMISSIONS_ADMIN
  * \param permissionResource The permission resource object
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -55,7 +55,7 @@ bool createPermissionAsync(char * accessToken,
 
 /*! \brief Delete a permission. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PERMISSIONS_ADMIN
  * \param permission The permission value *Required*
  * \param force If true, removes permission assigned to roles
  * \param handler The callback function to be invoked on completion. *Required*
@@ -69,7 +69,7 @@ bool deletePermissionSync(char * accessToken,
 
 /*! \brief Delete a permission. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PERMISSIONS_ADMIN
  * \param permission The permission value *Required*
  * \param force If true, removes permission assigned to roles
  * \param handler The callback function to be invoked on completion. *Required*
@@ -84,7 +84,7 @@ bool deletePermissionAsync(char * accessToken,
 
 /*! \brief Get a single permission. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PERMISSIONS_ADMIN
  * \param permission The permission value *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -97,7 +97,7 @@ bool getPermissionSync(char * accessToken,
 
 /*! \brief Get a single permission. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PERMISSIONS_ADMIN
  * \param permission The permission value *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -111,7 +111,7 @@ bool getPermissionAsync(char * accessToken,
 
 /*! \brief List and search permissions. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PERMISSIONS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -126,7 +126,7 @@ bool getPermissionsSync(char * accessToken,
 
 /*! \brief List and search permissions. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PERMISSIONS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -142,7 +142,7 @@ bool getPermissionsAsync(char * accessToken,
 
 /*! \brief Update a permission. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PERMISSIONS_ADMIN
  * \param permission The permission value *Required*
  * \param permissionResource The permission resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -156,7 +156,7 @@ bool updatePermissionSync(char * accessToken,
 
 /*! \brief Update a permission. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> PERMISSIONS_ADMIN
  * \param permission The permission value *Required*
  * \param permissionResource The permission resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -172,7 +172,7 @@ bool updatePermissionAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

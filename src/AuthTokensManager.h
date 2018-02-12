@@ -28,7 +28,7 @@ public:
 
 /*! \brief Delete tokens by username, client id, or both. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TOKENS_ADMIN
  * \param username The username of the user
  * \param clientId The id of the client
  * \param handler The callback function to be invoked on completion. *Required*
@@ -42,7 +42,7 @@ bool deleteTokensSync(char * accessToken,
 
 /*! \brief Delete tokens by username, client id, or both. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TOKENS_ADMIN
  * \param username The username of the user
  * \param clientId The id of the client
  * \param handler The callback function to be invoked on completion. *Required*
@@ -57,7 +57,7 @@ bool deleteTokensAsync(char * accessToken,
 
 /*! \brief Get a single token by username and client id. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TOKENS_ADMIN
  * \param username The username of the user *Required*
  * \param clientId The id of the client *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -71,7 +71,7 @@ bool getTokenSync(char * accessToken,
 
 /*! \brief Get a single token by username and client id. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TOKENS_ADMIN
  * \param username The username of the user *Required*
  * \param clientId The id of the client *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -86,7 +86,7 @@ bool getTokenAsync(char * accessToken,
 
 /*! \brief List usernames and client ids. *Synchronous*
  *
- * Token value not shown
+ * Token value not shown. <br><br><b>Permissions Needed:</b> TOKENS_ADMIN
  * \param filterClientId Filters for token whose client id matches provided string
  * \param filterUsername Filters for token whose username matches provided string
  * \param size The number of objects returned per page
@@ -103,7 +103,7 @@ bool getTokensSync(char * accessToken,
 
 /*! \brief List usernames and client ids. *Asynchronous*
  *
- * Token value not shown
+ * Token value not shown. <br><br><b>Permissions Needed:</b> TOKENS_ADMIN
  * \param filterClientId Filters for token whose client id matches provided string
  * \param filterUsername Filters for token whose username matches provided string
  * \param size The number of objects returned per page
@@ -122,7 +122,7 @@ bool getTokensAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

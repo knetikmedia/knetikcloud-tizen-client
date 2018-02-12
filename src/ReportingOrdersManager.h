@@ -27,7 +27,7 @@ public:
 
 /*! \brief Retrieve invoice counts aggregated by time ranges. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> REPORTING_ORDERS_ADMIN
  * \param currencyCode The code for a currency to get sales data for *Required*
  * \param granularity The time duration to aggregate by
  * \param filterPaymentStatus A payment status to filter results by, can be a comma separated list
@@ -47,7 +47,7 @@ bool getInvoiceReportsSync(char * accessToken,
 
 /*! \brief Retrieve invoice counts aggregated by time ranges. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> REPORTING_ORDERS_ADMIN
  * \param currencyCode The code for a currency to get sales data for *Required*
  * \param granularity The time duration to aggregate by
  * \param filterPaymentStatus A payment status to filter results by, can be a comma separated list
@@ -69,7 +69,7 @@ bool getInvoiceReportsAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/

@@ -33,7 +33,7 @@ public:
 
 /*! \brief Create an item template. *Synchronous*
  *
- * Item Templates define a type of item and the properties they have.
+ * Item Templates define a type of item and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param itemTemplateResource The new item template
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -46,7 +46,7 @@ bool createItemTemplateSync(char * accessToken,
 
 /*! \brief Create an item template. *Asynchronous*
  *
- * Item Templates define a type of item and the properties they have.
+ * Item Templates define a type of item and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param itemTemplateResource The new item template
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -60,7 +60,7 @@ bool createItemTemplateAsync(char * accessToken,
 
 /*! \brief Create a store item. *Synchronous*
  *
- * SKUs have to be unique in the entire store. If a duplicate SKU is found, a 400 error is generated and the response will have a \"parameters\" field that is a list of duplicates. A duplicate is an object like {item_id, offending_sku_list}. Ex:<br /> {..., parameters: [[{item: 1, skus: [\"SKU-1\"]}]]}<br /> If an item is brand new and has duplicate SKUs within itself, the item ID will be 0.  Item subclasses are not allowed here, you will have to use their respective endpoints.
+ * SKUs have to be unique in the entire store. If a duplicate SKU is found, a 400 error is generated and the response will have a \"parameters\" field that is a list of duplicates. A duplicate is an object like {item_id, offending_sku_list}. Ex:<br /> {..., parameters: [[{item: 1, skus: [\"SKU-1\"]}]]}<br /> If an item is brand new and has duplicate SKUs within itself, the item ID will be 0.  Item subclasses are not allowed here, you will have to use their respective endpoints. <br><br><b>Permissions Needed:</b> STORE_ADMIN
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param storeItem The store item object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -74,7 +74,7 @@ bool createStoreItemSync(char * accessToken,
 
 /*! \brief Create a store item. *Asynchronous*
  *
- * SKUs have to be unique in the entire store. If a duplicate SKU is found, a 400 error is generated and the response will have a \"parameters\" field that is a list of duplicates. A duplicate is an object like {item_id, offending_sku_list}. Ex:<br /> {..., parameters: [[{item: 1, skus: [\"SKU-1\"]}]]}<br /> If an item is brand new and has duplicate SKUs within itself, the item ID will be 0.  Item subclasses are not allowed here, you will have to use their respective endpoints.
+ * SKUs have to be unique in the entire store. If a duplicate SKU is found, a 400 error is generated and the response will have a \"parameters\" field that is a list of duplicates. A duplicate is an object like {item_id, offending_sku_list}. Ex:<br /> {..., parameters: [[{item: 1, skus: [\"SKU-1\"]}]]}<br /> If an item is brand new and has duplicate SKUs within itself, the item ID will be 0.  Item subclasses are not allowed here, you will have to use their respective endpoints. <br><br><b>Permissions Needed:</b> STORE_ADMIN
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param storeItem The store item object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -89,7 +89,7 @@ bool createStoreItemAsync(char * accessToken,
 
 /*! \brief Delete an item template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade force deleting the template if it's attached to other objects, cascade = detach
  * \param handler The callback function to be invoked on completion. *Required*
@@ -103,7 +103,7 @@ bool deleteItemTemplateSync(char * accessToken,
 
 /*! \brief Delete an item template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param cascade force deleting the template if it's attached to other objects, cascade = detach
  * \param handler The callback function to be invoked on completion. *Required*
@@ -118,7 +118,7 @@ bool deleteItemTemplateAsync(char * accessToken,
 
 /*! \brief Delete a store item. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> STORE_ADMIN
  * \param id The id of the item *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -131,7 +131,7 @@ bool deleteStoreItemSync(char * accessToken,
 
 /*! \brief Delete a store item. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> STORE_ADMIN
  * \param id The id of the item *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -145,7 +145,7 @@ bool deleteStoreItemAsync(char * accessToken,
 
 /*! \brief List available item behaviors. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -157,7 +157,7 @@ bool getBehaviorsSync(char * accessToken,
 
 /*! \brief List available item behaviors. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -170,7 +170,7 @@ bool getBehaviorsAsync(char * accessToken,
 
 /*! \brief Get a single item template. *Synchronous*
  *
- * Item Templates define a type of item and the properties they have.
+ * Item Templates define a type of item and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -183,7 +183,7 @@ bool getItemTemplateSync(char * accessToken,
 
 /*! \brief Get a single item template. *Asynchronous*
  *
- * Item Templates define a type of item and the properties they have.
+ * Item Templates define a type of item and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -197,7 +197,7 @@ bool getItemTemplateAsync(char * accessToken,
 
 /*! \brief List and search item templates. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -212,7 +212,7 @@ bool getItemTemplatesSync(char * accessToken,
 
 /*! \brief List and search item templates. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -228,7 +228,7 @@ bool getItemTemplatesAsync(char * accessToken,
 
 /*! \brief Get a single store item. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The id of the item *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -241,7 +241,7 @@ bool getStoreItemSync(char * accessToken,
 
 /*! \brief Get a single store item. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ANY
  * \param id The id of the item *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -255,7 +255,7 @@ bool getStoreItemAsync(char * accessToken,
 
 /*! \brief List and search store items. *Synchronous*
  *
- * If called without permission STORE_ADMIN the only items marked displayable, whose start and end date are null or appropriate to the current date, and whose geo policy allows the caller's country will be returned. Similarly skus will be filtered, possibly resulting in an item returned with no skus the user can purchase.
+ * If called without permission STORE_ADMIN the only items marked displayable, whose start and end date are null or appropriate to the current date, and whose geo policy allows the caller's country will be returned. Similarly skus will be filtered, possibly resulting in an item returned with no skus the user can purchase. br><br><b>Permissions Needed:</b> ANY
  * \param filterNameSearch Filter for items whose name starts with a given string.
  * \param filterUniqueKey Filter for items whose unique_key is a given string.
  * \param filterPublished Filter for skus that have been published.
@@ -284,7 +284,7 @@ bool getStoreItemsSync(char * accessToken,
 
 /*! \brief List and search store items. *Asynchronous*
  *
- * If called without permission STORE_ADMIN the only items marked displayable, whose start and end date are null or appropriate to the current date, and whose geo policy allows the caller's country will be returned. Similarly skus will be filtered, possibly resulting in an item returned with no skus the user can purchase.
+ * If called without permission STORE_ADMIN the only items marked displayable, whose start and end date are null or appropriate to the current date, and whose geo policy allows the caller's country will be returned. Similarly skus will be filtered, possibly resulting in an item returned with no skus the user can purchase. br><br><b>Permissions Needed:</b> ANY
  * \param filterNameSearch Filter for items whose name starts with a given string.
  * \param filterUniqueKey Filter for items whose unique_key is a given string.
  * \param filterPublished Filter for skus that have been published.
@@ -314,7 +314,7 @@ bool getStoreItemsAsync(char * accessToken,
 
 /*! \brief One-step purchase and pay for a single SKU item from a user's wallet. *Synchronous*
  *
- * Used to create and automatically pay an invoice for a single unit of a single SKU from a user's wallet. SKU must be priced in virtual currency and must not be an item that requires shipping. PAYMENTS_ADMIN permission is required if user ID is specified and is not the ID of the currently logged in user. If invoice price does not match expected price, purchase is aborted
+ * Used to create and automatically pay an invoice for a single unit of a single SKU from a user's wallet. SKU must be priced in virtual currency and must not be an item that requires shipping. PAYMENTS_ADMIN permission is required if user ID is specified and is not the ID of the currently logged in user. If invoice price does not match expected price, purchase is aborted. <br><br><b>Permissions Needed:</b> PAYMENTS_USER and owner, or PAYMENTS_ADMIN
  * \param quickBuyRequest Quick buy details
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -327,7 +327,7 @@ bool quickBuySync(char * accessToken,
 
 /*! \brief One-step purchase and pay for a single SKU item from a user's wallet. *Asynchronous*
  *
- * Used to create and automatically pay an invoice for a single unit of a single SKU from a user's wallet. SKU must be priced in virtual currency and must not be an item that requires shipping. PAYMENTS_ADMIN permission is required if user ID is specified and is not the ID of the currently logged in user. If invoice price does not match expected price, purchase is aborted
+ * Used to create and automatically pay an invoice for a single unit of a single SKU from a user's wallet. SKU must be priced in virtual currency and must not be an item that requires shipping. PAYMENTS_ADMIN permission is required if user ID is specified and is not the ID of the currently logged in user. If invoice price does not match expected price, purchase is aborted. <br><br><b>Permissions Needed:</b> PAYMENTS_USER and owner, or PAYMENTS_ADMIN
  * \param quickBuyRequest Quick buy details
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -341,7 +341,7 @@ bool quickBuyAsync(char * accessToken,
 
 /*! \brief Update an item template. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param itemTemplateResource The item template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -355,7 +355,7 @@ bool updateItemTemplateSync(char * accessToken,
 
 /*! \brief Update an item template. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> TEMPLATE_ADMIN
  * \param id The id of the template *Required*
  * \param itemTemplateResource The item template resource object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -370,7 +370,7 @@ bool updateItemTemplateAsync(char * accessToken,
 
 /*! \brief Update a store item. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> STORE_ADMIN
  * \param id The id of the item *Required*
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param storeItem The store item object
@@ -385,7 +385,7 @@ bool updateStoreItemSync(char * accessToken,
 
 /*! \brief Update a store item. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> STORE_ADMIN
  * \param id The id of the item *Required*
  * \param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
  * \param storeItem The store item object
@@ -402,7 +402,7 @@ bool updateStoreItemAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://devsandbox.knetikcloud.com";
+		return "https://sandbox.knetikcloud.com";
 	}
 };
 /** @}*/
