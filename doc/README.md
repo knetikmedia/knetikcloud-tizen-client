@@ -39,9 +39,9 @@ Doxygen is the de facto standard tool for generating/extracting documentation fr
 Check out [Doxygen](https://www.doxygen.org/) for additional information about the Doxygen project.
 
 ## I Don't want to run Doxygen. What are the API files for accessing the REST endpoints?
-All URIs are relative to https://sandbox.knetikcloud.comhttps://sandbox.knetikcloud.com
+All URIs are relative to https://jsapi-integration.us-east-1.elasticbeanstalk.comhttps://jsapi-integration.us-east-1.elasticbeanstalk.com
 
-### AccessTokenManager
+### Access_TokenManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *getOAuthTokenSync* | *POST* /oauth/token | Get access token.
@@ -89,7 +89,7 @@ Method | HTTP request | Description
 *updateActivityTemplateSync* | *PUT* /activities/templates/{id} | Update an activity template.
 *updateActivityTemplateASync* | *PUT* /activities/templates/{id} | Update an activity template.
 
-### AmazonWebServicesS3Manager
+### Amazon_Web_Services_S3Manager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *getDownloadURLSync* | *GET* /amazon/s3/downloadurl | Get a temporary signed S3 URL for download.
@@ -97,7 +97,7 @@ Method | HTTP request | Description
 *getSignedS3URLSync* | *GET* /amazon/s3/signedposturl | Get a signed S3 URL for upload.
 *getSignedS3URLASync* | *GET* /amazon/s3/signedposturl | Get a signed S3 URL for upload.
 
-### AuthClientsManager
+### Auth_ClientsManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *createClientSync* | *POST* /auth/clients | Create a new client.
@@ -117,7 +117,7 @@ Method | HTTP request | Description
 *updateClientSync* | *PUT* /auth/clients/{client_key} | Update a client.
 *updateClientASync* | *PUT* /auth/clients/{client_key} | Update a client.
 
-### AuthPermissionsManager
+### Auth_PermissionsManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *createPermissionSync* | *POST* /auth/permissions | Create a new permission.
@@ -131,7 +131,7 @@ Method | HTTP request | Description
 *updatePermissionSync* | *PUT* /auth/permissions/{permission} | Update a permission.
 *updatePermissionASync* | *PUT* /auth/permissions/{permission} | Update a permission.
 
-### AuthRolesManager
+### Auth_RolesManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *createRoleSync* | *POST* /auth/roles | Create a new role.
@@ -155,7 +155,7 @@ Method | HTTP request | Description
 *updateRoleSync* | *PUT* /auth/roles/{role} | Update a role.
 *updateRoleASync* | *PUT* /auth/roles/{role} | Update a role.
 
-### AuthTokensManager
+### Auth_TokensManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *deleteTokensSync* | *DELETE* /auth/tokens | Delete tokens by username, client id, or both.
@@ -164,102 +164,6 @@ Method | HTTP request | Description
 *getTokenASync* | *GET* /auth/tokens/{username}/{client_id} | Get a single token by username and client id.
 *getTokensSync* | *GET* /auth/tokens | List usernames and client ids.
 *getTokensASync* | *GET* /auth/tokens | List usernames and client ids.
-
-### BRERuleEngineActionsManager
-Method | HTTP request | Description
-------------- | ------------- | -------------
-*getBREActionsSync* | *GET* /bre/actions | Get a list of available actions.
-*getBREActionsASync* | *GET* /bre/actions | Get a list of available actions.
-
-### BRERuleEngineCategoriesManager
-Method | HTTP request | Description
-------------- | ------------- | -------------
-*createBRECategoryTemplateSync* | *POST* /bre/categories/templates | Create a BRE category template.
-*createBRECategoryTemplateASync* | *POST* /bre/categories/templates | Create a BRE category template.
-*deleteBRECategoryTemplateSync* | *DELETE* /bre/categories/templates/{id} | Delete a BRE category template.
-*deleteBRECategoryTemplateASync* | *DELETE* /bre/categories/templates/{id} | Delete a BRE category template.
-*getBRECategoriesSync* | *GET* /bre/categories | List categories.
-*getBRECategoriesASync* | *GET* /bre/categories | List categories.
-*getBRECategorySync* | *GET* /bre/categories/{name} | Get a single category.
-*getBRECategoryASync* | *GET* /bre/categories/{name} | Get a single category.
-*getBRECategoryTemplateSync* | *GET* /bre/categories/templates/{id} | Get a single BRE category template.
-*getBRECategoryTemplateASync* | *GET* /bre/categories/templates/{id} | Get a single BRE category template.
-*getBRECategoryTemplatesSync* | *GET* /bre/categories/templates | List and search BRE category templates.
-*getBRECategoryTemplatesASync* | *GET* /bre/categories/templates | List and search BRE category templates.
-*updateBRECategorySync* | *PUT* /bre/categories/{name} | Update a category.
-*updateBRECategoryASync* | *PUT* /bre/categories/{name} | Update a category.
-*updateBRECategoryTemplateSync* | *PUT* /bre/categories/templates/{id} | Update a BRE category template.
-*updateBRECategoryTemplateASync* | *PUT* /bre/categories/templates/{id} | Update a BRE category template.
-
-### BRERuleEngineEventsManager
-Method | HTTP request | Description
-------------- | ------------- | -------------
-*sendBREEventSync* | *POST* /bre/events | Fire a new event, based on an existing trigger.
-*sendBREEventASync* | *POST* /bre/events | Fire a new event, based on an existing trigger.
-
-### BRERuleEngineExpressionsManager
-Method | HTTP request | Description
-------------- | ------------- | -------------
-*getBREExpressionSync* | *GET* /bre/expressions/{type} | Lookup a specific expression.
-*getBREExpressionASync* | *GET* /bre/expressions/{type} | Lookup a specific expression.
-*getBREExpressionsSync* | *GET* /bre/expressions | Get a list of supported expressions to use in conditions or actions.
-*getBREExpressionsASync* | *GET* /bre/expressions | Get a list of supported expressions to use in conditions or actions.
-*getExpressionAsTextSync* | *POST* /bre/expressions | Returns the textual representation of an expression.
-*getExpressionAsTextASync* | *POST* /bre/expressions | Returns the textual representation of an expression.
-
-### BRERuleEngineGlobalsManager
-Method | HTTP request | Description
-------------- | ------------- | -------------
-*createBREGlobalSync* | *POST* /bre/globals/definitions | Create a global definition.
-*createBREGlobalASync* | *POST* /bre/globals/definitions | Create a global definition.
-*deleteBREGlobalSync* | *DELETE* /bre/globals/definitions/{id} | Delete a global.
-*deleteBREGlobalASync* | *DELETE* /bre/globals/definitions/{id} | Delete a global.
-*getBREGlobalSync* | *GET* /bre/globals/definitions/{id} | Get a single global definition.
-*getBREGlobalASync* | *GET* /bre/globals/definitions/{id} | Get a single global definition.
-*getBREGlobalsSync* | *GET* /bre/globals/definitions | List global definitions.
-*getBREGlobalsASync* | *GET* /bre/globals/definitions | List global definitions.
-*updateBREGlobalSync* | *PUT* /bre/globals/definitions/{id} | Update a global definition.
-*updateBREGlobalASync* | *PUT* /bre/globals/definitions/{id} | Update a global definition.
-
-### BRERuleEngineRulesManager
-Method | HTTP request | Description
-------------- | ------------- | -------------
-*createBRERuleSync* | *POST* /bre/rules | Create a rule.
-*createBRERuleASync* | *POST* /bre/rules | Create a rule.
-*deleteBRERuleSync* | *DELETE* /bre/rules/{id} | Delete a rule.
-*deleteBRERuleASync* | *DELETE* /bre/rules/{id} | Delete a rule.
-*getBREExpressionAsStringSync* | *POST* /bre/rules/expression-as-string | Returns a string representation of the provided expression.
-*getBREExpressionAsStringASync* | *POST* /bre/rules/expression-as-string | Returns a string representation of the provided expression.
-*getBRERuleSync* | *GET* /bre/rules/{id} | Get a single rule.
-*getBRERuleASync* | *GET* /bre/rules/{id} | Get a single rule.
-*getBRERulesSync* | *GET* /bre/rules | List rules.
-*getBRERulesASync* | *GET* /bre/rules | List rules.
-*setBRERuleSync* | *PUT* /bre/rules/{id}/enabled | Enable or disable a rule.
-*setBRERuleASync* | *PUT* /bre/rules/{id}/enabled | Enable or disable a rule.
-*updateBRERuleSync* | *PUT* /bre/rules/{id} | Update a rule.
-*updateBRERuleASync* | *PUT* /bre/rules/{id} | Update a rule.
-
-### BRERuleEngineTriggersManager
-Method | HTTP request | Description
-------------- | ------------- | -------------
-*createBRETriggerSync* | *POST* /bre/triggers | Create a trigger.
-*createBRETriggerASync* | *POST* /bre/triggers | Create a trigger.
-*deleteBRETriggerSync* | *DELETE* /bre/triggers/{event_name} | Delete a trigger.
-*deleteBRETriggerASync* | *DELETE* /bre/triggers/{event_name} | Delete a trigger.
-*getBRETriggerSync* | *GET* /bre/triggers/{event_name} | Get a single trigger.
-*getBRETriggerASync* | *GET* /bre/triggers/{event_name} | Get a single trigger.
-*getBRETriggersSync* | *GET* /bre/triggers | List triggers.
-*getBRETriggersASync* | *GET* /bre/triggers | List triggers.
-*updateBRETriggerSync* | *PUT* /bre/triggers/{event_name} | Update a trigger.
-*updateBRETriggerASync* | *PUT* /bre/triggers/{event_name} | Update a trigger.
-
-### BRERuleEngineVariablesManager
-Method | HTTP request | Description
-------------- | ------------- | -------------
-*getBREVariableTypesSync* | *GET* /bre/variable-types | Get a list of variable types available.
-*getBREVariableTypesASync* | *GET* /bre/variable-types | Get a list of variable types available.
-*getBREVariableValuesSync* | *GET* /bre/variable-types/{name}/values | List valid values for a type.
-*getBREVariableValuesASync* | *GET* /bre/variable-types/{name}/values | List valid values for a type.
 
 ### CampaignsManager
 Method | HTTP request | Description
@@ -291,7 +195,7 @@ Method | HTTP request | Description
 *updateCampaignTemplateSync* | *PUT* /campaigns/templates/{id} | Update an campaign template.
 *updateCampaignTemplateASync* | *PUT* /campaigns/templates/{id} | Update an campaign template.
 
-### CampaignsChallengesManager
+### Campaigns_ChallengesManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *createChallengeSync* | *POST* /challenges | Create a challenge.
@@ -341,7 +245,7 @@ Method | HTTP request | Description
 *updateChallengeTemplateSync* | *PUT* /challenges/templates/{id} | Update a challenge template.
 *updateChallengeTemplateASync* | *PUT* /challenges/templates/{id} | Update a challenge template.
 
-### CampaignsRewardsManager
+### Campaigns_RewardsManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *createRewardSetSync* | *POST* /rewards | Create a reward set.
@@ -406,8 +310,8 @@ Method | HTTP request | Description
 *getTopicMessagesASync* | *GET* /chat/topics/{id}/messages | List messages in a topic.
 *removeChatBlacklistSync* | *DELETE* /chat/users/{id}/blacklist/{blacklisted_user_id} | Remove a user from a blacklist.
 *removeChatBlacklistASync* | *DELETE* /chat/users/{id}/blacklist/{blacklisted_user_id} | Remove a user from a blacklist.
-*sendMessageSync* | *POST* /chat/messages | Send a message.
-*sendMessageASync* | *POST* /chat/messages | Send a message.
+*sendChatMessageSync* | *POST* /chat/messages | Send a message.
+*sendChatMessageASync* | *POST* /chat/messages | Send a message.
 
 ### ConfigsManager
 Method | HTTP request | Description
@@ -423,17 +327,21 @@ Method | HTTP request | Description
 *updateConfigSync* | *PUT* /configs/{name} | Update an existing config.
 *updateConfigASync* | *PUT* /configs/{name} | Update an existing config.
 
-### ContentArticlesManager
+### Content_ArticlesManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *createArticleSync* | *POST* /content/articles | Create a new article.
 *createArticleASync* | *POST* /content/articles | Create a new article.
 *createArticleTemplateSync* | *POST* /content/articles/templates | Create an article template.
 *createArticleTemplateASync* | *POST* /content/articles/templates | Create an article template.
+*createTemplateSync* | *POST* /templates/{type_hint} | Create a template.
+*createTemplateASync* | *POST* /templates/{type_hint} | Create a template.
 *deleteArticleSync* | *DELETE* /content/articles/{id} | Delete an existing article.
 *deleteArticleASync* | *DELETE* /content/articles/{id} | Delete an existing article.
 *deleteArticleTemplateSync* | *DELETE* /content/articles/templates/{id} | Delete an article template.
 *deleteArticleTemplateASync* | *DELETE* /content/articles/templates/{id} | Delete an article template.
+*deleteTemplateSync* | *DELETE* /templates/{type_hint}/{id} | Delete a template.
+*deleteTemplateASync* | *DELETE* /templates/{type_hint}/{id} | Delete a template.
 *getArticleSync* | *GET* /content/articles/{id} | Get a single article.
 *getArticleASync* | *GET* /content/articles/{id} | Get a single article.
 *getArticleTemplateSync* | *GET* /content/articles/templates/{id} | Get a single article template.
@@ -442,12 +350,20 @@ Method | HTTP request | Description
 *getArticleTemplatesASync* | *GET* /content/articles/templates | List and search article templates.
 *getArticlesSync* | *GET* /content/articles | List and search articles.
 *getArticlesASync* | *GET* /content/articles | List and search articles.
+*getTemplateSync* | *GET* /templates/{type_hint}/{id} | Get a template.
+*getTemplateASync* | *GET* /templates/{type_hint}/{id} | Get a template.
+*getTemplatesSync* | *GET* /templates/{type_hint} | List and search templates.
+*getTemplatesASync* | *GET* /templates/{type_hint} | List and search templates.
 *updateArticleSync* | *PUT* /content/articles/{id} | Update an existing article.
 *updateArticleASync* | *PUT* /content/articles/{id} | Update an existing article.
 *updateArticleTemplateSync* | *PUT* /content/articles/templates/{id} | Update an article template.
 *updateArticleTemplateASync* | *PUT* /content/articles/templates/{id} | Update an article template.
+*updateTemplateSync* | *PUT* /templates/{type_hint}/{id} | Update a template.
+*updateTemplateASync* | *PUT* /templates/{type_hint}/{id} | Update a template.
+*validateSync* | *POST* /templates/{type_hint}/validate | Validate a templated resource.
+*validateASync* | *POST* /templates/{type_hint}/validate | Validate a templated resource.
 
-### ContentCommentsManager
+### Content_CommentsManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *addCommentSync* | *POST* /comments | Add a new comment.
@@ -460,34 +376,6 @@ Method | HTTP request | Description
 *getCommentsASync* | *GET* /comments | Returns a page of comments.
 *updateCommentSync* | *PUT* /comments/{id}/content | Update a comment.
 *updateCommentASync* | *PUT* /comments/{id}/content | Update a comment.
-
-### ContentPollsManager
-Method | HTTP request | Description
-------------- | ------------- | -------------
-*answerPollSync* | *POST* /media/polls/{id}/response | Add your vote to a poll.
-*answerPollASync* | *POST* /media/polls/{id}/response | Add your vote to a poll.
-*createPollSync* | *POST* /media/polls | Create a new poll.
-*createPollASync* | *POST* /media/polls | Create a new poll.
-*createPollTemplateSync* | *POST* /media/polls/templates | Create a poll template.
-*createPollTemplateASync* | *POST* /media/polls/templates | Create a poll template.
-*deletePollSync* | *DELETE* /media/polls/{id} | Delete an existing poll.
-*deletePollASync* | *DELETE* /media/polls/{id} | Delete an existing poll.
-*deletePollTemplateSync* | *DELETE* /media/polls/templates/{id} | Delete a poll template.
-*deletePollTemplateASync* | *DELETE* /media/polls/templates/{id} | Delete a poll template.
-*getPollSync* | *GET* /media/polls/{id} | Get a single poll.
-*getPollASync* | *GET* /media/polls/{id} | Get a single poll.
-*getPollAnswerSync* | *GET* /media/polls/{id}/response | Get poll answer.
-*getPollAnswerASync* | *GET* /media/polls/{id}/response | Get poll answer.
-*getPollTemplateSync* | *GET* /media/polls/templates/{id} | Get a single poll template.
-*getPollTemplateASync* | *GET* /media/polls/templates/{id} | Get a single poll template.
-*getPollTemplatesSync* | *GET* /media/polls/templates | List and search poll templates.
-*getPollTemplatesASync* | *GET* /media/polls/templates | List and search poll templates.
-*getPollsSync* | *GET* /media/polls | List and search polls.
-*getPollsASync* | *GET* /media/polls | List and search polls.
-*updatePollSync* | *PUT* /media/polls/{id} | Update an existing poll.
-*updatePollASync* | *PUT* /media/polls/{id} | Update an existing poll.
-*updatePollTemplateSync* | *PUT* /media/polls/templates/{id} | Update a poll template.
-*updatePollTemplateASync* | *PUT* /media/polls/templates/{id} | Update a poll template.
 
 ### CurrenciesManager
 Method | HTTP request | Description
@@ -561,7 +449,7 @@ Method | HTTP request | Description
 *updateFulfillmentTypeSync* | *PUT* /store/fulfillment/types/{id} | Update a fulfillment type.
 *updateFulfillmentTypeASync* | *PUT* /store/fulfillment/types/{id} | Update a fulfillment type.
 
-### GamificationAchievementsManager
+### Gamification_AchievementsManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *createAchievementSync* | *POST* /achievements | Create a new achievement definition.
@@ -601,7 +489,7 @@ Method | HTTP request | Description
 *updateAchievementTemplateSync* | *PUT* /achievements/templates/{id} | Update an achievement template.
 *updateAchievementTemplateASync* | *PUT* /achievements/templates/{id} | Update an achievement template.
 
-### GamificationLeaderboardsManager
+### Gamification_LeaderboardsManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *getLeaderboardSync* | *GET* /leaderboards/{context_type}/{context_id} | Retrieves leaderboard details and paginated entries.
@@ -611,7 +499,7 @@ Method | HTTP request | Description
 *getLeaderboardStrategiesSync* | *GET* /leaderboards/strategies | Get a list of available leaderboard strategy names.
 *getLeaderboardStrategiesASync* | *GET* /leaderboards/strategies | Get a list of available leaderboard strategy names.
 
-### GamificationLevelingManager
+### Gamification_LevelingManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *createLevelSync* | *POST* /leveling | Create a level schema.
@@ -635,13 +523,13 @@ Method | HTTP request | Description
 *updateLevelSync* | *PUT* /leveling/{name} | Update a level.
 *updateLevelASync* | *PUT* /leveling/{name} | Update a level.
 
-### GamificationMetricsManager
+### Gamification_MetricsManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *addMetricSync* | *POST* /metrics | Add a metric.
 *addMetricASync* | *POST* /metrics | Add a metric.
 
-### GamificationTriviaManager
+### Gamification_TriviaManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *addQuestionAnswersSync* | *POST* /trivia/questions/{question_id}/answers | Add an answer to a question.
@@ -765,7 +653,7 @@ Method | HTTP request | Description
 *getUserLogsSync* | *GET* /audit/logs | Returns a page of user logs entries.
 *getUserLogsASync* | *GET* /audit/logs | Returns a page of user logs entries.
 
-### MediaArtistsManager
+### Media_ArtistsManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *addArtistSync* | *POST* /media/artists | Adds a new artist in the system.
@@ -789,7 +677,7 @@ Method | HTTP request | Description
 *updateArtistTemplateSync* | *PUT* /media/artists/templates/{id} | Update an artist template.
 *updateArtistTemplateASync* | *PUT* /media/artists/templates/{id} | Update an artist template.
 
-### MediaModerationManager
+### Media_ModerationManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *addFlagSync* | *POST* /moderation/flags | Add a flag.
@@ -805,7 +693,35 @@ Method | HTTP request | Description
 *updateModerationReportSync* | *PUT* /moderation/reports/{id} | Update a flag report.
 *updateModerationReportASync* | *PUT* /moderation/reports/{id} | Update a flag report.
 
-### MediaVideosManager
+### Media_PollsManager
+Method | HTTP request | Description
+------------- | ------------- | -------------
+*answerPollSync* | *POST* /media/polls/{id}/response | Add your vote to a poll.
+*answerPollASync* | *POST* /media/polls/{id}/response | Add your vote to a poll.
+*createPollSync* | *POST* /media/polls | Create a new poll.
+*createPollASync* | *POST* /media/polls | Create a new poll.
+*createPollTemplateSync* | *POST* /media/polls/templates | Create a poll template.
+*createPollTemplateASync* | *POST* /media/polls/templates | Create a poll template.
+*deletePollSync* | *DELETE* /media/polls/{id} | Delete an existing poll.
+*deletePollASync* | *DELETE* /media/polls/{id} | Delete an existing poll.
+*deletePollTemplateSync* | *DELETE* /media/polls/templates/{id} | Delete a poll template.
+*deletePollTemplateASync* | *DELETE* /media/polls/templates/{id} | Delete a poll template.
+*getPollSync* | *GET* /media/polls/{id} | Get a single poll.
+*getPollASync* | *GET* /media/polls/{id} | Get a single poll.
+*getPollAnswerSync* | *GET* /media/polls/{id}/response | Get poll answer.
+*getPollAnswerASync* | *GET* /media/polls/{id}/response | Get poll answer.
+*getPollTemplateSync* | *GET* /media/polls/templates/{id} | Get a single poll template.
+*getPollTemplateASync* | *GET* /media/polls/templates/{id} | Get a single poll template.
+*getPollTemplatesSync* | *GET* /media/polls/templates | List and search poll templates.
+*getPollTemplatesASync* | *GET* /media/polls/templates | List and search poll templates.
+*getPollsSync* | *GET* /media/polls | List and search polls.
+*getPollsASync* | *GET* /media/polls | List and search polls.
+*updatePollSync* | *PUT* /media/polls/{id} | Update an existing poll.
+*updatePollASync* | *PUT* /media/polls/{id} | Update an existing poll.
+*updatePollTemplateSync* | *PUT* /media/polls/templates/{id} | Update a poll template.
+*updatePollTemplateASync* | *PUT* /media/polls/templates/{id} | Update a poll template.
+
+### Media_VideosManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *addUserToVideoWhitelistSync* | *POST* /media/videos/{id}/whitelist | Adds a user to a video's whitelist.
@@ -880,8 +796,8 @@ Method | HTTP request | Description
 *getMessageTemplateASync* | *GET* /messaging/templates/{id} | Get a single message template.
 *getMessageTemplatesSync* | *GET* /messaging/templates | List and search message templates.
 *getMessageTemplatesASync* | *GET* /messaging/templates | List and search message templates.
-*sendMessage1Sync* | *POST* /messaging/message | Send a message.
-*sendMessage1ASync* | *POST* /messaging/message | Send a message.
+*sendMessageSync* | *POST* /messaging/message | Send a message.
+*sendMessageASync* | *POST* /messaging/message | Send a message.
 *sendRawEmailSync* | *POST* /messaging/raw-email | Send a raw email to one or more users.
 *sendRawEmailASync* | *POST* /messaging/raw-email | Send a raw email to one or more users.
 *sendRawPushSync* | *POST* /messaging/raw-push | Send a raw push notification.
@@ -899,15 +815,13 @@ Method | HTTP request | Description
 *updateMessageTemplateSync* | *PUT* /messaging/templates/{id} | Update an existing message template.
 *updateMessageTemplateASync* | *PUT* /messaging/templates/{id} | Update an existing message template.
 
-### MessagingTopicsManager
+### Messaging_TopicsManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *disableTopicSubscriberSync* | *PUT* /messaging/topics/{id}/subscribers/{user_id}/disabled | Enable or disable messages for a user.
 *disableTopicSubscriberASync* | *PUT* /messaging/topics/{id}/subscribers/{user_id}/disabled | Enable or disable messages for a user.
 *getTopicSubscriberSync* | *GET* /messaging/topics/{id}/subscribers/{user_id} | Get a subscriber to a topic.
 *getTopicSubscriberASync* | *GET* /messaging/topics/{id}/subscribers/{user_id} | Get a subscriber to a topic.
-*getTopicSubscribersSync* | *GET* /messaging/topics/{id}/subscribers | Get all subscribers to a topic.
-*getTopicSubscribersASync* | *GET* /messaging/topics/{id}/subscribers | Get all subscribers to a topic.
 *getUserTopicsSync* | *GET* /users/{id}/topics | Get all messaging topics for a given user.
 *getUserTopicsASync* | *GET* /users/{id}/topics | Get all messaging topics for a given user.
 
@@ -983,31 +897,25 @@ Method | HTTP request | Description
 *updatePaymentMethodSync* | *PUT* /users/{user_id}/payment-methods/{id} | Update an existing payment method for a user.
 *updatePaymentMethodASync* | *PUT* /users/{user_id}/payment-methods/{id} | Update an existing payment method for a user.
 
-### PaymentsAppleManager
+### Payments_AppleManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *verifyAppleReceiptSync* | *POST* /payment/provider/apple/receipt | Pay invoice with Apple receipt.
 *verifyAppleReceiptASync* | *POST* /payment/provider/apple/receipt | Pay invoice with Apple receipt.
 
-### PaymentsFattMerchantManager
+### Payments_FattMerchantManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *createOrUpdateFattMerchantPaymentMethodSync* | *PUT* /payment/provider/fattmerchant/payment-methods | Create or update a FattMerchant payment method for a user.
 *createOrUpdateFattMerchantPaymentMethodASync* | *PUT* /payment/provider/fattmerchant/payment-methods | Create or update a FattMerchant payment method for a user.
 
-### PaymentsGoogleManager
-Method | HTTP request | Description
-------------- | ------------- | -------------
-*handleGooglePaymentSync* | *POST* /payment/provider/google/payments | Mark an invoice paid with Google.
-*handleGooglePaymentASync* | *POST* /payment/provider/google/payments | Mark an invoice paid with Google.
-
-### PaymentsOptimalManager
+### Payments_OptimalManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *silentPostOptimalSync* | *POST* /payment/provider/optimal/silent | Initiate silent post with Optimal.
 *silentPostOptimalASync* | *POST* /payment/provider/optimal/silent | Initiate silent post with Optimal.
 
-### PaymentsPayPalClassicManager
+### Payments_PayPalClassicManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *createPayPalBillingAgreementUrlSync* | *POST* /payment/provider/paypal/classic/agreements/start | Create a PayPal Classic billing agreement for the user.
@@ -1019,7 +927,7 @@ Method | HTTP request | Description
 *finalizePayPalCheckoutSync* | *POST* /payment/provider/paypal/classic/checkout/finish | Finalizes a payment after the user has completed checkout with PayPal.
 *finalizePayPalCheckoutASync* | *POST* /payment/provider/paypal/classic/checkout/finish | Finalizes a payment after the user has completed checkout with PayPal.
 
-### PaymentsStripeManager
+### Payments_StripeManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *createStripePaymentMethodSync* | *POST* /payment/provider/stripe/payment-methods | Create a Stripe payment method for a user.
@@ -1027,7 +935,7 @@ Method | HTTP request | Description
 *payStripeInvoiceSync* | *POST* /payment/provider/stripe/payments | Pay with a single use token.
 *payStripeInvoiceASync* | *POST* /payment/provider/stripe/payments | Pay with a single use token.
 
-### PaymentsTransactionsManager
+### Payments_TransactionsManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *getTransactionSync* | *GET* /transactions/{id} | Get the details for a single transaction.
@@ -1037,7 +945,7 @@ Method | HTTP request | Description
 *refundTransactionSync* | *POST* /transactions/{id}/refunds | Refund a payment transaction, in full or in part.
 *refundTransactionASync* | *POST* /transactions/{id}/refunds | Refund a payment transaction, in full or in part.
 
-### PaymentsWalletsManager
+### Payments_WalletsManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *getUserWalletSync* | *GET* /users/{user_id}/wallets/{currency_code} | Returns the user's wallet for the given currency code.
@@ -1055,13 +963,13 @@ Method | HTTP request | Description
 *updateWalletBalanceSync* | *PUT* /users/{user_id}/wallets/{currency_code}/balance | Updates the balance for a user's wallet.
 *updateWalletBalanceASync* | *PUT* /users/{user_id}/wallets/{currency_code}/balance | Updates the balance for a user's wallet.
 
-### PaymentsXsollaManager
+### Payments_XsollaManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *createXsollaTokenUrlSync* | *POST* /payment/provider/xsolla/payment | Create a payment token that should be used to forward the user to Xsolla so they can complete payment.
 *createXsollaTokenUrlASync* | *POST* /payment/provider/xsolla/payment | Create a payment token that should be used to forward the user to Xsolla so they can complete payment.
 
-### ReportingChallengesManager
+### Reporting_ChallengesManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *getChallengeEventLeaderboardSync* | *GET* /reporting/events/leaderboard | Retrieve a challenge event leaderboard details.
@@ -1069,13 +977,13 @@ Method | HTTP request | Description
 *getChallengeEventParticipantsSync* | *GET* /reporting/events/participants | Retrieve a challenge event participant details.
 *getChallengeEventParticipantsASync* | *GET* /reporting/events/participants | Retrieve a challenge event participant details.
 
-### ReportingOrdersManager
+### Reporting_OrdersManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *getInvoiceReportsSync* | *GET* /reporting/orders/count/{currency_code} | Retrieve invoice counts aggregated by time ranges.
 *getInvoiceReportsASync* | *GET* /reporting/orders/count/{currency_code} | Retrieve invoice counts aggregated by time ranges.
 
-### ReportingRevenueManager
+### Reporting_RevenueManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *getItemRevenueSync* | *GET* /reporting/revenue/item-sales/{currency_code} | Get item revenue info.
@@ -1089,13 +997,13 @@ Method | HTTP request | Description
 *getSubscriptionRevenueSync* | *GET* /reporting/revenue/subscription-sales/{currency_code} | Get subscription revenue info.
 *getSubscriptionRevenueASync* | *GET* /reporting/revenue/subscription-sales/{currency_code} | Get subscription revenue info.
 
-### ReportingSubscriptionsManager
+### Reporting_SubscriptionsManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *getSubscriptionReportsSync* | *GET* /reporting/subscription | Get a list of available subscription reports in most recent first order.
 *getSubscriptionReportsASync* | *GET* /reporting/subscription | Get a list of available subscription reports in most recent first order.
 
-### ReportingUsageManager
+### Reporting_UsageManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *getUsageByDaySync* | *GET* /reporting/usage/day | Returns aggregated endpoint usage information by day.
@@ -1111,11 +1019,87 @@ Method | HTTP request | Description
 *getUsageEndpointsSync* | *GET* /reporting/usage/endpoints | Returns list of endpoints called (method and url).
 *getUsageEndpointsASync* | *GET* /reporting/usage/endpoints | Returns list of endpoints called (method and url).
 
-### ReportingUsersManager
+### Reporting_UsersManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *getUserRegistrationsSync* | *GET* /reporting/users/registrations | Get user registration info.
 *getUserRegistrationsASync* | *GET* /reporting/users/registrations | Get user registration info.
+
+### Rule_Engine_ActionsManager
+Method | HTTP request | Description
+------------- | ------------- | -------------
+*getBREActionsSync* | *GET* /bre/actions | Get a list of available actions.
+*getBREActionsASync* | *GET* /bre/actions | Get a list of available actions.
+
+### Rule_Engine_EventsManager
+Method | HTTP request | Description
+------------- | ------------- | -------------
+*sendBREEventSync* | *POST* /bre/events | Fire a new event, based on an existing trigger.
+*sendBREEventASync* | *POST* /bre/events | Fire a new event, based on an existing trigger.
+
+### Rule_Engine_ExpressionsManager
+Method | HTTP request | Description
+------------- | ------------- | -------------
+*getBREExpressionSync* | *GET* /bre/expressions/{type} | Lookup a specific expression.
+*getBREExpressionASync* | *GET* /bre/expressions/{type} | Lookup a specific expression.
+*getBREExpressionsSync* | *GET* /bre/expressions | Get a list of supported expressions to use in conditions or actions..
+*getBREExpressionsASync* | *GET* /bre/expressions | Get a list of supported expressions to use in conditions or actions..
+*getExpressionAsTextSync* | *POST* /bre/expressions | Returns the textual representation of an expression.
+*getExpressionAsTextASync* | *POST* /bre/expressions | Returns the textual representation of an expression.
+
+### Rule_Engine_GlobalsManager
+Method | HTTP request | Description
+------------- | ------------- | -------------
+*createBREGlobalSync* | *POST* /bre/globals/definitions | Create a global definition.
+*createBREGlobalASync* | *POST* /bre/globals/definitions | Create a global definition.
+*deleteBREGlobalSync* | *DELETE* /bre/globals/definitions/{id} | Delete a global.
+*deleteBREGlobalASync* | *DELETE* /bre/globals/definitions/{id} | Delete a global.
+*getBREGlobalSync* | *GET* /bre/globals/definitions/{id} | Get a single global definition.
+*getBREGlobalASync* | *GET* /bre/globals/definitions/{id} | Get a single global definition.
+*getBREGlobalsSync* | *GET* /bre/globals/definitions | List global definitions.
+*getBREGlobalsASync* | *GET* /bre/globals/definitions | List global definitions.
+*updateBREGlobalSync* | *PUT* /bre/globals/definitions/{id} | Update a global definition.
+*updateBREGlobalASync* | *PUT* /bre/globals/definitions/{id} | Update a global definition.
+
+### Rule_Engine_RulesManager
+Method | HTTP request | Description
+------------- | ------------- | -------------
+*createBRERuleSync* | *POST* /bre/rules | Create a rule.
+*createBRERuleASync* | *POST* /bre/rules | Create a rule.
+*deleteBRERuleSync* | *DELETE* /bre/rules/{id} | Delete a rule.
+*deleteBRERuleASync* | *DELETE* /bre/rules/{id} | Delete a rule.
+*getBREExpressionAsStringSync* | *POST* /bre/rules/expression-as-string | Returns a string representation of the provided expression.
+*getBREExpressionAsStringASync* | *POST* /bre/rules/expression-as-string | Returns a string representation of the provided expression.
+*getBRERuleSync* | *GET* /bre/rules/{id} | Get a single rule.
+*getBRERuleASync* | *GET* /bre/rules/{id} | Get a single rule.
+*getBRERulesSync* | *GET* /bre/rules | List rules.
+*getBRERulesASync* | *GET* /bre/rules | List rules.
+*setBRERuleSync* | *PUT* /bre/rules/{id}/enabled | Enable or disable a rule.
+*setBRERuleASync* | *PUT* /bre/rules/{id}/enabled | Enable or disable a rule.
+*updateBRERuleSync* | *PUT* /bre/rules/{id} | Update a rule.
+*updateBRERuleASync* | *PUT* /bre/rules/{id} | Update a rule.
+
+### Rule_Engine_TriggersManager
+Method | HTTP request | Description
+------------- | ------------- | -------------
+*createBRETriggerSync* | *POST* /bre/triggers | Create a trigger.
+*createBRETriggerASync* | *POST* /bre/triggers | Create a trigger.
+*deleteBRETriggerSync* | *DELETE* /bre/triggers/{event_name} | Delete a trigger.
+*deleteBRETriggerASync* | *DELETE* /bre/triggers/{event_name} | Delete a trigger.
+*getBRETriggerSync* | *GET* /bre/triggers/{event_name} | Get a single trigger.
+*getBRETriggerASync* | *GET* /bre/triggers/{event_name} | Get a single trigger.
+*getBRETriggersSync* | *GET* /bre/triggers | List triggers.
+*getBRETriggersASync* | *GET* /bre/triggers | List triggers.
+*updateBRETriggerSync* | *PUT* /bre/triggers/{event_name} | Update a trigger.
+*updateBRETriggerASync* | *PUT* /bre/triggers/{event_name} | Update a trigger.
+
+### Rule_Engine_VariablesManager
+Method | HTTP request | Description
+------------- | ------------- | -------------
+*getBREVariableTypesSync* | *GET* /bre/variable-types | Get a list of variable types available.
+*getBREVariableTypesASync* | *GET* /bre/variable-types | Get a list of variable types available.
+*getBREVariableValuesSync* | *GET* /bre/variable-types/{name}/values | List valid values for a type.
+*getBREVariableValuesASync* | *GET* /bre/variable-types/{name}/values | List valid values for a type.
 
 ### SearchManager
 Method | HTTP request | Description
@@ -1163,13 +1147,13 @@ Method | HTTP request | Description
 *searchValidateWithTemplatePOSTSync* | *POST* /search/validate/{type}/{template} | Validate matches with a template.
 *searchValidateWithTemplatePOSTASync* | *POST* /search/validate/{type}/{template} | Validate matches with a template.
 
-### SocialFacebookManager
+### Social_FacebookManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *linkAccountsSync* | *POST* /social/facebook/users | Link facebook account.
 *linkAccountsASync* | *POST* /social/facebook/users | Link facebook account.
 
-### SocialGoogleManager
+### Social_GoogleManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *linkAccounts1Sync* | *POST* /social/google/users | Link google account.
@@ -1203,7 +1187,7 @@ Method | HTTP request | Description
 *updateStoreItemSync* | *PUT* /store/items/{id} | Update a store item.
 *updateStoreItemASync* | *PUT* /store/items/{id} | Update a store item.
 
-### StoreBundlesManager
+### Store_BundlesManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *createBundleItemSync* | *POST* /store/bundles | Create a bundle item.
@@ -1225,7 +1209,7 @@ Method | HTTP request | Description
 *updateBundleTemplateSync* | *PUT* /store/bundles/templates/{id} | Update a bundle template.
 *updateBundleTemplateASync* | *PUT* /store/bundles/templates/{id} | Update a bundle template.
 
-### StoreCouponsManager
+### Store_CouponsManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *createCouponItemSync* | *POST* /store/coupons | Create a coupon item.
@@ -1249,7 +1233,7 @@ Method | HTTP request | Description
 *updateCouponTemplateSync* | *PUT* /store/coupons/templates/{id} | Update a coupon template.
 *updateCouponTemplateASync* | *PUT* /store/coupons/templates/{id} | Update a coupon template.
 
-### StoreSalesManager
+### Store_SalesManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *createCatalogSaleSync* | *POST* /store/sales | Create a sale.
@@ -1263,7 +1247,7 @@ Method | HTTP request | Description
 *updateCatalogSaleSync* | *PUT* /store/sales/{id} | Update a sale.
 *updateCatalogSaleASync* | *PUT* /store/sales/{id} | Update a sale.
 
-### StoreShippingManager
+### Store_ShippingManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *createShippingItemSync* | *POST* /store/shipping | Create a shipping item.
@@ -1285,7 +1269,7 @@ Method | HTTP request | Description
 *updateShippingTemplateSync* | *PUT* /store/shipping/templates/{id} | Update a shipping template.
 *updateShippingTemplateASync* | *PUT* /store/shipping/templates/{id} | Update a shipping template.
 
-### StoreShoppingCartsManager
+### Store_Shopping_CartsManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *addCustomDiscountSync* | *POST* /carts/{id}/custom-discounts | Adds a custom discount to the cart.
@@ -1315,7 +1299,7 @@ Method | HTTP request | Description
 *updateShippingAddressSync* | *PUT* /carts/{id}/shipping-address | Modifies or sets the order shipping address.
 *updateShippingAddressASync* | *PUT* /carts/{id}/shipping-address | Modifies or sets the order shipping address.
 
-### StoreSubscriptionsManager
+### Store_SubscriptionsManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *createSubscriptionSync* | *POST* /subscriptions | Creates a subscription item and associated plans.
@@ -1341,7 +1325,7 @@ Method | HTTP request | Description
 *updateSubscriptionTemplateSync* | *PUT* /subscriptions/templates/{id} | Update a subscription template.
 *updateSubscriptionTemplateASync* | *PUT* /subscriptions/templates/{id} | Update a subscription template.
 
-### StoreVendorsManager
+### Store_VendorsManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *createVendorSync* | *POST* /vendors | Create a vendor.
@@ -1391,7 +1375,7 @@ Method | HTTP request | Description
 *updateStateTaxSync* | *PUT* /tax/countries/{country_code_iso3}/states/{state_code} | Create or update a state tax.
 *updateStateTaxASync* | *PUT* /tax/countries/{country_code_iso3}/states/{state_code} | Create or update a state tax.
 
-### TemplatesPropertiesManager
+### Templates_PropertiesManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *getTemplatePropertyTypeSync* | *GET* /templates/properties/{type} | Get details for a template property type.
@@ -1408,8 +1392,8 @@ Method | HTTP request | Description
 *createUserTemplateASync* | *POST* /users/templates | Create a user template.
 *deleteUserTemplateSync* | *DELETE* /users/templates/{id} | Delete a user template.
 *deleteUserTemplateASync* | *DELETE* /users/templates/{id} | Delete a user template.
-*getDirectMessages1Sync* | *GET* /users/users/{recipient_id}/messages | Get a list of direct messages with this user.
-*getDirectMessages1ASync* | *GET* /users/users/{recipient_id}/messages | Get a list of direct messages with this user.
+*getDirectMessages1Sync* | *GET* /users/{recipient_id}/messages | Get a list of direct messages with this user.
+*getDirectMessages1ASync* | *GET* /users/{recipient_id}/messages | Get a list of direct messages with this user.
 *getUserSync* | *GET* /users/{id} | Get a single user.
 *getUserASync* | *GET* /users/{id} | Get a single user.
 *getUserTagsSync* | *GET* /users/{user_id}/tags | List tags for a user.
@@ -1439,7 +1423,7 @@ Method | HTTP request | Description
 *updateUserTemplateSync* | *PUT* /users/templates/{id} | Update a user template.
 *updateUserTemplateASync* | *PUT* /users/templates/{id} | Update a user template.
 
-### UsersAddressesManager
+### Users_AddressesManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *createAddressSync* | *POST* /users/{user_id}/addresses | Create a new address.
@@ -1453,7 +1437,7 @@ Method | HTTP request | Description
 *updateAddressSync* | *PUT* /users/{user_id}/addresses/{id} | Update an address.
 *updateAddressASync* | *PUT* /users/{user_id}/addresses/{id} | Update an address.
 
-### UsersFriendshipsManager
+### Users_FriendshipsManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *addFriendSync* | *POST* /users/{user_id}/friends/{id} | Add a friend.
@@ -1469,7 +1453,7 @@ Method | HTTP request | Description
 *removeOrDeclineFriendSync* | *DELETE* /users/{user_id}/friends/{id} | Remove or decline a friend.
 *removeOrDeclineFriendASync* | *DELETE* /users/{user_id}/friends/{id} | Remove or decline a friend.
 
-### UsersGroupsManager
+### Users_GroupsManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *addMemberToGroupSync* | *POST* /users/groups/{unique_name}/members | Adds a new member to the group.
@@ -1529,7 +1513,7 @@ Method | HTTP request | Description
 *updateGroupTemplateSync* | *PUT* /users/groups/templates/{id} | Update a group template.
 *updateGroupTemplateASync* | *PUT* /users/groups/templates/{id} | Update a group template.
 
-### UsersInventoryManager
+### Users_InventoryManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *addItemToUserInventorySync* | *POST* /users/{id}/inventory | Adds an item to the user inventory.
@@ -1575,7 +1559,7 @@ Method | HTTP request | Description
 *useUserEntitlementItemSync* | *POST* /users/{user_id}/entitlements/{item_id}/use | Use an item.
 *useUserEntitlementItemASync* | *POST* /users/{user_id}/entitlements/{item_id}/use | Use an item.
 
-### UsersRelationshipsManager
+### Users_RelationshipsManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *createUserRelationshipSync* | *POST* /users/relationships | Create a user relationship.
@@ -1589,7 +1573,7 @@ Method | HTTP request | Description
 *updateUserRelationshipSync* | *PUT* /users/relationships/{id} | Update a user relationship.
 *updateUserRelationshipASync* | *PUT* /users/relationships/{id} | Update a user relationship.
 
-### UsersSubscriptionsManager
+### Users_SubscriptionsManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *getUserSubscriptionDetailsSync* | *GET* /users/{user_id}/subscriptions/{inventory_id} | Get details about a user's subscription.
@@ -1609,7 +1593,7 @@ Method | HTTP request | Description
 *setUserSubscriptionPriceSync* | *PUT* /users/{user_id}/subscriptions/{inventory_id}/price-override | Set a new subscription price for a user.
 *setUserSubscriptionPriceASync* | *PUT* /users/{user_id}/subscriptions/{inventory_id}/price-override | Set a new subscription price for a user.
 
-### UtilBatchManager
+### Util_BatchManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *getBatchSync* | *GET* /batch/{token} | Get batch result with token.
@@ -1617,13 +1601,13 @@ Method | HTTP request | Description
 *sendBatchSync* | *POST* /batch | Request to run API call given the method, content type, path url, and body of request.
 *sendBatchASync* | *POST* /batch | Request to run API call given the method, content type, path url, and body of request.
 
-### UtilHealthManager
+### Util_HealthManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *getHealthSync* | *GET* /health | Get health info.
 *getHealthASync* | *GET* /health | Get health info.
 
-### UtilMaintenanceManager
+### Util_MaintenanceManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *deleteMaintenanceSync* | *DELETE* /maintenance | Delete maintenance info.
@@ -1635,7 +1619,7 @@ Method | HTTP request | Description
 *updateMaintenanceSync* | *PUT* /maintenance | Update current maintenance info.
 *updateMaintenanceASync* | *PUT* /maintenance | Update current maintenance info.
 
-### UtilSecurityManager
+### Util_SecurityManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *getUserLocationLogSync* | *GET* /security/country-log | Returns the authentication log for a user.
@@ -1643,7 +1627,7 @@ Method | HTTP request | Description
 *getUserTokenDetailsSync* | *GET* /me | Returns the authentication token details. Use /users endpoint for detailed user's info.
 *getUserTokenDetailsASync* | *GET* /me | Returns the authentication token details. Use /users endpoint for detailed user's info.
 
-### UtilVersionManager
+### Util_VersionManager
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 *getVersionSync* | *GET* /version | Get current version info.
@@ -1664,8 +1648,10 @@ Class | Description
  *ActivityOccurrenceResults* | 
  *ActivityOccurrenceResultsResource* | 
  *ActivityOccurrenceSettingsResource* | 
+ *ActivityOccurrenceStatusWrapper* | 
  *ActivityResource* | Represents an activity that can be parameterized and tracked through metrics (scores, etc)
  *ActivityUserResource* | 
+ *ActivityUserStatusWrapper* | 
  *AddressResource* | 
  *AggregateCountResource* | 
  *AggregateInvoiceReportResource* | 
@@ -1678,6 +1664,7 @@ Class | Description
  *AvailableSettingResource* | The definition of an activity parameters: ex: difficulty level
  *BareActivityResource* | 
  *BareChallengeActivityResource* | 
+ *BasicTemplatedResource* | 
  *Batch* | 
  *BatchRequest* | 
  *BatchResult* | 
@@ -1687,7 +1674,6 @@ Class | Description
  *BillingReport* | 
  *BooleanResource* | 
  *BreActionLog* | 
- *BreCategoryResource* | 
  *BreEvent* | 
  *BreEventLog* | 
  *BreGlobalResource* | 
@@ -1760,16 +1746,17 @@ Class | Description
  *FulfillmentType* | 
  *GlobalCheckAndIncrementResource* | Expressions are instructions for the rule engine to resolve certain values. For example instead of `user 1` it'd state `user provided by the event`. Full list and definitions available at GET /bre/expressions.
  *GlobalResource* | Expressions are instructions for the rule engine to resolve certain values. For example instead of `user 1` it'd state `user provided by the event`. Full list and definitions available at GET /bre/expressions.
- *GooglePaymentRequest* | 
  *GoogleToken* | 
  *GrantTypeResource* | 
  *GroupMemberResource* | 
+ *GroupMemberStatusWrapper* | 
  *GroupResource* | 
  *IdRef* | 
  *ImportJobOutputResource* | 
  *ImportJobResource* | 
  *IntWrapper* | 
  *IntegerOperationResource* | Expressions are instructions for the rule engine to resolve certain values. For example instead of `user 1` it'd state `user provided by the event`. Full list and definitions available at GET /bre/expressions.
+ *InventoryStatusWrapper* | 
  *InventorySubscriptionResource* | 
  *InvoiceCreateRequest* | 
  *InvoiceItemResource* | 
@@ -1817,7 +1804,6 @@ Class | Description
  *PageResource«BareActivityResource»* | 
  *PageResource«BareChallengeActivityResource»* | 
  *PageResource«BillingReport»* | 
- *PageResource«BreCategoryResource»* | 
  *PageResource«BreEventLog»* | 
  *PageResource«BreGlobalResource»* | 
  *PageResource«BreRule»* | 
@@ -1876,7 +1862,6 @@ Class | Description
  *PageResource«SubscriptionTemplateResource»* | 
  *PageResource«TemplateResource»* | 
  *PageResource«TopicResource»* | 
- *PageResource«TopicSubscriberResource»* | 
  *PageResource«TransactionResource»* | 
  *PageResource«UsageInfo»* | 
  *PageResource«UserAchievementGroupResource»* | 
@@ -1919,6 +1904,7 @@ Class | Description
  *ReactivateSubscriptionRequest* | 
  *RefundRequest* | 
  *RefundResource* | 
+ *ResourceTypeDescription* | 
  *Result* | 
  *RevenueCountryReportResource* | 
  *RevenueProductReportResource* | 
@@ -1956,6 +1942,7 @@ Class | Description
  *SubscriptionPlanResource* | 
  *SubscriptionPriceOverrideRequest* | 
  *SubscriptionResource* | 
+ *SubscriptionStatusWrapper* | 
  *SubscriptionTemplateResource* | 
  *TemplateEmailResource* | 
  *TemplatePushResource* | 
@@ -1982,12 +1969,12 @@ Class | Description
  *UserItemLogResource* | 
  *UserLevelingResource* | 
  *UserNotificationResource* | 
+ *UserNotificationStatusWrapper* | 
  *UserRelationshipReferenceResource* | 
  *UserRelationshipResource* | 
  *UserResource* | 
  *UsernameLookupResource* | Expressions are instructions for the rule engine to resolve certain values. For example instead of `user 1` it'd state `user provided by the event`. Full list and definitions available at GET /bre/expressions.
  *ValueWrapper«boolean»* | 
- *ValueWrapper«string»* | 
  *VariableTypeResource* | 
  *VendorEmailLookupResource* | Expressions are instructions for the rule engine to resolve certain values. For example instead of `user 1` it'd state `user provided by the event`. Full list and definitions available at GET /bre/expressions.
  *VendorResource* | 
@@ -2034,6 +2021,7 @@ Class | Description
  *PreReqEntitlement* | 
  *PriceOverridable* | 
  *RemoveCustomerEvent* | 
+ *ServiceDeployedEvent* | 
  *Spendable* | 
  *StoreItem* | 
  *TextProperty* | 

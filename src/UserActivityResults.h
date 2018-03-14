@@ -77,11 +77,11 @@ public:
 	/*! \brief Set The raw score in this leaderboard. Null means non-compete or disqualification
 	 */
 	void setScore(long long  score);
-	/*! \brief Get Any tags for the metric. Each unique tag will translate into a unique leaderboard. Maximum 5 tags and 50 characters each
+	/*! \brief Get Any tags for the metric. Each unique tag will translate into a unique leaderboard. Maximum 10 tags and 50 characters each
 	 */
 	std::list<std::string> getTags();
 
-	/*! \brief Set Any tags for the metric. Each unique tag will translate into a unique leaderboard. Maximum 5 tags and 50 characters each
+	/*! \brief Set Any tags for the metric. Each unique tag will translate into a unique leaderboard. Maximum 10 tags and 50 characters each
 	 */
 	void setTags(std::list <std::string> tags);
 	/*! \brief Get The number of users tied at this rank, including this user. 1 means no tie

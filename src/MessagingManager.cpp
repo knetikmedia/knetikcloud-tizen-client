@@ -829,7 +829,7 @@ bool MessagingManager::getMessageTemplatesSync(char * accessToken,
 	handler, userData, false);
 }
 
-static bool sendMessage1Processor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+static bool sendMessageProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
 	
@@ -862,7 +862,7 @@ static bool sendMessage1Processor(MemoryStruct_s p_chunk, long code, char* error
 	}
 }
 
-static bool sendMessage1Helper(char * accessToken,
+static bool sendMessageHelper(char * accessToken,
 	MessageResource messageResource, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
@@ -916,7 +916,7 @@ static bool sendMessage1Helper(char * accessToken,
 	if(!isAsync){
 		NetClient::easycurl(MessagingManager::getBasePath(), url, myhttpmethod, queryParams,
 			mBody, headerList, p_chunk, &code, errormsg);
-		bool retval = sendMessage1Processor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+		bool retval = sendMessageProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
 		curl_slist_free_all(headerList);
 		if (p_chunk) {
@@ -934,7 +934,7 @@ static bool sendMessage1Helper(char * accessToken,
 		RequestInfo *requestInfo = NULL;
 
 		requestInfo = new(nothrow) RequestInfo (MessagingManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), sendMessage1Processor);;
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), sendMessageProcessor);;
 		if(requestInfo == NULL)
 			return false;
 
@@ -946,22 +946,22 @@ static bool sendMessage1Helper(char * accessToken,
 
 
 
-bool MessagingManager::sendMessage1Async(char * accessToken,
+bool MessagingManager::sendMessageAsync(char * accessToken,
 	MessageResource messageResource, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
-	return sendMessage1Helper(accessToken,
+	return sendMessageHelper(accessToken,
 	messageResource, 
 	handler, userData, true);
 }
 
-bool MessagingManager::sendMessage1Sync(char * accessToken,
+bool MessagingManager::sendMessageSync(char * accessToken,
 	MessageResource messageResource, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
-	return sendMessage1Helper(accessToken,
+	return sendMessageHelper(accessToken,
 	messageResource, 
 	handler, userData, false);
 }

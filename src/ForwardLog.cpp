@@ -31,10 +31,19 @@ ForwardLog::__init()
 	//error_msg = std::string();
 	//
 	//
+	//event_id = std::string();
+	//
+	//
+	//headers = std::string();
+	//
+	//
 	//http_status_code = int(0);
 	//
 	//
 	//id = std::string();
+	//
+	//
+	//method = std::string();
 	//
 	//
 	//payload = null;
@@ -46,7 +55,16 @@ ForwardLog::__init()
 	//retry_count = int(0);
 	//
 	//
+	//retryable = bool(false);
+	//
+	//
+	//rule_id = std::string();
+	//
+	//
 	//start_date = long(0);
+	//
+	//
+	//success = bool(false);
 	//
 	//
 	//url = std::string();
@@ -66,6 +84,16 @@ ForwardLog::__cleanup()
 	//delete error_msg;
 	//error_msg = NULL;
 	//}
+	//if(event_id != NULL) {
+	//
+	//delete event_id;
+	//event_id = NULL;
+	//}
+	//if(headers != NULL) {
+	//
+	//delete headers;
+	//headers = NULL;
+	//}
 	//if(http_status_code != NULL) {
 	//
 	//delete http_status_code;
@@ -75,6 +103,11 @@ ForwardLog::__cleanup()
 	//
 	//delete id;
 	//id = NULL;
+	//}
+	//if(method != NULL) {
+	//
+	//delete method;
+	//method = NULL;
 	//}
 	//if(payload != NULL) {
 	//
@@ -91,10 +124,25 @@ ForwardLog::__cleanup()
 	//delete retry_count;
 	//retry_count = NULL;
 	//}
+	//if(retryable != NULL) {
+	//
+	//delete retryable;
+	//retryable = NULL;
+	//}
+	//if(rule_id != NULL) {
+	//
+	//delete rule_id;
+	//rule_id = NULL;
+	//}
 	//if(start_date != NULL) {
 	//
 	//delete start_date;
 	//start_date = NULL;
+	//}
+	//if(success != NULL) {
+	//
+	//delete success;
+	//success = NULL;
 	//}
 	//if(url != NULL) {
 	//
@@ -131,6 +179,28 @@ ForwardLog::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *event_idKey = "event_id";
+	node = json_object_get_member(pJsonObject, event_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&event_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *headersKey = "headers";
+	node = json_object_get_member(pJsonObject, headersKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&headers, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *http_status_codeKey = "http_status_code";
 	node = json_object_get_member(pJsonObject, http_status_codeKey);
 	if (node !=NULL) {
@@ -149,6 +219,17 @@ ForwardLog::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *methodKey = "method";
+	node = json_object_get_member(pJsonObject, methodKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&method, node, "std::string", "");
 		} else {
 			
 		}
@@ -189,6 +270,28 @@ ForwardLog::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *retryableKey = "retryable";
+	node = json_object_get_member(pJsonObject, retryableKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&retryable, node, "bool", "");
+		} else {
+			
+		}
+	}
+	const gchar *rule_idKey = "rule_id";
+	node = json_object_get_member(pJsonObject, rule_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&rule_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *start_dateKey = "start_date";
 	node = json_object_get_member(pJsonObject, start_dateKey);
 	if (node !=NULL) {
@@ -196,6 +299,17 @@ ForwardLog::fromJson(char* jsonStr)
 
 		if (isprimitive("long long")) {
 			jsonToValue(&start_date, node, "long long", "");
+		} else {
+			
+		}
+	}
+	const gchar *successKey = "success";
+	node = json_object_get_member(pJsonObject, successKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&success, node, "bool", "");
 		} else {
 			
 		}
@@ -241,6 +355,24 @@ ForwardLog::toJson()
 	}
 	const gchar *error_msgKey = "error_msg";
 	json_object_set_member(pJsonObject, error_msgKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getEventId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *event_idKey = "event_id";
+	json_object_set_member(pJsonObject, event_idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getHeaders();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *headersKey = "headers";
+	json_object_set_member(pJsonObject, headersKey, node);
 	if (isprimitive("int")) {
 		int obj = getHttpStatusCode();
 		node = converttoJson(&obj, "int", "");
@@ -259,6 +391,15 @@ ForwardLog::toJson()
 	}
 	const gchar *idKey = "id";
 	json_object_set_member(pJsonObject, idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getMethod();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *methodKey = "method";
+	json_object_set_member(pJsonObject, methodKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getPayload();
 		node = converttoJson(&obj, "std::string", "");
@@ -291,6 +432,24 @@ ForwardLog::toJson()
 	}
 	const gchar *retry_countKey = "retry_count";
 	json_object_set_member(pJsonObject, retry_countKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getRetryable();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *retryableKey = "retryable";
+	json_object_set_member(pJsonObject, retryableKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getRuleId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *rule_idKey = "rule_id";
+	json_object_set_member(pJsonObject, rule_idKey, node);
 	if (isprimitive("long long")) {
 		long long obj = getStartDate();
 		node = converttoJson(&obj, "long long", "");
@@ -300,6 +459,15 @@ ForwardLog::toJson()
 	}
 	const gchar *start_dateKey = "start_date";
 	json_object_set_member(pJsonObject, start_dateKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getSuccess();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *successKey = "success";
+	json_object_set_member(pJsonObject, successKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getUrl();
 		node = converttoJson(&obj, "std::string", "");
@@ -341,6 +509,30 @@ ForwardLog::setErrorMsg(std::string  error_msg)
 	this->error_msg = error_msg;
 }
 
+std::string
+ForwardLog::getEventId()
+{
+	return event_id;
+}
+
+void
+ForwardLog::setEventId(std::string  event_id)
+{
+	this->event_id = event_id;
+}
+
+std::string
+ForwardLog::getHeaders()
+{
+	return headers;
+}
+
+void
+ForwardLog::setHeaders(std::string  headers)
+{
+	this->headers = headers;
+}
+
 int
 ForwardLog::getHttpStatusCode()
 {
@@ -363,6 +555,18 @@ void
 ForwardLog::setId(std::string  id)
 {
 	this->id = id;
+}
+
+std::string
+ForwardLog::getMethod()
+{
+	return method;
+}
+
+void
+ForwardLog::setMethod(std::string  method)
+{
+	this->method = method;
 }
 
 std::string
@@ -401,6 +605,30 @@ ForwardLog::setRetryCount(int  retry_count)
 	this->retry_count = retry_count;
 }
 
+bool
+ForwardLog::getRetryable()
+{
+	return retryable;
+}
+
+void
+ForwardLog::setRetryable(bool  retryable)
+{
+	this->retryable = retryable;
+}
+
+std::string
+ForwardLog::getRuleId()
+{
+	return rule_id;
+}
+
+void
+ForwardLog::setRuleId(std::string  rule_id)
+{
+	this->rule_id = rule_id;
+}
+
 long long
 ForwardLog::getStartDate()
 {
@@ -411,6 +639,18 @@ void
 ForwardLog::setStartDate(long long  start_date)
 {
 	this->start_date = start_date;
+}
+
+bool
+ForwardLog::getSuccess()
+{
+	return success;
+}
+
+void
+ForwardLog::setSuccess(bool  success)
+{
+	this->success = success;
 }
 
 std::string

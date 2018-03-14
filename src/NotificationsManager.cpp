@@ -1395,7 +1395,7 @@ static bool setUserNotificationStatusProcessor(MemoryStruct_s p_chunk, long code
 }
 
 static bool setUserNotificationStatusHelper(char * accessToken,
-	std::string userId, std::string notificationId, ValueWrapper«string» notification, 
+	std::string userId, std::string notificationId, UserNotificationStatusWrapper notification, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -1416,8 +1416,8 @@ static bool setUserNotificationStatusHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("ValueWrapper«string»")) {
-		node = converttoJson(&notification, "ValueWrapper«string»", "");
+	if (isprimitive("UserNotificationStatusWrapper")) {
+		node = converttoJson(&notification, "UserNotificationStatusWrapper", "");
 	}
 	
 	char *jsonStr =  notification.toJson();
@@ -1491,7 +1491,7 @@ static bool setUserNotificationStatusHelper(char * accessToken,
 
 
 bool NotificationsManager::setUserNotificationStatusAsync(char * accessToken,
-	std::string userId, std::string notificationId, ValueWrapper«string» notification, 
+	std::string userId, std::string notificationId, UserNotificationStatusWrapper notification, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
@@ -1501,7 +1501,7 @@ bool NotificationsManager::setUserNotificationStatusAsync(char * accessToken,
 }
 
 bool NotificationsManager::setUserNotificationStatusSync(char * accessToken,
-	std::string userId, std::string notificationId, ValueWrapper«string» notification, 
+	std::string userId, std::string notificationId, UserNotificationStatusWrapper notification, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {

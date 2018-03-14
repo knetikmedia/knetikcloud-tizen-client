@@ -53,11 +53,11 @@ public:
 	/*! \brief Set The id of the activity occurence where this score/metric occurred
 	 */
 	void setActivityOccurenceId(long long  activity_occurence_id);
-	/*! \brief Get Any tags for the metric. Each unique tag will translate into a unique leaderboard. Maximum 5 tags and 50 characters each
+	/*! \brief Get Any tags for the metric. Each unique tag will translate into a unique leaderboard. Maximum 10 tags and 50 characters each
 	 */
 	std::list<std::string> getTags();
 
-	/*! \brief Set Any tags for the metric. Each unique tag will translate into a unique leaderboard. Maximum 5 tags and 50 characters each
+	/*! \brief Set Any tags for the metric. Each unique tag will translate into a unique leaderboard. Maximum 10 tags and 50 characters each
 	 */
 	void setTags(std::list <std::string> tags);
 	/*! \brief Get The id of the user this metric is for. Default to caller and requires METRICS_ADMIN permission to specify another

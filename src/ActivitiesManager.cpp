@@ -2595,7 +2595,7 @@ static bool setUserStatusProcessor(MemoryStruct_s p_chunk, long code, char* erro
 }
 
 static bool setUserStatusHelper(char * accessToken,
-	long long activityOccurrenceId, std::string userId, std::string status, 
+	long long activityOccurrenceId, std::string userId, ActivityUserStatusWrapper status, 
 	void(* handler)(ActivityUserResource, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -2616,9 +2616,13 @@ static bool setUserStatusHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("std::string")) {
-		node = converttoJson(&status, "std::string", "");
+	if (isprimitive("ActivityUserStatusWrapper")) {
+		node = converttoJson(&status, "ActivityUserStatusWrapper", "");
 	}
+	
+	char *jsonStr =  status.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
 	
 
 	char *jsonStr1 =  json_to_string(node, false);
@@ -2687,7 +2691,7 @@ static bool setUserStatusHelper(char * accessToken,
 
 
 bool ActivitiesManager::setUserStatusAsync(char * accessToken,
-	long long activityOccurrenceId, std::string userId, std::string status, 
+	long long activityOccurrenceId, std::string userId, ActivityUserStatusWrapper status, 
 	void(* handler)(ActivityUserResource, Error, void* )
 	, void* userData)
 {
@@ -2697,7 +2701,7 @@ bool ActivitiesManager::setUserStatusAsync(char * accessToken,
 }
 
 bool ActivitiesManager::setUserStatusSync(char * accessToken,
-	long long activityOccurrenceId, std::string userId, std::string status, 
+	long long activityOccurrenceId, std::string userId, ActivityUserStatusWrapper status, 
 	void(* handler)(ActivityUserResource, Error, void* )
 	, void* userData)
 {
@@ -2910,7 +2914,7 @@ static bool updateActivityOccurrenceStatusProcessor(MemoryStruct_s p_chunk, long
 }
 
 static bool updateActivityOccurrenceStatusHelper(char * accessToken,
-	long long activityOccurrenceId, ValueWrapper«string» activityOccurrenceStatus, 
+	long long activityOccurrenceId, ActivityOccurrenceStatusWrapper activityOccurrenceStatus, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -2931,8 +2935,8 @@ static bool updateActivityOccurrenceStatusHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("ValueWrapper«string»")) {
-		node = converttoJson(&activityOccurrenceStatus, "ValueWrapper«string»", "");
+	if (isprimitive("ActivityOccurrenceStatusWrapper")) {
+		node = converttoJson(&activityOccurrenceStatus, "ActivityOccurrenceStatusWrapper", "");
 	}
 	
 	char *jsonStr =  activityOccurrenceStatus.toJson();
@@ -3000,7 +3004,7 @@ static bool updateActivityOccurrenceStatusHelper(char * accessToken,
 
 
 bool ActivitiesManager::updateActivityOccurrenceStatusAsync(char * accessToken,
-	long long activityOccurrenceId, ValueWrapper«string» activityOccurrenceStatus, 
+	long long activityOccurrenceId, ActivityOccurrenceStatusWrapper activityOccurrenceStatus, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
@@ -3010,7 +3014,7 @@ bool ActivitiesManager::updateActivityOccurrenceStatusAsync(char * accessToken,
 }
 
 bool ActivitiesManager::updateActivityOccurrenceStatusSync(char * accessToken,
-	long long activityOccurrenceId, ValueWrapper«string» activityOccurrenceStatus, 
+	long long activityOccurrenceId, ActivityOccurrenceStatusWrapper activityOccurrenceStatus, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {

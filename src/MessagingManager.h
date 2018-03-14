@@ -92,7 +92,7 @@ bool createMessageTemplateAsync(char * accessToken,
 
 /*! \brief Delete an existing message template. *Synchronous*
  *
- * <b>Permissions Needed:</b> ARTICLES_ADMIN
+ * <b>Permissions Needed:</b> MESSAGING_ADMIN
  * \param id The message_template id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -105,7 +105,7 @@ bool deleteMessageTemplateSync(char * accessToken,
 
 /*! \brief Delete an existing message template. *Asynchronous*
  *
- * <b>Permissions Needed:</b> ARTICLES_ADMIN
+ * <b>Permissions Needed:</b> MESSAGING_ADMIN
  * \param id The message_template id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -119,7 +119,7 @@ bool deleteMessageTemplateAsync(char * accessToken,
 
 /*! \brief Get a single message template. *Synchronous*
  *
- * <b>Permissions Needed:</b> ARTICLES_ADMIN
+ * <b>Permissions Needed:</b> MESSAGING_ADMIN
  * \param id The message_template id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -132,7 +132,7 @@ bool getMessageTemplateSync(char * accessToken,
 
 /*! \brief Get a single message template. *Asynchronous*
  *
- * <b>Permissions Needed:</b> ARTICLES_ADMIN
+ * <b>Permissions Needed:</b> MESSAGING_ADMIN
  * \param id The message_template id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -146,7 +146,7 @@ bool getMessageTemplateAsync(char * accessToken,
 
 /*! \brief List and search message templates. *Synchronous*
  *
- * Get a list of message templates with optional filtering. <br><br><b>Permissions Needed:</b> ARTICLES_ADMIN
+ * Get a list of message templates with optional filtering. <br><br><b>Permissions Needed:</b> MESSAGING_ADMIN
  * \param filterTagset Filter for message templates with at least one of a specified set of tags (separated by comma)
  * \param filterTagIntersection Filter for message templates with all of a specified set of tags (separated by comma)
  * \param filterTagExclusion Filter for message templates with none of a specified set of tags (separated by comma)
@@ -164,7 +164,7 @@ bool getMessageTemplatesSync(char * accessToken,
 
 /*! \brief List and search message templates. *Asynchronous*
  *
- * Get a list of message templates with optional filtering. <br><br><b>Permissions Needed:</b> ARTICLES_ADMIN
+ * Get a list of message templates with optional filtering. <br><br><b>Permissions Needed:</b> MESSAGING_ADMIN
  * \param filterTagset Filter for message templates with at least one of a specified set of tags (separated by comma)
  * \param filterTagIntersection Filter for message templates with all of a specified set of tags (separated by comma)
  * \param filterTagExclusion Filter for message templates with none of a specified set of tags (separated by comma)
@@ -189,7 +189,7 @@ bool getMessageTemplatesAsync(char * accessToken,
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
-bool sendMessage1Sync(char * accessToken,
+bool sendMessageSync(char * accessToken,
 	MessageResource messageResource, 
 	
 	void(* handler)(Error, void* ) , void* userData);
@@ -202,7 +202,7 @@ bool sendMessage1Sync(char * accessToken,
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
-bool sendMessage1Async(char * accessToken,
+bool sendMessageAsync(char * accessToken,
 	MessageResource messageResource, 
 	
 	void(* handler)(Error, void* ) , void* userData);
@@ -399,7 +399,7 @@ bool sendWebsocketAsync(char * accessToken,
 
 /*! \brief Update an existing message template. *Synchronous*
  *
- * <b>Permissions Needed:</b> ARTICLES_ADMIN
+ * <b>Permissions Needed:</b> MESSAGING_ADMIN
  * \param id The message_template id *Required*
  * \param messageTemplateResource The message template
  * \param handler The callback function to be invoked on completion. *Required*
@@ -413,7 +413,7 @@ bool updateMessageTemplateSync(char * accessToken,
 
 /*! \brief Update an existing message template. *Asynchronous*
  *
- * <b>Permissions Needed:</b> ARTICLES_ADMIN
+ * <b>Permissions Needed:</b> MESSAGING_ADMIN
  * \param id The message_template id *Required*
  * \param messageTemplateResource The message template
  * \param handler The callback function to be invoked on completion. *Required*
@@ -429,7 +429,7 @@ bool updateMessageTemplateAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://sandbox.knetikcloud.com";
+		return "https://jsapi-integration.us-east-1.elasticbeanstalk.com";
 	}
 };
 /** @}*/

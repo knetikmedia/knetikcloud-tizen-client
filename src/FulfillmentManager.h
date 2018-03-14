@@ -141,7 +141,7 @@ bool getFulfillmentTypesAsync(char * accessToken,
 /*! \brief Update a fulfillment type. *Synchronous*
  *
  * <b>Permissions Needed:</b> FULFILLMENT_ADMIN
- * \param id The id *Required*
+ * \param id The fulfillment id *Required*
  * \param fulfillmentType The fulfillment type
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -155,7 +155,7 @@ bool updateFulfillmentTypeSync(char * accessToken,
 /*! \brief Update a fulfillment type. *Asynchronous*
  *
  * <b>Permissions Needed:</b> FULFILLMENT_ADMIN
- * \param id The id *Required*
+ * \param id The fulfillment id *Required*
  * \param fulfillmentType The fulfillment type
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -170,7 +170,7 @@ bool updateFulfillmentTypeAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://sandbox.knetikcloud.com";
+		return "https://jsapi-integration.us-east-1.elasticbeanstalk.com";
 	}
 };
 /** @}*/

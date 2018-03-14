@@ -1739,7 +1739,7 @@ bool ChatManager::removeChatBlacklistSync(char * accessToken,
 	handler, userData, false);
 }
 
-static bool sendMessageProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+static bool sendChatMessageProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
 	void(* handler)(ChatMessageResource, Error, void* )
@@ -1799,7 +1799,7 @@ static bool sendMessageProcessor(MemoryStruct_s p_chunk, long code, char* errorm
 			}
 }
 
-static bool sendMessageHelper(char * accessToken,
+static bool sendChatMessageHelper(char * accessToken,
 	ChatMessageResource chatMessageResource, 
 	void(* handler)(ChatMessageResource, Error, void* )
 	, void* userData, bool isAsync)
@@ -1853,7 +1853,7 @@ static bool sendMessageHelper(char * accessToken,
 	if(!isAsync){
 		NetClient::easycurl(ChatManager::getBasePath(), url, myhttpmethod, queryParams,
 			mBody, headerList, p_chunk, &code, errormsg);
-		bool retval = sendMessageProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+		bool retval = sendChatMessageProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
 		curl_slist_free_all(headerList);
 		if (p_chunk) {
@@ -1871,7 +1871,7 @@ static bool sendMessageHelper(char * accessToken,
 		RequestInfo *requestInfo = NULL;
 
 		requestInfo = new(nothrow) RequestInfo (ChatManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), sendMessageProcessor);;
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), sendChatMessageProcessor);;
 		if(requestInfo == NULL)
 			return false;
 
@@ -1883,22 +1883,22 @@ static bool sendMessageHelper(char * accessToken,
 
 
 
-bool ChatManager::sendMessageAsync(char * accessToken,
+bool ChatManager::sendChatMessageAsync(char * accessToken,
 	ChatMessageResource chatMessageResource, 
 	void(* handler)(ChatMessageResource, Error, void* )
 	, void* userData)
 {
-	return sendMessageHelper(accessToken,
+	return sendChatMessageHelper(accessToken,
 	chatMessageResource, 
 	handler, userData, true);
 }
 
-bool ChatManager::sendMessageSync(char * accessToken,
+bool ChatManager::sendChatMessageSync(char * accessToken,
 	ChatMessageResource chatMessageResource, 
 	void(* handler)(ChatMessageResource, Error, void* )
 	, void* userData)
 {
-	return sendMessageHelper(accessToken,
+	return sendChatMessageHelper(accessToken,
 	chatMessageResource, 
 	handler, userData, false);
 }

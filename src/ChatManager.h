@@ -363,7 +363,7 @@ bool removeChatBlacklistAsync(char * accessToken,
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
-bool sendMessageSync(char * accessToken,
+bool sendChatMessageSync(char * accessToken,
 	ChatMessageResource chatMessageResource, 
 	void(* handler)(ChatMessageResource, Error, void* )
 	, void* userData);
@@ -376,7 +376,7 @@ bool sendMessageSync(char * accessToken,
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
-bool sendMessageAsync(char * accessToken,
+bool sendChatMessageAsync(char * accessToken,
 	ChatMessageResource chatMessageResource, 
 	void(* handler)(ChatMessageResource, Error, void* )
 	, void* userData);
@@ -385,7 +385,7 @@ bool sendMessageAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://sandbox.knetikcloud.com";
+		return "https://jsapi-integration.us-east-1.elasticbeanstalk.com";
 	}
 };
 /** @}*/

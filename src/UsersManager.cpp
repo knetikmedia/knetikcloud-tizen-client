@@ -588,7 +588,7 @@ static bool getDirectMessages1Helper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	string url("/users/users/{recipient_id}/messages");
+	string url("/users/{recipient_id}/messages");
 	int pos;
 
 	string s_recipientId("{");

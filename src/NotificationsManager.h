@@ -12,8 +12,8 @@
 #include "PageResource«NotificationUserTypeResource».h"
 #include "PageResource«UserNotificationResource».h"
 #include "Result.h"
+#include "UserNotificationStatusWrapper.h"
 #include "ValueWrapper«boolean».h"
-#include "ValueWrapper«string».h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -34,7 +34,7 @@ public:
 
 /*! \brief Create a notification type. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN
  * \param notificationType notificationType
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -47,7 +47,7 @@ bool createNotificationTypeSync(char * accessToken,
 
 /*! \brief Create a notification type. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN
  * \param notificationType notificationType
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -61,7 +61,7 @@ bool createNotificationTypeAsync(char * accessToken,
 
 /*! \brief Delete a notification type. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN
  * \param id id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -74,7 +74,7 @@ bool deleteNotificationTypeSync(char * accessToken,
 
 /*! \brief Delete a notification type. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN
  * \param id id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -88,7 +88,7 @@ bool deleteNotificationTypeAsync(char * accessToken,
 
 /*! \brief Get a single notification type. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN
  * \param id id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -101,7 +101,7 @@ bool getNotificationTypeSync(char * accessToken,
 
 /*! \brief Get a single notification type. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN
  * \param id id *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -115,7 +115,7 @@ bool getNotificationTypeAsync(char * accessToken,
 
 /*! \brief List and search notification types. *Synchronous*
  *
- * Get a list of notification type with optional filtering
+ * Get a list of notification type with optional filtering. <br><br><b>Permissions Needed:</b> NOTIFICATIONS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -130,7 +130,7 @@ bool getNotificationTypesSync(char * accessToken,
 
 /*! \brief List and search notification types. *Asynchronous*
  *
- * Get a list of notification type with optional filtering
+ * Get a list of notification type with optional filtering. <br><br><b>Permissions Needed:</b> NOTIFICATIONS_ADMIN
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
  * \param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -146,7 +146,7 @@ bool getNotificationTypesAsync(char * accessToken,
 
 /*! \brief View a user's notification settings for a type. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN or self
  * \param typeId The id of the topic *Required*
  * \param userId The id of the subscriber or 'me' *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -160,7 +160,7 @@ bool getUserNotificationInfoSync(char * accessToken,
 
 /*! \brief View a user's notification settings for a type. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN or self
  * \param typeId The id of the topic *Required*
  * \param userId The id of the subscriber or 'me' *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -175,7 +175,7 @@ bool getUserNotificationInfoAsync(char * accessToken,
 
 /*! \brief View a user's notification settings. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN or self
  * \param userId The id of the subscriber or 'me' *Required*
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -191,7 +191,7 @@ bool getUserNotificationInfoListSync(char * accessToken,
 
 /*! \brief View a user's notification settings. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN or self
  * \param userId The id of the subscriber or 'me' *Required*
  * \param size The number of objects returned per page
  * \param page The number of the page returned, starting with 1
@@ -208,7 +208,7 @@ bool getUserNotificationInfoListAsync(char * accessToken,
 
 /*! \brief Get notifications. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN or self
  * \param id The id of the user or 'me' *Required*
  * \param filterStatus filter for notifications with a given status
  * \param size The number of objects returned per page
@@ -225,7 +225,7 @@ bool getUserNotificationsSync(char * accessToken,
 
 /*! \brief Get notifications. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN or self
  * \param id The id of the user or 'me' *Required*
  * \param filterStatus filter for notifications with a given status
  * \param size The number of objects returned per page
@@ -243,7 +243,7 @@ bool getUserNotificationsAsync(char * accessToken,
 
 /*! \brief Send a notification. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN
  * \param notification notification
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -256,7 +256,7 @@ bool sendNotificationSync(char * accessToken,
 
 /*! \brief Send a notification. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN
  * \param notification notification
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -270,7 +270,7 @@ bool sendNotificationAsync(char * accessToken,
 
 /*! \brief Set notification status. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN or self
  * \param userId The id of the user or 'me' *Required*
  * \param notificationId The id of the notification *Required*
  * \param notification status
@@ -279,13 +279,13 @@ bool sendNotificationAsync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool setUserNotificationStatusSync(char * accessToken,
-	std::string userId, std::string notificationId, ValueWrapper«string» notification, 
+	std::string userId, std::string notificationId, UserNotificationStatusWrapper notification, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 
 /*! \brief Set notification status. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN or self
  * \param userId The id of the user or 'me' *Required*
  * \param notificationId The id of the notification *Required*
  * \param notification status
@@ -294,14 +294,14 @@ bool setUserNotificationStatusSync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool setUserNotificationStatusAsync(char * accessToken,
-	std::string userId, std::string notificationId, ValueWrapper«string» notification, 
+	std::string userId, std::string notificationId, UserNotificationStatusWrapper notification, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 
 
 /*! \brief Enable or disable direct notifications for a user. *Synchronous*
  *
- * Allows enabling or disabling messages for a given notification type when sent direct to the user. Notifications can still be retrieved by endpoint. For notifications broadcased to a topic, see the topic service to disable messages for the user there.
+ * Allows enabling or disabling messages for a given notification type when sent direct to the user. Notifications can still be retrieved by endpoint. For notifications broadcased to a topic, see the topic service to disable messages for the user there. <br><br><b>Permissions Needed:</b> NOTIFICATIONS_ADMIN or self
  * \param typeId The id of the topic *Required*
  * \param userId The id of the subscriber or 'me' *Required*
  * \param silenced silenced *Required*
@@ -316,7 +316,7 @@ bool silenceDirectNotificationsSync(char * accessToken,
 
 /*! \brief Enable or disable direct notifications for a user. *Asynchronous*
  *
- * Allows enabling or disabling messages for a given notification type when sent direct to the user. Notifications can still be retrieved by endpoint. For notifications broadcased to a topic, see the topic service to disable messages for the user there.
+ * Allows enabling or disabling messages for a given notification type when sent direct to the user. Notifications can still be retrieved by endpoint. For notifications broadcased to a topic, see the topic service to disable messages for the user there. <br><br><b>Permissions Needed:</b> NOTIFICATIONS_ADMIN or self
  * \param typeId The id of the topic *Required*
  * \param userId The id of the subscriber or 'me' *Required*
  * \param silenced silenced *Required*
@@ -332,7 +332,7 @@ bool silenceDirectNotificationsAsync(char * accessToken,
 
 /*! \brief Update a notificationType. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN
  * \param id id *Required*
  * \param notificationType notificationType
  * \param handler The callback function to be invoked on completion. *Required*
@@ -346,7 +346,7 @@ bool updateNotificationTypeSync(char * accessToken,
 
 /*! \brief Update a notificationType. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN
  * \param id id *Required*
  * \param notificationType notificationType
  * \param handler The callback function to be invoked on completion. *Required*
@@ -362,7 +362,7 @@ bool updateNotificationTypeAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://sandbox.knetikcloud.com";
+		return "https://jsapi-integration.us-east-1.elasticbeanstalk.com";
 	}
 };
 /** @}*/

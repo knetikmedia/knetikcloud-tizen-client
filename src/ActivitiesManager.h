@@ -11,8 +11,10 @@
 #include "ActivityOccurrenceResults.h"
 #include "ActivityOccurrenceResultsResource.h"
 #include "ActivityOccurrenceSettingsResource.h"
+#include "ActivityOccurrenceStatusWrapper.h"
 #include "ActivityResource.h"
 #include "ActivityUserResource.h"
+#include "ActivityUserStatusWrapper.h"
 #include "CreateActivityOccurrenceRequest.h"
 #include "IntWrapper.h"
 #include "PageResource«ActivityOccurrenceResource».h"
@@ -20,7 +22,6 @@
 #include "PageResource«TemplateResource».h"
 #include "Result.h"
 #include "TemplateResource.h"
-#include "ValueWrapper«string».h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -277,7 +278,7 @@ bool getActivityAsync(char * accessToken,
 
 /*! \brief Load a single activity occurrence details. *Synchronous*
  *
- * <b>Permissions Needed:</b> ACTIVITIES_ADMIN
+ * <b>Permissions Needed:</b> ACTIVITIES_USER or ACTIVITIES_ADMIN
  * \param activityOccurrenceId The id of the activity occurrence *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -290,7 +291,7 @@ bool getActivityOccurrenceDetailsSync(char * accessToken,
 
 /*! \brief Load a single activity occurrence details. *Asynchronous*
  *
- * <b>Permissions Needed:</b> ACTIVITIES_ADMIN
+ * <b>Permissions Needed:</b> ACTIVITIES_USER or ACTIVITIES_ADMIN
  * \param activityOccurrenceId The id of the activity occurrence *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -362,7 +363,7 @@ bool getActivityTemplatesAsync(char * accessToken,
 
 /*! \brief List activity occurrences. *Synchronous*
  *
- * <b>Permissions Needed:</b> ACTIVITIES_ADMIN
+ * <b>Permissions Needed:</b> ACTIVITIES_USER or ACTIVITIES_ADMIN
  * \param filterActivity Filter for occurrences of the given activity ID
  * \param filterStatus Filter for occurrences in the given status
  * \param filterEvent Filter for occurrences played during the given event
@@ -381,7 +382,7 @@ bool listActivityOccurrencesSync(char * accessToken,
 
 /*! \brief List activity occurrences. *Asynchronous*
  *
- * <b>Permissions Needed:</b> ACTIVITIES_ADMIN
+ * <b>Permissions Needed:</b> ACTIVITIES_USER or ACTIVITIES_ADMIN
  * \param filterActivity Filter for occurrences of the given activity ID
  * \param filterStatus Filter for occurrences in the given status
  * \param filterEvent Filter for occurrences played during the given event
@@ -434,7 +435,7 @@ bool removeUserAsync(char * accessToken,
 
 /*! \brief Sets the status of an activity occurrence to FINISHED and logs metrics. *Synchronous*
  *
- * In addition to user permissions requirements there is security based on the core_settings.results_trust setting.
+ * In addition to user permissions requirements there is security based on the core_settings.results_trust setting. <br><br><b>Permissions Needed:</b> ACTIVITIES_USER or ACTIVITIES_ADMIN
  * \param activityOccurrenceId The id of the activity occurrence *Required*
  * \param activityOccurrenceResults The activity occurrence object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -448,7 +449,7 @@ bool setActivityOccurrenceResultsSync(char * accessToken,
 
 /*! \brief Sets the status of an activity occurrence to FINISHED and logs metrics. *Asynchronous*
  *
- * In addition to user permissions requirements there is security based on the core_settings.results_trust setting.
+ * In addition to user permissions requirements there is security based on the core_settings.results_trust setting. <br><br><b>Permissions Needed:</b> ACTIVITIES_USER or ACTIVITIES_ADMIN
  * \param activityOccurrenceId The id of the activity occurrence *Required*
  * \param activityOccurrenceResults The activity occurrence object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -463,7 +464,7 @@ bool setActivityOccurrenceResultsAsync(char * accessToken,
 
 /*! \brief Sets the settings of an activity occurrence. *Synchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ACTIVITIES_USER and host or ACTIVITIES_ADMIN
  * \param activityOccurrenceId The id of the activity occurrence *Required*
  * \param settings The new settings
  * \param handler The callback function to be invoked on completion. *Required*
@@ -477,7 +478,7 @@ bool setActivityOccurrenceSettingsSync(char * accessToken,
 
 /*! \brief Sets the settings of an activity occurrence. *Asynchronous*
  *
- * 
+ * <b>Permissions Needed:</b> ACTIVITIES_USER and host or ACTIVITIES_ADMIN
  * \param activityOccurrenceId The id of the activity occurrence *Required*
  * \param settings The new settings
  * \param handler The callback function to be invoked on completion. *Required*
@@ -501,7 +502,7 @@ bool setActivityOccurrenceSettingsAsync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool setUserStatusSync(char * accessToken,
-	long long activityOccurrenceId, std::string userId, std::string status, 
+	long long activityOccurrenceId, std::string userId, ActivityUserStatusWrapper status, 
 	void(* handler)(ActivityUserResource, Error, void* )
 	, void* userData);
 
@@ -516,7 +517,7 @@ bool setUserStatusSync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool setUserStatusAsync(char * accessToken,
-	long long activityOccurrenceId, std::string userId, std::string status, 
+	long long activityOccurrenceId, std::string userId, ActivityUserStatusWrapper status, 
 	void(* handler)(ActivityUserResource, Error, void* )
 	, void* userData);
 
@@ -552,7 +553,7 @@ bool updateActivityAsync(char * accessToken,
 
 /*! \brief Update the status of an activity occurrence. *Synchronous*
  *
- * If setting to 'FINISHED' reward will be run based on current metrics that have been recorded already. Alternatively, see results endpoint to finish and record all metrics at once. Can be called by non-host participants if non_host_status_control is true
+ * If setting to 'FINISHED' reward will be run based on current metrics that have been recorded already. Alternatively, see results endpoint to finish and record all metrics at once. Can be called by non-host participants if non_host_status_control is true. <br><br><b>Permissions Needed:</b> ACTIVITIES_USER and host or ACTIVITIES_ADMIN
  * \param activityOccurrenceId The id of the activity occurrence *Required*
  * \param activityOccurrenceStatus The activity occurrence status object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -560,13 +561,13 @@ bool updateActivityAsync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool updateActivityOccurrenceStatusSync(char * accessToken,
-	long long activityOccurrenceId, ValueWrapper«string» activityOccurrenceStatus, 
+	long long activityOccurrenceId, ActivityOccurrenceStatusWrapper activityOccurrenceStatus, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 
 /*! \brief Update the status of an activity occurrence. *Asynchronous*
  *
- * If setting to 'FINISHED' reward will be run based on current metrics that have been recorded already. Alternatively, see results endpoint to finish and record all metrics at once. Can be called by non-host participants if non_host_status_control is true
+ * If setting to 'FINISHED' reward will be run based on current metrics that have been recorded already. Alternatively, see results endpoint to finish and record all metrics at once. Can be called by non-host participants if non_host_status_control is true. <br><br><b>Permissions Needed:</b> ACTIVITIES_USER and host or ACTIVITIES_ADMIN
  * \param activityOccurrenceId The id of the activity occurrence *Required*
  * \param activityOccurrenceStatus The activity occurrence status object
  * \param handler The callback function to be invoked on completion. *Required*
@@ -574,7 +575,7 @@ bool updateActivityOccurrenceStatusSync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool updateActivityOccurrenceStatusAsync(char * accessToken,
-	long long activityOccurrenceId, ValueWrapper«string» activityOccurrenceStatus, 
+	long long activityOccurrenceId, ActivityOccurrenceStatusWrapper activityOccurrenceStatus, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 
@@ -611,7 +612,7 @@ bool updateActivityTemplateAsync(char * accessToken,
 
 	static std::string getBasePath()
 	{
-		return "https://sandbox.knetikcloud.com";
+		return "https://jsapi-integration.us-east-1.elasticbeanstalk.com";
 	}
 };
 /** @}*/
